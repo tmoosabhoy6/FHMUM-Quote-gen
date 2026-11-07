@@ -137,6 +137,9 @@ h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
 .ch td{padding:1px 0 1px 12px}
 .ch th:first-child,.ch td:first-child{padding-left:0}
 .ch td:first-child{white-space:nowrap;width:34%;padding-right:8px}
+.ch td.na,.rt td.na{color:var(--ink3);font-size:12.5px;padding-top:6px}
+.rt .ap{text-transform:uppercase}
+.rt .fc{font-weight:600;font-size:13.5px}
 .addons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 details.more{margin-top:22px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
 details.more summary{list-style:none;cursor:pointer;padding:13px 0;display:flex;align-items:baseline;gap:12px}
@@ -297,8 +300,10 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       </dd>
       <dt id="oCa1">Stay in Cairo</dt>
       <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
-      <dt>Takhfeef</dt>
-      <dd><label class="ck"><input type="checkbox" data-s="tk.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.d100"><span id="tkFixedL">$100 off</span></label><button class="lnk" data-act="tkAll" id="tkAllB">Select all</button></dd>
+      <dt id="tkF1">Faiz takhfeef</dt>
+      <dd id="tkF2"><label class="ck"><input type="checkbox" data-s="tk.faiz.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.d100"><span class="tkFixed">$100 off</span></label><button class="lnk" data-act="tkAll" data-k="faiz">Select all</button></dd>
+      <dt id="tkH1">Hotel takhfeef</dt>
+      <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span class="tkFixed">$100 off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
     </dl>
 
     <h2>Charges per za'ir, in rupees</h2>
@@ -307,6 +312,8 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       <tbody><tr><td>Ticket fare</td><td><input class="u" type="number" step="any" data-s="inr.ticket.0" placeholder="0" aria-label="Ticket fare adult"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.1" placeholder="0" aria-label="Ticket fare child"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.2" placeholder="0" aria-label="Ticket fare infant"></td></tr></tbody>
     </table>
     <div class="addons">
+      <label class="ck"><input type="checkbox" data-s="addGl"><span id="glL">Group leader</span></label>
+      <label class="ck"><input type="checkbox" data-s="addCoord"><span id="coordL">Co-ordinator</span></label>
       <label class="ck"><input type="checkbox" data-s="addRida"><span id="ridaL">+2 pcs Rida</span></label>
       <label class="ck"><input type="checkbox" data-s="add80"><span id="p80L">+80</span></label>
     </div>
@@ -353,7 +360,7 @@ const ago = t => { const s = (Date.now() - t) / 1000; if (s < 60) return 'just n
 const DEF_R = {
   iraq: { faiz: [40, 25], hubb: [20, 15], bed: [10, 10], cutoff: '19:00' },
   visa: { small: 145, large: 130, thr: 6 },
-  trans: { NJF: { small: 60, large: 40, thr: 11 }, BGW: { small: 110, large: 70, thr: 11 }, MIX: { small: 85, large: 55, thr: 6 } },
+  trans: { NJF: { small: 60, large: 40, thr: 6 }, BGW: { small: 110, large: 70, thr: 6 }, MIX: { small: 85, large: 55, thr: 6 } },
   cairo: {
     lead: 4,
     day: { N: { one: 60, ac: [25, 15] }, R: { one: 75, ac: [70, 55] } },
@@ -363,10 +370,19 @@ const DEF_R = {
     ten: [670, 505], hotel1C: [160, 120], tkLess: [10, 10]
   },
   egypt: { inr: 3500, freeHours: 96 },
-  tkFixed: 100
+  tkFixed: 100,
+  v: 2
+};
+/* Rates saved before v2 had the Najaf and Baghdad transport larger-group rate start at 11 people; it now starts at 6.
+   Only the old default is moved, so a threshold someone set by hand is kept. */
+const loadR = raw => {
+  const r = merge(clone(DEF_R), raw);
+  if (raw && !(num(raw.v) >= 2)) for (const k of ['NJF', 'BGW']) if (num(r.trans[k].thr) === 11) r.trans[k].thr = DEF_R.trans[k].thr;
+  r.v = DEF_R.v;
+  return r;
 };
 const savedR = store.get('zq.rates.v2');
-let R = merge(clone(DEF_R), savedR && savedR.rates);
+let R = loadR(savedR && savedR.rates);
 const RM = { updated: (savedR && savedR.updated) || 0 };
 const saveRLocal = () => store.set('zq.rates.v2', { updated: RM.updated, rates: R });
 
@@ -377,14 +393,29 @@ const DEF_S = {
   name: '', adults: '', children: '', infants: '', rate: 96.5,
   legs: [blankLeg(), blankLeg()],
   iraqAcc: { faiz: true, hotel: true }, cairoAcc: { faiz: true, hotel: true },
-  tk: { p100: false, p75: false, p50: false, d100: false },
-  addRida: false, add80: false,
-  inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 3400, 0], p80: [3000, 3000, 0] },
+  tk: { faiz: { p100: false, p75: false, p50: false, d100: false }, hotel: { p100: false, p75: false, p50: false, d100: false } },
+  addGl: false, addCoord: false, addRida: false, add80: false,
+  inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 0, 0], p80: [3000, 3000, 0] },
   split: { a: '', c: '', i: '' },
   misc: [], ovr: { iraqN: '', cairo: {} }
 };
 const freshS = () => { const s = clone(DEF_S); s.id = newId(); s.created = Date.now(); return s; };
-const loadS = st => { const s = merge(clone(DEF_S), st); if (!Array.isArray(s.legs) || !s.legs.length) s.legs = [blankLeg()]; if (!Array.isArray(s.misc)) s.misc = []; if (!s.id) s.id = newId(); if (!s.created) s.created = Date.now(); return s; };
+function loadS(st) {
+  st = clone(st || {});
+  // Takhfeef used to be one choice for both stays. Keep what was picked, for Faiz and Hotel alike.
+  if (st.tk && !('faiz' in st.tk) && !('hotel' in st.tk)) st.tk = { faiz: { ...st.tk }, hotel: { ...st.tk } };
+  // Group leader and co-ordinator used to be on every quote. Keep each one that had an amount, so saved prices don't move.
+  if (Object.keys(st).length && !('addGl' in st)) {
+    const had = k => (st.inr && Array.isArray(st.inr[k]) ? st.inr[k] : DEF_S.inr[k]).some(x => num(x) > 0);
+    st.addGl = had('gl'); st.addCoord = had('coord');
+  }
+  const s = merge(clone(DEF_S), st);
+  if (!Array.isArray(s.legs) || !s.legs.length) s.legs = [blankLeg()];
+  if (!Array.isArray(s.misc)) s.misc = [];
+  if (!s.id) s.id = newId();
+  if (!s.created) s.created = Date.now();
+  return s;
+}
 const hasContent = s => !!(String(s.name || '').trim() || num(s.adults) || num(s.children) || num(s.infants) || s.legs.some(l => l.fn || l.date || l.from || l.to));
 
 let DOCS = store.get('zq.quotes') || {};
@@ -396,19 +427,40 @@ let S = (() => {
   return v1 ? loadS(v1) : freshS();
 })();
 
-/* Typical schedules (estimates, always check with the search button). */
+/* ───────── saved flights ─────────
+   Typing a flight number fills in its route and times. KNOWN is the built-in starting list; FL holds every flight
+   someone has typed in full, saved in this browser and to flights.json on the data branch so every computer shares it.
+   Each entry carries its own `updated` time, so two computers adding different flights both keep theirs.
+   A removed flight stays as { deleted: true } so the removal reaches other computers too. */
 const KNOWN = {
   MS969: { from: 'BOM', to: 'CAI', dep: '02:50', arr: '05:50' },
   MS968: { from: 'CAI', to: 'BOM' },
   MS627: { from: 'CAI', to: 'BGW', dep: '00:35', arr: '03:45' },
   MS628: { from: 'BGW', to: 'CAI' }
 };
+const FLF = ['from', 'to', 'dep', 'arr'];
+let FL = store.get('zq.flights') || {};
+const saveFL = () => store.set('zq.flights', FL);
+const flightOf = code => (!code ? null : FL[code] ? (FL[code].deleted ? null : FL[code]) : KNOWN[code] || null);
+const fullFlight = f => !!(f && f.from && f.to && tmin(f.dep) != null && tmin(f.arr) != null);
+const fmtFn = c => String(c || '').replace(/^([A-Z]{2}|[A-Z]\d|\d[A-Z])(\d{1,4}[A-Z]?)$/, '$1 $2');
+function mergeFlights(remote) {          // newest entry per flight wins; says whether this browser changed and whether the remote is behind
+  const r = remote && typeof remote === 'object' ? remote : {};
+  let changed = false, behind = false;
+  for (const c in r) if (r[c] && (!FL[c] || num(r[c].updated) > num(FL[c].updated))) { FL[c] = r[c]; changed = true; }
+  for (const c in FL) if (!r[c] || num(FL[c].updated) > num(r[c].updated)) behind = true;
+  if (changed) saveFL();
+  return { changed, behind };
+}
 const TK = [
   { id: 'p100', xl: '100% TAKHFEEF', tag: '100% takhfeef', f: x => 0 },
   { id: 'p75', xl: '75% TAKHFEEF', tag: '75% takhfeef', f: x => x * 0.25 },
   { id: 'p50', xl: '50% TAKHFEEF', tag: '50% takhfeef', f: x => x * 0.5 },
   { id: 'd100', get xl() { return `${R.tkFixed}$ TAKHFEEF`; }, get tag() { return `$${R.tkFixed} takhfeef`; }, f: x => Math.max(0, x - num(R.tkFixed)) }
 ];
+/* Faiz and Hotel each have their own takhfeef choices. A Cairo-only quote follows the Cairo stay, Faiz if there is no choice. */
+const tkKey = (io, co) => io || co || 'faiz';
+const tkOn = (key, t) => !!(S.tk[key] && S.tk[key][t.id]);
 
 /* ───────── time & itinerary ───────── */
 const IQ = new Set(['BGW', 'NJF', 'BSR', 'EBL', 'ISU']), IQT = new Set(['BGW', 'NJF']), EG = new Set(['CAI']);
@@ -541,17 +593,23 @@ function analyze() {
 
 /* ───────── quote columns & rows ───────── */
 const CATS = [['a', 'ADULT', 'Adult', 0], ['c', 'CHD', 'Child', 1], ['i', 'INF', 'Infant', 2]];
+const stayIo = A => (A.iraq ? ['faiz', 'hotel'].filter(k => S.iraqAcc[k]) : [null]);
+const stayCo = A => (A.cairoHotelDiff ? ['faiz', 'hotel'].filter(k => S.cairoAcc[k]) : [null]);
+function tkKeys(A) {             // which takhfeef rows apply to the stays being quoted
+  if (!A.iraq && !A.cairo.length) return ['faiz', 'hotel'].filter(k => S.iraqAcc[k]);
+  const co = stayCo(A);
+  return [...new Set(stayIo(A).flatMap(I => co.map(C => tkKey(I, C))))];
+}
 function buildCols(A) {
   const cats = CATS.filter(c => A[c[0]] > 0);
   if (!cats.length || (!A.iraq && !A.cairo.length)) return [];
-  const io = A.iraq ? ['faiz', 'hotel'].filter(k => S.iraqAcc[k]) : [null];
-  const co = A.cairoHotelDiff ? ['faiz', 'hotel'].filter(k => S.cairoAcc[k]) : [null];
-  const tks = TK.filter(t => S.tk[t.id]);
+  const io = stayIo(A), co = stayCo(A);
   const cols = [];
   for (const I of io) for (const C of co) {
     const cn = C && (co.length > 1 || C === 'hotel' || !I) ? C : null;   // only name the Cairo stay when it tells the options apart
     const head = [I ? (I === 'faiz' ? 'FAIZ NIZAM' : 'HOTEL NIZAM') : 'CAIRO', cn ? `CAIRO ${cn === 'faiz' ? 'FAIZ' : 'HOTEL'}` : ''].filter(Boolean).join(' · ');
     const name = I ? (I === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam') + (cn ? `, Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : '') : (cn ? `Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : 'Cairo');
+    const tks = TK.filter(t => tkOn(tkKey(I, C), t));
     for (const t of [null, ...tks]) {
       const g = `${I}|${C}|${t ? t.id : ''}`;
       for (const [k, L, nm, ix] of cats) {
@@ -581,8 +639,10 @@ function calc(A, col) {
   v.usd = usd; v.usdInr = Math.round(usd * rate);
   let sub = v.egv + v.usdInr;
   const inr = (key, val) => { v[key] = val; sub += val; };
-  inr('gl', num(S.inr.gl[ix])); inr('coord', num(S.inr.coord[ix])); inr('hadiyah', num(S.inr.hadiyah[ix])); inr('admin', num(S.inr.admin[ix]));
-  if (S.addRida) inr('rida', num(S.inr.rida[ix]));
+  if (S.addGl) inr('gl', num(S.inr.gl[ix]));
+  if (S.addCoord) inr('coord', num(S.inr.coord[ix]));
+  inr('hadiyah', num(S.inr.hadiyah[ix])); inr('admin', num(S.inr.admin[ix]));
+  if (S.addRida) inr('rida', ix === 0 ? num(S.inr.rida[0]) : 0);            // rida is for adults only
   if (S.add80) inr('p80', num(S.inr.p80[ix]));
   S.misc.forEach((m, j) => { if (m.cur !== 'USD') inr('m' + j, num(m.v[ix])); });
   v.sub = sub; v.ticket = num(S.inr.ticket[ix]); v.grand = sub + v.ticket;
@@ -600,15 +660,20 @@ function buildRows(A) {
   if (A.iraq) rows.push({ k: 'visa', cur: 'USD', label: 'IRAQ E VISA' }, { k: 'trans', cur: 'USD', label: `TRANSPORT ${A.iraq.route}` });
   S.misc.forEach((m, j) => m.cur === 'USD' && rows.push({ k: 'm' + j, cur: 'USD', label: (m.name || 'Miscellaneous').toUpperCase() }));
   rows.push({ k: 'usd', tot: 1, label: `TOTAL USD @RS.${num(S.rate)}` });
-  rows.push({ k: 'gl', cur: 'INR', label: 'GROUP LEADER EXP' }, { k: 'coord', cur: 'INR', label: 'CO-ORDINATOR EXPENSES' },
-            { k: 'hadiyah', cur: 'INR', label: 'HADIYAH EXPENSES (TRAVELLING KIT)' }, { k: 'admin', cur: 'INR', label: 'ADMINISTRATION EXPENSES' });
-  if (S.addRida) rows.push({ k: 'rida', cur: 'INR', label: '+2 PCS RIDA' });
+  const inrFrom = rows.length;
+  if (S.addGl) rows.push({ k: 'gl', cur: 'INR', label: 'GROUP LEADER EXP' });
+  if (S.addCoord) rows.push({ k: 'coord', cur: 'INR', label: 'CO-ORDINATOR EXPENSES' });
+  rows.push({ k: 'hadiyah', cur: 'INR', label: 'HADIYAH EXPENSES (TRAVELLING KIT)' }, { k: 'admin', cur: 'INR', label: 'ADMINISTRATION EXPENSES' });
+  if (S.addRida) rows.push({ k: 'rida', cur: 'INR', label: '+2 PCS RIDA (ADULTS)' });
   if (S.add80) rows.push({ k: 'p80', cur: 'INR', label: '+80' });
   S.misc.forEach((m, j) => m.cur !== 'USD' && rows.push({ k: 'm' + j, cur: 'INR', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  rows[inrFrom].gap = 1;                                         // the Excel sheet leaves a blank row before the rupee charges
   rows.push({ k: 'sub', tot: 1, label: 'TOTAL' }, { k: 'ticket', cur: 'INR', bold: 1, label: 'TICKET FARE' }, { k: 'grand', grand: 1, label: 'TOTAL' });
   return rows;
 }
 
+/* The top-left heading of the breakdown and the Excel sheet: the quote's name as typed, or a made-up one if it has none. */
+const sheetTitle = A => String(S.name || '').trim() || quoteTitle(A);
 function quoteTitle(A) {
   const parts = [String(S.name || '').trim().toUpperCase()];
   if (A.legs.length) parts.push(dmy(A.legs[0].dep));
@@ -653,9 +718,10 @@ function syncOff() {
 }
 
 function renderOther() {
-  const row = (k, lbl) => `<tr><td>${lbl}</td>${[0, 1, 2].map(i => `<td><input class="u" type="number" step="any" data-s="inr.${k}.${i}" placeholder="0" aria-label="${lbl} ${['adult', 'child', 'infant'][i]}"></td>`).join('')}</tr>`;
+  const cell = (k, lbl, i) => `<td><input class="u" type="number" step="any" data-s="inr.${k}.${i}" placeholder="0" aria-label="${lbl} ${['adult', 'child', 'infant'][i]}"></td>`;
+  const row = (k, lbl, adultsOnly) => `<tr><td>${lbl}</td>${cell(k, lbl, 0)}${adultsOnly ? '<td class="na" colspan="2">Adults only</td>' : cell(k, lbl, 1) + cell(k, lbl, 2)}</tr>`;
   $('#otherT').innerHTML = `<thead><tr><th></th><th>Adult</th><th>Child</th><th>Infant</th></tr></thead><tbody>` +
-    row('gl', 'Group leader') + row('coord', 'Co-ordinator') + row('hadiyah', 'Hadiyah') + row('admin', 'Administration') + row('rida', '+2 pcs Rida') + row('p80', '+80') + '</tbody>';
+    row('gl', 'Group leader') + row('coord', 'Co-ordinator') + row('hadiyah', 'Hadiyah') + row('admin', 'Administration') + row('rida', '+2 pcs Rida', true) + row('p80', '+80') + '</tbody>';
   hydrate($('#otherT'));
 }
 function renderMisc() {
@@ -746,7 +812,7 @@ function renderSide(A, cols) {
     h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : esc(b.name) + (A.split ? `<small>${who(b.n)}</small>` : '')}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
   });
   h += '</table>';
-  if (GT) h += `<div class="gt"><span>Whole group, ${GT.people} ${plural(GT.people, 'person', 'people')}${S.tk && TK.some(t => S.tk[t.id]) ? ', before takhfeef' : ''}</span><b><i>₹</i>${INR.format(GT.total)}</b></div>`;
+  if (GT) h += `<div class="gt"><span>Whole group, ${GT.people} ${plural(GT.people, 'person', 'people')}${cols.some(c => c.tk) ? ', before takhfeef' : ''}</span><b><i>₹</i>${INR.format(GT.total)}</b></div>`;
   h += `<button class="dl" data-act="xlsx">${ICON.dl}Download Excel</button><button class="lnk" data-act="bd">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div>`;
   fare.innerHTML = h;
   renderBreakdown(A, cols);
@@ -757,7 +823,7 @@ function renderBreakdown(A, cols) {
   if (!bdOpen || !cols.length) { el.innerHTML = ''; return; }
   const rows = buildRows(A), groups = [];
   cols.forEach(c => { const g = groups[groups.length - 1]; g && g.g === c.g ? g.cols.push(c) : groups.push({ g: c.g, cols: [c] }); });
-  let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="lnk" data-act="bd">Hide</button></div><div class="mx"><table><thead><tr><th rowspan="2">${esc(quoteTitle(A))}</th>`;
+  let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="lnk" data-act="bd">Hide</button></div><div class="mx"><table><thead><tr><th rowspan="2">${esc(sheetTitle(A))}</th>`;
   h += groups.map(g => `<th class="gs" colspan="${g.cols.length * 2}">${g.cols[0].head.map(esc).join('<br>')}</th>`).join('') + '</tr><tr>';
   h += cols.map(c => `<th class="gs">${c.count ?? ''}</th><th>${c.catL}</th>`).join('') + '</tr></thead><tbody>';
   const span = cols.length * 2 + 1;
@@ -786,13 +852,20 @@ function renderBits(A) {
   $('#splitNote').textContent = sp
     ? `The other ${A.a - sp.a + A.c - sp.c + A.i - sp.i} stay in Faiz Nizam.`
     : 'Leave at 0 to quote Faiz Nizam and Hotel Nizam as two choices for everyone.';
-  $('#tkFixedL').textContent = `$${R.tkFixed} off`;
-  $('#tkAllB').textContent = TK.every(t => S.tk[t.id]) ? 'Clear all' : 'Select all';
-  $('#ridaL').textContent = `+2 pcs Rida, ₹${INR.format(num(S.inr.rida[0]))}`;
+  const keys = tkKeys(A);
+  $('#tkF1').hidden = $('#tkF2').hidden = !keys.includes('faiz');
+  $('#tkH1').hidden = $('#tkH2').hidden = !keys.includes('hotel');
+  document.querySelectorAll('.tkFixed').forEach(el => (el.textContent = `$${R.tkFixed} off`));
+  document.querySelectorAll('[data-act=tkAll]').forEach(b => (b.textContent = TK.every(t => tkOn(b.dataset.k, t)) ? 'Clear all' : 'Select all'));
+  const amt = (k, lbl) => (num(S.inr[k][0]) ? `${lbl}, ₹${INR.format(num(S.inr[k][0]))}` : lbl);
+  $('#glL').textContent = amt('gl', 'Group leader');
+  $('#coordL').textContent = amt('coord', 'Co-ordinator');
+  $('#ridaL').textContent = `+2 pcs Rida, ₹${INR.format(num(S.inr.rida[0]))} per adult`;
   $('#p80L').textContent = `+80, ₹${INR.format(num(S.inr.p80[0]))}`;
-  const base = ['gl', 'coord', 'hadiyah', 'admin'].reduce((s, k) => s + num(S.inr[k][0]), 0);
+  const inc = [['gl', 'group leader', S.addGl], ['coord', 'co-ordinator', S.addCoord], ['hadiyah', 'hadiyah', 1], ['admin', 'administration', 1]].filter(x => x[2]);
+  const base = inc.reduce((s, [k]) => s + num(S.inr[k][0]), 0), names = inc.map(x => x[1]);
   const extra = S.misc.length ? `, plus ${S.misc.length} extra ${plural(S.misc.length, 'item', 'items')}` : '';
-  $('#moreSum').textContent = `₹${INR.format(base)} per adult for group leader, co-ordinator, hadiyah and administration${extra}`;
+  $('#moreSum').textContent = `₹${INR.format(base)} per adult for ${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}${extra}`;
 }
 
 function update(skipTrip) {
@@ -829,8 +902,33 @@ function renderRates() {
       <tr><td>1 night C, hotel</td><td colspan="4"></td><td>${n('cairo.hotel1C.0')}</td><td>${n('cairo.hotel1C.1')}</td></tr></table>
     <p style="font-size:13px">A means leaving Faiz by 3 pm, B between 3 and 9 pm, C between 9 pm and 3 am. A day stopover has no rooms if they leave by 3 pm, and rooms if they leave by 10 pm. The MS 627 to Baghdad always counts that night, at the A rate.</p>
     <h4>Egypt visa and takhfeef</h4>
-    <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef, dollars off Faiz or Hubb${n('tkFixed')}</label></div>`;
+    <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef, dollars off Faiz or Hubb${n('tkFixed')}</label></div>
+    <h4>Saved flights</h4>
+    <p>Typing one of these flight numbers on a quote fills in its route and times. A new flight is added here once you have typed its route and times in full. Change a time on a quote for that quote only, or here to change it for every quote from now on.</p>
+    ${flightTable()}`;
   hydrate($('#rateBody'));
+}
+function flightTable() {
+  const codes = [...new Set([...Object.keys(KNOWN), ...Object.keys(FL)])].filter(c => /^[A-Z0-9]{2,9}$/.test(c) && flightOf(c)).sort();
+  if (!codes.length) return '<p>No saved flights yet.</p>';
+  const inp = (c, f, v, cls, ph, lbl) => `<input class="u ${cls}" data-fl="${c}.${f}" value="${esc(v || '')}" placeholder="${ph}" ${cls === 'ap' ? 'maxlength="3"' : 'inputmode="numeric"'} autocomplete="off" aria-label="${fmtFn(c)} ${lbl}">`;
+  return `<table class="rt"><tr><th>Flight</th><th>From</th><th>To</th><th>Departs</th><th>Arrives</th><th></th></tr>` + codes.map(c => {
+    const f = flightOf(c);
+    return `<tr><td class="fc">${fmtFn(c)}</td><td>${inp(c, 'from', f.from, 'ap', 'BOM', 'from')}</td><td>${inp(c, 'to', f.to, 'ap', 'CAI', 'to')}</td><td>${inp(c, 'dep', f.dep, 'tm', '02:50', 'departs')}</td><td>${inp(c, 'arr', f.arr, 'tm', '05:50', 'arrives')}</td>` +
+      `<td><button class="ic" data-act="delFl" data-code="${c}" title="Remove this saved flight" aria-label="Remove ${fmtFn(c)}">${ICON.x}</button></td></tr>`;
+  }).join('') + '</table>';
+}
+function editFlight(t) {
+  const [code, f] = t.dataset.fl.split('.');
+  let v = t.value.trim().toUpperCase();
+  if (f === 'dep' || f === 'arr') v = normTime(v);
+  const ok = f === 'dep' || f === 'arr' ? tmin(v) != null : /^[A-Z]{3}$/.test(v);
+  t.classList.toggle('bad', !ok);
+  if (!ok) return;
+  t.value = v;
+  const cur = flightOf(code) || {};
+  FL[code] = { from: cur.from || '', to: cur.to || '', dep: cur.dep || '', arr: cur.arr || '', off: cur.off ?? '', [f]: v, updated: Date.now() };
+  touchF();
 }
 
 /* ───────── GitHub sync ───────── */
@@ -922,23 +1020,39 @@ const quoteDoc = s => {
 };
 const stripLocal = d => { const { synced, ...rest } = d; return rest; };
 
-let saveT = null, saving = false, dirtyQ = false, dirtyR = false, backoff = false;
+let saveT = null, saving = false, dirtyQ = false, dirtyR = false, dirtyF = false, backoff = false;
 function saveLocal() {
   store.set('zq.cur', S.id);
   if (hasContent(S)) { DOCS[S.id] = { ...quoteDoc(S), synced: false }; saveDocs(); }
 }
 function touchQ() { S.updated = Date.now(); saveLocal(); if (ghOn()) { dirtyQ = true; schedule(); } }
 function touchR() { RM.updated = Date.now(); saveRLocal(); if (ghOn()) { dirtyR = true; schedule(); } }
+function touchF() { saveFL(); if (ghOn()) { dirtyF = true; schedule(); } }
 function schedule(ms) { clearTimeout(saveT); if (!ghOn()) return; if (SYNC.st !== 'error') setStatus('saving'); saveT = setTimeout(flush, ms ?? (backoff ? 20000 : 1800)); }
+/* Read flights.json, fold it into this browser's list, and write back the union if GitHub is missing anything.
+   If another computer saves in between, GitHub refuses the write, so read and merge again. Says whether this browser's list changed. */
+async function syncFlights() {
+  let changed = false;
+  for (let tries = 0; tries < 3; tries++) {
+    const rf = await ghGet('flights.json');
+    const m = mergeFlights(rf && rf.flights);
+    changed = changed || m.changed;
+    if (!m.behind) return changed;
+    try { await ghPut('flights.json', { flights: FL }, 'Update saved flights', false); return changed; }
+    catch (e) { if (e.status !== 409 && e.status !== 422) throw e; }
+  }
+  throw new Error('Saved flights were changed on another computer at the same moment. They save again shortly.');
+}
 async function flush() {
   clearTimeout(saveT);
-  if (!ghOn() || (!dirtyQ && !dirtyR)) return;
+  if (!ghOn() || (!dirtyQ && !dirtyR && !dirtyF)) return;
   if (saving) { schedule(800); return; }
   saving = true; setStatus('saving');
-  const doR = dirtyR, snap = dirtyQ && hasContent(S) ? quoteDoc(S) : null;
-  dirtyR = false; dirtyQ = false;
+  const doR = dirtyR, doF = dirtyF, snap = dirtyQ && hasContent(S) ? quoteDoc(S) : null;
+  dirtyR = false; dirtyQ = false; dirtyF = false;
   try {
     if (doR) await ghPut('rates.json', { updated: RM.updated, rates: R }, 'Update rates');
+    if (doF && (await syncFlights()) && $('#dlgR').open) renderRates();
     if (snap) {
       await ghPut(`quotes/${snap.id}.json`, snap, `Save quote: ${snap.name || 'Untitled quote'}`);
       if (DOCS[snap.id] && DOCS[snap.id].updated === snap.updated) { DOCS[snap.id].synced = true; saveDocs(); }
@@ -946,11 +1060,11 @@ async function flush() {
     backoff = false;
     setStatus('saved');
   } catch (e) {
-    dirtyR = dirtyR || doR; dirtyQ = dirtyQ || !!snap; backoff = true;
+    dirtyR = dirtyR || doR; dirtyQ = dirtyQ || !!snap; dirtyF = dirtyF || doF; backoff = true;
     setStatus('error', errText(e));
   } finally {
     saving = false;
-    if (dirtyQ || dirtyR) schedule();
+    if (dirtyQ || dirtyR || dirtyF) schedule();
   }
 }
 
@@ -959,8 +1073,9 @@ async function pullRemote(full) {
   setStatus('saving');
   try {
     const rr = await ghGet('rates.json');
-    if (rr && rr.updated > RM.updated) { R = merge(clone(DEF_R), rr.rates); RM.updated = rr.updated; saveRLocal(); if ($('#dlgR').open) renderRates(); }
+    if (rr && rr.updated > RM.updated) { R = loadR(rr.rates); RM.updated = rr.updated; saveRLocal(); if ($('#dlgR').open) renderRates(); }
     else if (!rr || RM.updated > rr.updated) dirtyR = true;
+    if ((await syncFlights()) && $('#dlgR').open) renderRates();
     if (full) {
       const remote = await listRemote();
       reconcile(remote);
@@ -994,14 +1109,13 @@ function reconcile(remote) {
   saveDocs();
   if (DOCS[S.id] && DOCS[S.id].updated > S.updated) { S = loadS(DOCS[S.id].state); renderAll(); }
 }
-async function publicRates() {                     // read shared rates without a token (public repo)
-  const g = repoGuess();
+async function publicRates() {                     // read shared rates and saved flights without a token (public repo)
+  const g = repoGuess(), raw = f => fetch(`https://raw.githubusercontent.com/${g.owner}/${g.repo}/data/${f}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
   try {
-    const r = await fetch(`https://raw.githubusercontent.com/${g.owner}/${g.repo}/data/rates.json`, { cache: 'no-store' });
-    if (!r.ok) return;
-    const rr = await r.json();
-    if (rr.updated > RM.updated) { R = merge(clone(DEF_R), rr.rates); RM.updated = rr.updated; saveRLocal(); update(); }
+    const rr = await raw('rates.json');
+    if (rr && rr.updated > RM.updated) { R = loadR(rr.rates); RM.updated = rr.updated; saveRLocal(); update(); }
   } catch {}
+  try { const rf = await raw('flights.json'); if (rf) mergeFlights(rf.flights); } catch {}
 }
 
 function renderConn() {
@@ -1134,13 +1248,13 @@ async function exportXlsx() {
   cols.forEach((c, j) => { ws.getColumn(2 + 2 * j).width = 8; ws.getColumn(3 + 2 * j).width = 11; });
 
   const lay = []; let r = 3;
-  rows.forEach(row => { if (row.k === 'usd' || row.k === 'gl' || row.k === 'sub') r++; lay.push({ ...row, r: r++ }); });
+  rows.forEach(row => { if (row.k === 'usd' || row.gap || row.k === 'sub') r++; lay.push({ ...row, r: r++ }); });
   const end = r - 1, rateRow = end + 3;
   const at = k => lay.find(x => x.k === k);
   const secRow = lay.find(x => x.sec).r, usdRow = at('usd').r, subRow = at('sub').r, tickRow = at('ticket').r;
   const $rate = `$B$${rateRow}`;
 
-  ws.getCell(1, 1).value = quoteTitle(A);
+  ws.getCell(1, 1).value = sheetTitle(A);
   ws.getCell(2, 1).value = 'EXPENSES HEAD';
   for (let j = 0; j < cols.length;) {
     let e = j; while (e + 1 < cols.length && cols[e + 1].g === cols[j].g) e++;
@@ -1192,7 +1306,7 @@ async function exportXlsx() {
   put(`PAX: ${A.a} ADULT, ${A.c} CHD, ${A.i} INF`);
   if (A.split) put(`SPLIT: HOTEL NIZAM ${A.split.a} ADULT, ${A.split.c} CHD, ${A.split.i} INF. FAIZ NIZAM ${A.a - A.split.a} ADULT, ${A.c - A.split.c} CHD, ${A.i - A.split.i} INF`);
   const GT = groupTotal(A, cols);
-  if (GT) { put(`GROUP TOTAL (${GT.people} PAX${TK.some(t => S.tk[t.id]) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
+  if (GT) { put(`GROUP TOTAL (${GT.people} PAX${cols.some(c => c.tk) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
   A.legs.forEach(l => put(`${l.fn || '-'}   ${l.from} to ${l.to}   ${fmtAbs(l.dep)} to ${fmtAbs(l.arr)}`));
   if (A.iraq) put(`IRAQ: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
   A.cairo.forEach(s => {
@@ -1214,6 +1328,7 @@ async function exportXlsx() {
 function onEdit(e) {
   const t = e.target, ps = t.dataset.s, pr = t.dataset.r;
   if (t.id === 'qSearch') return renderQuotes('');
+  if (t.dataset.fl) { if (e.type === 'change') editFlight(t); return; }
   if (!ps && !pr) return;
   let v = t.type === 'checkbox' ? t.checked : t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value;
   if ((t.classList.contains('fn') || t.classList.contains('ap')) && typeof v === 'string') v = v.toUpperCase();
@@ -1227,7 +1342,13 @@ function onEdit(e) {
   if (t.hasAttribute('data-time')) t.classList.toggle('bad', e.type === 'change' && !!t.value.trim() && tmin(v) == null);
   if (ps) {
     setPath(S, ps, v);
-    if (e.type === 'change' && /^legs\.\d+\.fn$/.test(ps)) autofill(+ps.split('.')[1]);
+    const lm = /^legs\.(\d+)\.(\w+)$/.exec(ps);
+    if (lm) {
+      const i = +lm[1], f = lm[2];
+      if (FLF.includes(f)) { const au = AUTO.get(S.legs[i]); if (au) au.delete(f); }   // typed by hand, so a new flight number won't replace it
+      if (e.type === 'change') { if (f === 'fn') autofill(i); learnLeg(i); }
+    }
+    if ((ps === 'addGl' || ps === 'addCoord') && v) askAmount(ps === 'addGl' ? 'gl' : 'coord');
     if (/^ovr\.cairo\./.test(ps) && !v) delete S.ovr.cairo[ps.split('.')[2]];
     update(e.type === 'input' && !!t.closest('#trip'));
     touchQ();
@@ -1237,12 +1358,54 @@ function onEdit(e) {
     touchR();
   }
 }
+/* Ticking group leader or co-ordinator with no amount yet: open Other charges at that row so the amount can go in. */
+function askAmount(k) {
+  if (S.inr[k].some(x => num(x) > 0)) return;
+  $('#more').open = true;
+  const el = document.querySelector(`[data-s="inr.${k}.0"]`);
+  if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus({ preventScroll: true }); }
+  toast(`Enter the ${k === 'gl' ? 'group leader' : 'co-ordinator'} charge per za'ir.`);
+}
+
+/* Which leg fields the app filled in rather than the user: 'flight' from a saved flight, 'prev' copied from the flight before.
+   Those can be replaced when the flight number changes; anything typed by hand is never overwritten. Kept in memory only. */
+const AUTO = new WeakMap();
+/* Legs that added a new saved flight in this session. Corrections typed on that leg straight after update the saved flight too. */
+const LEARNED = new WeakMap();
+
 function autofill(i) {
-  const l = S.legs[i], k = KNOWN[normFn(l.fn)];
-  if (!k) return;
-  let filled = false;
-  for (const f of ['from', 'to', 'dep', 'arr']) if (k[f] && !l[f]) { l[f] = k[f]; filled = true; }
-  if (filled) { renderLegs(); toast(`Filled in the usual ${normFn(l.fn)} ${k.dep ? 'route and times' : 'route'}. Check them with the search button.`); }
+  const l = S.legs[i], code = normFn(l.fn), k = flightOf(code), au = AUTO.get(l) || new Map(), set = [];
+  LEARNED.delete(l);
+  if (k) {
+    for (const f of FLF) if (k[f] && (!l[f] || au.has(f))) { if (l[f] !== k[f]) set.push(f); l[f] = k[f]; au.set(f, 'flight'); }
+    if (k.off != null && k.off !== '' && (l.off === '' || l.off == null || au.has('off'))) { l.off = String(k.off); au.set('off', 'flight'); }
+  } else {
+    for (const [f, src] of au) if (src === 'flight') { l[f] = ''; au.delete(f); if (f !== 'off') set.push(f); }   // details of the previous flight number
+    const prevTo = i > 0 && S.legs[i - 1].to;
+    if (!l.from && prevTo) { l.from = prevTo; au.set('from', 'prev'); }                                          // back to the usual guess
+  }
+  AUTO.set(l, au);
+  set.forEach(f => { const el = document.querySelector(`[data-s="legs.${i}.${f}"]`); if (el) { el.value = l[f]; el.classList.remove('bad'); } });
+  syncOff();
+  if (k && set.length) toast(fullFlight(k) ? `${fmtFn(code)} filled in: ${k.from} to ${k.to}, ${k.dep} to ${k.arr}. Add the date.` : `${fmtFn(code)} filled in: ${k.from} to ${k.to}. Add the times once and they fill in next time.`);
+}
+
+/* A flight typed in full that isn't saved yet becomes a saved flight. A saved flight is left alone, so a one-off change of time
+   stays on this quote; change it for good from Rates. */
+function learnLeg(i) {
+  const l = S.legs[i];
+  if (!l) return;
+  const code = normFn(l.fn);
+  if (!/^[A-Z0-9]{3,9}$/.test(code)) return;
+  const rec = { from: String(l.from || '').toUpperCase(), to: String(l.to || '').toUpperCase(), dep: normTime(l.dep), arr: normTime(l.arr), off: l.off == null ? '' : String(l.off) };
+  if (!/^[A-Z]{3}$/.test(rec.from) || !/^[A-Z]{3}$/.test(rec.to) || tmin(rec.dep) == null || tmin(rec.arr) == null) return;
+  const cur = flightOf(code), mine = LEARNED.get(l) === code;
+  if (fullFlight(cur) && !mine) return;
+  if (cur && FLF.every(f => cur[f] === rec[f]) && String(cur.off ?? '') === rec.off) return;
+  FL[code] = { ...rec, updated: Date.now() };
+  LEARNED.set(l, code);
+  touchF();
+  if (!mine) toast(`Saved ${fmtFn(code)}. Typing ${fmtFn(code)} on any quote now fills in ${rec.from} to ${rec.to}, ${rec.dep} to ${rec.arr}.`);
 }
 
 document.addEventListener('input', onEdit);
@@ -1251,22 +1414,28 @@ document.addEventListener('click', e => {
   const b = e.target.closest('[data-act]'); if (!b) return;
   const i = +b.dataset.i, act = b.dataset.act;
   switch (act) {
-    case 'addLeg': { const p = S.legs[S.legs.length - 1]; S.legs.push({ ...blankLeg(), from: (p && p.to) || '', date: (p && p.date) || '' }); renderLegs(); const n = document.querySelectorAll('.leg .fn'); n[n.length - 1].focus(); break; }
+    case 'addLeg': {
+      const p = S.legs[S.legs.length - 1], leg = { ...blankLeg(), from: (p && p.to) || '', date: (p && p.date) || '' };
+      S.legs.push(leg);
+      if (leg.from) AUTO.set(leg, new Map([['from', 'prev']]));          // a guess: the flight number's own route replaces it
+      renderLegs(); const n = document.querySelectorAll('.leg .fn'); n[n.length - 1].focus(); break;
+    }
     case 'delLeg': S.legs.splice(i, 1); if (!S.legs.length) S.legs.push(blankLeg()); S.ovr.cairo = {}; renderLegs(); break;
-    case 'off': { const l = S.legs[i]; l.off = String((legOff(l) + 1) % 3); break; }
+    case 'off': { const l = S.legs[i]; l.off = String((legOff(l) + 1) % 3); const au = AUTO.get(l); if (au) au.delete('off'); learnLeg(i); break; }
     case 'google': { const l = S.legs[i]; const q = `${normFn(l.fn) || (l.from + ' to ' + l.to)} flight schedule ${l.date || ''}`.trim(); window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener'); return; }
     case 'ovr': { const k = b.dataset.k; OPEN.has(k) ? OPEN.delete(k) : OPEN.add(k); update(); return; }
     case 'clrIraq': S.ovr.iraqN = ''; break;
     case 'addMisc': S.misc.push({ name: '', cur: 'INR', v: ['', '', ''] }); renderMisc(); $('#misc .misc:last-child .mn').focus(); break;
     case 'delMisc': S.misc.splice(i, 1); renderMisc(); break;
-    case 'tkAll': { const all = TK.every(t => S.tk[t.id]); TK.forEach(t => (S.tk[t.id] = !all)); hydrate(document); break; }
+    case 'tkAll': { const k = b.dataset.k, all = TK.every(t => tkOn(k, t)); TK.forEach(t => (S.tk[k][t.id] = !all)); hydrate(document); break; }
+    case 'delFl': { const c = b.dataset.code; FL[c] = { deleted: true, updated: Date.now() }; touchF(); renderRates(); toast(`Removed ${fmtFn(c)} from saved flights.`); return; }
     case 'bd': bdOpen = !bdOpen; update(); if (bdOpen) $('#bd').scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
     case 'rates': renderRates(); $('#dlgR').showModal(); return;
     case 'quotes': openQuotes(); return;
     case 'connect': renderConn(); $('#dlgC').showModal(); return;
     case 'doConnect': doConnect(); return;
     case 'copyLink': copyLink(); return;
-    case 'saveNow': dirtyQ = hasContent(S); dirtyR = true; backoff = false; flush(); return;
+    case 'saveNow': dirtyQ = hasContent(S); dirtyR = true; dirtyF = true; backoff = false; flush(); return;
     case 'disconnect': if (!confirm('Disconnect this computer from GitHub? Quotes stay saved in the repository.')) return; GH.cfg = {}; store.set('zq.gh', {}); setStatus('local'); renderConn(); return;
     case 'openQ': openQuote(b.dataset.id); return;
     case 'delQ': deleteQuote(b.dataset.id); return;
@@ -1279,8 +1448,8 @@ document.addEventListener('click', e => {
   }
   update(); touchQ();
 });
-window.addEventListener('online', () => { backoff = false; if (dirtyQ || dirtyR) flush(); });
-document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && (dirtyQ || dirtyR)) flush(); });
+window.addEventListener('online', () => { backoff = false; if (dirtyQ || dirtyR || dirtyF) flush(); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && (dirtyQ || dirtyR || dirtyF)) flush(); });
 
 function loadSample() {
   const id = S.id, created = S.created;
@@ -1292,7 +1461,8 @@ function loadSample() {
       { fn: 'MS 628', from: 'BGW', to: 'CAI', date: '2026-11-30', dep: '04:45', arr: '06:15', off: '' },
       { fn: 'MS 968', from: 'CAI', to: 'BOM', date: '2026-11-30', dep: '16:45', arr: '01:45', off: '' }
     ],
-    tk: { p100: true, p75: false, p50: true, d100: false },
+    tk: { faiz: { p100: true, p75: false, p50: true, d100: false }, hotel: { p100: false, p75: false, p50: true, d100: false } },
+    addGl: true, addCoord: true,
     inr: { ...clone(DEF_S.inr), gl: [3946, 3946, 0], ticket: [65000, 65000, 18200] }
   });
   renderAll(); touchQ();
