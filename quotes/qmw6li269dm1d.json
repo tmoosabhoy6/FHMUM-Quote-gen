@@ -2,14 +2,14 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794069429710,
+ "updated": 1794069452170,
  "travel": "",
  "pax": 47,
  "price": null,
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794069429710,
+  "updated": 1794069452170,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -53,9 +53,9 @@
   "add80": false,
   "inr": {
    "gl": [
-    0,
-    0,
-    0
+    2500,
+    2500,
+    2500
    ],
    "coord": [
     2000,
