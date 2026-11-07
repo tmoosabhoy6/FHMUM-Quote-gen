@@ -2,18 +2,14 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071105627,
- "travel": "1 Nov 2026",
+ "updated": 1794071109847,
+ "travel": "11 Nov 2026",
  "pax": 47,
- "price": {
-  "label": "Cairo",
-  "cat": "Adult",
-  "inr": 133855
- },
+ "price": null,
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071105627,
+  "updated": 1794071109847,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -25,7 +21,7 @@
     "from": "BOM",
     "to": "CAI",
     "date": "2026-11-01",
-    "dep": "04:00",
+    "dep": "3",
     "arr": "07:00",
     "off": ""
    },
