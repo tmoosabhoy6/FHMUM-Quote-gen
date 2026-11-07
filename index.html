@@ -982,6 +982,7 @@ async function doConnect() {
   const m = /^([\w.-]+)\/([\w.-]+)$/.exec($('#cRepo').value.trim()), tok = $('#cTok').value.trim(), err = $('#cErr'), btn = $('#cBtn');
   if (!m) { err.textContent = 'Enter the repository as owner/name, for example tmoosabhoy6/FHMUM-Quote-gen.'; return; }
   if (!tok) { err.textContent = 'Paste the token from GitHub.'; return; }
+  if (/^https?:|\s/.test(tok) || !/^(github_pat_|ghp_)/.test(tok)) { err.textContent = 'That isn\'t a GitHub token. A token starts with github_pat_. Use the Copy token button on GitHub, then paste here.'; return; }
   btn.disabled = true; btn.textContent = 'Connecting'; err.textContent = '';
   GH.cfg = { token: tok, owner: m[1], repo: m[2], branch: 'data' }; GH.sha = {};
   try {
