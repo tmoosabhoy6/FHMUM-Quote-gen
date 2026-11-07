@@ -2,7 +2,7 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071013356,
+ "updated": 1794071085280,
  "travel": "1 Nov 2026",
  "pax": 47,
  "price": {
@@ -13,7 +13,7 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071013356,
+  "updated": 1794071085280,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -36,6 +36,15 @@
     "date": "2026-11-11",
     "dep": "21:00",
     "arr": "05:00",
+    "off": ""
+   },
+   {
+    "fn": "",
+    "from": "BOM",
+    "to": "",
+    "date": "2026-11-11",
+    "dep": "",
+    "arr": "",
     "off": ""
    }
   ],
