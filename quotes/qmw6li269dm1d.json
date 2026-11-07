@@ -2,7 +2,7 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071351546,
+ "updated": 1794071366662,
  "travel": "14 Nov 2026",
  "pax": 47,
  "price": {
@@ -13,7 +13,7 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071351546,
+  "updated": 1794071366662,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -42,7 +42,7 @@
     "fn": "MS 628",
     "from": "BGW",
     "to": "CAI",
-    "date": "2026-11-14",
+    "date": "",
     "dep": "",
     "arr": "",
     "off": ""
