@@ -2,18 +2,18 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071093004,
+ "updated": 1794071105627,
  "travel": "1 Nov 2026",
  "pax": 47,
  "price": {
-  "label": "Faiz Nizam",
+  "label": "Cairo",
   "cat": "Adult",
-  "inr": 124565
+  "inr": 133855
  },
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071093004,
+  "updated": 1794071105627,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -21,9 +21,9 @@
   "rate": 96.5,
   "legs": [
    {
-    "fn": "IA 442",
+    "fn": "MS 1",
     "from": "BOM",
-    "to": "NJF",
+    "to": "CAI",
     "date": "2026-11-01",
     "dep": "04:00",
     "arr": "07:00",
