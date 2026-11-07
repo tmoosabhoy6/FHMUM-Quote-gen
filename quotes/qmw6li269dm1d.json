@@ -2,7 +2,7 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071548148,
+ "updated": 1794071552414,
  "travel": "14 Nov 2026",
  "pax": 47,
  "price": {
@@ -13,7 +13,7 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071548148,
+  "updated": 1794071552414,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -97,7 +97,7 @@
    "ticket": [
     64000,
     64000,
-    16000
+    18000
    ],
    "rida": [
     3400,
