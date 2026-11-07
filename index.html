@@ -114,6 +114,14 @@ h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
 .opts{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px 16px;align-items:center;margin:0}
 .opts dt{color:var(--ink2);font-size:14px}
 .opts dd{margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.opts dd.split{display:block;line-height:2.1;color:var(--ink2)}
+.split .u{display:inline-block;width:2.6em;height:28px;text-align:center;font-weight:600;color:var(--tile)}
+.split .muted{display:block;line-height:1.4;font-size:13px}
+.fares tbody th small{display:block;font-weight:400;font-size:12.5px;color:var(--ink2);margin-top:1px}
+.gt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--tilet2)}
+.gt span{font-size:13.5px;color:var(--ink2)}
+.gt b{font:500 22px/1.2 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.gt b i{font:600 12.5px var(--sans);font-style:normal;color:var(--gold);margin-right:2px;position:relative;top:-2px}
 .ck{position:relative;display:inline-flex}
 .ck input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
 .ck span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink2);cursor:pointer;user-select:none;transition:background .12s,border-color .12s,color .12s}
@@ -282,6 +290,11 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
     <dl class="opts">
       <dt id="oIq1">Stay in Iraq</dt>
       <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label></dd>
+      <dt id="oSp1">Split the group</dt>
+      <dd id="oSp2" class="split">
+        <span>In Hotel Nizam: <input class="u" type="number" min="0" data-s="split.a" placeholder="0" aria-label="Adults in Hotel Nizam"> adults, <input class="u" type="number" min="0" data-s="split.c" placeholder="0" aria-label="Children in Hotel Nizam"> children, <input class="u" type="number" min="0" data-s="split.i" placeholder="0" aria-label="Infants in Hotel Nizam"> infants.</span>
+        <span class="muted" id="splitNote"></span>
+      </dd>
       <dt id="oCa1">Stay in Cairo</dt>
       <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
       <dt>Takhfeef</dt>
@@ -367,6 +380,7 @@ const DEF_S = {
   tk: { p100: false, p75: false, p50: false, d100: false },
   addRida: false, add80: false,
   inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 3400, 0], p80: [3000, 3000, 0] },
+  split: { a: '', c: '', i: '' },
   misc: [], ovr: { iraqN: '', cairo: {} }
 };
 const freshS = () => { const s = clone(DEF_S); s.id = newId(); s.created = Date.now(); return s; };
@@ -512,6 +526,16 @@ function analyze() {
       visaWhy: free ? `Lands on EgyptAir and stays ${h} hours, under ${R.egypt.freeHours}.` : ms ? `Lands on EgyptAir but stays ${h} hours, which is ${R.egypt.freeHours} or more.` : `Lands on ${esc(s.inL.fn) || 'another airline'}, not EgyptAir.` });
   });
   A.cairoHotelDiff = A.cairo.some(s => s.pkg.n === 1 && s.pkg.w === 'C');
+  // Split: some of the group in Hotel Nizam, everyone else in Faiz Nizam. Visa and transport still use the whole group.
+  A.split = null;
+  if (A.iraq && S.iraqAcc.faiz && S.iraqAcc.hotel) {
+    const sp = {}, names = { a: 'adults', c: 'children', i: 'infants' };
+    for (const k of ['a', 'c', 'i']) {
+      sp[k] = Math.max(0, Math.round(num(S.split && S.split[k])));
+      if (sp[k] > A[k]) { A.warn.push(`The split puts ${sp[k]} ${names[k]} in Hotel Nizam, but the group only has ${A[k]}. Using ${A[k]}.`); sp[k] = A[k]; }
+    }
+    if (sp.a + sp.c + sp.i > 0) A.split = sp;
+  }
   return A;
 }
 
@@ -532,7 +556,9 @@ function buildCols(A) {
       const g = `${I}|${C}|${t ? t.id : ''}`;
       for (const [k, L, nm, ix] of cats) {
         if (t && k === 'i') continue;
-        cols.push({ g, base: `${I}|${C}`, io: I, co: C, tk: t, k, ix, catL: L, catN: nm, count: t ? null : A[k], head: t ? [head, t.xl] : [head], name, tag: t ? t.tag : '' });
+        const n = A.split ? (I === 'hotel' ? A.split[k] : A[k] - A.split[k]) : A[k];
+        if (A.split && n <= 0) continue;                       // nobody of this kind in this stay
+        cols.push({ g, base: `${I}|${C}`, io: I, co: C, tk: t, k, ix, catL: L, catN: nm, count: t ? null : n, head: t ? [head, t.xl] : [head], name, tag: t ? t.tag : '' });
       }
     }
   }
@@ -686,6 +712,14 @@ function renderTrip(A) {
   hydrate($('#trip'));
 }
 
+/* The whole group's cost, when it is clear who stays where: one stay chosen, or a split. */
+function groupTotal(A, cols) {
+  const base = cols.filter(c => !c.tk);
+  if (!base.length) return null;
+  if (new Set(base.map(c => c.co)).size > 1) return null;              // Faiz and hotel in Cairo are alternatives
+  if (!A.split && new Set(base.map(c => c.io)).size > 1) return null;  // Faiz and Hotel Nizam shown as alternatives
+  return { people: base.reduce((s, c) => s + c.count, 0), total: base.reduce((s, c) => s + c.count * c.v.grand, 0) };
+}
 function renderSide(A, cols) {
   const fare = $('#fare');
   const geo = '<div class="geo" aria-hidden="true"></div>';
@@ -698,7 +732,9 @@ function renderSide(A, cols) {
   }
   const cats = CATS.filter(c => A[c[0]] > 0);
   const bases = [];
-  cols.forEach(c => { let b = bases.find(x => x.base === c.base); if (!b) bases.push(b = { base: c.base, name: c.name, rows: [] }); let r = b.rows.find(x => x.g === c.g); if (!r) b.rows.push(r = { g: c.g, tk: c.tk, by: {} }); r.by[c.k] = c.v.grand; });
+  cols.forEach(c => { let b = bases.find(x => x.base === c.base); if (!b) bases.push(b = { base: c.base, name: c.name, rows: [], n: {} }); let r = b.rows.find(x => x.g === c.g); if (!r) b.rows.push(r = { g: c.g, tk: c.tk, by: {} }); r.by[c.k] = c.v.grand; if (!c.tk) b.n[c.k] = c.count; });
+  const who = n => [['a', 'adult', 'adults'], ['c', 'child', 'children'], ['i', 'infant', 'infants']].filter(([k]) => n[k]).map(([k, o, m]) => `${n[k]} ${n[k] === 1 ? o : m}`).join(', ');
+  const GT = groupTotal(A, cols);
   const price = v => (v == null ? '<td></td>' : `<td><i>₹</i>${INR.format(v)}</td>`);
   const parts = [];
   if (A.iraq) parts.push(`${A.iraq.nights} ${plural(A.iraq.nights, 'night', 'nights')} in Iraq`);
@@ -707,9 +743,11 @@ function renderSide(A, cols) {
   const sub = `${joined.replace(/^./, c => c.toUpperCase())}, for ${A.paxAll} ${plural(A.paxAll, 'person', 'people')}.`;
   let h = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${sub}</p><table class="fares"><thead><tr><th></th>${cats.map(c => `<th>${c[2]}</th>`).join('')}</tr></thead>`;
   bases.forEach(b => {
-    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : esc(b.name)}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
+    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : esc(b.name) + (A.split ? `<small>${who(b.n)}</small>` : '')}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
   });
-  h += `</table><button class="dl" data-act="xlsx">${ICON.dl}Download Excel</button><button class="lnk" data-act="bd">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div>`;
+  h += '</table>';
+  if (GT) h += `<div class="gt"><span>Whole group, ${GT.people} ${plural(GT.people, 'person', 'people')}${S.tk && TK.some(t => S.tk[t.id]) ? ', before takhfeef' : ''}</span><b><i>₹</i>${INR.format(GT.total)}</b></div>`;
+  h += `<button class="dl" data-act="xlsx">${ICON.dl}Download Excel</button><button class="lnk" data-act="bd">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div>`;
   fare.innerHTML = h;
   renderBreakdown(A, cols);
 }
@@ -743,6 +781,11 @@ function renderBits(A) {
   const showIq = !!A.iraq || !A.legs.length;
   $('#oIq1').hidden = $('#oIq2').hidden = !showIq;
   $('#oCa1').hidden = $('#oCa2').hidden = !A.cairoHotelDiff;
+  $('#oSp1').hidden = $('#oSp2').hidden = !(A.iraq && S.iraqAcc.faiz && S.iraqAcc.hotel);
+  const sp = A.split;
+  $('#splitNote').textContent = sp
+    ? `The other ${A.a - sp.a + A.c - sp.c + A.i - sp.i} stay in Faiz Nizam.`
+    : 'Leave at 0 to quote Faiz Nizam and Hotel Nizam as two choices for everyone.';
   $('#tkFixedL').textContent = `$${R.tkFixed} off`;
   $('#tkAllB').textContent = TK.every(t => S.tk[t.id]) ? 'Clear all' : 'Select all';
   $('#ridaL').textContent = `+2 pcs Rida, ₹${INR.format(num(S.inr.rida[0]))}`;
@@ -1147,6 +1190,9 @@ async function exportXlsx() {
   put('QUOTE DETAILS', undefined, true);
   put('USD → INR RATE', rate, true); ws.getCell(rateRow, 2).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFF2CC' } };
   put(`PAX: ${A.a} ADULT, ${A.c} CHD, ${A.i} INF`);
+  if (A.split) put(`SPLIT: HOTEL NIZAM ${A.split.a} ADULT, ${A.split.c} CHD, ${A.split.i} INF. FAIZ NIZAM ${A.a - A.split.a} ADULT, ${A.c - A.split.c} CHD, ${A.i - A.split.i} INF`);
+  const GT = groupTotal(A, cols);
+  if (GT) { put(`GROUP TOTAL (${GT.people} PAX${TK.some(t => S.tk[t.id]) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
   A.legs.forEach(l => put(`${l.fn || '-'}   ${l.from} to ${l.to}   ${fmtAbs(l.dep)} to ${fmtAbs(l.arr)}`));
   if (A.iraq) put(`IRAQ: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
   A.cairo.forEach(s => {
