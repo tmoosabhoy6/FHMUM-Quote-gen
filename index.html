@@ -194,6 +194,8 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
 .rt th:first-child,.rt td:first-child{padding-left:0;white-space:nowrap;padding-right:6px}
 .rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px 20px}
 .cgrid{grid-template-columns:1fr 1.4fr}
+.linkrow{display:flex;gap:10px;align-items:center;margin:10px 0 4px}
+.linkrow .u{flex:1;color:var(--ink2);font-size:13.5px}
 @media (max-width:640px){.cgrid{grid-template-columns:minmax(0,1fr)}.dh,.db{padding-left:18px;padding-right:18px}}
 .f{display:flex;flex-direction:column;font-size:12.5px;color:var(--ink3);padding-top:6px}
 .f .u{color:var(--ink);font-size:14.5px}
@@ -933,11 +935,17 @@ function renderConn() {
     $('#connBody').innerHTML = `
       <p>Connected to <b>${esc(GH.cfg.owner)}/${esc(GH.cfg.repo)}</b>. Quotes and rates save to its <b>${esc(BR())}</b> branch a couple of seconds after you stop typing. The app itself lives on a different branch, so redeploying it never touches saved quotes.</p>
       <p>${SYNC.st === 'error' ? `<span style="color:var(--red)">${esc(SYNC.msg)}</span>` : SYNC.st === 'saved' ? 'Everything is saved.' : SYNC.st === 'saving' ? 'Saving now.' : ''}</p>
-      <div style="display:flex;gap:8px;margin-top:16px"><button class="btn p" data-act="saveNow">Save now</button><button class="btn" data-act="disconnect">Disconnect this computer</button></div>`;
+      <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn p" data-act="saveNow">Save now</button><button class="btn" data-act="disconnect">Disconnect this computer</button></div>
+      <h4>Set up another computer</h4>
+      <p>Send this link to the other computer and open it there once. Saving turns on by itself, with no token to paste. After that the normal address works on that computer too.</p>
+      <div class="linkrow"><input class="u" id="shareLink" readonly value="${esc(setupLink())}" aria-label="Setup link"><button class="btn" data-act="copyLink">Copy link</button></div>
+      <p style="font-size:13px">Anyone who has this link can change quotes and rates, so only send it to office staff.</p>`;
     return;
   }
   $('#connBody').innerHTML = `
-    <p>Quotes are saved on this computer only. Connect the GitHub repository to keep them safe and share them, and rates, with everyone in the office. Each computer connects once.</p>
+    <p>Quotes are saved on this computer only. Connect the GitHub repository to keep them safe and share them, and rates, with everyone in the office.</p>
+    <p><b>Is another computer already connected?</b> Open Save to GitHub there and copy its setup link. Opening that link here turns saving on, with nothing to type.</p>
+    <h4>Connect with a token</h4>
     <ol class="steps">
       <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub's new token page</a> while signed in to the account that owns the repository.</li>
       <li>Give it a name, then under Repository access choose <b>Only select repositories</b> and pick <b>${esc(g.repo)}</b>.</li>
@@ -951,6 +959,24 @@ function renderConn() {
     <p class="err" id="cErr"></p>
     <div style="display:flex;gap:8px;margin-top:8px"><button class="btn p" data-act="doConnect" id="cBtn">Connect</button></div>
     <p style="font-size:13px;margin-top:16px">The token is kept in this browser only and is never saved to the repository.</p>`;
+}
+/* A link ending in #key=… sets up saving on the computer that opens it. The part after # never reaches a server. */
+const setupLink = () => `${location.origin}${location.pathname}#key=${encodeURIComponent(GH.cfg.token || '')}`;
+function takeSetupLink() {
+  const m = /(?:^#|&)key=([^&]+)/.exec(location.hash);
+  if (!m) return false;
+  history.replaceState(null, '', location.pathname + location.search);   // keep the key out of the address bar and history
+  const token = decodeURIComponent(m[1]).trim();
+  if (!token) return false;
+  GH.cfg = { token, ...repoGuess(), branch: 'data' }; GH.sha = {};
+  store.set('zq.gh', GH.cfg);
+  toast('Saving to GitHub is now on for this computer.');
+  return true;
+}
+async function copyLink() {
+  const el = $('#shareLink');
+  try { await navigator.clipboard.writeText(el.value); toast('Setup link copied. Open it once on the other computer.'); }
+  catch { el.focus(); el.select(); toast('Press Ctrl+C or ⌘C to copy the selected link.'); }
 }
 async function doConnect() {
   const m = /^([\w.-]+)\/([\w.-]+)$/.exec($('#cRepo').value.trim()), tok = $('#cTok').value.trim(), err = $('#cErr'), btn = $('#cBtn');
@@ -1153,6 +1179,7 @@ document.addEventListener('click', e => {
     case 'quotes': openQuotes(); return;
     case 'connect': renderConn(); $('#dlgC').showModal(); return;
     case 'doConnect': doConnect(); return;
+    case 'copyLink': copyLink(); return;
     case 'saveNow': dirtyQ = hasContent(S); dirtyR = true; backoff = false; flush(); return;
     case 'disconnect': if (!confirm('Disconnect this computer from GitHub? Quotes stay saved in the repository.')) return; GH.cfg = {}; store.set('zq.gh', {}); setStatus('local'); renderConn(); return;
     case 'openQ': openQuote(b.dataset.id); return;
@@ -1189,7 +1216,8 @@ function loadSample() {
 /* ───────── start ───────── */
 renderAll();
 store.set('zq.cur', S.id);
-if (ghOn()) pullRemote(false); else { setStatus('local'); publicRates(); }
+const fromLink = takeSetupLink();
+if (ghOn()) pullRemote(fromLink); else { setStatus('local'); publicRates(); }
 (window.requestIdleCallback || (f => setTimeout(f, 1500)))(() => loadXL().catch(() => {}));
 </script>
 </body>
