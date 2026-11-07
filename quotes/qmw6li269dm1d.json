@@ -1,8 +1,8 @@
 {
  "id": "qmw6li269dm1d",
- "name": "1st Nov",
+ "name": "15 nov MS",
  "created": 1794067556481,
- "updated": 1794071877851,
+ "updated": 1794071885125,
  "travel": "14 Nov 2026",
  "pax": 37,
  "price": {
@@ -13,8 +13,8 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071877851,
-  "name": "1st Nov ",
+  "updated": 1794071885125,
+  "name": "15 nov MS",
   "adults": 30,
   "children": 5,
   "infants": 2,
