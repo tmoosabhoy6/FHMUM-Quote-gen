@@ -2,14 +2,18 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794069702836,
- "travel": "",
+ "updated": 1794070253976,
+ "travel": "8 Nov 2026",
  "pax": 47,
- "price": null,
+ "price": {
+  "label": "Faiz Nizam",
+  "cat": "Adult",
+  "inr": 85965
+ },
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794069702836,
+  "updated": 1794070253976,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -20,7 +24,7 @@
     "fn": "IA 442",
     "from": "BOM",
     "to": "NJF",
-    "date": "",
+    "date": "2026-11-08",
     "dep": "04:00",
     "arr": "07:00",
     "off": ""
@@ -29,7 +33,7 @@
     "fn": "IA 441",
     "from": "NJF",
     "to": "BOM",
-    "date": "",
+    "date": "2026-11-08",
     "dep": "21:00",
     "arr": "05:00",
     "off": ""
