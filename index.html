@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ziyarat Quotes</title>
+<meta name="description" content="Per za'ir quotes for Karbala, Najaf and Cairo groups.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%231E5E73' stroke-width='2'%3E%3Crect x='5' y='5' width='14' height='14' rx='1'/%3E%3Crect x='5' y='5' width='14' height='14' rx='1' transform='rotate(45 12 12)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.github.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F6F5; --sheet:#FBFCFC; --ink:#24323A; --ink2:#55646A; --ink3:#8A979B;
+  --line:#D4DCDD; --line2:#E4E9EA; --tile:#1E5E73; --tiled:#164B5C; --tilet:#E2EDEF; --tilet2:#D2E3E7;
+  --gold:#A57A2C; --amber:#875811; --ambert:#FAF0DC; --red:#A5432D;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 14.5px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--tile);outline-offset:2px;border-radius:4px}
+svg{display:block}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;padding:0 28px;background:rgba(244,246,245,.9);backdrop-filter:saturate(1.3) blur(10px);-webkit-backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--line2)}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:500 19px/1 var(--serif);white-space:nowrap}
+.mark svg{width:22px;height:22px;color:var(--tile)}
+.bar-r{display:flex;align-items:center;gap:2px}
+.tb{height:34px;padding:0 12px;border-radius:8px;color:var(--ink2);font-weight:500;font-size:14px;white-space:nowrap}
+.tb:hover{color:var(--ink);background:var(--line2)}
+.tb.strong{color:var(--tile);font-weight:600}
+.tb.strong:hover{background:var(--tilet);color:var(--tiled)}
+.sync{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;font-size:13px;color:var(--ink2);margin-right:4px;white-space:nowrap}
+.sync:hover{background:var(--line2)}
+.sync i{width:7px;height:7px;border-radius:50%;background:var(--ink3);flex:none}
+.sync[data-st=saved] i{background:#3E8E69}
+.sync[data-st=saving] i{background:var(--gold);animation:pulse .9s ease-in-out infinite alternate}
+.sync[data-st=error] i{background:var(--red)}
+.sync[data-st=error]{color:var(--red)}
+@keyframes pulse{to{opacity:.3}}
+
+/* layout */
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,440px);gap:24px 64px;max-width:1180px;margin:0 auto;padding:44px 28px 96px;align-items:start}
+.form{max-width:620px;min-width:0}
+.side{position:sticky;top:84px}
+#bd{grid-column:1/-1;min-width:0}
+#bd:empty{display:none}
+
+/* underline inputs */
+.u{border:0;border-bottom:1px solid var(--line);background:transparent;border-radius:0;height:34px;padding:0 2px;width:100%;min-width:0;font-variant-numeric:tabular-nums;transition:border-color .15s,box-shadow .15s}
+.u:hover{border-bottom-color:var(--ink3)}
+.u:focus{outline:none;border-bottom-color:var(--tile);box-shadow:0 1px 0 var(--tile)}
+.u::placeholder{color:#ADB7BA}
+input[type=number]{-moz-appearance:textfield;appearance:textfield}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+input[type=date].u{padding-right:0}
+input[type=date]::-webkit-calendar-picker-indicator{opacity:.45;cursor:pointer}
+select.u{cursor:pointer;padding-right:4px}
+
+/* heading block */
+.title{display:block;width:100%;border:0;background:transparent;font:500 34px/1.2 var(--serif);letter-spacing:-.012em;padding:0;margin:0 0 8px;color:var(--ink)}
+.title::placeholder{color:var(--ink3)}
+.title:focus{outline:none}
+.who{margin:0;font-size:17px;line-height:2.1;color:var(--ink2)}
+.who .u{display:inline-block;width:2.7em;height:30px;text-align:center;font-weight:600;color:var(--tile);font-size:17px;vertical-align:baseline}
+.who .u.w{width:3.4em}
+h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
+
+/* flights */
+.lg{display:grid;grid-template-columns:86px 52px 52px minmax(128px,1fr) 62px 62px 44px 30px 30px;grid-template-areas:"fn from to dt dep arr day gs rm";gap:0 8px;align-items:center}
+.lg-h{font-size:12.5px;color:var(--ink3);padding-bottom:2px}
+.leg{padding:3px 0}
+.leg .fn{grid-area:fn;text-transform:uppercase}
+.leg .from{grid-area:from}.leg .to{grid-area:to}
+.leg .ap{text-transform:uppercase;text-align:center;letter-spacing:.02em;padding:0}
+.leg .ap::-webkit-calendar-picker-indicator{display:none!important;opacity:0}
+.leg .dt{grid-area:dt}.leg .dep{grid-area:dep}.leg .arr{grid-area:arr}
+.leg .day{grid-area:day}.leg .gs{grid-area:gs}.leg .rm{grid-area:rm}
+.day{height:26px;border-radius:6px;font-size:12px;font-weight:600;color:var(--ink3)}
+.day:hover{background:var(--line2);color:var(--ink)}
+.day.on{background:var(--ambert);color:var(--amber)}
+.ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--ink3)}
+.ic:hover{background:var(--line2);color:var(--ink)}
+.ic svg{width:16px;height:16px}
+.leg .rm{opacity:0;transition:opacity .15s}
+.leg:hover .rm,.leg:focus-within .rm{opacity:1}
+@media (hover:none){.leg .rm{opacity:1}}
+.add{display:inline-flex;align-items:center;gap:6px;margin-top:10px;height:32px;padding:0 10px 0 6px;border-radius:8px;color:var(--tile);font-weight:600;font-size:14px}
+.add:hover{background:var(--tilet)}
+.add svg{width:16px;height:16px}
+
+/* worked out */
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line2)}
+.facts li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 16px;padding:11px 0;border-bottom:1px solid var(--line2)}
+.facts b{font-weight:600}
+.facts p{margin:1px 0 0;color:var(--ink2);font-size:13.5px}
+.facts .chg{align-self:start;color:var(--tile);font-size:13px;font-weight:600;padding:2px 6px;border-radius:6px}
+.facts .chg:hover{background:var(--tilet)}
+.facts .ovr{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:8px;font-size:13.5px;color:var(--ink2)}
+.facts .ovr .u{width:auto;height:30px}
+.facts .ovr input.u{width:4.5em;text-align:center}
+.facts li.warn{color:var(--amber);font-size:13.5px;grid-template-columns:14px minmax(0,1fr);gap:0 8px}
+.facts li.warn::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;margin-top:7px}
+.facts li.none p{margin:0}
+.lnk{color:var(--tile);font-weight:600;font-size:13px}
+.lnk:hover{text-decoration:underline}
+
+/* options */
+.opts{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px 16px;align-items:center;margin:0}
+.opts dt{color:var(--ink2);font-size:14px}
+.opts dd{margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ck{position:relative;display:inline-flex}
+.ck input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ck span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink2);cursor:pointer;user-select:none;transition:background .12s,border-color .12s,color .12s}
+.ck span::before{content:"";width:14px;height:14px;border-radius:4px;border:1.5px solid #A9B4B7;flex:none;box-sizing:border-box}
+.ck span:hover{border-color:var(--ink3)}
+.ck input:checked+span{background:var(--tilet);border-color:var(--tilet2);color:var(--tiled)}
+.ck input:checked+span::before{border-color:var(--tile);background:var(--tile) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
+.ck input:focus-visible+span{outline:2px solid var(--tile);outline-offset:2px}
+
+/* charges */
+.ch{width:100%;border-collapse:collapse}
+.ch th{font-weight:500;font-size:12.5px;color:var(--ink3);text-align:left;padding:0 0 0 12px}
+.ch td{padding:1px 0 1px 12px}
+.ch th:first-child,.ch td:first-child{padding-left:0}
+.ch td:first-child{white-space:nowrap;width:34%;padding-right:8px}
+.addons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+details.more{margin-top:22px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+details.more summary{list-style:none;cursor:pointer;padding:13px 0;display:flex;align-items:baseline;gap:12px}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary b{font-weight:600}
+details.more summary b::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid var(--ink3);border-bottom:1.5px solid var(--ink3);transform:rotate(45deg);margin:0 0 3px 9px;transition:transform .15s}
+details.more[open] summary b::after{transform:rotate(-135deg);margin-bottom:0}
+details.more summary span{color:var(--ink2);font-size:13.5px}
+.more-in{padding:0 0 18px}
+.misc{display:grid;grid-template-columns:minmax(0,1fr) 62px 76px 76px 76px 30px;gap:0 10px;align-items:center;padding:2px 0}
+.mini{font-size:12.5px;color:var(--ink3);margin:18px 0 2px}
+
+/* fare card */
+.fare{background:var(--tilet);border-radius:18px;overflow:hidden}
+.geo{height:26px;background:var(--tilet2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%23A57A2C' stroke-width='.9' opacity='.75'%3E%3Crect x='7.5' y='7.5' width='11' height='11'/%3E%3Crect x='7.5' y='7.5' width='11' height='11' transform='rotate(45 13 13)'/%3E%3Cpath d='M0 13h2.2M23.8 13H26'/%3E%3C/g%3E%3C/svg%3E") 0 0/26px 26px repeat-x}
+.fare-in{padding:22px 24px 22px}
+.fare h1{font:500 25px/1.2 var(--serif);margin:0 0 4px;letter-spacing:-.01em}
+.fare .sub{margin:0 0 16px;color:var(--ink2);font-size:13.5px}
+.fares{width:100%;border-collapse:collapse;font-variant-numeric:lining-nums tabular-nums}
+.fares thead th{font-weight:500;font-size:12.5px;color:var(--ink2);text-align:right;padding:0 0 4px 8px}
+.fares thead th:first-child{text-align:left;padding-left:0}
+.fares tbody th{text-align:left;font-weight:600;font-size:14px;line-height:1.3;padding:10px 6px 3px 0;vertical-align:baseline}
+.fares td{text-align:right;font:500 20px/1.2 var(--serif);padding:10px 0 3px 8px;white-space:nowrap;vertical-align:baseline}
+.fares td i{font:600 12.5px var(--sans);font-style:normal;color:var(--gold);margin-right:2px;position:relative;top:-2px}
+.fares tr.s th{font-weight:400;color:var(--ink2);font-size:13.5px;padding:3px 6px 3px 12px}
+.fares tr.s td{font-size:16px;color:var(--ink2);padding-top:3px;padding-bottom:3px}
+.fares tr.s td i{font-size:11px;top:-1px}
+.fares tbody+tbody tr:first-child>*{border-top:1px solid var(--tilet2);padding-top:13px}
+.fares tbody tr:last-child>*{padding-bottom:12px}
+.dl{margin-top:16px;width:100%;height:46px;border-radius:12px;background:var(--tile);color:#fff;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .15s}
+.dl:hover{background:var(--tiled)}
+.dl svg{width:17px;height:17px}
+.fare .lnk{display:block;margin:12px auto 0}
+.fare .ghost{color:var(--ink3);font:400 20px var(--serif)}
+
+/* breakdown */
+.bd-h{display:flex;justify-content:space-between;align-items:baseline;margin:24px 0 10px}
+.bd-h h2{margin:0}
+.mx{overflow:auto;border:1px solid var(--line2);border-radius:14px;background:var(--sheet)}
+.mx table{border-collapse:separate;border-spacing:0;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:100%}
+.mx th,.mx td{padding:6px 10px;border-bottom:1px solid var(--line2);text-align:right}
+.mx th:first-child,.mx td:first-child{position:sticky;left:0;background:var(--sheet);text-align:left;z-index:1;border-right:1px solid var(--line2);max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.mx thead th{font-weight:600;font-size:12px;color:var(--ink2);vertical-align:bottom}
+.mx thead tr:first-child th{text-align:center;white-space:normal;line-height:1.35}
+.mx .gs{border-left:1px solid var(--line2)}
+.mx .u2{color:var(--ink3)}
+.mx tr.sec td{font-weight:600;color:var(--ink2)}
+.mx tr.tot td{font-weight:600}
+.mx tr.grand td{font-weight:700;background:var(--tilet);color:var(--tiled);border-bottom:0}
+
+/* dialogs */
+dialog{border:0;border-radius:16px;padding:0;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 48px);background:var(--sheet);color:var(--ink);box-shadow:0 24px 70px rgba(28,48,56,.25)}
+dialog::backdrop{background:rgba(36,50,58,.3)}
+.dh{position:sticky;top:0;z-index:2;background:var(--sheet);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px 14px;border-bottom:1px solid var(--line2)}
+.dh h3{margin:0;font:500 22px/1.2 var(--serif)}
+.db{padding:6px 24px 26px}
+.db h4{font-size:14.5px;font-weight:600;margin:24px 0 6px}
+.db p{color:var(--ink2);margin:6px 0}
+.rt{border-collapse:collapse;width:100%}
+.rt th{font-weight:500;font-size:12.5px;color:var(--ink3);text-align:left;padding:4px 0 0 12px}
+.rt td{padding:1px 0 1px 12px}
+.rt th:first-child,.rt td:first-child{padding-left:0;white-space:nowrap;padding-right:6px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px 20px}
+.cgrid{grid-template-columns:1fr 1.4fr}
+@media (max-width:640px){.cgrid{grid-template-columns:minmax(0,1fr)}.dh,.db{padding-left:18px;padding-right:18px}}
+.f{display:flex;flex-direction:column;font-size:12.5px;color:var(--ink3);padding-top:6px}
+.f .u{color:var(--ink);font-size:14.5px}
+.btn{height:38px;padding:0 16px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--ink)}
+.btn:hover{border-color:var(--ink3)}
+.btn.p{background:var(--tile);border-color:var(--tile);color:#fff}
+.btn.p:hover{background:var(--tiled)}
+.btn:disabled{opacity:.6;cursor:default}
+.steps{margin:10px 0 18px;padding-left:20px;color:var(--ink2)}
+.steps li{margin:4px 0}
+.steps a{color:var(--tile);font-weight:600}
+.err{color:var(--red);font-size:13.5px;min-height:20px;margin:8px 0 0}
+.ql{list-style:none;margin:8px 0 0;padding:0}
+.ql li{display:grid;grid-template-columns:minmax(0,1fr) auto 30px;gap:12px;align-items:center;border-bottom:1px solid var(--line2)}
+.ql .qo{text-align:left;padding:12px 0;min-width:0}
+.ql .qo b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ql .qo span{display:block;color:var(--ink2);font-size:13px}
+.ql .qo:hover b{color:var(--tile)}
+.ql .qt{color:var(--ink3);font-size:12.5px;white-space:nowrap}
+.ql li.cur .qo b::after{content:"open now";font-weight:500;font-size:11.5px;color:var(--tile);background:var(--tilet);border-radius:5px;padding:1px 6px;margin-left:8px;vertical-align:1px}
+.qs{width:100%;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:13.5px;opacity:0;pointer-events:none;transition:.2s;z-index:50;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
+@media (max-width:1040px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:40px;padding:32px 20px 72px}
+  .form{max-width:none}.side{position:static;max-width:560px}
+}
+@media (max-width:640px){
+  .bar{padding:0 12px;gap:6px}.mark span{display:none}
+  .sync{padding:0 8px;margin:0}.sync span{display:none}
+  .tb{padding:0 8px;font-size:13.5px}
+  .title{font-size:28px}.who{font-size:16px}
+  .lg-h{display:none}
+  .lg{grid-template-columns:repeat(4,minmax(0,1fr)) 30px 30px;grid-template-areas:"fn fn from to gs rm" "dt dt dep arr day day";gap:2px 8px}
+  .leg{padding:8px 0;border-bottom:1px solid var(--line2)}
+  .leg .rm{opacity:1}
+  .opts{grid-template-columns:minmax(0,1fr);gap:6px}.opts dd{margin-bottom:10px}
+  .misc{grid-template-columns:repeat(3,minmax(0,1fr)) 30px;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line2)}
+  .misc .mn{grid-column:1/4}.misc .mc{grid-column:4/5;grid-row:1}.misc .rmv{grid-column:4;grid-row:2}
+  .fare-in{padding:20px 16px}
+  .fares tbody th{font-size:13px}
+  .fares td{font-size:15.5px;padding-left:4px}
+  .fares tr.s th{font-size:12.5px;padding-left:8px}
+  .fares tr.s td{font-size:13.5px}
+  .fares td i{font-size:10.5px;margin-right:1px}
+  details.more summary{flex-wrap:wrap;gap:2px 12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="mark" href="./" aria-label="Ziyarat quotes home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="14" rx="1"/><rect x="5" y="5" width="14" height="14" rx="1" transform="rotate(45 12 12)"/></svg>
+    <span>Ziyarat quotes</span>
+  </a>
+  <nav class="bar-r">
+    <button class="sync" id="sync" data-act="connect" data-st="local" title=""><i></i><span>Saved on this device</span></button>
+    <button class="tb" data-act="quotes">Saved quotes</button>
+    <button class="tb" data-act="rates">Rates</button>
+    <button class="tb strong" data-act="new">New quote</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="form" aria-label="Quote details">
+    <input class="title" data-s="name" placeholder="Name this quote" aria-label="Quote name" autocomplete="off">
+    <p class="who">
+      <input class="u" type="number" min="0" data-s="adults" placeholder="0" aria-label="Adults"> <span id="lA">adults</span>,
+      <input class="u" type="number" min="0" data-s="children" placeholder="0" aria-label="Children"> <span id="lC">children</span> and
+      <input class="u" type="number" min="0" data-s="infants" placeholder="0" aria-label="Infants"> <span id="lI">infants</span>.
+      One dollar is ₹<input class="u w" type="number" step="any" data-s="rate" aria-label="Rupees per US dollar">.
+    </p>
+
+    <h2>Flights</h2>
+    <div class="lg lg-h" aria-hidden="true"><span>Flight</span><span>From</span><span>To</span><span>Date</span><span>Departs</span><span>Arrives</span><span>Lands</span><span></span><span></span></div>
+    <div id="legs"></div>
+    <button class="add" data-act="addLeg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a flight</button>
+
+    <h2>From these flights</h2>
+    <ul class="facts" id="trip"></ul>
+
+    <h2>Options</h2>
+    <dl class="opts">
+      <dt id="oIq1">Stay in Iraq</dt>
+      <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label></dd>
+      <dt id="oCa1">Stay in Cairo</dt>
+      <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
+      <dt>Takhfeef</dt>
+      <dd><label class="ck"><input type="checkbox" data-s="tk.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.d100"><span id="tkFixedL">$100 off</span></label><button class="lnk" data-act="tkAll" id="tkAllB">Select all</button></dd>
+    </dl>
+
+    <h2>Charges per za'ir, in rupees</h2>
+    <table class="ch">
+      <thead><tr><th></th><th>Adult</th><th>Child</th><th>Infant</th></tr></thead>
+      <tbody><tr><td>Ticket fare</td><td><input class="u" type="number" step="any" data-s="inr.ticket.0" placeholder="0" aria-label="Ticket fare adult"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.1" placeholder="0" aria-label="Ticket fare child"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.2" placeholder="0" aria-label="Ticket fare infant"></td></tr></tbody>
+    </table>
+    <div class="addons">
+      <label class="ck"><input type="checkbox" data-s="addRida"><span id="ridaL">+2 pcs Rida</span></label>
+      <label class="ck"><input type="checkbox" data-s="add80"><span id="p80L">+80</span></label>
+    </div>
+    <details class="more" id="more">
+      <summary><b>Other charges</b><span id="moreSum"></span></summary>
+      <div class="more-in">
+        <table class="ch" id="otherT"></table>
+        <div class="mini">Extra line items, for anything else on this quote</div>
+        <div id="misc"></div>
+        <button class="add" data-act="addMisc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a line item</button>
+      </div>
+    </details>
+  </section>
+
+  <aside class="side" aria-label="Prices"><div class="fare" id="fare"></div></aside>
+  <section id="bd" aria-label="Full breakdown"></section>
+</main>
+
+<dialog id="dlgR" aria-labelledby="dlgRt"><div class="dh"><h3 id="dlgRt">Rates</h3><div style="display:flex;gap:8px"><button class="btn" data-act="resetRates">Reset to defaults</button><button class="btn p" data-act="close">Done</button></div></div><div class="db" id="rateBody"></div></dialog>
+<dialog id="dlgQ" aria-labelledby="dlgQt"><div class="dh"><h3 id="dlgQt">Saved quotes</h3><button class="btn" data-act="close">Close</button></div><div class="db"><input class="u qs" id="qSearch" placeholder="Search by name" aria-label="Search saved quotes" autocomplete="off"><p id="qState"></p><ul class="ql" id="qList"></ul></div></dialog>
+<dialog id="dlgC" aria-labelledby="dlgCt"><div class="dh"><h3 id="dlgCt">Save to GitHub</h3><button class="btn" data-act="close">Close</button></div><div class="db" id="connBody"></div></dialog>
+<datalist id="aps"><option value="BOM"><option value="CAI"><option value="BGW"><option value="NJF"><option value="KWI"><option value="DXB"><option value="DOH"><option value="BAH"><option value="AMM"><option value="IST"><option value="JED"><option value="MED"></datalist>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+/* ───────── helpers ───────── */
+const $ = s => document.querySelector(s);
+const clone = o => JSON.parse(JSON.stringify(o));
+const getPath = (o, p) => p.split('.').reduce((a, k) => (a == null ? a : a[k]), o);
+const setPath = (o, p, v) => { const ks = p.split('.'), last = ks.pop(); ks.reduce((a, k) => (a[k] ??= {}), o)[last] = v; };
+const num = v => { const n = parseFloat(v); return isFinite(n) ? n : 0; };
+const INR = new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 });
+const fUsd = v => (Math.round(v * 100) / 100).toLocaleString('en-US', { maximumFractionDigits: 2 });
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const merge = (d, s) => { if (s && typeof s === 'object' && !Array.isArray(s)) for (const k in d) if (k in s) d[k] = (d[k] && typeof d[k] === 'object' && !Array.isArray(d[k]) && Object.keys(d[k]).length) ? merge(d[k], s[k]) : s[k]; return d; };
+const store = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+let tT; const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tT); tT = setTimeout(() => t.classList.remove('show'), 3400); };
+const plural = (n, one, many) => (num(n) === 1 ? one : many);
+const newId = () => 'q' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const ago = t => { const s = (Date.now() - t) / 1000; if (s < 60) return 'just now'; if (s < 3600) return Math.floor(s / 60) + ' min ago'; if (s < 86400) return Math.floor(s / 3600) + ' h ago'; const d = new Date(t); return `${d.getDate()} ${MON[d.getMonth()]} ${d.getFullYear()}`; };
+
+/* ───────── rates (Rate card, saved locally and to GitHub) ───────── */
+const DEF_R = {
+  iraq: { faiz: [40, 25], hubb: [20, 15], bed: [10, 10], cutoff: '19:00' },
+  visa: { small: 145, large: 130, thr: 6 },
+  trans: { NJF: { small: 60, large: 40, thr: 11 }, BGW: { small: 110, large: 70, thr: 11 }, MIX: { small: 85, large: 55, thr: 6 } },
+  cairo: {
+    lead: 4,
+    day: { N: { one: 60, ac: [25, 15] }, R: { one: 75, ac: [70, 55] } },
+    tbl: { 1: { A: [85, 65], B: [100, 75], C: [140, 110] }, 2: { A: [160, 120], B: [170, 125], C: [240, 180] }, 3: { A: [240, 180], B: [250, 185], C: [280, 210] },
+           4: { A: [280, 210], B: [290, 215], C: [320, 240] }, 5: { A: [320, 240], B: [330, 245], C: [390, 295] }, 6: { A: [390, 295], B: [400, 300], C: [460, 345] },
+           7: { A: [460, 345], B: [470, 350], C: [530, 400] }, 8: { A: [530, 400], B: [540, 405], C: [600, 450] }, 9: { A: [600, 450], B: [610, 455], C: [670, 505] } },
+    ten: [670, 505], hotel1C: [160, 120], tkLess: [10, 10]
+  },
+  egypt: { inr: 3500, freeHours: 96 },
+  tkFixed: 100
+};
+const savedR = store.get('zq.rates.v2');
+let R = merge(clone(DEF_R), savedR && savedR.rates);
+const RM = { updated: (savedR && savedR.updated) || 0 };
+const saveRLocal = () => store.set('zq.rates.v2', { updated: RM.updated, rates: R });
+
+/* ───────── quote state ───────── */
+const blankLeg = () => ({ fn: '', from: '', to: '', date: '', dep: '', arr: '', off: '' });
+const DEF_S = {
+  id: '', created: 0, updated: 0,
+  name: '', adults: '', children: '', infants: '', rate: 96.5,
+  legs: [blankLeg(), blankLeg()],
+  iraqAcc: { faiz: true, hotel: true }, cairoAcc: { faiz: true, hotel: true },
+  tk: { p100: false, p75: false, p50: false, d100: false },
+  addRida: false, add80: false,
+  inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 3400, 0], p80: [3000, 3000, 0] },
+  misc: [], ovr: { iraqN: '', cairo: {} }
+};
+const freshS = () => { const s = clone(DEF_S); s.id = newId(); s.created = Date.now(); return s; };
+const loadS = st => { const s = merge(clone(DEF_S), st); if (!Array.isArray(s.legs) || !s.legs.length) s.legs = [blankLeg()]; if (!Array.isArray(s.misc)) s.misc = []; if (!s.id) s.id = newId(); if (!s.created) s.created = Date.now(); return s; };
+const hasContent = s => !!(String(s.name || '').trim() || num(s.adults) || num(s.children) || num(s.infants) || s.legs.some(l => l.fn || l.date || l.from || l.to));
+
+let DOCS = store.get('zq.quotes') || {};
+const saveDocs = () => store.set('zq.quotes', DOCS);
+let S = (() => {
+  const cur = store.get('zq.cur');
+  if (cur && DOCS[cur]) return loadS(DOCS[cur].state);
+  const v1 = store.get('zq.quote.v1');               // carry over a quote from the first version
+  return v1 ? loadS(v1) : freshS();
+})();
+
+/* Typical schedules (estimates, always check with the search button). */
+const KNOWN = {
+  MS969: { from: 'BOM', to: 'CAI', dep: '02:50', arr: '05:50' },
+  MS968: { from: 'CAI', to: 'BOM' },
+  MS627: { from: 'CAI', to: 'BGW', dep: '00:35', arr: '03:45' },
+  MS628: { from: 'BGW', to: 'CAI' }
+};
+const TK = [
+  { id: 'p100', xl: '100% TAKHFEEF', tag: '100% takhfeef', f: x => 0 },
+  { id: 'p75', xl: '75% TAKHFEEF', tag: '75% takhfeef', f: x => x * 0.25 },
+  { id: 'p50', xl: '50% TAKHFEEF', tag: '50% takhfeef', f: x => x * 0.5 },
+  { id: 'd100', get xl() { return `${R.tkFixed}$ TAKHFEEF`; }, get tag() { return `$${R.tkFixed} takhfeef`; }, f: x => Math.max(0, x - num(R.tkFixed)) }
+];
+
+/* ───────── time & itinerary ───────── */
+const IQ = new Set(['BGW', 'NJF', 'BSR', 'EBL', 'ISU']), IQT = new Set(['BGW', 'NJF']), EG = new Set(['CAI']);
+const AP = { BGW: 'Baghdad', NJF: 'Najaf', CAI: 'Cairo', BOM: 'Mumbai', BSR: 'Basra', EBL: 'Erbil', KWI: 'Kuwait', DXB: 'Dubai', DOH: 'Doha', BAH: 'Bahrain', AMM: 'Amman', IST: 'Istanbul', JED: 'Jeddah', MED: 'Madinah' };
+const apN = a => AP[a] || esc(a);
+const region = a => (IQ.has(a) ? 'IQ' : EG.has(a) ? 'EG' : '');
+const normFn = s => String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+const tmin = s => { const m = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return m && +m[1] < 24 && +m[2] < 60 ? +m[1] * 60 + +m[2] : null; };
+const dayOf = d => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3]) / 864e5 : null; };
+const normTime = s => { const d = String(s || '').replace(/\D/g, ''); if (!d) return ''; const p = d.length <= 2 ? [d, '00'] : [d.slice(0, -2), d.slice(-2)]; const h = +p[0], m = +p[1]; return h < 24 && m < 60 ? `${String(h).padStart(2, '0')}:${p[1]}` : s; };
+const autoOff = l => { const d = tmin(l.dep), a = tmin(l.arr); return d != null && a != null && a < d ? 1 : 0; };
+const legOff = l => (l.off === '' || l.off == null ? autoOff(l) : +l.off);
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const fmtT = m => { m = ((m % 1440) + 1440) % 1440; const h = Math.floor(m / 60); return `${h % 12 || 12}:${String(m % 60).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
+const fmtAbs = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]}, ${fmtT(t % 1440)}`; };
+const fmtDay = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
+const dmy = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${d.getUTCFullYear()}`; };
+
+function parsedLegs() {
+  return S.legs.map((l, i) => {
+    const D = dayOf(l.date), d = tmin(l.dep), a = tmin(l.arr);
+    if (D == null || d == null || a == null || !l.from || !l.to) return null;
+    return { i, fn: normFn(l.fn), from: l.from.toUpperCase(), to: l.to.toUpperCase(), dep: D * 1440 + d, arr: (D + legOff(l)) * 1440 + a };
+  }).filter(Boolean).sort((x, y) => x.dep - y.dep);
+}
+
+/* Cairo package, from the Faiz-e-Haakimi Lawazim rules */
+const PKG_CODES = ['N', 'R', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap(n => ['A', 'B', 'C'].map(w => n + w)), '10'];
+const codeOf = p => (p.n === 0 ? p.w : p.n >= 10 ? '10' : p.n + p.w);
+const fromCode = c => (c === 'N' || c === 'R' ? { n: 0, w: c } : c === '10' ? { n: 10, w: 'A' } : { n: +c.slice(0, -1), w: c.slice(-1) });
+const pkgName = p => (p.n === 0 ? (p.w === 'N' ? 'Day stopover, no rooms' : 'Day stopover with rooms') : p.n >= 10 ? `${p.n} nights` : `${p.n} night${p.n > 1 ? 's' : ''} ${p.w}`);
+const pkgShort = p => (p.n === 0 ? `DAY STOPOVER${p.w === 'R' ? ' + ROOMS' : ''}` : `${p.n}N-${p.n + 1}D · ${p.n >= 10 ? p.n + ' NIGHTS' : p.n + (p.n > 1 ? ' NIGHTS ' : ' NIGHT ') + p.w}`);
+const cairoTitle = p => (p.n === 0 ? `Day stopover in Cairo, ${p.w === 'N' ? 'no rooms' : 'with rooms'}` : p.n >= 10 ? `${p.n} nights in Cairo` : `${p.n} night${p.n > 1 ? 's' : ''} in Cairo, package ${p.w}`);
+
+function cairoAuto(st) {
+  const warn = [], fd = st.dep - R.cairo.lead * 60, arrDay = Math.floor(st.arr / 1440);
+  let day = Math.floor(fd / 1440), t = fd % 1440, n, w;
+  if (st.arr % 1440 < 300) warn.push('Lands in Cairo before 5 am, which Faiz charges extra for. Add it as an extra line item under Other charges.');
+  if (t < 180) { day--; t += 1440; }                                   // 12–3 am belongs to the previous day (window C)
+  n = day - arrDay;
+  if (st.outL.fn === 'MS627') { n = Math.max(0, n) + 1; w = 'A'; }    // the MS 627 night always counts as a full night
+  else if (n <= 0) {
+    n = 0; w = t <= 900 ? 'N' : 'R';
+    if (t > 1320) warn.push('Leaves Faiz after 10 pm on a day stopover, which may be charged extra.');
+  } else w = t <= 900 ? 'A' : t <= 1260 ? 'B' : 'C';
+  if (n > 10) warn.push(`${n} nights in Cairo. The 10-night rate is used.`);
+  if (st.dep <= st.arr) warn.push('The Cairo departure is before the arrival. Check the flight times.');
+  return { pkg: { n, w }, fd, warn };
+}
+function cairoRate(p, ci, co, paxAC) {
+  const C = R.cairo;
+  if (p.n === 0) { const d = C.day[p.w]; return paxAC === 1 ? num(d.one) : num(d.ac[ci]); }
+  if (p.n >= 10) return num(C.ten[ci]);
+  if (p.n === 1 && p.w === 'C' && co === 'hotel') return num(C.hotel1C[ci]);
+  return num(C.tbl[p.n][p.w][ci]);
+}
+
+function analyze() {
+  const L = parsedLegs(), a = num(S.adults), c = num(S.children), i = num(S.infants);
+  const A = { legs: L, a, c, i, paxAC: a + c, paxAll: a + c + i, iraq: null, cairo: [], warn: [] };
+  const stays = [];
+  for (let k = 0; k < L.length - 1; k++) {
+    const ap = L[k].to, r = region(ap);
+    if (L[k + 1].from !== ap) A.warn.push(`${esc(L[k + 1].fn) || 'A flight'} leaves from ${apN(L[k + 1].from)}, but the flight before it lands in ${apN(ap)}.`);
+    if (r) stays.push({ r, ap, inL: L[k], outL: L[k + 1], arr: L[k].arr, dep: L[k + 1].dep });
+  }
+  const iq = [];
+  stays.forEach(s => {
+    if (s.r !== 'IQ') return;
+    const last = iq[iq.length - 1];
+    if (last && last.outL === s.inL) { last.outL = s.outL; last.dep = s.dep; } else iq.push({ ...s, inAp: s.ap });
+  });
+  if (iq.length) {
+    const s = iq[0], outAp = s.outL.from, cut = tmin(R.iraq.cutoff) ?? 1140;
+    const late = s.dep % 1440 >= cut;
+    const auto = Math.floor(s.dep / 1440) - Math.floor(s.arr / 1440) + (late ? 1 : 0);
+    const nights = S.ovr.iraqN !== '' && S.ovr.iraqN != null ? num(S.ovr.iraqN) : auto;
+    const key = s.inAp === outAp ? s.inAp : 'MIX', ok = IQT.has(s.inAp) && IQT.has(outAp), t = ok ? R.trans[key] : null;
+    if (!ok) A.warn.push(`There is no transport rate for ${apN(s.inAp)} and ${apN(outAp)}. Only Baghdad and Najaf are priced.`);
+    if (iq.length > 1) A.warn.push('These flights visit Iraq twice. Only the first visit is priced.');
+    const big = t && A.paxAC >= num(t.thr);
+    A.iraq = {
+      ...s, outAp, auto, nights, late, cut, key, route: key === 'MIX' ? `${s.inAp}-${outAp}` : s.inAp,
+      trans: t ? (big ? num(t.large) : num(t.small)) : 0, transTier: t ? (big ? `${t.thr}+ pax` : `1-${t.thr - 1} pax`) : '',
+      visa: A.paxAll >= num(R.visa.thr) ? num(R.visa.large) : num(R.visa.small)
+    };
+  }
+  stays.filter(s => s.r === 'EG').forEach((s, idx) => {
+    const au = cairoAuto(s), oc = S.ovr.cairo[idx], pkg = oc ? fromCode(oc) : au.pkg;
+    const hours = (s.dep - s.arr) / 60, ms = s.inL.fn.startsWith('MS'), h = Math.round(hours);
+    const free = ms && hours < num(R.egypt.freeHours);
+    A.cairo.push({ ...s, idx, auto: au.pkg, pkg, fd: au.fd, warn: au.warn, hours, visaFree: free,
+      visaWhy: free ? `Lands on EgyptAir and stays ${h} hours, under ${R.egypt.freeHours}.` : ms ? `Lands on EgyptAir but stays ${h} hours, which is ${R.egypt.freeHours} or more.` : `Lands on ${esc(s.inL.fn) || 'another airline'}, not EgyptAir.` });
+  });
+  A.cairoHotelDiff = A.cairo.some(s => s.pkg.n === 1 && s.pkg.w === 'C');
+  return A;
+}
+
+/* ───────── quote columns & rows ───────── */
+const CATS = [['a', 'ADULT', 'Adult', 0], ['c', 'CHD', 'Child', 1], ['i', 'INF', 'Infant', 2]];
+function buildCols(A) {
+  const cats = CATS.filter(c => A[c[0]] > 0);
+  if (!cats.length || (!A.iraq && !A.cairo.length)) return [];
+  const io = A.iraq ? ['faiz', 'hotel'].filter(k => S.iraqAcc[k]) : [null];
+  const co = A.cairoHotelDiff ? ['faiz', 'hotel'].filter(k => S.cairoAcc[k]) : [null];
+  const tks = TK.filter(t => S.tk[t.id]);
+  const cols = [];
+  for (const I of io) for (const C of co) {
+    const cn = C && (co.length > 1 || C === 'hotel' || !I) ? C : null;   // only name the Cairo stay when it tells the options apart
+    const head = [I ? (I === 'faiz' ? 'FAIZ NIZAM' : 'HOTEL NIZAM') : 'CAIRO', cn ? `CAIRO ${cn === 'faiz' ? 'FAIZ' : 'HOTEL'}` : ''].filter(Boolean).join(' · ');
+    const name = I ? (I === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam') + (cn ? `, Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : '') : (cn ? `Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : 'Cairo');
+    for (const t of [null, ...tks]) {
+      const g = `${I}|${C}|${t ? t.id : ''}`;
+      for (const [k, L, nm, ix] of cats) {
+        if (t && k === 'i') continue;
+        cols.push({ g, base: `${I}|${C}`, io: I, co: C, tk: t, k, ix, catL: L, catN: nm, count: t ? null : A[k], head: t ? [head, t.xl] : [head], name, tag: t ? t.tag : '' });
+      }
+    }
+  }
+  cols.forEach(c => (c.v = calc(A, c)));
+  return cols;
+}
+
+function calc(A, col) {
+  const ix = col.ix, ac = ix < 2, pick = arr => (ac ? num(arr[ix]) : 0), t = col.tk, disc = x => (t ? t.f(x) : x), v = {};
+  const n = A.iraq ? A.iraq.nights : 0, rate = num(S.rate);
+  v.egv = A.cairo.reduce((s, st) => s + (st.visaFree ? 0 : num(R.egypt.inr)), 0);
+  v.faiz = A.iraq && col.io === 'faiz' ? disc(n * pick(R.iraq.faiz)) : 0;
+  v.hubb = A.iraq && col.io === 'hotel' ? disc(n * pick(R.iraq.hubb)) : 0;
+  v.bed = A.iraq && col.io === 'hotel' ? n * pick(R.iraq.bed) : 0;
+  v.cairo = ac ? A.cairo.reduce((s, st) => s + Math.max(0, cairoRate(st.pkg, ix, col.co, A.paxAC) - (t ? num(R.cairo.tkLess[ix]) : 0)), 0) : 0;
+  v.visa = A.iraq ? A.iraq.visa : 0;
+  v.trans = A.iraq && ac ? A.iraq.trans : 0;
+  let usd = v.faiz + v.hubb + v.bed + v.cairo + v.visa + v.trans;
+  S.misc.forEach((m, j) => { if (m.cur === 'USD') { v['m' + j] = num(m.v[ix]); usd += v['m' + j]; } });
+  v.usd = usd; v.usdInr = Math.round(usd * rate);
+  let sub = v.egv + v.usdInr;
+  const inr = (key, val) => { v[key] = val; sub += val; };
+  inr('gl', num(S.inr.gl[ix])); inr('coord', num(S.inr.coord[ix])); inr('hadiyah', num(S.inr.hadiyah[ix])); inr('admin', num(S.inr.admin[ix]));
+  if (S.addRida) inr('rida', num(S.inr.rida[ix]));
+  if (S.add80) inr('p80', num(S.inr.p80[ix]));
+  S.misc.forEach((m, j) => { if (m.cur !== 'USD') inr('m' + j, num(m.v[ix])); });
+  v.sub = sub; v.ticket = num(S.inr.ticket[ix]); v.grand = sub + v.ticket;
+  return v;
+}
+
+function buildRows(A) {
+  const rows = [], n = A.iraq ? A.iraq.nights : 0, q = R.iraq, any = k => A.iraq && S.iraqAcc[k];
+  if (A.cairo.length) rows.push({ k: 'egv', cur: 'INR', label: 'EGYPT VISA' });
+  rows.push({ sec: 1, label: 'USD EXPENSES' });
+  if (any('faiz')) rows.push({ k: 'faiz', cur: 'USD', label: `FAIZ NIZAM (ADT ${q.faiz[0]} & CHD ${q.faiz[1]} X ${n} NIGHTS)` });
+  if (any('hotel')) rows.push({ k: 'hubb', cur: 'USD', label: `HOTEL NIZAM HUBB (ADT ${q.hubb[0]} & CHD ${q.hubb[1]} X ${n} NIGHTS)` },
+                              { k: 'bed', cur: 'USD', label: `HOTEL BED (ADT & CHD ${q.bed[0]} X ${n} NIGHTS)` });
+  if (A.cairo.length) rows.push({ k: 'cairo', cur: 'USD', label: `CAIRO LAWAZIM (${A.cairo.map(s => pkgShort(s.pkg)).join(' + ')})` });
+  if (A.iraq) rows.push({ k: 'visa', cur: 'USD', label: 'IRAQ E VISA' }, { k: 'trans', cur: 'USD', label: `TRANSPORT ${A.iraq.route}` });
+  S.misc.forEach((m, j) => m.cur === 'USD' && rows.push({ k: 'm' + j, cur: 'USD', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  rows.push({ k: 'usd', tot: 1, label: `TOTAL USD @RS.${num(S.rate)}` });
+  rows.push({ k: 'gl', cur: 'INR', label: 'GROUP LEADER EXP' }, { k: 'coord', cur: 'INR', label: 'CO-ORDINATOR EXPENSES' },
+            { k: 'hadiyah', cur: 'INR', label: 'HADIYAH EXPENSES (TRAVELLING KIT)' }, { k: 'admin', cur: 'INR', label: 'ADMINISTRATION EXPENSES' });
+  if (S.addRida) rows.push({ k: 'rida', cur: 'INR', label: '+2 PCS RIDA' });
+  if (S.add80) rows.push({ k: 'p80', cur: 'INR', label: '+80' });
+  S.misc.forEach((m, j) => m.cur !== 'USD' && rows.push({ k: 'm' + j, cur: 'INR', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  rows.push({ k: 'sub', tot: 1, label: 'TOTAL' }, { k: 'ticket', cur: 'INR', bold: 1, label: 'TICKET FARE' }, { k: 'grand', grand: 1, label: 'TOTAL' });
+  return rows;
+}
+
+function quoteTitle(A) {
+  const parts = [String(S.name || '').trim().toUpperCase()];
+  if (A.legs.length) parts.push(dmy(A.legs[0].dep));
+  if (A.iraq) parts.push(`${A.iraq.nights}N`);
+  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n}N-${s.pkg.n + 1}D` : 'DAY STOPOVER'));
+  return parts.filter(Boolean).join('   ') || 'ZIYARAT QUOTE';
+}
+
+/* ───────── rendering ───────── */
+const ICON = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+  dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>'
+};
+const OPEN = new Set();
+let bdOpen = false, LAST = { A: null, cols: [] };
+
+function hydrate(root) {
+  root.querySelectorAll('[data-s]').forEach(el => {
+    const v = getPath(S, el.dataset.s);
+    if (el.type === 'checkbox') el.checked = !!v; else if (document.activeElement !== el) el.value = v ?? '';
+  });
+  root.querySelectorAll('[data-r]').forEach(el => { if (document.activeElement !== el) el.value = getPath(R, el.dataset.r) ?? ''; });
+}
+
+function renderLegs() {
+  $('#legs').innerHTML = S.legs.map((l, i) => `<div class="lg leg">
+    <input class="u fn" data-s="legs.${i}.fn" placeholder="MS 969" maxlength="9" autocomplete="off" aria-label="Flight ${i + 1} number">
+    <input class="u ap from" data-s="legs.${i}.from" list="aps" placeholder="BOM" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} from">
+    <input class="u ap to" data-s="legs.${i}.to" list="aps" placeholder="CAI" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} to">
+    <input class="u dt" type="date" data-s="legs.${i}.date" aria-label="Flight ${i + 1} date">
+    <input class="u dep" data-s="legs.${i}.dep" data-time placeholder="02:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} departs">
+    <input class="u arr" data-s="legs.${i}.arr" data-time placeholder="05:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} arrives">
+    <button class="day" data-act="off" data-i="${i}" title="Which day it lands. Click to change."></button>
+    <button class="ic gs" data-act="google" data-i="${i}" title="Look up this flight on Google" aria-label="Look up flight ${i + 1} on Google">${ICON.search}</button>
+    <button class="ic rm" data-act="delLeg" data-i="${i}" title="Remove this flight" aria-label="Remove flight ${i + 1}">${ICON.x}</button></div>`).join('');
+  hydrate($('#legs')); syncOff();
+}
+function syncOff() {
+  document.querySelectorAll('.day').forEach(b => { const o = legOff(S.legs[+b.dataset.i] || {}); b.textContent = o ? '+' + o : 'same'; b.classList.toggle('on', o > 0); b.setAttribute('aria-label', o ? `Lands ${o} day${o > 1 ? 's' : ''} later` : 'Lands the same day'); });
+}
+
+function renderOther() {
+  const row = (k, lbl) => `<tr><td>${lbl}</td>${[0, 1, 2].map(i => `<td><input class="u" type="number" step="any" data-s="inr.${k}.${i}" placeholder="0" aria-label="${lbl} ${['adult', 'child', 'infant'][i]}"></td>`).join('')}</tr>`;
+  $('#otherT').innerHTML = `<thead><tr><th></th><th>Adult</th><th>Child</th><th>Infant</th></tr></thead><tbody>` +
+    row('gl', 'Group leader') + row('coord', 'Co-ordinator') + row('hadiyah', 'Hadiyah') + row('admin', 'Administration') + row('rida', '+2 pcs Rida') + row('p80', '+80') + '</tbody>';
+  hydrate($('#otherT'));
+}
+function renderMisc() {
+  $('#misc').innerHTML = S.misc.map((m, j) => `<div class="misc">
+    <input class="u mn" data-s="misc.${j}.name" placeholder="What is it for?" aria-label="Line item name">
+    <select class="u mc" data-s="misc.${j}.cur" aria-label="Currency"><option value="INR">₹</option><option value="USD">$</option></select>
+    ${[0, 1, 2].map(i => `<input class="u" type="number" step="any" data-s="misc.${j}.v.${i}" placeholder="${['Adult', 'Child', 'Infant'][i]}" aria-label="${['Adult', 'Child', 'Infant'][i]} amount">`).join('')}
+    <button class="ic rmv" data-act="delMisc" data-i="${j}" title="Remove this line item" aria-label="Remove line item">${ICON.x}</button></div>`).join('');
+  hydrate($('#misc'));
+}
+
+const fact = (k, title, detail, ovr) => `<li><div><b>${title}</b>${detail ? `<p>${detail}</p>` : ''}</div>` +
+  (ovr ? `<button class="chg" data-act="ovr" data-k="${k}" aria-expanded="${OPEN.has(k)}">${OPEN.has(k) ? 'Done' : 'Change'}</button>` : '') +
+  (ovr && OPEN.has(k) ? `<div class="ovr">${ovr}</div>` : '') + '</li>';
+const warnLi = w => `<li class="warn"><span>${w}</span></li>`;
+
+function renderTrip(A) {
+  const out = [];
+  if (!A.legs.length) {
+    $('#trip').innerHTML = '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas and the Cairo package are worked out from them.</p></li>';
+    return;
+  }
+  if (A.iraq) {
+    const q = A.iraq, ch = q.nights !== q.auto;
+    const route = q.key === 'BGW' ? 'Baghdad both ways' : q.key === 'NJF' ? 'Najaf both ways' : `${apN(q.inAp)} one way, ${apN(q.outAp)} the other`;
+    out.push(fact('iraq', `${q.nights} ${plural(q.nights, 'night', 'nights')} in Iraq${ch ? ' (changed)' : ''}`,
+      `Lands in ${apN(q.inAp)} ${fmtAbs(q.arr)}. Leaves ${apN(q.outAp)} ${fmtAbs(q.dep)}${q.late ? `, after ${fmtT(q.cut)}, so that day counts too` : ''}.`,
+      `Price it as <input class="u" type="number" min="0" data-s="ovr.iraqN" placeholder="${q.auto}" aria-label="Nights in Iraq"> nights${ch ? ` <button class="lnk" data-act="clrIraq">Go back to ${q.auto}</button>` : ''}`));
+    if (q.key && IQT.has(q.inAp) && IQT.has(q.outAp)) out.push(fact('', `Transport $${q.trans} a head`, `${route}, ${A.paxAC} adults and children (${q.transTier} rate).`));
+    out.push(fact('', `Iraq visa $${q.visa} a head`, `${A.paxAll} ${plural(A.paxAll, 'person', 'people')}, infants included.`));
+  }
+  A.cairo.forEach(s => {
+    const k = 'cairo' + s.idx, ch = codeOf(s.pkg) !== codeOf(s.auto);
+    const opts = `<option value="">${pkgName(s.auto)} (worked out)</option>` + PKG_CODES.map(c => `<option value="${c}">${pkgName(fromCode(c))}</option>`).join('');
+    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`,
+      `Lands ${fmtAbs(s.arr)}. Leaves Faiz ${fmtAbs(s.fd)} for ${esc(s.outL.fn) || 'the flight'} at ${fmtT(s.dep % 1440)}.${s.outL.fn === 'MS627' ? ' MS 627 always counts as a full night.' : ''}`,
+      `Price it as <select class="u" data-s="ovr.cairo.${s.idx}" aria-label="Cairo package">${opts}</select>`));
+    out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
+    s.warn.forEach(w => out.push(warnLi(esc(w))));
+  });
+  if (!A.iraq && !A.cairo.length) out.push('<li class="none"><p>No stay in Iraq or Cairo yet. Add the flight out as well, so each stay has an arrival and a departure.</p></li>');
+  A.warn.forEach(w => out.push(warnLi(w)));
+  $('#trip').innerHTML = out.join('');
+  hydrate($('#trip'));
+}
+
+function renderSide(A, cols) {
+  const fare = $('#fare');
+  const geo = '<div class="geo" aria-hidden="true"></div>';
+  if (!cols.length) {
+    const why = !A.paxAll && !A.legs.length ? 'Prices show up here once you add the group size and the flights.' : !A.paxAll ? 'Add how many adults, children and infants are going.' : 'Add the flights so each stay has an arrival and a departure.';
+    const ghost = `<table class="fares" aria-hidden="true"><thead><tr><th></th><th>Adult</th><th>Child</th></tr></thead><tbody><tr><th>Faiz Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr><tr><th>Hotel Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr></tbody></table>`;
+    fare.innerHTML = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${why}</p>${ghost}${hasContent(S) ? '' : '<button class="lnk" data-act="sample">Try an example group</button>'}</div>`;
+    $('#bd').innerHTML = '';
+    return;
+  }
+  const cats = CATS.filter(c => A[c[0]] > 0);
+  const bases = [];
+  cols.forEach(c => { let b = bases.find(x => x.base === c.base); if (!b) bases.push(b = { base: c.base, name: c.name, rows: [] }); let r = b.rows.find(x => x.g === c.g); if (!r) b.rows.push(r = { g: c.g, tk: c.tk, by: {} }); r.by[c.k] = c.v.grand; });
+  const price = v => (v == null ? '<td></td>' : `<td><i>₹</i>${INR.format(v)}</td>`);
+  const parts = [];
+  if (A.iraq) parts.push(`${A.iraq.nights} ${plural(A.iraq.nights, 'night', 'nights')} in Iraq`);
+  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n} ${plural(s.pkg.n, 'night', 'nights')} in Cairo` : 'a day in Cairo'));
+  const joined = parts.length > 1 ? parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1] : parts[0];
+  const sub = `${joined.replace(/^./, c => c.toUpperCase())}, for ${A.paxAll} ${plural(A.paxAll, 'person', 'people')}.`;
+  let h = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${sub}</p><table class="fares"><thead><tr><th></th>${cats.map(c => `<th>${c[2]}</th>`).join('')}</tr></thead>`;
+  bases.forEach(b => {
+    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : esc(b.name)}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
+  });
+  h += `</table><button class="dl" data-act="xlsx">${ICON.dl}Download Excel</button><button class="lnk" data-act="bd">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div>`;
+  fare.innerHTML = h;
+  renderBreakdown(A, cols);
+}
+
+function renderBreakdown(A, cols) {
+  const el = $('#bd');
+  if (!bdOpen || !cols.length) { el.innerHTML = ''; return; }
+  const rows = buildRows(A), groups = [];
+  cols.forEach(c => { const g = groups[groups.length - 1]; g && g.g === c.g ? g.cols.push(c) : groups.push({ g: c.g, cols: [c] }); });
+  let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="lnk" data-act="bd">Hide</button></div><div class="mx"><table><thead><tr><th rowspan="2">${esc(quoteTitle(A))}</th>`;
+  h += groups.map(g => `<th class="gs" colspan="${g.cols.length * 2}">${g.cols[0].head.map(esc).join('<br>')}</th>`).join('') + '</tr><tr>';
+  h += cols.map(c => `<th class="gs">${c.count ?? ''}</th><th>${c.catL}</th>`).join('') + '</tr></thead><tbody>';
+  const span = cols.length * 2 + 1;
+  for (const r of rows) {
+    if (r.sec) { h += `<tr class="sec"><td colspan="${span}">${r.label}</td></tr>`; continue; }
+    h += `<tr class="${r.tot ? 'tot' : r.grand ? 'grand' : ''}"><td title="${esc(r.label)}">${esc(r.label)}</td>`;
+    h += cols.map(c => {
+      const v = c.v;
+      if (r.k === 'usd') return `<td class="gs u2">${fUsd(v.usd)}</td><td>${INR.format(v.usdInr)}</td>`;
+      if (r.cur === 'USD') return `<td class="gs u2">${fUsd(v[r.k] || 0)}</td><td></td>`;
+      return `<td class="gs"></td><td>${INR.format(v[r.k] || 0)}</td>`;
+    }).join('') + '</tr>';
+  }
+  el.innerHTML = h + '</tbody></table></div>';
+}
+
+function renderBits(A) {
+  $('#lA').textContent = plural(S.adults, 'adult', 'adults');
+  $('#lC').textContent = plural(S.children, 'child', 'children');
+  $('#lI').textContent = plural(S.infants, 'infant', 'infants');
+  const showIq = !!A.iraq || !A.legs.length;
+  $('#oIq1').hidden = $('#oIq2').hidden = !showIq;
+  $('#oCa1').hidden = $('#oCa2').hidden = !A.cairoHotelDiff;
+  $('#tkFixedL').textContent = `$${R.tkFixed} off`;
+  $('#tkAllB').textContent = TK.every(t => S.tk[t.id]) ? 'Clear all' : 'Select all';
+  $('#ridaL').textContent = `+2 pcs Rida, ₹${INR.format(num(S.inr.rida[0]))}`;
+  $('#p80L').textContent = `+80, ₹${INR.format(num(S.inr.p80[0]))}`;
+  const base = ['gl', 'coord', 'hadiyah', 'admin'].reduce((s, k) => s + num(S.inr[k][0]), 0);
+  const extra = S.misc.length ? `, plus ${S.misc.length} extra ${plural(S.misc.length, 'item', 'items')}` : '';
+  $('#moreSum').textContent = `₹${INR.format(base)} per adult for group leader, co-ordinator, hadiyah and administration${extra}`;
+}
+
+function update(skipTrip) {
+  const A = analyze(), cols = buildCols(A);
+  LAST = { A, cols };
+  if (!skipTrip) renderTrip(A);
+  syncOff(); renderBits(A); renderSide(A, cols);
+}
+function renderAll() { renderLegs(); renderOther(); renderMisc(); hydrate(document); update(); }
+
+/* ───────── rates dialog ───────── */
+function renderRates() {
+  const n = (p, lbl) => `<input class="u" type="number" step="any" data-r="${p}" aria-label="${lbl || p}">`;
+  const pair = (lbl, p) => `<tr><td>${lbl}</td><td>${n(p + '.0', lbl + ' adult')}</td><td>${n(p + '.1', lbl + ' child')}</td></tr>`;
+  let ct = '';
+  for (let k = 1; k <= 9; k++) ct += `<tr><td>${k} ${plural(k, 'night', 'nights')}</td>${['A', 'B', 'C'].map(w => `<td>${n(`cairo.tbl.${k}.${w}.0`)}</td><td>${n(`cairo.tbl.${k}.${w}.1`)}</td>`).join('')}</tr>`;
+  ct += `<tr><td>10 or more</td><td>${n('cairo.ten.0')}</td><td>${n('cairo.ten.1')}</td><td colspan="4" style="color:var(--ink3);font-size:13px">Same for A, B and C</td></tr>`;
+  $('#rateBody').innerHTML = `
+    <p>Changes apply straight away and are saved for everyone using this app.</p>
+    <h4>Iraq, per night in dollars</h4>
+    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Faiz Nizam', 'iraq.faiz')}${pair('Hotel Nizam Hubb', 'iraq.hubb')}${pair('Hotel bed', 'iraq.bed')}</table>
+    <div class="rgrid"><label class="f">Count the leaving day if the flight is at or after<input class="u" data-r="iraq.cutoff" placeholder="19:00"></label></div>
+    <h4>Iraq visa, dollars a head (infants included)</h4>
+    <div class="rgrid"><label class="f">Smaller group${n('visa.small')}</label><label class="f">Larger group${n('visa.large')}</label><label class="f">Larger group starts at (people)${n('visa.thr')}</label></div>
+    <h4>Iraq transport, dollars per adult or child</h4>
+    <table class="rt"><tr><th></th><th>Smaller group</th><th>Larger group</th><th>Larger from (people)</th></tr>
+      ${[['NJF', 'Najaf both ways'], ['BGW', 'Baghdad both ways'], ['MIX', 'Baghdad one way, Najaf the other']].map(([k, l]) => `<tr><td>${l}</td><td>${n(`trans.${k}.small`)}</td><td>${n(`trans.${k}.large`)}</td><td>${n(`trans.${k}.thr`)}</td></tr>`).join('')}</table>
+    <h4>Cairo Lawazim, Faiz-e-Haakimi, in dollars</h4>
+    <div class="rgrid"><label class="f">Leave Faiz this many hours before the flight${n('cairo.lead')}</label><label class="f">Takhfeef quotes, less per adult${n('cairo.tkLess.0')}</label><label class="f">Takhfeef quotes, less per child${n('cairo.tkLess.1')}</label></div>
+    <table class="rt" style="margin-top:10px"><tr><th></th><th>Just 1 person</th><th>Adult (2 or more)</th><th>Child (2 or more)</th></tr>
+      <tr><td>Day stopover, no rooms</td><td>${n('cairo.day.N.one')}</td><td>${n('cairo.day.N.ac.0')}</td><td>${n('cairo.day.N.ac.1')}</td></tr>
+      <tr><td>Day stopover with rooms</td><td>${n('cairo.day.R.one')}</td><td>${n('cairo.day.R.ac.0')}</td><td>${n('cairo.day.R.ac.1')}</td></tr></table>
+    <table class="rt" style="margin-top:10px"><tr><th></th><th>A adult</th><th>A child</th><th>B adult</th><th>B child</th><th>C adult</th><th>C child</th></tr>${ct}
+      <tr><td>1 night C, hotel</td><td colspan="4"></td><td>${n('cairo.hotel1C.0')}</td><td>${n('cairo.hotel1C.1')}</td></tr></table>
+    <p style="font-size:13px">A means leaving Faiz by 3 pm, B between 3 and 9 pm, C between 9 pm and 3 am. A day stopover has no rooms if they leave by 3 pm, and rooms if they leave by 10 pm. The MS 627 to Baghdad always counts that night, at the A rate.</p>
+    <h4>Egypt visa and takhfeef</h4>
+    <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef, dollars off Faiz or Hubb${n('tkFixed')}</label></div>`;
+  hydrate($('#rateBody'));
+}
+
+/* ───────── GitHub sync ───────── */
+const repoGuess = () => {
+  const h = location.hostname;
+  if (h.endsWith('.github.io')) { const owner = h.split('.')[0]; return { owner, repo: location.pathname.split('/').filter(Boolean)[0] || `${owner}.github.io` }; }
+  return { owner: 'tmoosabhoy6', repo: 'FHMUM-Quote-gen' };
+};
+const GH = { cfg: store.get('zq.gh') || {}, sha: {} };
+const ghOn = () => !!(GH.cfg.token && GH.cfg.owner && GH.cfg.repo);
+const BR = () => GH.cfg.branch || 'data';
+const base = () => `/repos/${GH.cfg.owner}/${GH.cfg.repo}`;
+const encP = p => p.split('/').map(encodeURIComponent).join('/');
+const b64e = s => { const b = new TextEncoder().encode(s); let x = ''; for (let i = 0; i < b.length; i += 0x8000) x += String.fromCharCode.apply(null, b.subarray(i, i + 0x8000)); return btoa(x); };
+const b64d = s => new TextDecoder().decode(Uint8Array.from(atob(String(s).replace(/\s/g, '')), c => c.charCodeAt(0)));
+
+async function gh(path, opt = {}) {
+  const r = await fetch('https://api.github.com' + path, { cache: 'no-store', ...opt,
+    headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${GH.cfg.token}`, 'X-GitHub-Api-Version': '2022-11-28', ...(opt.body ? { 'Content-Type': 'application/json' } : {}) } });
+  if (!r.ok) { const j = await r.json().catch(() => ({})); const e = new Error(j.message || r.statusText); e.status = r.status; throw e; }
+  return r.status === 204 ? null : r.json();
+}
+async function ghGet(path) {
+  try { const j = await gh(`${base()}/contents/${encP(path)}?ref=${BR()}`); GH.sha[path] = j.sha; return JSON.parse(b64d(j.content)); }
+  catch (e) { if (e.status === 404) { delete GH.sha[path]; return null; } throw e; }
+}
+async function ensureBranch() {
+  const repo = await gh(base());
+  const ref = await gh(`${base()}/git/ref/heads/${encodeURIComponent(repo.default_branch)}`);
+  await gh(`${base()}/git/refs`, { method: 'POST', body: JSON.stringify({ ref: `refs/heads/${BR()}`, sha: ref.object.sha }) });
+}
+async function ghPut(path, obj, message, retry = true) {
+  const body = { message, content: b64e(JSON.stringify(obj, null, 1) + '\n'), branch: BR() };
+  if (GH.sha[path]) body.sha = GH.sha[path];
+  try { const j = await gh(`${base()}/contents/${encP(path)}`, { method: 'PUT', body: JSON.stringify(body) }); GH.sha[path] = j.content.sha; }
+  catch (e) {
+    if (retry && (e.status === 409 || e.status === 422)) {        // someone else saved it, or we didn't know it existed
+      try { const j = await gh(`${base()}/contents/${encP(path)}?ref=${BR()}`); GH.sha[path] = j.sha; } catch (e2) { if (e2.status === 404) delete GH.sha[path]; else throw e2; }
+      return ghPut(path, obj, message, false);
+    }
+    if (retry && e.status === 404 && /branch/i.test(e.message)) { await ensureBranch(); return ghPut(path, obj, message, false); }
+    throw e;
+  }
+}
+async function ghDel(path, message) {
+  try {
+    if (!GH.sha[path]) { const j = await gh(`${base()}/contents/${encP(path)}?ref=${BR()}`); GH.sha[path] = j.sha; }
+    await gh(`${base()}/contents/${encP(path)}`, { method: 'DELETE', body: JSON.stringify({ message, sha: GH.sha[path], branch: BR() }) });
+    delete GH.sha[path];
+  } catch (e) { if (e.status !== 404) throw e; }
+}
+async function listRemote() {
+  const q = 'query($o:String!,$r:String!,$e:String!){repository(owner:$o,name:$r){object(expression:$e){... on Tree{entries{name oid object{... on Blob{text}}}}}}}';
+  try {
+    const j = await gh('/graphql', { method: 'POST', body: JSON.stringify({ query: q, variables: { o: GH.cfg.owner, r: GH.cfg.repo, e: `${BR()}:quotes` } }) });
+    if (j.errors) throw new Error(j.errors[0].message);
+    const ents = (j.data.repository && j.data.repository.object && j.data.repository.object.entries) || [];
+    return ents.filter(e => e.name.endsWith('.json')).map(e => { GH.sha['quotes/' + e.name] = e.oid; try { return JSON.parse(e.object.text); } catch { return null; } }).filter(Boolean);
+  } catch (e) {
+    if (e.status === 401) throw e;
+    let ents; try { ents = await gh(`${base()}/contents/quotes?ref=${BR()}`); } catch (e2) { if (e2.status === 404) return []; throw e2; }
+    const out = [];
+    for (const f of ents.filter(f => f.name.endsWith('.json'))) { const d = await ghGet('quotes/' + f.name); if (d) out.push(d); }
+    return out;
+  }
+}
+const errText = e => e instanceof TypeError ? 'No connection to GitHub. Changes stay on this device and save when the connection is back.'
+  : e.status === 401 ? 'GitHub rejected the token. Connect again with a new token.'
+  : e.status === 403 ? 'The token can\'t write to this repository. It needs Contents set to Read and write.'
+  : e.status === 404 ? 'The repository or its data branch wasn\'t found, or the token can\'t see it.'
+  : e.message || 'Something went wrong talking to GitHub.';
+
+let SYNC = { st: 'local', msg: '' };
+function setStatus(st, msg = '') {
+  SYNC = { st, msg };
+  const b = $('#sync'); b.dataset.st = st;
+  b.querySelector('span').textContent = st === 'saved' ? 'Saved to GitHub' : st === 'saving' ? 'Saving' : st === 'error' ? 'Not saved to GitHub' : 'Saved on this device';
+  b.title = msg || (st === 'local' ? 'Connect GitHub so quotes are shared and kept safe' : '');
+  if ($('#dlgC').open) renderConn();
+}
+
+const quoteDoc = s => {
+  const cols = LAST.cols.filter(c => !c.tk);
+  const first = cols.find(c => c.k === 'a') || cols[0];
+  const L = LAST.A ? LAST.A.legs : [];
+  return { id: s.id, name: String(s.name || '').trim(), created: s.created, updated: s.updated,
+    travel: L.length ? fmtDay(L[0].dep) : '', pax: num(s.adults) + num(s.children) + num(s.infants),
+    price: first ? { label: first.name, cat: first.catN, inr: first.v.grand } : null, state: clone(s) };
+};
+const stripLocal = d => { const { synced, ...rest } = d; return rest; };
+
+let saveT = null, saving = false, dirtyQ = false, dirtyR = false, backoff = false;
+function saveLocal() {
+  store.set('zq.cur', S.id);
+  if (hasContent(S)) { DOCS[S.id] = { ...quoteDoc(S), synced: false }; saveDocs(); }
+}
+function touchQ() { S.updated = Date.now(); saveLocal(); if (ghOn()) { dirtyQ = true; schedule(); } }
+function touchR() { RM.updated = Date.now(); saveRLocal(); if (ghOn()) { dirtyR = true; schedule(); } }
+function schedule(ms) { clearTimeout(saveT); if (!ghOn()) return; if (SYNC.st !== 'error') setStatus('saving'); saveT = setTimeout(flush, ms ?? (backoff ? 20000 : 1800)); }
+async function flush() {
+  clearTimeout(saveT);
+  if (!ghOn() || (!dirtyQ && !dirtyR)) return;
+  if (saving) { schedule(800); return; }
+  saving = true; setStatus('saving');
+  const doR = dirtyR, snap = dirtyQ && hasContent(S) ? quoteDoc(S) : null;
+  dirtyR = false; dirtyQ = false;
+  try {
+    if (doR) await ghPut('rates.json', { updated: RM.updated, rates: R }, 'Update rates');
+    if (snap) {
+      await ghPut(`quotes/${snap.id}.json`, snap, `Save quote: ${snap.name || 'Untitled quote'}`);
+      if (DOCS[snap.id] && DOCS[snap.id].updated === snap.updated) { DOCS[snap.id].synced = true; saveDocs(); }
+    }
+    backoff = false;
+    setStatus('saved');
+  } catch (e) {
+    dirtyR = dirtyR || doR; dirtyQ = dirtyQ || !!snap; backoff = true;
+    setStatus('error', errText(e));
+  } finally {
+    saving = false;
+    if (dirtyQ || dirtyR) schedule();
+  }
+}
+
+async function pullRemote(full) {
+  if (!ghOn()) return;
+  setStatus('saving');
+  try {
+    const rr = await ghGet('rates.json');
+    if (rr && rr.updated > RM.updated) { R = merge(clone(DEF_R), rr.rates); RM.updated = rr.updated; saveRLocal(); if ($('#dlgR').open) renderRates(); }
+    else if (!rr || RM.updated > rr.updated) dirtyR = true;
+    if (full) {
+      const remote = await listRemote();
+      reconcile(remote);
+      for (const d of Object.values(DOCS)) {
+        if (d.synced || d.id === S.id) continue;
+        await ghPut(`quotes/${d.id}.json`, stripLocal(d), `Save quote: ${d.name || 'Untitled quote'}`);
+        d.synced = true;
+      }
+      saveDocs();
+      if (hasContent(S) && !(DOCS[S.id] && DOCS[S.id].synced)) dirtyQ = true;
+    } else if (hasContent(S)) {
+      const rq = await ghGet(`quotes/${S.id}.json`);
+      if (rq && rq.updated > S.updated) { S = loadS(rq.state); DOCS[S.id] = { ...rq, synced: true }; saveDocs(); renderAll(); }
+      else if (!rq || S.updated > rq.updated) dirtyQ = true;
+    }
+    update();
+    setStatus('saved');
+    if (dirtyQ || dirtyR) flush();
+  } catch (e) { setStatus('error', errText(e)); backoff = true; if (dirtyQ || dirtyR) schedule(); }
+}
+function reconcile(remote) {
+  const ids = new Set();
+  remote.forEach(d => {
+    if (!d || !d.id) return;
+    ids.add(d.id);
+    const l = DOCS[d.id];
+    if (!l || d.updated > l.updated) DOCS[d.id] = { ...d, synced: true };
+    else if (d.updated === l.updated) l.synced = true;
+  });
+  for (const id in DOCS) if (DOCS[id].synced && !ids.has(id)) delete DOCS[id];   // deleted on another computer
+  saveDocs();
+  if (DOCS[S.id] && DOCS[S.id].updated > S.updated) { S = loadS(DOCS[S.id].state); renderAll(); }
+}
+async function publicRates() {                     // read shared rates without a token (public repo)
+  const g = repoGuess();
+  try {
+    const r = await fetch(`https://raw.githubusercontent.com/${g.owner}/${g.repo}/data/rates.json`, { cache: 'no-store' });
+    if (!r.ok) return;
+    const rr = await r.json();
+    if (rr.updated > RM.updated) { R = merge(clone(DEF_R), rr.rates); RM.updated = rr.updated; saveRLocal(); update(); }
+  } catch {}
+}
+
+function renderConn() {
+  const g = repoGuess();
+  if (ghOn()) {
+    $('#connBody').innerHTML = `
+      <p>Connected to <b>${esc(GH.cfg.owner)}/${esc(GH.cfg.repo)}</b>. Quotes and rates save to its <b>${esc(BR())}</b> branch a couple of seconds after you stop typing. The app itself lives on a different branch, so redeploying it never touches saved quotes.</p>
+      <p>${SYNC.st === 'error' ? `<span style="color:var(--red)">${esc(SYNC.msg)}</span>` : SYNC.st === 'saved' ? 'Everything is saved.' : SYNC.st === 'saving' ? 'Saving now.' : ''}</p>
+      <div style="display:flex;gap:8px;margin-top:16px"><button class="btn p" data-act="saveNow">Save now</button><button class="btn" data-act="disconnect">Disconnect this computer</button></div>`;
+    return;
+  }
+  $('#connBody').innerHTML = `
+    <p>Quotes are saved on this computer only. Connect the GitHub repository to keep them safe and share them, and rates, with everyone in the office. Each computer connects once.</p>
+    <ol class="steps">
+      <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub's new token page</a> while signed in to the account that owns the repository.</li>
+      <li>Give it a name, then under Repository access choose <b>Only select repositories</b> and pick <b>${esc(g.repo)}</b>.</li>
+      <li>Under Permissions, set <b>Contents</b> to <b>Read and write</b>.</li>
+      <li>Generate the token, copy it, and paste it below.</li>
+    </ol>
+    <div class="rgrid cgrid">
+      <label class="f">Repository<input class="u" id="cRepo" value="${esc(g.owner)}/${esc(g.repo)}" autocomplete="off" spellcheck="false"></label>
+      <label class="f">Token<input class="u" id="cTok" type="password" placeholder="github_pat_…" autocomplete="off" spellcheck="false"></label>
+    </div>
+    <p class="err" id="cErr"></p>
+    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn p" data-act="doConnect" id="cBtn">Connect</button></div>
+    <p style="font-size:13px;margin-top:16px">The token is kept in this browser only and is never saved to the repository.</p>`;
+}
+async function doConnect() {
+  const m = /^([\w.-]+)\/([\w.-]+)$/.exec($('#cRepo').value.trim()), tok = $('#cTok').value.trim(), err = $('#cErr'), btn = $('#cBtn');
+  if (!m) { err.textContent = 'Enter the repository as owner/name, for example tmoosabhoy6/FHMUM-Quote-gen.'; return; }
+  if (!tok) { err.textContent = 'Paste the token from GitHub.'; return; }
+  btn.disabled = true; btn.textContent = 'Connecting'; err.textContent = '';
+  GH.cfg = { token: tok, owner: m[1], repo: m[2], branch: 'data' }; GH.sha = {};
+  try {
+    await gh(base());
+    try { await gh(`${base()}/git/ref/heads/${BR()}`); } catch (e) { if (e.status === 404) await ensureBranch(); else throw e; }
+    store.set('zq.gh', GH.cfg);
+    $('#dlgC').close();
+    toast('Connected. Quotes now save to GitHub.');
+    await pullRemote(true);
+  } catch (e) {
+    GH.cfg = {};
+    err.textContent = e.status === 409 ? 'The repository is empty. Push the app to it first.' : errText(e);
+    btn.disabled = false; btn.textContent = 'Connect';
+  }
+}
+
+/* ───────── saved quotes dialog ───────── */
+function renderQuotes(state) {
+  const q = $('#qSearch').value.trim().toLowerCase();
+  const docs = Object.values(DOCS).filter(d => !q || (d.name || '').toLowerCase().includes(q)).sort((a, b) => b.updated - a.updated);
+  $('#qState').textContent = state || (docs.length ? '' : q ? 'No saved quote matches that name.' : 'No saved quotes yet. Every quote you start is saved here automatically.');
+  $('#qList').innerHTML = docs.map(d => {
+    const bits = [d.travel ? `Travels ${d.travel}` : 'No flights yet', d.pax ? `${d.pax} ${plural(d.pax, 'person', 'people')}` : '', d.price ? `${d.price.label} ${d.price.cat.toLowerCase()} ₹${INR.format(d.price.inr)}` : ''].filter(Boolean).join(', ');
+    return `<li class="${d.id === S.id ? 'cur' : ''}"><button class="qo" data-act="openQ" data-id="${esc(d.id)}"><b>${esc(d.name || 'Untitled quote')}</b><span>${esc(bits)}</span></button><span class="qt">${ago(d.updated)}</span><button class="ic" data-act="delQ" data-id="${esc(d.id)}" title="Delete this quote" aria-label="Delete ${esc(d.name || 'untitled quote')}">${ICON.x}</button></li>`;
+  }).join('');
+}
+async function openQuotes() {
+  $('#qSearch').value = '';
+  renderQuotes(ghOn() ? 'Checking GitHub for quotes saved on other computers.' : '');
+  $('#dlgQ').showModal();
+  if (!ghOn()) return;
+  try { reconcile(await listRemote()); renderQuotes(''); }
+  catch (e) { renderQuotes(errText(e)); }
+}
+function openQuote(id) {
+  const d = DOCS[id]; if (!d) return;
+  if (dirtyQ) flush();
+  S = loadS(d.state); OPEN.clear(); store.set('zq.cur', S.id);
+  renderAll(); $('#dlgQ').close();
+  toast(`Opened ${d.name || 'untitled quote'}.`);
+}
+async function deleteQuote(id) {
+  const d = DOCS[id]; if (!d) return;
+  if (!confirm(`Delete “${d.name || 'Untitled quote'}”?${ghOn() ? ' It is removed from GitHub too.' : ''}`)) return;
+  delete DOCS[id]; saveDocs();
+  if (id === S.id) { S = freshS(); dirtyQ = false; OPEN.clear(); store.set('zq.cur', S.id); renderAll(); }
+  renderQuotes('');
+  if (ghOn()) { try { await ghDel(`quotes/${id}.json`, `Delete quote: ${d.name || 'Untitled quote'}`); } catch (e) { setStatus('error', errText(e)); } }
+  toast('Quote deleted.');
+}
+
+/* ───────── Excel export ───────── */
+let xlP;
+const loadXL = () => xlP || (xlP = new Promise((res, rej) => {
+  if (window.ExcelJS) return res(window.ExcelJS);
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js';
+  s.onload = () => res(window.ExcelJS);
+  s.onerror = () => { xlP = null; rej(new Error('The Excel file needs an internet connection the first time. Check the connection and try again.')); };
+  document.head.appendChild(s);
+}));
+const colL = n => { let s = ''; while (n > 0) { const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); } return s; };
+const INR_FMT = '[>=10000000]##\\,##\\,##\\,##0;[>=100000]##\\,##\\,##0;##,##0';
+
+async function exportXlsx() {
+  const A = analyze(), cols = buildCols(A);
+  if (!cols.length) return toast('Add the group size and flights first.');
+  let XL; try { XL = await loadXL(); } catch (e) { return toast(e.message); }
+  const rows = buildRows(A), rate = num(S.rate);
+  const wb = new XL.Workbook(), ws = wb.addWorksheet('Quote', { views: [{ state: 'frozen', xSplit: 1, ySplit: 2 }] });
+  const lastC = 1 + cols.length * 2, F = { name: 'Calibri', size: 10 }, FB = { ...F, bold: true };
+  const thin = { style: 'thin', color: { argb: 'FF000000' } }, dot = { style: 'dotted', color: { argb: 'FF808080' } };
+  ws.getColumn(1).width = 54;
+  cols.forEach((c, j) => { ws.getColumn(2 + 2 * j).width = 8; ws.getColumn(3 + 2 * j).width = 11; });
+
+  const lay = []; let r = 3;
+  rows.forEach(row => { if (row.k === 'usd' || row.k === 'gl' || row.k === 'sub') r++; lay.push({ ...row, r: r++ }); });
+  const end = r - 1, rateRow = end + 3;
+  const at = k => lay.find(x => x.k === k);
+  const secRow = lay.find(x => x.sec).r, usdRow = at('usd').r, subRow = at('sub').r, tickRow = at('ticket').r;
+  const $rate = `$B$${rateRow}`;
+
+  ws.getCell(1, 1).value = quoteTitle(A);
+  ws.getCell(2, 1).value = 'EXPENSES HEAD';
+  for (let j = 0; j < cols.length;) {
+    let e = j; while (e + 1 < cols.length && cols[e + 1].g === cols[j].g) e++;
+    ws.mergeCells(1, 2 + 2 * j, 1, 3 + 2 * e);
+    ws.getCell(1, 2 + 2 * j).value = cols[j].head.join('\n');
+    j = e + 1;
+  }
+  cols.forEach((c, j) => { ws.getCell(2, 2 + 2 * j).value = c.count; ws.getCell(2, 3 + 2 * j).value = c.catL; });
+
+  lay.forEach(row => {
+    const RW = ws.getRow(row.r);
+    RW.getCell(1).value = row.k === 'usd' ? { formula: `"TOTAL USD @RS."&${$rate}`, result: row.label } : row.label;
+    if (row.sec) return;
+    cols.forEach((c, j) => {
+      const uc = 2 + 2 * j, ic = uc + 1, U = colL(uc), I = colL(ic), v = c.v;
+      if (row.k === 'usd') {
+        RW.getCell(uc).value = { formula: `SUM(${U}${secRow + 1}:${U}${usdRow - 1})`, result: v.usd };
+        RW.getCell(ic).value = { formula: `ROUND(${U}${usdRow}*${$rate},0)`, result: v.usdInr };
+      } else if (row.k === 'sub') RW.getCell(ic).value = { formula: `SUM(${I}3:${I}${subRow - 1})`, result: v.sub };
+      else if (row.k === 'grand') RW.getCell(ic).value = { formula: `${I}${subRow}+${I}${tickRow}`, result: v.grand };
+      else if (row.cur === 'USD') RW.getCell(uc).value = Math.round((v[row.k] || 0) * 100) / 100;
+      else RW.getCell(ic).value = v[row.k] || 0;
+    });
+  });
+
+  for (let y = 1; y <= end; y++) {
+    const row = ws.getRow(y), def = lay.find(x => x.r === y);
+    const bold = y <= 2 || (def && (def.sec || def.tot || def.grand || def.bold));
+    for (let x = 1; x <= lastC; x++) {
+      const c = row.getCell(x);
+      c.font = bold ? FB : F;
+      c.border = { left: x === 1 || x % 2 === 0 ? thin : dot, right: x === lastC ? thin : undefined, top: y <= 3 ? thin : dot, bottom: y <= 2 || y === end ? thin : dot };
+      if (x > 1) {
+        c.alignment = y === 1 ? { horizontal: 'center', vertical: 'middle', wrapText: true } : { horizontal: y === 2 ? 'center' : 'right', vertical: 'middle' };
+        if (y > 2) c.numFmt = x % 2 === 0 ? '#,##0' : INR_FMT;
+      } else c.alignment = { vertical: 'middle', wrapText: y === 1 };
+      if (y <= 2) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF3EFE6' } };
+      if (def && def.grand) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFF2CC' } };
+    }
+  }
+  ws.getRow(1).height = 46;
+  ws.getCell(1, 1).font = { ...FB, size: 11 };
+  lay.forEach(row => cols.forEach((c, j) => { const cell = ws.getCell(row.r, 2 + 2 * j); const val = cell.value && typeof cell.value === 'object' ? cell.value.result : cell.value; if (typeof val === 'number' && !Number.isInteger(val)) cell.numFmt = '#,##0.00'; }));
+
+  let y = end + 2;
+  const put = (a, b, bold) => { const c1 = ws.getCell(y, 1), c2 = ws.getCell(y, 2); c1.value = a; c1.font = bold ? FB : F; if (b !== undefined) { c2.value = b; c2.font = bold ? FB : F; } y++; };
+  put('QUOTE DETAILS', undefined, true);
+  put('USD → INR RATE', rate, true); ws.getCell(rateRow, 2).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFF2CC' } };
+  put(`PAX: ${A.a} ADULT, ${A.c} CHD, ${A.i} INF`);
+  A.legs.forEach(l => put(`${l.fn || '-'}   ${l.from} to ${l.to}   ${fmtAbs(l.dep)} to ${fmtAbs(l.arr)}`));
+  if (A.iraq) put(`IRAQ: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
+  A.cairo.forEach(s => {
+    put(`CAIRO: ${pkgName(s.pkg).toUpperCase()}, LANDS ${fmtAbs(s.arr)}, LEAVES FAIZ ${fmtAbs(s.fd)}, EGYPT VISA ${s.visaFree ? 'FREE' : '₹' + R.egypt.inr}: ${s.visaWhy}`);
+    s.warn.forEach(w => put('NOTE: ' + w));
+  });
+  A.warn.forEach(w => put('NOTE: ' + w.replace(/<[^>]+>/g, '')));
+
+  const buf = await wb.xlsx.writeBuffer();
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+  a.download = `${(String(S.name || '').trim() || 'Ziyarat quote').replace(/[\\/:*?"<>|]/g, '')}${A.legs.length ? ' ' + dmy(A.legs[0].dep) : ''}.xlsx`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast('Excel downloaded.');
+}
+
+/* ───────── events ───────── */
+function onEdit(e) {
+  const t = e.target, ps = t.dataset.s, pr = t.dataset.r;
+  if (t.id === 'qSearch') return renderQuotes('');
+  if (!ps && !pr) return;
+  let v = t.type === 'checkbox' ? t.checked : t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value;
+  if ((t.classList.contains('fn') || t.classList.contains('ap')) && typeof v === 'string') v = v.toUpperCase();
+  if (e.type === 'change' && t.hasAttribute('data-time')) { v = normTime(v); t.value = v; }
+  if (ps) {
+    setPath(S, ps, v);
+    if (e.type === 'change' && /^legs\.\d+\.fn$/.test(ps)) autofill(+ps.split('.')[1]);
+    if (/^ovr\.cairo\./.test(ps) && !v) delete S.ovr.cairo[ps.split('.')[2]];
+    update(e.type === 'input' && !!t.closest('#trip'));
+    touchQ();
+  } else {
+    setPath(R, pr, v);
+    update();
+    touchR();
+  }
+}
+function autofill(i) {
+  const l = S.legs[i], k = KNOWN[normFn(l.fn)];
+  if (!k) return;
+  let filled = false;
+  for (const f of ['from', 'to', 'dep', 'arr']) if (k[f] && !l[f]) { l[f] = k[f]; filled = true; }
+  if (filled) { renderLegs(); toast(`Filled in the usual ${normFn(l.fn)} ${k.dep ? 'route and times' : 'route'}. Check them with the search button.`); }
+}
+
+document.addEventListener('input', onEdit);
+document.addEventListener('change', onEdit);
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const i = +b.dataset.i, act = b.dataset.act;
+  switch (act) {
+    case 'addLeg': { const p = S.legs[S.legs.length - 1]; S.legs.push({ ...blankLeg(), from: (p && p.to) || '', date: (p && p.date) || '' }); renderLegs(); const n = document.querySelectorAll('.leg .fn'); n[n.length - 1].focus(); break; }
+    case 'delLeg': S.legs.splice(i, 1); if (!S.legs.length) S.legs.push(blankLeg()); S.ovr.cairo = {}; renderLegs(); break;
+    case 'off': { const l = S.legs[i]; l.off = String((legOff(l) + 1) % 3); break; }
+    case 'google': { const l = S.legs[i]; const q = `${normFn(l.fn) || (l.from + ' to ' + l.to)} flight schedule ${l.date || ''}`.trim(); window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener'); return; }
+    case 'ovr': { const k = b.dataset.k; OPEN.has(k) ? OPEN.delete(k) : OPEN.add(k); update(); return; }
+    case 'clrIraq': S.ovr.iraqN = ''; break;
+    case 'addMisc': S.misc.push({ name: '', cur: 'INR', v: ['', '', ''] }); renderMisc(); $('#misc .misc:last-child .mn').focus(); break;
+    case 'delMisc': S.misc.splice(i, 1); renderMisc(); break;
+    case 'tkAll': { const all = TK.every(t => S.tk[t.id]); TK.forEach(t => (S.tk[t.id] = !all)); hydrate(document); break; }
+    case 'bd': bdOpen = !bdOpen; update(); if (bdOpen) $('#bd').scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
+    case 'rates': renderRates(); $('#dlgR').showModal(); return;
+    case 'quotes': openQuotes(); return;
+    case 'connect': renderConn(); $('#dlgC').showModal(); return;
+    case 'doConnect': doConnect(); return;
+    case 'saveNow': dirtyQ = hasContent(S); dirtyR = true; backoff = false; flush(); return;
+    case 'disconnect': if (!confirm('Disconnect this computer from GitHub? Quotes stay saved in the repository.')) return; GH.cfg = {}; store.set('zq.gh', {}); setStatus('local'); renderConn(); return;
+    case 'openQ': openQuote(b.dataset.id); return;
+    case 'delQ': deleteQuote(b.dataset.id); return;
+    case 'close': b.closest('dialog').close(); return;
+    case 'resetRates': if (!confirm('Put every rate back to the original rate card?')) return; R = clone(DEF_R); renderRates(); update(); touchR(); return;
+    case 'new': if (dirtyQ) flush(); S = freshS(); OPEN.clear(); bdOpen = false; store.set('zq.cur', S.id); renderAll(); $('.title').focus(); toast('New quote started. The last one is in Saved quotes.'); return;
+    case 'sample': loadSample(); return;
+    case 'xlsx': exportXlsx(); return;
+    default: return;
+  }
+  update(); touchQ();
+});
+window.addEventListener('online', () => { backoff = false; if (dirtyQ || dirtyR) flush(); });
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && (dirtyQ || dirtyR)) flush(); });
+
+function loadSample() {
+  const id = S.id, created = S.created;
+  S = loadS({
+    id, created, name: 'Sample group', adults: 32, children: 2, infants: 1, rate: 96.5,
+    legs: [
+      { fn: 'MS 969', from: 'BOM', to: 'CAI', date: '2026-11-21', dep: '02:50', arr: '05:50', off: '' },
+      { fn: 'MS 627', from: 'CAI', to: 'BGW', date: '2026-11-22', dep: '00:35', arr: '03:45', off: '' },
+      { fn: 'MS 628', from: 'BGW', to: 'CAI', date: '2026-11-30', dep: '04:45', arr: '06:15', off: '' },
+      { fn: 'MS 968', from: 'CAI', to: 'BOM', date: '2026-11-30', dep: '16:45', arr: '01:45', off: '' }
+    ],
+    tk: { p100: true, p75: false, p50: true, d100: false },
+    inr: { ...clone(DEF_S.inr), gl: [3946, 3946, 0], ticket: [65000, 65000, 18200] }
+  });
+  renderAll(); touchQ();
+  toast('Example loaded. The return flight times are made up.');
+}
+
+/* ───────── start ───────── */
+renderAll();
+store.set('zq.cur', S.id);
+if (ghOn()) pullRemote(false); else { setStatus('local'); publicRates(); }
+(window.requestIdleCallback || (f => setTimeout(f, 1500)))(() => loadXL().catch(() => {}));
+</script>
+</body>
+</html>
