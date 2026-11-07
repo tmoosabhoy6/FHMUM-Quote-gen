@@ -59,8 +59,7 @@ svg{display:block}
 .u::placeholder{color:#ADB7BA}
 input[type=number]{-moz-appearance:textfield;appearance:textfield}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-input[type=date].u{padding-right:0}
-input[type=date]::-webkit-calendar-picker-indicator{opacity:.45;cursor:pointer}
+.u.bad,.u.bad:focus{border-bottom-color:var(--red);box-shadow:0 1px 0 var(--red);color:var(--red)}
 select.u{cursor:pointer;padding-right:4px}
 
 /* heading block */
@@ -412,6 +411,28 @@ const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct
 const fmtT = m => { m = ((m % 1440) + 1440) % 1440; const h = Math.floor(m / 60); return `${h % 12 || 12}:${String(m % 60).padStart(2, '0')} ${h < 12 ? 'am' : 'pm'}`; };
 const fmtAbs = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]}, ${fmtT(t % 1440)}`; };
 const fmtDay = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
+/* Dates are typed as text so every browser behaves the same (Safari's date box can hand over an empty value).
+   Accepts 7 Nov, 7 Nov 2026, Nov 7, 07/11/2026, 7-11-26, 7.11, 07112026, 2026-11-07. Day comes before month. */
+const MONS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+function parseDate(s) {
+  s = String(s || '').trim().toLowerCase().replace(/,/g, ' ').replace(/\s+/g, ' ');
+  if (!s) return '';
+  let d, m, y, x;
+  if ((x = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s))) [y, m, d] = [+x[1], +x[2], +x[3]];
+  else if ((x = /^(\d{1,2})[\/.\- ](\d{1,2})(?:[\/.\- ](\d{2}|\d{4}))?$/.exec(s))) [d, m, y] = [+x[1], +x[2], x[3]];
+  else if ((x = /^(\d{2})(\d{2})(\d{2}|\d{4})?$/.exec(s))) [d, m, y] = [+x[1], +x[2], x[3]];
+  else if ((x = /^(\d{1,2})(?:st|nd|rd|th)?[ \-\/.]?([a-z]{3,})\.?(?:[ \-\/.]?(\d{2}|\d{4}))?$/.exec(s))) [d, m, y] = [+x[1], MONS.indexOf(x[2].slice(0, 3)) + 1, x[3]];
+  else if ((x = /^([a-z]{3,})\.?[ \-]?(\d{1,2})(?:st|nd|rd|th)?(?:[ \-\/.]?(\d{2}|\d{4}))?$/.exec(s))) [m, d, y] = [MONS.indexOf(x[1].slice(0, 3)) + 1, +x[2], x[3]];
+  else return null;
+  if (!m || m > 12 || !d || d > 31) return null;
+  const now = new Date(), today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 864e5;
+  if (y == null || y === '') { y = now.getFullYear(); if (Date.UTC(y, m - 1, d) / 864e5 < today - 60) y++; }   // no year: the next time that date comes round
+  else { y = +y; if (y < 100) y += 2000; }
+  const t = new Date(Date.UTC(y, m - 1, d));
+  if (t.getUTCMonth() !== m - 1) return null;                                                                 // e.g. 31 Nov
+  return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+const showDate = iso => { const D = dayOf(iso); if (D == null) return iso || ''; const d = new Date(D * 864e5); return `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
 const dmy = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${d.getUTCFullYear()}`; };
 
 function parsedLegs() {
@@ -582,7 +603,8 @@ let bdOpen = false, LAST = { A: null, cols: [] };
 function hydrate(root) {
   root.querySelectorAll('[data-s]').forEach(el => {
     const v = getPath(S, el.dataset.s);
-    if (el.type === 'checkbox') el.checked = !!v; else if (document.activeElement !== el) el.value = v ?? '';
+    if (el.type === 'checkbox') el.checked = !!v;
+    else if (document.activeElement !== el) { el.value = el.hasAttribute('data-date') ? showDate(v) : v ?? ''; el.classList.remove('bad'); }
   });
   root.querySelectorAll('[data-r]').forEach(el => { if (document.activeElement !== el) el.value = getPath(R, el.dataset.r) ?? ''; });
 }
@@ -592,7 +614,7 @@ function renderLegs() {
     <input class="u fn" data-s="legs.${i}.fn" placeholder="MS 969" maxlength="9" autocomplete="off" aria-label="Flight ${i + 1} number">
     <input class="u ap from" data-s="legs.${i}.from" list="aps" placeholder="BOM" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} from">
     <input class="u ap to" data-s="legs.${i}.to" list="aps" placeholder="CAI" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} to">
-    <input class="u dt" type="date" data-s="legs.${i}.date" aria-label="Flight ${i + 1} date">
+    <input class="u dt" data-s="legs.${i}.date" data-date placeholder="7 Nov" autocomplete="off" spellcheck="false" aria-label="Flight ${i + 1} date, for example 7 Nov or 07/11/2026">
     <input class="u dep" data-s="legs.${i}.dep" data-time placeholder="02:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} departs">
     <input class="u arr" data-s="legs.${i}.arr" data-time placeholder="05:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} arrives">
     <button class="day" data-act="off" data-i="${i}" title="Which day it lands. Click to change."></button>
@@ -624,12 +646,22 @@ const fact = (k, title, detail, ovr) => `<li><div><b>${title}</b>${detail ? `<p>
   (ovr && OPEN.has(k) ? `<div class="ovr">${ovr}</div>` : '') + '</li>';
 const warnLi = w => `<li class="warn"><span>${w}</span></li>`;
 
+function legGaps() {           // what each half-filled flight still needs, in plain words
+  return S.legs.map((l, i) => {
+    if (!(l.fn || l.from || l.to || l.date || l.dep || l.arr)) return null;
+    const miss = [!l.from && 'where it leaves from', !l.to && 'where it lands', dayOf(l.date) == null && 'a date', tmin(l.dep) == null && 'a departure time', tmin(l.arr) == null && 'an arrival time'].filter(Boolean);
+    if (!miss.length) return null;
+    const list = miss.length > 1 ? miss.slice(0, -1).join(', ') + ' and ' + miss[miss.length - 1] : miss[0];
+    return `Flight ${i + 1}${l.fn ? ` (${esc(l.fn)})` : ''} needs ${list}.`;
+  }).filter(Boolean);
+}
 function renderTrip(A) {
-  const out = [];
+  const out = [], gaps = legGaps();
   if (!A.legs.length) {
-    $('#trip').innerHTML = '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas and the Cairo package are worked out from them.</p></li>';
+    $('#trip').innerHTML = gaps.length ? gaps.map(warnLi).join('') : '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas and the Cairo package are worked out from them.</p></li>';
     return;
   }
+  gaps.forEach(g => out.push(warnLi(g)));
   if (A.iraq) {
     const q = A.iraq, ch = q.nights !== q.auto;
     const route = q.key === 'BGW' ? 'Baghdad both ways' : q.key === 'NJF' ? 'Najaf both ways' : `${apN(q.inAp)} one way, ${apN(q.outAp)} the other`;
@@ -1140,6 +1172,13 @@ function onEdit(e) {
   let v = t.type === 'checkbox' ? t.checked : t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value;
   if ((t.classList.contains('fn') || t.classList.contains('ap')) && typeof v === 'string') v = v.toUpperCase();
   if (e.type === 'change' && t.hasAttribute('data-time')) { v = normTime(v); t.value = v; }
+  if (t.hasAttribute('data-date')) {
+    const iso = parseDate(t.value);
+    v = iso || '';
+    if (e.type === 'change' && iso) t.value = showDate(iso);
+    t.classList.toggle('bad', e.type === 'change' && !!t.value.trim() && !iso);
+  }
+  if (t.hasAttribute('data-time')) t.classList.toggle('bad', e.type === 'change' && !!t.value.trim() && tmin(v) == null);
   if (ps) {
     setPath(S, ps, v);
     if (e.type === 'change' && /^legs\.\d+\.fn$/.test(ps)) autofill(+ps.split('.')[1]);
