@@ -2,14 +2,14 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794069545320,
+ "updated": 1794069550437,
  "travel": "",
  "pax": 47,
  "price": null,
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794069545320,
+  "updated": 1794069550437,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -37,7 +37,7 @@
   ],
   "iraqAcc": {
    "faiz": true,
-   "hotel": true
+   "hotel": false
   },
   "cairoAcc": {
    "faiz": true,
