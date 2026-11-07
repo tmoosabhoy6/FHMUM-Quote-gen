@@ -2,18 +2,18 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071524972,
+ "updated": 1794071548148,
  "travel": "14 Nov 2026",
  "pax": 47,
  "price": {
   "label": "Faiz Nizam",
   "cat": "Adult",
-  "inr": 138075
+  "inr": 143575
  },
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071524972,
+  "updated": 1794071548148,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -95,8 +95,8 @@
     1600
    ],
    "ticket": [
-    58500,
-    58500,
+    64000,
+    64000,
     16000
    ],
    "rida": [
