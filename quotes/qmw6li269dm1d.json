@@ -2,7 +2,7 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071741797,
+ "updated": 1794071746457,
  "travel": "14 Nov 2026",
  "pax": 37,
  "price": {
@@ -13,7 +13,7 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071741797,
+  "updated": 1794071746457,
   "name": "1st Nov IA",
   "adults": 30,
   "children": 5,
@@ -112,8 +112,8 @@
   },
   "split": {
    "a": 20,
-   "c": "",
-   "i": ""
+   "c": 3,
+   "i": 1
   },
   "misc": [],
   "ovr": {
