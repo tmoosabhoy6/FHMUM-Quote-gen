@@ -2,9 +2,9 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794071552414,
+ "updated": 1794071689093,
  "travel": "14 Nov 2026",
- "pax": 47,
+ "pax": 37,
  "price": {
   "label": "Faiz Nizam",
   "cat": "Adult",
@@ -13,9 +13,9 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794071552414,
+  "updated": 1794071689093,
   "name": "1st Nov IA",
-  "adults": 40,
+  "adults": 30,
   "children": 5,
   "infants": 2,
   "rate": 96.5,
@@ -109,6 +109,11 @@
     3000,
     0
    ]
+  },
+  "split": {
+   "a": "",
+   "c": "",
+   "i": ""
   },
   "misc": [],
   "ovr": {
