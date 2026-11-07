@@ -2,14 +2,14 @@
  "id": "qmw6li269dm1d",
  "name": "1st Nov IA",
  "created": 1794067556481,
- "updated": 1794069422721,
+ "updated": 1794069426380,
  "travel": "",
  "pax": 47,
  "price": null,
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794069422721,
+  "updated": 1794069426380,
   "name": "1st Nov IA",
   "adults": 40,
   "children": 5,
@@ -73,7 +73,7 @@
     1600
    ],
    "ticket": [
-    "",
+    58500,
     "",
     ""
    ],
