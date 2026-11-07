@@ -1,0 +1,97 @@
+{
+ "id": "qmw6li269dm1d",
+ "name": "1st Nov IA",
+ "created": 1794067556481,
+ "updated": 1794069269506,
+ "travel": "",
+ "pax": 0,
+ "price": null,
+ "state": {
+  "id": "qmw6li269dm1d",
+  "created": 1794067556481,
+  "updated": 1794069269506,
+  "name": "1st Nov IA",
+  "adults": "",
+  "children": "",
+  "infants": "",
+  "rate": 96.5,
+  "legs": [
+   {
+    "fn": "",
+    "from": "",
+    "to": "",
+    "date": "",
+    "dep": "",
+    "arr": "",
+    "off": ""
+   },
+   {
+    "fn": "",
+    "from": "",
+    "to": "",
+    "date": "",
+    "dep": "",
+    "arr": "",
+    "off": ""
+   }
+  ],
+  "iraqAcc": {
+   "faiz": true,
+   "hotel": false
+  },
+  "cairoAcc": {
+   "faiz": true,
+   "hotel": true
+  },
+  "tk": {
+   "p100": false,
+   "p75": false,
+   "p50": false,
+   "d100": false
+  },
+  "addRida": false,
+  "add80": false,
+  "inr": {
+   "gl": [
+    0,
+    0,
+    0
+   ],
+   "coord": [
+    2000,
+    2000,
+    0
+   ],
+   "hadiyah": [
+    1100,
+    1100,
+    0
+   ],
+   "admin": [
+    1600,
+    1600,
+    1600
+   ],
+   "ticket": [
+    "",
+    "",
+    ""
+   ],
+   "rida": [
+    3400,
+    3400,
+    0
+   ],
+   "p80": [
+    3000,
+    3000,
+    0
+   ]
+  },
+  "misc": [],
+  "ovr": {
+   "iraqN": "",
+   "cairo": {}
+  }
+ }
+}
