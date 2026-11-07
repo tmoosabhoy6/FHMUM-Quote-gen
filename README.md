@@ -33,8 +33,8 @@ The token is stored only in each browser and is never written to the repository.
 
 ## Rates
 
-Rates come from the Faiz-e-Haakimi Qahera Lawazim (effective 29/08/2026 to 02/02/2027) and the Faiz e Husaini Iraq transport circular. Change them from **Rates** in the app. Changes apply to everyone once saved.
+Rates come from the Faiz-e-Haakimi Qahera Lawazim (effective 29/08/2026 to 02/02/2027) and the Faiz e Husaini Iraq transport circular. Change them from **Settings** in the app. Changes apply to everyone once saved.
 
 ## Saved flights
 
-Typing a flight number fills in its route and departure and arrival times; only the date is left to type. The first time a flight number is used, type its route and times in full once and the app remembers it for every quote and every computer. Changing a time on a quote changes it for that quote only. To change or remove a saved flight for good, use **Rates**, then **Saved flights**.
+Typing a flight number fills in its route and departure and arrival times; only the date is left to type. The first time a flight number is used, type its route and times in full once and the app remembers it for every quote and every computer. Changing a time on a quote changes it for that quote only. To change or remove a saved flight for good, use **Settings**, then **Saved flights**.

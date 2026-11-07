@@ -266,7 +266,7 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
   <nav class="bar-r">
     <button class="sync" id="sync" data-act="connect" data-st="local" title=""><i></i><span>Saved on this device</span></button>
     <button class="tb" data-act="quotes">Saved quotes</button>
-    <button class="tb" data-act="rates">Rates</button>
+    <button class="tb" data-act="rates">Settings</button>
     <button class="tb strong" data-act="new">New quote</button>
   </nav>
 </header>
@@ -332,7 +332,7 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
   <section id="bd" aria-label="Full breakdown"></section>
 </main>
 
-<dialog id="dlgR" aria-labelledby="dlgRt"><div class="dh"><h3 id="dlgRt">Rates</h3><div style="display:flex;gap:8px"><button class="btn" data-act="resetRates">Reset to defaults</button><button class="btn p" data-act="close">Done</button></div></div><div class="db" id="rateBody"></div></dialog>
+<dialog id="dlgR" aria-labelledby="dlgRt"><div class="dh"><h3 id="dlgRt">Settings</h3><div style="display:flex;gap:8px"><button class="btn" data-act="resetRates">Reset rates to defaults</button><button class="btn p" data-act="close">Done</button></div></div><div class="db" id="rateBody"></div></dialog>
 <dialog id="dlgQ" aria-labelledby="dlgQt"><div class="dh"><h3 id="dlgQt">Saved quotes</h3><button class="btn" data-act="close">Close</button></div><div class="db"><input class="u qs" id="qSearch" placeholder="Search by name" aria-label="Search saved quotes" autocomplete="off"><p id="qState"></p><ul class="ql" id="qList"></ul></div></dialog>
 <dialog id="dlgC" aria-labelledby="dlgCt"><div class="dh"><h3 id="dlgCt">Save to GitHub</h3><button class="btn" data-act="close">Close</button></div><div class="db" id="connBody"></div></dialog>
 <datalist id="aps"><option value="BOM"><option value="CAI"><option value="BGW"><option value="NJF"><option value="KWI"><option value="DXB"><option value="DOH"><option value="BAH"><option value="AMM"><option value="IST"><option value="JED"><option value="MED"></datalist>
@@ -1391,7 +1391,7 @@ function autofill(i) {
 }
 
 /* A flight typed in full that isn't saved yet becomes a saved flight. A saved flight is left alone, so a one-off change of time
-   stays on this quote; change it for good from Rates. */
+   stays on this quote; change it for good from Settings. */
 function learnLeg(i) {
   const l = S.legs[i];
   if (!l) return;
