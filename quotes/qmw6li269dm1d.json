@@ -2,18 +2,18 @@
  "id": "qmw6li269dm1d",
  "name": "15 nov MS",
  "created": 1794067556481,
- "updated": 1794081415825,
+ "updated": 1794500321282,
  "travel": "14 Nov 2026",
  "pax": 37,
  "price": {
-  "label": "Faiz Nizam",
+  "label": "Hotel Nizam",
   "cat": "Adult",
-  "inr": 143575
+  "inr": 132960
  },
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794081415825,
+  "updated": 1794500321282,
   "name": "15 nov MS",
   "adults": 30,
   "children": 5,
@@ -58,7 +58,7 @@
    }
   ],
   "iraqAcc": {
-   "faiz": true,
+   "faiz": false,
    "hotel": true
   },
   "cairoAcc": {
@@ -66,11 +66,21 @@
    "hotel": true
   },
   "tk": {
-   "p100": true,
-   "p75": false,
-   "p50": false,
-   "d100": false
+   "faiz": {
+    "p100": true,
+    "p75": false,
+    "p50": false,
+    "d100": false
+   },
+   "hotel": {
+    "p100": true,
+    "p75": false,
+    "p50": false,
+    "d100": false
+   }
   },
+  "addGl": true,
+  "addCoord": true,
   "addRida": false,
   "add80": false,
   "inr": {
