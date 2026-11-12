@@ -2,7 +2,7 @@
  "id": "qmw6li269dm1d",
  "name": "15 nov MS",
  "created": 1794067556481,
- "updated": 1794500321282,
+ "updated": 1794500328048,
  "travel": "14 Nov 2026",
  "pax": 37,
  "price": {
@@ -13,7 +13,7 @@
  "state": {
   "id": "qmw6li269dm1d",
   "created": 1794067556481,
-  "updated": 1794500321282,
+  "updated": 1794500328048,
   "name": "15 nov MS",
   "adults": 30,
   "children": 5,
@@ -73,7 +73,7 @@
     "d100": false
    },
    "hotel": {
-    "p100": true,
+    "p100": false,
     "p75": false,
     "p50": false,
     "d100": false
