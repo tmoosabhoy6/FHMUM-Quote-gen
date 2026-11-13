@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ziyarat Quotes</title>
-<meta name="description" content="Per za'ir quotes for Karbala, Najaf and Cairo groups.">
+<meta name="description" content="Per za'ir quotes for Karbala, Najaf, Cairo and Umrah groups.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%231E5E73' stroke-width='2'%3E%3Crect x='5' y='5' width='14' height='14' rx='1'/%3E%3Crect x='5' y='5' width='14' height='14' rx='1' transform='rotate(45 12 12)'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,6 +130,41 @@ h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
 .ck input:checked+span{background:var(--tilet);border-color:var(--tilet2);color:var(--tiled)}
 .ck input:checked+span::before{border-color:var(--tile);background:var(--tile) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
 .ck input:focus-visible+span{outline:2px solid var(--tile);outline-offset:2px}
+.ck span small{font-size:12px;font-weight:500;color:var(--ink3)}
+.ck input:checked+span small{color:var(--tile)}
+
+/* hotel tiers, opened under Hotel Nizam */
+.tiers{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:2px 0 0 7px;padding:8px 0 4px 14px;border-left:2px solid var(--tilet2)}
+.tiers .tl{font-size:13px;color:var(--ink2);margin-right:2px}
+
+/* Cairo stopover families */
+.intro{color:var(--ink2);font-size:13.5px;margin:-4px 0 14px;max-width:560px}
+.fam{border:1px solid var(--line2);border-radius:14px;background:var(--sheet);padding:14px 18px 6px;margin-bottom:14px}
+.fam-h{display:flex;gap:12px;align-items:center}
+.fam-h .fname{flex:1;font:500 20px/1.2 var(--serif);height:38px;border-bottom-color:transparent}
+.fam-h .fname:hover,.fam-h .fname:focus{border-bottom-color:var(--line)}
+.fam-h .fref{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink3)}
+.fam-h .fref .u{width:6.5em;font-size:14px;color:var(--ink)}
+.fam .who2{margin:2px 0 0;font-size:14.5px;line-height:2.1;color:var(--ink2)}
+.fam .who2 .u{display:inline-block;width:2.6em;height:28px;text-align:center;font-weight:600;color:var(--tile)}
+.fam .who2 .u.w{width:5.6em}
+.fam .who2 small{font-size:12.5px;color:var(--ink3)}
+.fam .sel{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:13.5px;color:var(--ink2);margin:2px 0 0}
+.fam .sel label{display:flex;align-items:center;gap:8px}
+.fam .sel select.u{width:auto;height:30px;color:var(--ink)}
+.fam .fl-h{font-size:12.5px;color:var(--ink3);margin:14px 0 2px}
+.fro{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:0 10px;align-items:center;min-height:38px;border-bottom:1px dashed var(--line2);font-size:13.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.fro b{font-weight:600;color:var(--ink)}
+.fro .chg{color:var(--tile);font-size:13px;font-weight:600;padding:2px 6px;border-radius:6px}
+.fro .chg:hover{background:var(--tilet)}
+.leg.own{position:relative}
+.leg.own::before{content:"";position:absolute;left:-10px;top:7px;bottom:7px;width:2px;border-radius:2px;background:var(--gold)}
+.fam .add{margin-top:6px}
+.fam .facts{margin-top:12px}
+.fam .facts li:last-child{border-bottom:0}
+.fam-f{display:flex;justify-content:flex-end;padding:4px 0 10px}
+.btn.s{height:32px;padding:0 12px;font-size:13px;display:inline-flex;align-items:center;gap:7px}
+.btn.s svg{width:15px;height:15px}
 
 /* charges */
 .ch{width:100%;border-collapse:collapse}
@@ -246,6 +281,9 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
   .opts{grid-template-columns:minmax(0,1fr);gap:6px}.opts dd{margin-bottom:10px}
   .misc{grid-template-columns:repeat(3,minmax(0,1fr)) 30px;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line2)}
   .misc .mn{grid-column:1/4}.misc .mc{grid-column:4/5;grid-row:1}.misc .rmv{grid-column:4;grid-row:2}
+  .fam{padding:12px 14px 4px}.fam-h{flex-wrap:wrap;gap:4px 10px}.fam-h .fname{flex-basis:100%;order:-1}
+  .fro{grid-template-columns:70px minmax(0,1fr) auto;padding:6px 0}
+  .leg.own::before{left:-8px}
   .fare-in{padding:20px 16px}
   .fares tbody th{font-size:13px}
   .fares td{font-size:15.5px;padding-left:4px}
@@ -278,7 +316,8 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       <input class="u" type="number" min="0" data-s="adults" placeholder="0" aria-label="Adults"> <span id="lA">adults</span>,
       <input class="u" type="number" min="0" data-s="children" placeholder="0" aria-label="Children"> <span id="lC">children</span> and
       <input class="u" type="number" min="0" data-s="infants" placeholder="0" aria-label="Infants"> <span id="lI">infants</span>.
-      One dollar is ₹<input class="u w" type="number" step="any" data-s="rate" aria-label="Rupees per US dollar">.
+      One dollar is ₹<input class="u w" type="number" step="any" data-s="rate" aria-label="Rupees per US dollar">
+      and one riyal is ₹<input class="u w" type="number" step="any" data-s="sar" aria-label="Rupees per Saudi riyal">.
     </p>
 
     <h2>Flights</h2>
@@ -292,7 +331,10 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
     <h2>Options</h2>
     <dl class="opts">
       <dt id="oIq1">Stay in Iraq</dt>
-      <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label></dd>
+      <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label>
+        <div class="tiers" id="tiers" role="group" aria-label="Hotel Nizam tier"><span class="tl">Hotel tier</span><label class="ck"><input type="checkbox" data-s="hotelTier.B"><span>B <small id="tierB"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.A"><span>A <small id="tierA"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.AP"><span>A+ <small id="tierAP"></small></span></label></div></dd>
+      <dt id="oUm1">Room in Makkah</dt>
+      <dd id="oUm2"><label class="ck"><input type="checkbox" data-s="umrahRoom.share"><span>Sharing</span></label><label class="ck"><input type="checkbox" data-s="umrahRoom.excl"><span>Exclusive</span></label></dd>
       <dt id="oSp1">Split the group</dt>
       <dd id="oSp2" class="split">
         <span>In Hotel Nizam: <input class="u" type="number" min="0" data-s="split.a" placeholder="0" aria-label="Adults in Hotel Nizam"> adults, <input class="u" type="number" min="0" data-s="split.c" placeholder="0" aria-label="Children in Hotel Nizam"> children, <input class="u" type="number" min="0" data-s="split.i" placeholder="0" aria-label="Infants in Hotel Nizam"> infants.</span>
@@ -305,6 +347,13 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       <dt id="tkH1">Hotel takhfeef</dt>
       <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span class="tkFixed">$100 off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
     </dl>
+
+    <div id="soWrap" hidden>
+      <h2>Cairo stopovers</h2>
+      <p class="intro" id="soIntro"></p>
+      <div id="fams"></div>
+      <button class="add" data-act="addFam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a stopover family</button>
+    </div>
 
     <h2>Charges per za'ir, in rupees</h2>
     <table class="ch">
@@ -358,7 +407,7 @@ const ago = t => { const s = (Date.now() - t) / 1000; if (s < 60) return 'just n
 
 /* ───────── rates (Rate card, saved locally and to GitHub) ───────── */
 const DEF_R = {
-  iraq: { faiz: [40, 25], hubb: [20, 15], bed: [10, 10], cutoff: '19:00' },
+  iraq: { faiz: [40, 25], hubb: [20, 15], bed: [10, 10], bedA: [22, 22], bedAP: [40, 40], cutoff: '19:00' },
   visa: { small: 145, large: 130, thr: 6 },
   trans: { NJF: { small: 60, large: 40, thr: 6 }, BGW: { small: 110, large: 70, thr: 6 }, MIX: { small: 85, large: 55, thr: 6 } },
   cairo: {
@@ -370,6 +419,14 @@ const DEF_R = {
     ten: [670, 505], hotel1C: [160, 120], tkLess: [10, 10]
   },
   egypt: { inr: 3500, freeHours: 96 },
+  /* Umrah, from the Faiz Lawazim circular. Lawazim and transport are in riyals; the visa is in rupees.
+     Transport is per adult or child, one fee for every transfer in Saudi Arabia, by route and group size (tiers start at 2, 5, 9, 25 and 40 people). */
+  umrah: {
+    share: [130, 65], excl: [170, 85], vat: 15, muni: 2.5, visa: [12000, 12000, 12000],
+    tiers: [2, 5, 9, 25, 40],
+    routes: { 1: [400, 300, 250, 200, 180], 2: [400, 300, 250, 200, 150], 3: [400, 300, 250, 180, 150],
+              4: [300, 250, 200, 150, 100], 5: [300, 250, 200, 150, 100], 6: [400, 300, 250, 180, 150] }
+  },
   tkFixed: 100,
   v: 2
 };
@@ -390,15 +447,20 @@ const saveRLocal = () => store.set('zq.rates.v2', { updated: RM.updated, rates: 
 const blankLeg = () => ({ fn: '', from: '', to: '', date: '', dep: '', arr: '', off: '' });
 const DEF_S = {
   id: '', created: 0, updated: 0,
-  name: '', adults: '', children: '', infants: '', rate: 96.5,
+  name: '', adults: '', children: '', infants: '', rate: 96.5, sar: 25,
   legs: [blankLeg(), blankLeg()],
   iraqAcc: { faiz: true, hotel: true }, cairoAcc: { faiz: true, hotel: true },
+  hotelTier: { B: true, A: false, AP: false }, umrahRoom: { share: true, excl: false },
+  fams: [],
   tk: { faiz: { p100: false, p75: false, p50: false, d100: false }, hotel: { p100: false, p75: false, p50: false, d100: false } },
   addGl: false, addCoord: false, addRida: false, add80: false,
   inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 0, 0], p80: [3000, 3000, 0] },
   split: { a: '', c: '', i: '' },
-  misc: [], ovr: { iraqN: '', cairo: {} }
+  misc: [], ovr: { iraqN: '', cairo: {}, umrahD: '', umrahMk: '', umrahRoute: '' }
 };
+/* A family inside the group that stays longer in Cairo. `own` replaces group flights by their position in the group's list;
+   `extra` adds flights only they take. Iraq and Umrah are priced with the group. */
+const blankFam = () => ({ id: 'f' + Math.random().toString(36).slice(2, 8), name: '', ref: '', a: '', c: '', i: '', ticket: ['', '', ''], iraq: '', cairo: '', own: {}, extra: [], ovr: {} });
 const freshS = () => { const s = clone(DEF_S); s.id = newId(); s.created = Date.now(); return s; };
 function loadS(st) {
   st = clone(st || {});
@@ -412,6 +474,13 @@ function loadS(st) {
   const s = merge(clone(DEF_S), st);
   if (!Array.isArray(s.legs) || !s.legs.length) s.legs = [blankLeg()];
   if (!Array.isArray(s.misc)) s.misc = [];
+  s.fams = (Array.isArray(s.fams) ? s.fams : []).map(f => {
+    const m = merge(blankFam(), f);
+    if (!m.own || typeof m.own !== 'object' || Array.isArray(m.own)) m.own = {};
+    if (!Array.isArray(m.extra)) m.extra = [];
+    if (!m.ovr || typeof m.ovr !== 'object') m.ovr = {};
+    return m;
+  });
   if (!s.id) s.id = newId();
   if (!s.created) s.created = Date.now();
   return s;
@@ -463,10 +532,29 @@ const tkKey = (io, co) => io || co || 'faiz';
 const tkOn = (key, t) => !!(S.tk[key] && S.tk[key][t.id]);
 
 /* ───────── time & itinerary ───────── */
-const IQ = new Set(['BGW', 'NJF', 'BSR', 'EBL', 'ISU']), IQT = new Set(['BGW', 'NJF']), EG = new Set(['CAI']);
+const IQ = new Set(['BGW', 'NJF', 'BSR', 'EBL', 'ISU']), IQT = new Set(['BGW', 'NJF']), EG = new Set(['CAI']), SA = new Set(['JED', 'MED']);
 const AP = { BGW: 'Baghdad', NJF: 'Najaf', CAI: 'Cairo', BOM: 'Mumbai', BSR: 'Basra', EBL: 'Erbil', KWI: 'Kuwait', DXB: 'Dubai', DOH: 'Doha', BAH: 'Bahrain', AMM: 'Amman', IST: 'Istanbul', JED: 'Jeddah', MED: 'Madinah' };
 const apN = a => AP[a] || esc(a);
-const region = a => (IQ.has(a) ? 'IQ' : EG.has(a) ? 'EG' : '');
+const region = a => (IQ.has(a) ? 'IQ' : EG.has(a) ? 'EG' : SA.has(a) ? 'SA' : '');
+
+/* Hotel Nizam tiers. The Hubb is the same for every tier; only the bed charge changes. B is the standard rate. */
+const TIERS = [{ id: 'B', l: 'B', r: 'bed' }, { id: 'A', l: 'A', r: 'bedA' }, { id: 'AP', l: 'A+', r: 'bedAP' }];
+const tierOf = io => TIERS.find(t => io === 'hotel:' + t.id) || TIERS[0];
+const kindOf = io => (io && io.startsWith('hotel') ? 'hotel' : io);
+const tiersOn = () => { const on = TIERS.filter(t => S.hotelTier[t.id]); return on.length ? on : [TIERS[0]]; };
+const tierNamed = () => S.hotelTier.A || S.hotelTier.AP || S.fams.some(f => /^hotel:A/.test(f.iraq));   // only say "B" once another tier is in play
+const ioName = io => (!io ? '' : io === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam' + (tierOf(io).id !== 'B' || tierNamed() ? ' ' + tierOf(io).l : ''));
+
+/* Umrah transport routes, as numbered in the Faiz circular */
+const ROUTES = {
+  1: 'Jeddah airport, Makkah, Madinah, Makkah, Jeddah airport', 2: 'Jeddah airport, Makkah, Madinah, Jeddah airport', 3: 'Jeddah airport, Madinah, Makkah, Jeddah airport',
+  4: 'Jeddah airport, Makkah, Madinah, Madinah airport', 5: 'Madinah airport, Madinah, Makkah, Jeddah airport', 6: 'Madinah airport, Madinah, Makkah, Madinah airport'
+};
+const ROUTE_X = { 1: 'JED-MAKKAH-MADINA-MAKKAH-JED', 2: 'JED-MAKKAH-MADINA-JED', 3: 'JED-MADINA-MAKKAH-JED', 4: 'JED-MAKKAH-MADINA-MED', 5: 'MED-MADINA-MAKKAH-JED', 6: 'MED-MADINA-MAKKAH-MED' };
+const routeFits = (n, inAp, outAp) => (n <= 3 ? inAp === 'JED' && outAp === 'JED' : n === 4 ? inAp === 'JED' && outAp === 'MED' : n === 5 ? inAp === 'MED' && outAp === 'JED' : inAp === 'MED' && outAp === 'MED');
+const umTax = () => (1 + num(R.umrah.vat) / 100) * (1 + num(R.umrah.muni) / 100);        // VAT and municipal tax, one on top of the other
+const umDay = (kind, ix) => num(R.umrah[kind][ix]) * umTax();
+const r2 = x => Math.round(x * 100) / 100;
 const normFn = s => String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 const tmin = s => { const m = /^(\d{1,2}):(\d{2})$/.exec(s || ''); return m && +m[1] < 24 && +m[2] < 60 ? +m[1] * 60 + +m[2] : null; };
 const dayOf = d => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3]) / 864e5 : null; };
@@ -501,8 +589,8 @@ function parseDate(s) {
 const showDate = iso => { const D = dayOf(iso); if (D == null) return iso || ''; const d = new Date(D * 864e5); return `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
 const dmy = t => { const d = new Date(Math.floor(t / 1440) * 864e5); return `${String(d.getUTCDate()).padStart(2, '0')}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${d.getUTCFullYear()}`; };
 
-function parsedLegs() {
-  return S.legs.map((l, i) => {
+function parsedLegs(legs = S.legs) {
+  return legs.map((l, i) => {
     const D = dayOf(l.date), d = tmin(l.dep), a = tmin(l.arr);
     if (D == null || d == null || a == null || !l.from || !l.to) return null;
     return { i, fn: normFn(l.fn), from: l.from.toUpperCase(), to: l.to.toUpperCase(), dep: D * 1440 + d, arr: (D + legOff(l)) * 1440 + a };
@@ -540,21 +628,49 @@ function cairoRate(p, ci, co, paxAC) {
   return num(C.tbl[p.n][p.w][ci]);
 }
 
-function analyze() {
-  const L = parsedLegs(), a = num(S.adults), c = num(S.children), i = num(S.infants);
-  const A = { legs: L, a, c, i, paxAC: a + c, paxAll: a + c + i, iraq: null, cairo: [], warn: [] };
-  const stays = [];
+/* A family's flights: the group's, with the ones they changed swapped in, plus any only they take. */
+const famLegs = f => S.legs.map((l, i) => (f.own && f.own[i]) || l).concat(f.extra || []);
+
+/* Where the flights stop: each landing that the next flight leaves from is a stay. */
+function itinerary(L) {
+  const warn = [], stays = [];
   for (let k = 0; k < L.length - 1; k++) {
     const ap = L[k].to, r = region(ap);
-    if (L[k + 1].from !== ap) A.warn.push(`${esc(L[k + 1].fn) || 'A flight'} leaves from ${apN(L[k + 1].from)}, but the flight before it lands in ${apN(ap)}.`);
+    // Landing in Jeddah and leaving from Madinah (or Baghdad and Najaf) is a road trip, not a gap.
+    if (L[k + 1].from !== ap && !(r && region(L[k + 1].from) === r)) warn.push(`${esc(L[k + 1].fn) || 'A flight'} leaves from ${apN(L[k + 1].from)}, but the flight before it lands in ${apN(ap)}.`);
     if (r) stays.push({ r, ap, inL: L[k], outL: L[k + 1], arr: L[k].arr, dep: L[k + 1].dep });
   }
-  const iq = [];
+  return { stays, warn };
+}
+/* Back-to-back stays in one country (Baghdad to Najaf, Jeddah to Madinah) are one visit. */
+function visits(stays, r) {
+  const out = [];
   stays.forEach(s => {
-    if (s.r !== 'IQ') return;
-    const last = iq[iq.length - 1];
-    if (last && last.outL === s.inL) { last.outL = s.outL; last.dep = s.dep; } else iq.push({ ...s, inAp: s.ap });
+    if (s.r !== r) return;
+    const last = out[out.length - 1];
+    if (last && last.outL === s.inL) { last.outL = s.outL; last.dep = s.dep; } else out.push({ ...s, inAp: s.ap });
   });
+  return out;
+}
+function cairoStays(stays, ovr) {
+  return stays.filter(s => s.r === 'EG').map((s, idx) => {
+    const au = cairoAuto(s), oc = ovr && ovr[idx], pkg = oc ? fromCode(oc) : au.pkg;
+    const hours = (s.dep - s.arr) / 60, ms = s.inL.fn.startsWith('MS'), h = Math.round(hours);
+    const free = ms && hours < num(R.egypt.freeHours);
+    return { ...s, idx, auto: au.pkg, pkg, fd: au.fd, warn: au.warn, hours, visaFree: free,
+      visaWhy: free ? `Lands on EgyptAir and stays ${h} hours, under ${R.egypt.freeHours}.` : ms ? `Lands on EgyptAir but stays ${h} hours, which is ${R.egypt.freeHours} or more.` : `Lands on ${esc(s.inL.fn) || 'another airline'}, not EgyptAir.` };
+  });
+}
+const hotelDiff = cairo => cairo.some(s => s.pkg.n === 1 && s.pkg.w === 'C');
+const stopTag = cairo => cairo.map(s => (s.pkg.n ? s.pkg.n + 'N' : 'DAY')).join('+');
+
+function analyze() {
+  const L = parsedLegs(), W = { a: num(S.adults), c: num(S.children), i: num(S.infants) };
+  W.paxAC = W.a + W.c; W.paxAll = W.paxAC + W.i;
+  const A = { legs: L, whole: W, iraq: null, umrah: null, cairo: [], fams: [], warn: [] };
+  const it = itinerary(L), stays = it.stays;
+  A.warn.push(...it.warn);
+  const iq = visits(stays, 'IQ');
   if (iq.length) {
     const s = iq[0], outAp = s.outL.from, cut = tmin(R.iraq.cutoff) ?? 1140;
     const late = s.dep % 1440 >= cut;
@@ -563,28 +679,55 @@ function analyze() {
     const key = s.inAp === outAp ? s.inAp : 'MIX', ok = IQT.has(s.inAp) && IQT.has(outAp), t = ok ? R.trans[key] : null;
     if (!ok) A.warn.push(`There is no transport rate for ${apN(s.inAp)} and ${apN(outAp)}. Only Baghdad and Najaf are priced.`);
     if (iq.length > 1) A.warn.push('These flights visit Iraq twice. Only the first visit is priced.');
-    const big = t && A.paxAC >= num(t.thr);
+    const big = t && W.paxAC >= num(t.thr);       // transport and visa go by the whole group, stopover families included
     A.iraq = {
       ...s, outAp, auto, nights, late, cut, key, route: key === 'MIX' ? `${s.inAp}-${outAp}` : s.inAp,
       trans: t ? (big ? num(t.large) : num(t.small)) : 0, transTier: t ? (big ? `${t.thr}+ pax` : `1-${t.thr - 1} pax`) : '',
-      visa: A.paxAll >= num(R.visa.thr) ? num(R.visa.large) : num(R.visa.small)
+      visa: W.paxAll >= num(R.visa.thr) ? num(R.visa.large) : num(R.visa.small)
     };
   }
-  stays.filter(s => s.r === 'EG').forEach((s, idx) => {
-    const au = cairoAuto(s), oc = S.ovr.cairo[idx], pkg = oc ? fromCode(oc) : au.pkg;
-    const hours = (s.dep - s.arr) / 60, ms = s.inL.fn.startsWith('MS'), h = Math.round(hours);
-    const free = ms && hours < num(R.egypt.freeHours);
-    A.cairo.push({ ...s, idx, auto: au.pkg, pkg, fd: au.fd, warn: au.warn, hours, visaFree: free,
-      visaWhy: free ? `Lands on EgyptAir and stays ${h} hours, under ${R.egypt.freeHours}.` : ms ? `Lands on EgyptAir but stays ${h} hours, which is ${R.egypt.freeHours} or more.` : `Lands on ${esc(s.inL.fn) || 'another airline'}, not EgyptAir.` });
+  const sa = visits(stays, 'SA');
+  if (sa.length) {
+    const s = sa[0], outAp = s.outL.from, U = R.umrah;
+    const auto = Math.max(0, Math.floor(s.dep / 1440) - Math.floor(s.arr / 1440));
+    const days = S.ovr.umrahD !== '' && S.ovr.umrahD != null ? Math.max(0, num(S.ovr.umrahD)) : auto;
+    const autoRoute = s.inAp === 'JED' ? (outAp === 'MED' ? 4 : 2) : outAp === 'JED' ? 5 : 6;
+    const route = num(S.ovr.umrahRoute) >= 1 && num(S.ovr.umrahRoute) <= 6 ? num(S.ovr.umrahRoute) : autoRoute;
+    if (!routeFits(route, s.inAp, outAp)) A.warn.push(`Route ${route} is ${ROUTES[route]}, but the flights use ${apN(s.inAp)} and ${apN(outAp)}.`);
+    const th = U.tiers.map(num), pax = W.paxAC;
+    let ti = 0; th.forEach((x, k) => { if (pax >= x) ti = k; });
+    if (pax === 1) A.warn.push('Umrah transport is not given to a single person at these rates. The 2 to 4 people rate is used.');
+    if (pax >= 50) A.warn.push(`Umrah transport rates go up to 49 people. The ${th[th.length - 1]} to 49 rate is used for ${pax}.`);
+    if (sa.length > 1) A.warn.push('These flights visit Saudi Arabia twice. Only the first visit is priced.');
+    const base = num((U.routes[route] || [])[ti]);
+    const mk = S.ovr.umrahMk !== '' && S.ovr.umrahMk != null ? Math.min(days, Math.max(0, num(S.ovr.umrahMk))) : days;
+    A.umrah = { ...s, outAp, auto, days, mk, route, autoRoute, transBase: base, trans: r2(base * (1 + num(U.vat) / 100)),
+      tier: ti < th.length - 1 ? `${th[ti]}-${th[ti + 1] - 1} pax` : `${th[ti]}-49 pax` };
+  }
+  A.cairo = cairoStays(stays, S.ovr.cairo);
+  // Stopover families come out of the group's head count; whoever is left travels on the group's flights.
+  const left = { a: W.a, c: W.c, i: W.i }, names = { a: 'adults', c: 'children', i: 'infants' };
+  S.fams.forEach((f, j) => {
+    const n = {}, title = String(f.name || '').trim() || `Stopover family ${j + 1}`, nm = esc(title);
+    for (const k of ['a', 'c', 'i']) {
+      n[k] = Math.max(0, Math.round(num(f[k])));
+      if (n[k] > left[k]) { A.warn.push(`${nm} has ${n[k]} ${names[k]}, but only ${left[k]} are left in the group. Using ${left[k]}.`); n[k] = left[k]; }
+      left[k] -= n[k];
+    }
+    const fl = parsedLegs(famLegs(f)), fit = itinerary(fl), cairo = cairoStays(fit.stays, f.ovr);
+    A.fams.push({ key: f.id, fam: f, j, title, nm, ...n, paxAC: n.a + n.c, paxAll: n.a + n.c + n.i, legs: fl, cairo, cairoHotelDiff: hotelDiff(cairo), warn: fit.warn });
   });
-  A.cairoHotelDiff = A.cairo.some(s => s.pkg.n === 1 && s.pkg.w === 'C');
+  Object.assign(A, left);
+  A.paxAC = A.a + A.c; A.paxAll = A.paxAC + A.i;
+  A.cairoHotelDiff = hotelDiff(A.cairo);
+  A.main = { key: 'g', fam: null, a: A.a, c: A.c, i: A.i, paxAC: A.paxAC, paxAll: A.paxAll, cairo: A.cairo, cairoHotelDiff: A.cairoHotelDiff };
   // Split: some of the group in Hotel Nizam, everyone else in Faiz Nizam. Visa and transport still use the whole group.
   A.split = null;
   if (A.iraq && S.iraqAcc.faiz && S.iraqAcc.hotel) {
-    const sp = {}, names = { a: 'adults', c: 'children', i: 'infants' };
+    const sp = {};
     for (const k of ['a', 'c', 'i']) {
       sp[k] = Math.max(0, Math.round(num(S.split && S.split[k])));
-      if (sp[k] > A[k]) { A.warn.push(`The split puts ${sp[k]} ${names[k]} in Hotel Nizam, but the group only has ${A[k]}. Using ${A[k]}.`); sp[k] = A[k]; }
+      if (sp[k] > A[k]) { A.warn.push(`The split puts ${sp[k]} ${names[k]} in Hotel Nizam, but the group only has ${A[k]}${A.fams.length ? ' outside the stopover families' : ''}. Using ${A[k]}.`); sp[k] = A[k]; }
     }
     if (sp.a + sp.c + sp.i > 0) A.split = sp;
   }
@@ -593,82 +736,133 @@ function analyze() {
 
 /* ───────── quote columns & rows ───────── */
 const CATS = [['a', 'ADULT', 'Adult', 0], ['c', 'CHD', 'Child', 1], ['i', 'INF', 'Infant', 2]];
-const stayIo = A => (A.iraq ? ['faiz', 'hotel'].filter(k => S.iraqAcc[k]) : [null]);
-const stayCo = A => (A.cairoHotelDiff ? ['faiz', 'hotel'].filter(k => S.cairoAcc[k]) : [null]);
+const stayIo = A => (A.iraq ? [...(S.iraqAcc.faiz ? ['faiz'] : []), ...(S.iraqAcc.hotel ? tiersOn().map(t => 'hotel:' + t.id) : [])] : [null]);
+const stayCo = U => (U.cairoHotelDiff ? ['faiz', 'hotel'].filter(k => S.cairoAcc[k]) : [null]);
+const stayUo = A => { if (!A.umrah) return [null]; const on = ['share', 'excl'].filter(k => S.umrahRoom[k]); return on.length ? on : ['share']; };
+/* The stay choices one unit (the group, or a stopover family) is quoted for. A family can pin its own Iraq and Cairo stay. */
+function unitStays(A, U) {
+  const f = U.fam;
+  return {
+    io: A.iraq && f && f.iraq ? [f.iraq] : stayIo(A),
+    co: !U.cairo.length ? [null] : f && f.cairo ? [f.cairo] : stayCo(U),
+    uo: stayUo(A)
+  };
+}
 function tkKeys(A) {             // which takhfeef rows apply to the stays being quoted
-  if (!A.iraq && !A.cairo.length) return ['faiz', 'hotel'].filter(k => S.iraqAcc[k]);
-  const co = stayCo(A);
-  return [...new Set(stayIo(A).flatMap(I => co.map(C => tkKey(I, C))))];
+  if (!A.iraq && !A.cairo.length) return A.umrah ? [] : ['faiz', 'hotel'].filter(k => S.iraqAcc[k]);
+  const keys = new Set();
+  [A.main, ...A.fams].forEach(U => {
+    if (!A.iraq && !U.cairo.length) return;
+    const { io, co } = unitStays(A, U);
+    io.forEach(I => co.forEach(C => keys.add(tkKey(kindOf(I), C))));
+  });
+  return [...keys];
 }
 function buildCols(A) {
-  const cats = CATS.filter(c => A[c[0]] > 0);
-  if (!cats.length || (!A.iraq && !A.cairo.length)) return [];
-  const io = stayIo(A), co = stayCo(A);
+  if (!A.iraq && !A.umrah && !A.cairo.length && !A.fams.some(u => u.cairo.length)) return [];
   const cols = [];
-  for (const I of io) for (const C of co) {
-    const cn = C && (co.length > 1 || C === 'hotel' || !I) ? C : null;   // only name the Cairo stay when it tells the options apart
-    const head = [I ? (I === 'faiz' ? 'FAIZ NIZAM' : 'HOTEL NIZAM') : 'CAIRO', cn ? `CAIRO ${cn === 'faiz' ? 'FAIZ' : 'HOTEL'}` : ''].filter(Boolean).join(' · ');
-    const name = I ? (I === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam') + (cn ? `, Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : '') : (cn ? `Cairo ${cn === 'faiz' ? 'Faiz' : 'hotel'}` : 'Cairo');
-    const tks = TK.filter(t => tkOn(tkKey(I, C), t));
-    for (const t of [null, ...tks]) {
-      const g = `${I}|${C}|${t ? t.id : ''}`;
-      for (const [k, L, nm, ix] of cats) {
-        if (t && k === 'i') continue;
-        const n = A.split ? (I === 'hotel' ? A.split[k] : A[k] - A.split[k]) : A[k];
-        if (A.split && n <= 0) continue;                       // nobody of this kind in this stay
-        cols.push({ g, base: `${I}|${C}`, io: I, co: C, tk: t, k, ix, catL: L, catN: nm, count: t ? null : n, head: t ? [head, t.xl] : [head], name, tag: t ? t.tag : '' });
-      }
-    }
-  }
+  [A.main, ...A.fams].forEach(U => unitCols(A, U, cols));
   cols.forEach(c => (c.v = calc(A, c)));
   return cols;
 }
+function unitCols(A, U, cols) {
+  const cats = CATS.filter(c => U[c[0]] > 0);
+  if (!cats.length || (!A.iraq && !A.umrah && !U.cairo.length)) return;
+  const { io, co, uo } = unitStays(A, U), f = U.fam, split = f ? null : A.split;
+  const cairoH = c => `CAIRO ${c === 'faiz' ? 'FAIZ' : 'HOTEL'}`, cairoN = c => `Cairo ${c === 'faiz' ? 'Faiz' : 'hotel'}`;
+  for (const I of io) for (const C of co) for (const Uo of uo) {
+    const cn = C && (co.length > 1 || C === 'hotel' || !I || f) ? C : null;   // only name a stay when it tells the options apart
+    const un = Uo && (uo.length > 1 || Uo === 'excl') ? Uo : null;
+    const first = U.cairo.length ? 'Cairo' : 'Umrah';
+    const head = [I ? ioName(I).toUpperCase() : cn ? cairoH(cn) : first.toUpperCase(), I && cn ? cairoH(cn) : '', un ? `MAKKAH ${un === 'excl' ? 'EXCLUSIVE' : 'SHARING'} ROOM` : ''].filter(Boolean).join(' · ');
+    const name = [I ? ioName(I) : cn ? cairoN(cn) : first, I && cn ? cairoN(cn) : '', un ? `Makkah ${un === 'excl' ? 'exclusive' : 'sharing'} room` : ''].filter(Boolean).join(', ');
+    const heads = f ? [head, `STOPOVER-${stopTag(U.cairo) || 'NO CAIRO'}`, U.title.toUpperCase() + (String(f.ref).trim() ? ' · ' + String(f.ref).trim() : '')] : [head];
+    const tks = A.iraq || U.cairo.length ? TK.filter(t => tkOn(tkKey(kindOf(I), C), t)) : [];   // takhfeef is off Iraq and Cairo only
+    for (const t of [null, ...tks]) {
+      const g = `${U.key}|${I}|${C}|${Uo}|${t ? t.id : ''}`;
+      for (const [k, L, nm, ix] of cats) {
+        if (t && k === 'i') continue;
+        const n = split ? (kindOf(I) === 'hotel' ? split[k] : U[k] - split[k]) : U[k];
+        if (split && n <= 0) continue;                       // nobody of this kind in this stay
+        cols.push({ g, base: `${U.key}|${I}|${C}|${Uo}`, unit: U, io: I, co: C, uo: Uo, tk: t, k, ix, catL: L, catN: nm, count: t ? null : n, head: t ? [...heads, t.xl] : heads, name, tag: t ? t.tag : '' });
+      }
+    }
+  }
+}
 
 function calc(A, col) {
-  const ix = col.ix, ac = ix < 2, pick = arr => (ac ? num(arr[ix]) : 0), t = col.tk, disc = x => (t ? t.f(x) : x), v = {};
-  const n = A.iraq ? A.iraq.nights : 0, rate = num(S.rate);
-  v.egv = A.cairo.reduce((s, st) => s + (st.visaFree ? 0 : num(R.egypt.inr)), 0);
+  const U = col.unit, ix = col.ix, ac = ix < 2, pick = arr => (ac ? num(arr[ix]) : 0), t = col.tk, disc = x => (t ? t.f(x) : x), v = {};
+  const n = A.iraq ? A.iraq.nights : 0, rate = num(S.rate), hotel = kindOf(col.io) === 'hotel';
+  v.egv = U.cairo.reduce((s, st) => s + (st.visaFree ? 0 : num(R.egypt.inr)), 0);
+  v.sav = A.umrah ? num(R.umrah.visa[ix]) : 0;
   v.faiz = A.iraq && col.io === 'faiz' ? disc(n * pick(R.iraq.faiz)) : 0;
-  v.hubb = A.iraq && col.io === 'hotel' ? disc(n * pick(R.iraq.hubb)) : 0;
-  v.bed = A.iraq && col.io === 'hotel' ? n * pick(R.iraq.bed) : 0;
-  v.cairo = ac ? A.cairo.reduce((s, st) => s + Math.max(0, cairoRate(st.pkg, ix, col.co, A.paxAC) - (t ? num(R.cairo.tkLess[ix]) : 0)), 0) : 0;
+  v.hubb = A.iraq && hotel ? disc(n * pick(R.iraq.hubb)) : 0;
+  v.bed = A.iraq && hotel ? n * pick(R.iraq[tierOf(col.io).r]) : 0;
+  v.cairo = ac ? U.cairo.reduce((s, st) => s + Math.max(0, cairoRate(st.pkg, ix, col.co, U.paxAC) - (t ? num(R.cairo.tkLess[ix]) : 0)), 0) : 0;
   v.visa = A.iraq ? A.iraq.visa : 0;
   v.trans = A.iraq && ac ? A.iraq.trans : 0;
   let usd = v.faiz + v.hubb + v.bed + v.cairo + v.visa + v.trans;
   S.misc.forEach((m, j) => { if (m.cur === 'USD') { v['m' + j] = num(m.v[ix]); usd += v['m' + j]; } });
   v.usd = usd; v.usdInr = Math.round(usd * rate);
-  let sub = v.egv + v.usdInr;
+  const um = A.umrah;
+  v.ulaw = um && ac ? r2(col.uo === 'excl' ? um.mk * umDay('excl', ix) + (um.days - um.mk) * umDay('share', ix) : um.days * umDay('share', ix)) : 0;
+  v.utrans = um && ac ? um.trans : 0;
+  let sar = v.ulaw + v.utrans;
+  S.misc.forEach((m, j) => { if (m.cur === 'SAR') { v['m' + j] = num(m.v[ix]); sar += v['m' + j]; } });
+  v.sar = r2(sar); v.sarInr = Math.round(v.sar * num(S.sar));
+  let sub = v.egv + v.sav + v.usdInr + v.sarInr;
   const inr = (key, val) => { v[key] = val; sub += val; };
   if (S.addGl) inr('gl', num(S.inr.gl[ix]));
   if (S.addCoord) inr('coord', num(S.inr.coord[ix]));
   inr('hadiyah', num(S.inr.hadiyah[ix])); inr('admin', num(S.inr.admin[ix]));
   if (S.addRida) inr('rida', ix === 0 ? num(S.inr.rida[0]) : 0);            // rida is for adults only
   if (S.add80) inr('p80', num(S.inr.p80[ix]));
-  S.misc.forEach((m, j) => { if (m.cur !== 'USD') inr('m' + j, num(m.v[ix])); });
-  v.sub = sub; v.ticket = num(S.inr.ticket[ix]); v.grand = sub + v.ticket;
+  S.misc.forEach((m, j) => { if (m.cur !== 'USD' && m.cur !== 'SAR') inr('m' + j, num(m.v[ix])); });
+  const ft = U.fam && U.fam.ticket;                                          // a stopover family can have its own fare
+  v.sub = sub; v.ticket = ft && ft[ix] !== '' && ft[ix] != null ? num(ft[ix]) : num(S.inr.ticket[ix]); v.grand = sub + v.ticket;
   return v;
 }
 
-function buildRows(A) {
-  const rows = [], n = A.iraq ? A.iraq.nights : 0, q = R.iraq, any = k => A.iraq && S.iraqAcc[k];
-  if (A.cairo.length) rows.push({ k: 'egv', cur: 'INR', label: 'EGYPT VISA' });
-  rows.push({ sec: 1, label: 'USD EXPENSES' });
-  if (any('faiz')) rows.push({ k: 'faiz', cur: 'USD', label: `FAIZ NIZAM (ADT ${q.faiz[0]} & CHD ${q.faiz[1]} X ${n} NIGHTS)` });
-  if (any('hotel')) rows.push({ k: 'hubb', cur: 'USD', label: `HOTEL NIZAM HUBB (ADT ${q.hubb[0]} & CHD ${q.hubb[1]} X ${n} NIGHTS)` },
-                              { k: 'bed', cur: 'USD', label: `HOTEL BED (ADT & CHD ${q.bed[0]} X ${n} NIGHTS)` });
-  if (A.cairo.length) rows.push({ k: 'cairo', cur: 'USD', label: `CAIRO LAWAZIM (${A.cairo.map(s => pkgShort(s.pkg)).join(' + ')})` });
-  if (A.iraq) rows.push({ k: 'visa', cur: 'USD', label: 'IRAQ E VISA' }, { k: 'trans', cur: 'USD', label: `TRANSPORT ${A.iraq.route}` });
-  S.misc.forEach((m, j) => m.cur === 'USD' && rows.push({ k: 'm' + j, cur: 'USD', label: (m.name || 'Miscellaneous').toUpperCase() }));
-  rows.push({ k: 'usd', tot: 1, label: `TOTAL USD @RS.${num(S.rate)}` });
+/* The rows of the breakdown and the Excel sheet, for the columns being shown. */
+function buildRows(A, cols) {
+  const rows = [], n = A.iraq ? A.iraq.nights : 0, q = R.iraq;
+  const units = [...new Set(cols.map(c => c.unit))], ios = new Set(cols.map(c => c.io)), cu = units.filter(u => u.cairo.length);
+  if (cu.length) rows.push({ k: 'egv', cur: 'INR', label: 'EGYPT VISA' });
+  if (A.umrah) rows.push({ k: 'sav', cur: 'INR', label: 'SAUDI VISA' });
+  const usd = [];
+  if (A.iraq && ios.has('faiz')) usd.push({ k: 'faiz', cur: 'USD', label: `FAIZ NIZAM (ADT ${q.faiz[0]} & CHD ${q.faiz[1]} X ${n} NIGHTS)` });
+  const tiers = TIERS.filter(t => ios.has('hotel:' + t.id));
+  if (A.iraq && tiers.length) {
+    const named = tiers.length > 1 || tiers[0].id !== 'B' || tierNamed();
+    usd.push({ k: 'hubb', cur: 'USD', label: `HOTEL NIZAM HUBB (ADT ${q.hubb[0]} & CHD ${q.hubb[1]} X ${n} NIGHTS)` },
+             { k: 'bed', cur: 'USD', label: tiers.length === 1 ? `HOTEL BED${named ? ' ' + tiers[0].l : ''} (ADT & CHD ${q[tiers[0].r][0]} X ${n} NIGHTS)` : `HOTEL BED (${tiers.map(t => `${t.l} ${q[t.r][0]}`).join(', ')} · ADT & CHD X ${n} NIGHTS)` });
+  }
+  if (cu.length) {
+    const tags = [...new Set(cu.map(u => u.cairo.map(s => pkgShort(s.pkg)).join(' + ')))];
+    usd.push({ k: 'cairo', cur: 'USD', label: tags.length === 1 ? `CAIRO LAWAZIM (${tags[0]})` : cu.includes(A.main) ? `CAIRO LAWAZIM (GROUP ${A.main.cairo.map(s => pkgShort(s.pkg)).join(' + ')}; STOPOVERS AS HEADED)` : 'CAIRO LAWAZIM (AS HEADED)' });
+  }
+  if (A.iraq) usd.push({ k: 'visa', cur: 'USD', label: 'IRAQ E VISA' }, { k: 'trans', cur: 'USD', label: `TRANSPORT ${A.iraq.route}` });
+  S.misc.forEach((m, j) => m.cur === 'USD' && usd.push({ k: 'm' + j, cur: 'USD', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  if (usd.length) rows.push({ sec: 1, label: 'USD EXPENSES' }, ...usd, { k: 'usd', tot: 1, gap: 1, label: `TOTAL USD @RS.${num(S.rate)}` });
+  const sar = [], um = A.umrah;
+  if (um) {
+    const ex = cols.some(c => c.uo === 'excl'), sh = cols.some(c => c.uo !== 'excl');
+    const share = `ADT ${fUsd(umDay('share', 0))} & CHD ${fUsd(umDay('share', 1))} X ${ex && !sh ? um.days - um.mk : um.days} DAYS`;
+    const excl = `EXCLUSIVE ROOM ADT ${fUsd(umDay('excl', 0))} & CHD ${fUsd(umDay('excl', 1))} X ${um.mk} DAYS IN MAKKAH`;
+    sar.push({ k: 'ulaw', cur: 'SAR', label: `FAIZ LAWAZIM UMRAH, INCL. TAXES (${ex ? (sh ? `${share}; ${excl}, REST SHARING` : `${excl}; ${share}`) : share})` },
+             { k: 'utrans', cur: 'SAR', label: `TRANSPORT ROUTE ${um.route} ${ROUTE_X[um.route]} (${um.tier}, INCL. ${num(R.umrah.vat)}% VAT)` });
+  }
+  S.misc.forEach((m, j) => m.cur === 'SAR' && sar.push({ k: 'm' + j, cur: 'SAR', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  if (sar.length) rows.push({ sec: 1, gap: usd.length ? 1 : 0, label: 'SAR EXPENSES' }, ...sar, { k: 'sar', tot: 1, gap: 1, label: `TOTAL SAR @RS.${num(S.sar)}` });
   const inrFrom = rows.length;
   if (S.addGl) rows.push({ k: 'gl', cur: 'INR', label: 'GROUP LEADER EXP' });
   if (S.addCoord) rows.push({ k: 'coord', cur: 'INR', label: 'CO-ORDINATOR EXPENSES' });
   rows.push({ k: 'hadiyah', cur: 'INR', label: 'HADIYAH EXPENSES (TRAVELLING KIT)' }, { k: 'admin', cur: 'INR', label: 'ADMINISTRATION EXPENSES' });
   if (S.addRida) rows.push({ k: 'rida', cur: 'INR', label: '+2 PCS RIDA (ADULTS)' });
   if (S.add80) rows.push({ k: 'p80', cur: 'INR', label: '+80' });
-  S.misc.forEach((m, j) => m.cur !== 'USD' && rows.push({ k: 'm' + j, cur: 'INR', label: (m.name || 'Miscellaneous').toUpperCase() }));
+  S.misc.forEach((m, j) => m.cur !== 'USD' && m.cur !== 'SAR' && rows.push({ k: 'm' + j, cur: 'INR', label: (m.name || 'Miscellaneous').toUpperCase() }));
   rows[inrFrom].gap = 1;                                         // the Excel sheet leaves a blank row before the rupee charges
-  rows.push({ k: 'sub', tot: 1, label: 'TOTAL' }, { k: 'ticket', cur: 'INR', bold: 1, label: 'TICKET FARE' }, { k: 'grand', grand: 1, label: 'TOTAL' });
+  rows.push({ k: 'sub', tot: 1, gap: 1, label: 'TOTAL' }, { k: 'ticket', cur: 'INR', bold: 1, label: 'TICKET FARE' }, { k: 'grand', grand: 1, label: 'TOTAL' });
   return rows;
 }
 
@@ -679,6 +873,7 @@ function quoteTitle(A) {
   if (A.legs.length) parts.push(dmy(A.legs[0].dep));
   if (A.iraq) parts.push(`${A.iraq.nights}N`);
   A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n}N-${s.pkg.n + 1}D` : 'DAY STOPOVER'));
+  if (A.umrah) parts.push(`${A.umrah.days}D UMRAH`);
   return parts.filter(Boolean).join('   ') || 'ZIYARAT QUOTE';
 }
 
@@ -686,7 +881,8 @@ function quoteTitle(A) {
 const ICON = {
   search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>',
   x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
-  dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>'
+  dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>',
+  undo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 010 11H11"/></svg>'
 };
 const OPEN = new Set();
 let bdOpen = false, LAST = { A: null, cols: [] };
@@ -700,21 +896,23 @@ function hydrate(root) {
   root.querySelectorAll('[data-r]').forEach(el => { if (document.activeElement !== el) el.value = getPath(R, el.dataset.r) ?? ''; });
 }
 
+/* One flight's inputs. `p` is where the leg lives in the quote: legs.2, or a stopover family's fams.0.own.2 or fams.0.extra.0. */
+const legRow = (p, nm, rm, cls = '') => `<div class="lg leg${cls}">
+    <input class="u fn" data-s="${p}.fn" placeholder="MS 969" maxlength="9" autocomplete="off" aria-label="${nm} number">
+    <input class="u ap from" data-s="${p}.from" list="aps" placeholder="BOM" maxlength="3" autocomplete="off" aria-label="${nm} from">
+    <input class="u ap to" data-s="${p}.to" list="aps" placeholder="CAI" maxlength="3" autocomplete="off" aria-label="${nm} to">
+    <input class="u dt" data-s="${p}.date" data-date placeholder="7 Nov" autocomplete="off" spellcheck="false" aria-label="${nm} date, for example 7 Nov or 07/11/2026">
+    <input class="u dep" data-s="${p}.dep" data-time placeholder="02:50" inputmode="numeric" autocomplete="off" aria-label="${nm} departs">
+    <input class="u arr" data-s="${p}.arr" data-time placeholder="05:50" inputmode="numeric" autocomplete="off" aria-label="${nm} arrives">
+    <button class="day" data-act="off" data-p="${p}" title="Which day it lands. Click to change."></button>
+    <button class="ic gs" data-act="google" data-p="${p}" title="Look up this flight on Google" aria-label="Look up ${nm} on Google">${ICON.search}</button>
+    ${rm}</div>`;
 function renderLegs() {
-  $('#legs').innerHTML = S.legs.map((l, i) => `<div class="lg leg">
-    <input class="u fn" data-s="legs.${i}.fn" placeholder="MS 969" maxlength="9" autocomplete="off" aria-label="Flight ${i + 1} number">
-    <input class="u ap from" data-s="legs.${i}.from" list="aps" placeholder="BOM" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} from">
-    <input class="u ap to" data-s="legs.${i}.to" list="aps" placeholder="CAI" maxlength="3" autocomplete="off" aria-label="Flight ${i + 1} to">
-    <input class="u dt" data-s="legs.${i}.date" data-date placeholder="7 Nov" autocomplete="off" spellcheck="false" aria-label="Flight ${i + 1} date, for example 7 Nov or 07/11/2026">
-    <input class="u dep" data-s="legs.${i}.dep" data-time placeholder="02:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} departs">
-    <input class="u arr" data-s="legs.${i}.arr" data-time placeholder="05:50" inputmode="numeric" autocomplete="off" aria-label="Flight ${i + 1} arrives">
-    <button class="day" data-act="off" data-i="${i}" title="Which day it lands. Click to change."></button>
-    <button class="ic gs" data-act="google" data-i="${i}" title="Look up this flight on Google" aria-label="Look up flight ${i + 1} on Google">${ICON.search}</button>
-    <button class="ic rm" data-act="delLeg" data-i="${i}" title="Remove this flight" aria-label="Remove flight ${i + 1}">${ICON.x}</button></div>`).join('');
+  $('#legs').innerHTML = S.legs.map((l, i) => legRow(`legs.${i}`, `Flight ${i + 1}`, `<button class="ic rm" data-act="delLeg" data-i="${i}" title="Remove this flight" aria-label="Remove flight ${i + 1}">${ICON.x}</button>`)).join('');
   hydrate($('#legs')); syncOff();
 }
 function syncOff() {
-  document.querySelectorAll('.day').forEach(b => { const o = legOff(S.legs[+b.dataset.i] || {}); b.textContent = o ? '+' + o : 'same'; b.classList.toggle('on', o > 0); b.setAttribute('aria-label', o ? `Lands ${o} day${o > 1 ? 's' : ''} later` : 'Lands the same day'); });
+  document.querySelectorAll('.day[data-p]').forEach(b => { const o = legOff(getPath(S, b.dataset.p) || {}); b.textContent = o ? '+' + o : 'same'; b.classList.toggle('on', o > 0); b.setAttribute('aria-label', o ? `Lands ${o} day${o > 1 ? 's' : ''} later` : 'Lands the same day'); });
 }
 
 function renderOther() {
@@ -727,7 +925,7 @@ function renderOther() {
 function renderMisc() {
   $('#misc').innerHTML = S.misc.map((m, j) => `<div class="misc">
     <input class="u mn" data-s="misc.${j}.name" placeholder="What is it for?" aria-label="Line item name">
-    <select class="u mc" data-s="misc.${j}.cur" aria-label="Currency"><option value="INR">₹</option><option value="USD">$</option></select>
+    <select class="u mc" data-s="misc.${j}.cur" aria-label="Currency"><option value="INR">₹</option><option value="USD">$</option><option value="SAR">SR</option></select>
     ${[0, 1, 2].map(i => `<input class="u" type="number" step="any" data-s="misc.${j}.v.${i}" placeholder="${['Adult', 'Child', 'Infant'][i]}" aria-label="${['Adult', 'Child', 'Infant'][i]} amount">`).join('')}
     <button class="ic rmv" data-act="delMisc" data-i="${j}" title="Remove this line item" aria-label="Remove line item">${ICON.x}</button></div>`).join('');
   hydrate($('#misc'));
@@ -738,8 +936,8 @@ const fact = (k, title, detail, ovr) => `<li><div><b>${title}</b>${detail ? `<p>
   (ovr && OPEN.has(k) ? `<div class="ovr">${ovr}</div>` : '') + '</li>';
 const warnLi = w => `<li class="warn"><span>${w}</span></li>`;
 
-function legGaps() {           // what each half-filled flight still needs, in plain words
-  return S.legs.map((l, i) => {
+function legGaps(legs = S.legs) {           // what each half-filled flight still needs, in plain words
+  return legs.map((l, i) => {
     if (!(l.fn || l.from || l.to || l.date || l.dep || l.arr)) return null;
     const miss = [!l.from && 'where it leaves from', !l.to && 'where it lands', dayOf(l.date) == null && 'a date', tmin(l.dep) == null && 'a departure time', tmin(l.arr) == null && 'an arrival time'].filter(Boolean);
     if (!miss.length) return null;
@@ -750,7 +948,7 @@ function legGaps() {           // what each half-filled flight still needs, in p
 function renderTrip(A) {
   const out = [], gaps = legGaps();
   if (!A.legs.length) {
-    $('#trip').innerHTML = gaps.length ? gaps.map(warnLi).join('') : '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas and the Cairo package are worked out from them.</p></li>';
+    $('#trip').innerHTML = gaps.length ? gaps.map(warnLi).join('') : '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas, the Cairo package and the Umrah days are worked out from them.</p></li>';
     return;
   }
   gaps.forEach(g => out.push(warnLi(g)));
@@ -760,8 +958,23 @@ function renderTrip(A) {
     out.push(fact('iraq', `${q.nights} ${plural(q.nights, 'night', 'nights')} in Iraq${ch ? ' (changed)' : ''}`,
       `Lands in ${apN(q.inAp)} ${fmtAbs(q.arr)}. Leaves ${apN(q.outAp)} ${fmtAbs(q.dep)}${q.late ? `, after ${fmtT(q.cut)}, so that day counts too` : ''}.`,
       `Price it as <input class="u" type="number" min="0" data-s="ovr.iraqN" placeholder="${q.auto}" aria-label="Nights in Iraq"> nights${ch ? ` <button class="lnk" data-act="clrIraq">Go back to ${q.auto}</button>` : ''}`));
-    if (q.key && IQT.has(q.inAp) && IQT.has(q.outAp)) out.push(fact('', `Transport $${q.trans} a head`, `${route}, ${A.paxAC} adults and children (${q.transTier} rate).`));
-    out.push(fact('', `Iraq visa $${q.visa} a head`, `${A.paxAll} ${plural(A.paxAll, 'person', 'people')}, infants included.`));
+    if (q.key && IQT.has(q.inAp) && IQT.has(q.outAp)) out.push(fact('', `Transport $${q.trans} a head`, `${route}, ${A.whole.paxAC} adults and children (${q.transTier} rate).`));
+    out.push(fact('', `Iraq visa $${q.visa} a head`, `${A.whole.paxAll} ${plural(A.whole.paxAll, 'person', 'people')}, infants included.`));
+  }
+  if (A.umrah) {
+    const u = A.umrah, ch = u.days !== u.auto, W = A.whole, vat = num(R.umrah.vat), sr = x => `SR ${fUsd(x)}`;
+    out.push(fact('umrah', `${u.days} ${plural(u.days, 'day', 'days')} for Umrah${ch ? ' (changed)' : ''}`,
+      `Lands in ${apN(u.inAp)} ${fmtAbs(u.arr)}. Leaves ${apN(u.outAp)} ${fmtAbs(u.dep)}. Faiz lawazim is ${sr(umDay('share', 0))} an adult and ${sr(umDay('share', 1))} a child a day, with ${vat}% VAT and ${num(R.umrah.muni)}% municipal tax.`,
+      `Price it as <input class="u" type="number" min="0" data-s="ovr.umrahD" placeholder="${u.auto}" aria-label="Days for Umrah"> days${ch ? ` <button class="lnk" data-act="clrUm">Go back to ${u.auto}</button>` : ''}`));
+    if (S.umrahRoom.excl) out.push(fact('umrahMk', `Exclusive room for ${u.mk} ${plural(u.mk, 'day', 'days')} in Makkah`,
+      `${sr(umDay('excl', 0))} an adult and ${sr(umDay('excl', 1))} a child a day. ${u.days - u.mk ? `The other ${u.days - u.mk} ${plural(u.days - u.mk, 'day is', 'days are')} at the sharing rate, as in Madinah.` : 'Change this to the days in Makkah; Madinah has sharing rooms only.'}`,
+      `Days in Makkah <input class="u" type="number" min="0" data-s="ovr.umrahMk" placeholder="${u.days}" aria-label="Days in Makkah">`));
+    const ropts = [1, 2, 3, 4, 5, 6].map(n => `<option value="${n}">Route ${n}: ${ROUTES[n]}</option>`).join('');
+    out.push(fact('umrahR', `Saudi transport ${sr(u.trans)} a head`,
+      `Route ${u.route}${u.route === u.autoRoute ? '' : ' (changed)'}: ${ROUTES[u.route]}. ${W.paxAC} adults and children, the ${u.tier} rate, ${vat}% VAT included.`,
+      `Price it as <select class="u" data-s="ovr.umrahRoute" aria-label="Umrah transport route"><option value="">Route ${u.autoRoute} (worked out)</option>${ropts}</select>`));
+    const vi = R.umrah.visa.map(num);
+    out.push(fact('', `Saudi visa ₹${INR.format(vi[0])} a head`, `${W.paxAll} ${plural(W.paxAll, 'person', 'people')}${vi[2] === vi[0] ? ', infants included' : `; ₹${INR.format(vi[2])} an infant`}.`));
   }
   A.cairo.forEach(s => {
     const k = 'cairo' + s.idx, ch = codeOf(s.pkg) !== codeOf(s.auto);
@@ -772,44 +985,127 @@ function renderTrip(A) {
     out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
     s.warn.forEach(w => out.push(warnLi(esc(w))));
   });
-  if (!A.iraq && !A.cairo.length) out.push('<li class="none"><p>No stay in Iraq or Cairo yet. Add the flight out as well, so each stay has an arrival and a departure.</p></li>');
+  if (!A.iraq && !A.cairo.length && !A.umrah) out.push('<li class="none"><p>No stay in Iraq, Cairo or Saudi Arabia yet. Add the flight out as well, so each stay has an arrival and a departure.</p></li>');
   A.warn.forEach(w => out.push(warnLi(w)));
   $('#trip').innerHTML = out.join('');
   hydrate($('#trip'));
+}
+
+/* ───────── Cairo stopover families ─────────
+   Each family card lists the group's flights. A flight they take differently is changed in place for them only;
+   a flight only they take is added at the bottom. Their Cairo package and Egypt visa come from those flights. */
+const IQ_OPTS = [['', 'As the group'], ['faiz', 'Faiz Nizam'], ['hotel:B', 'Hotel Nizam B'], ['hotel:A', 'Hotel Nizam A'], ['hotel:AP', 'Hotel Nizam A+']];
+const legText = l => {
+  const t = x => (tmin(x) != null ? fmtT(tmin(x)) : '–'), o = legOff(l);
+  return `${l.from || '–'} to ${l.to || '–'}, ${l.date ? showDate(l.date) : 'no date yet'}, ${t(l.dep)} to ${t(l.arr)}${o ? ` (+${o})` : ''}`;
+};
+function renderFams() {
+  const el = $('#fams'), ph = i => (S.inr.ticket[i] === '' ? '0' : esc(S.inr.ticket[i]));
+  el.innerHTML = S.fams.map((f, j) => {
+    const nm = `Stopover family ${j + 1}`;
+    const legs = S.legs.map((l, i) => f.own[i]
+      ? legRow(`fams.${j}.own.${i}`, `${nm}, flight ${i + 1}`, `<button class="ic rm" data-act="famUse" data-i="${j}" data-k="${i}" title="Use the group's flight again" aria-label="Use the group's flight ${i + 1} again">${ICON.undo}</button>`, ' own')
+      : `<div class="fro" data-fro="${i}"><b></b><span class="txt"></span><button class="chg" data-act="famChg" data-i="${j}" data-k="${i}" aria-label="Change flight ${i + 1} for this family">Change</button></div>`).join('')
+      + f.extra.map((l, e) => legRow(`fams.${j}.extra.${e}`, `${nm}, extra flight ${e + 1}`, `<button class="ic rm" data-act="famDelX" data-i="${j}" data-k="${e}" title="Remove this flight" aria-label="Remove extra flight ${e + 1}">${ICON.x}</button>`, ' own')).join('');
+    const tk = i => `<input class="u w" type="number" step="any" data-s="fams.${j}.ticket.${i}" placeholder="${ph(i)}" aria-label="${nm} ticket fare ${['adult', 'child', 'infant'][i]}">`;
+    return `<div class="fam" data-fam="${j}">
+      <div class="fam-h"><input class="u fname" data-s="fams.${j}.name" placeholder="Family name" autocomplete="off" aria-label="${nm} name"><label class="fref">ID <input class="u" data-s="fams.${j}.ref" placeholder="62388" autocomplete="off" aria-label="${nm} booking ID"></label><button class="ic" data-act="delFam" data-i="${j}" title="Remove this family" aria-label="Remove ${nm}">${ICON.x}</button></div>
+      <p class="who2"><input class="u" type="number" min="0" data-s="fams.${j}.a" placeholder="0" aria-label="${nm} adults"> adults, <input class="u" type="number" min="0" data-s="fams.${j}.c" placeholder="0" aria-label="${nm} children"> children and <input class="u" type="number" min="0" data-s="fams.${j}.i" placeholder="0" aria-label="${nm} infants"> infants from the group.</p>
+      <p class="who2">Ticket ₹${tk(0)} adult, ₹${tk(1)} child, ₹${tk(2)} infant <small>Blank is the group's fare.</small></p>
+      <div class="sel"><label data-fiq>Stay in Iraq <select class="u" data-s="fams.${j}.iraq" aria-label="${nm} stay in Iraq">${IQ_OPTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select></label>
+        <label>Stay in Cairo <select class="u" data-s="fams.${j}.cairo" aria-label="${nm} stay in Cairo"><option value="">As the group</option><option value="faiz">Faiz</option><option value="hotel">Hotel</option></select></label></div>
+      <div class="fl-h">Their flights. Change the ones they take differently from the group.</div>
+      ${legs}
+      <button class="add" data-act="famAddX" data-i="${j}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a flight only they take</button>
+      <ul class="facts" data-fsum></ul>
+      <div class="fam-f"><button class="btn s" data-act="xlsxFam" data-i="${j}">${ICON.dl}Download their Excel</button></div>
+    </div>`;
+  }).join('');
+  hydrate(el); syncOff();
+}
+/* The parts of each card that follow the group as it changes, without redrawing what is being typed in. */
+function renderFamDyn(A) {
+  const show = A.cairo.length > 0 || S.fams.length > 0;
+  $('#soWrap').hidden = !show;
+  if (!show) return;
+  $('#soIntro').textContent = S.fams.length
+    ? `${A.paxAll} ${plural(A.paxAll, 'person stays', 'people stay')} on the group's flights. Each family's Cairo package and Egypt visa come from their own flights and head count; Iraq and Umrah are priced with the group.`
+    : 'For a family that stays longer in Cairo than the rest of the group. Their Cairo package and Egypt visa come from their own flights and head count; Iraq and Umrah are priced with the group.';
+  A.fams.forEach(U => {
+    const card = document.querySelector(`.fam[data-fam="${U.j}"]`);
+    if (!card) return;
+    card.querySelectorAll('.fro').forEach(r => {
+      const i = +r.dataset.fro, l = S.legs[i] || blankLeg();
+      r.querySelector('b').textContent = fmtFn(normFn(l.fn)) || `Flight ${i + 1}`;
+      r.querySelector('.txt').textContent = legText(l);
+    });
+    card.querySelector('[data-fiq]').hidden = !A.iraq;
+    [0, 1, 2].forEach(i => { const el = card.querySelector(`[data-s="fams.${U.j}.ticket.${i}"]`); if (el) el.placeholder = S.inr.ticket[i] === '' ? '0' : S.inr.ticket[i]; });
+    const ul = card.querySelector('[data-fsum]'), h = famFacts(A, U);
+    if (ul._h !== h) { ul.innerHTML = h; ul._h = h; hydrate(ul); }
+  });
+}
+function famFacts(A, U) {
+  const out = [], j = U.j;
+  legGaps(famLegs(U.fam)).forEach(g => out.push(warnLi(g)));
+  if (!U.paxAll) out.push(warnLi('Add how many of the group are in this family.'));
+  U.cairo.forEach(s => {
+    const k = `f${U.key}c${s.idx}`, ch = codeOf(s.pkg) !== codeOf(s.auto);
+    const opts = `<option value="">${pkgName(s.auto)} (worked out)</option>` + PKG_CODES.map(c => `<option value="${c}">${pkgName(fromCode(c))}</option>`).join('');
+    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`,
+      `Lands ${fmtAbs(s.arr)}. Leaves Faiz ${fmtAbs(s.fd)} for ${esc(s.outL.fn) || 'the flight'} at ${fmtT(s.dep % 1440)}.${s.outL.fn === 'MS627' ? ' MS 627 always counts as a full night.' : ''}`,
+      `Price it as <select class="u" data-s="fams.${j}.ovr.${s.idx}" aria-label="Cairo package">${opts}</select>`));
+    out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
+    s.warn.forEach(w => out.push(warnLi(esc(w))));
+  });
+  if (!U.cairo.length && U.legs.length) out.push(warnLi('Their flights have no stay in Cairo yet.'));
+  U.warn.forEach(w => out.push(warnLi(w)));
+  return out.join('');
 }
 
 /* The whole group's cost, when it is clear who stays where: one stay chosen, or a split. */
 function groupTotal(A, cols) {
   const base = cols.filter(c => !c.tk);
   if (!base.length) return null;
-  if (new Set(base.map(c => c.co)).size > 1) return null;              // Faiz and hotel in Cairo are alternatives
-  if (!A.split && new Set(base.map(c => c.io)).size > 1) return null;  // Faiz and Hotel Nizam shown as alternatives
+  const units = new Map();
+  base.forEach(c => { if (!units.has(c.unit)) units.set(c.unit, []); units.get(c.unit).push(c); });
+  for (const [U, cs] of units) {                                       // each unit, the group or a family, must have one stay
+    const by = {};                                                     // (a split has one in Faiz Nizam and one in Hotel Nizam)
+    cs.forEach(c => (by[U === A.main && A.split ? kindOf(c.io) : 'all'] ??= new Set()).add(c.base));
+    if (Object.values(by).some(x => x.size > 1)) return null;          // alternatives shown side by side
+  }
   return { people: base.reduce((s, c) => s + c.count, 0), total: base.reduce((s, c) => s + c.count * c.v.grand, 0) };
 }
 function renderSide(A, cols) {
   const fare = $('#fare');
   const geo = '<div class="geo" aria-hidden="true"></div>';
   if (!cols.length) {
-    const why = !A.paxAll && !A.legs.length ? 'Prices show up here once you add the group size and the flights.' : !A.paxAll ? 'Add how many adults, children and infants are going.' : 'Add the flights so each stay has an arrival and a departure.';
+    const why = !A.whole.paxAll && !A.legs.length ? 'Prices show up here once you add the group size and the flights.' : !A.whole.paxAll ? 'Add how many adults, children and infants are going.' : 'Add the flights so each stay has an arrival and a departure.';
     const ghost = `<table class="fares" aria-hidden="true"><thead><tr><th></th><th>Adult</th><th>Child</th></tr></thead><tbody><tr><th>Faiz Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr><tr><th>Hotel Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr></tbody></table>`;
     fare.innerHTML = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${why}</p>${ghost}${hasContent(S) ? '' : '<button class="lnk" data-act="sample">Try an example group</button>'}</div>`;
     $('#bd').innerHTML = '';
     return;
   }
-  const cats = CATS.filter(c => A[c[0]] > 0);
+  const cats = CATS.filter(c => cols.some(x => x.k === c[0]));
   const bases = [];
-  cols.forEach(c => { let b = bases.find(x => x.base === c.base); if (!b) bases.push(b = { base: c.base, name: c.name, rows: [], n: {} }); let r = b.rows.find(x => x.g === c.g); if (!r) b.rows.push(r = { g: c.g, tk: c.tk, by: {} }); r.by[c.k] = c.v.grand; if (!c.tk) b.n[c.k] = c.count; });
+  cols.forEach(c => { let b = bases.find(x => x.base === c.base); if (!b) bases.push(b = { base: c.base, name: c.name, unit: c.unit, rows: [], n: {} }); let r = b.rows.find(x => x.g === c.g); if (!r) b.rows.push(r = { g: c.g, tk: c.tk, by: {} }); r.by[c.k] = c.v.grand; if (!c.tk) b.n[c.k] = c.count; });
   const who = n => [['a', 'adult', 'adults'], ['c', 'child', 'children'], ['i', 'infant', 'infants']].filter(([k]) => n[k]).map(([k, o, m]) => `${n[k]} ${n[k] === 1 ? o : m}`).join(', ');
   const GT = groupTotal(A, cols);
   const price = v => (v == null ? '<td></td>' : `<td><i>₹</i>${INR.format(v)}</td>`);
   const parts = [];
   if (A.iraq) parts.push(`${A.iraq.nights} ${plural(A.iraq.nights, 'night', 'nights')} in Iraq`);
   A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n} ${plural(s.pkg.n, 'night', 'nights')} in Cairo` : 'a day in Cairo'));
+  if (A.umrah) parts.push(`${A.umrah.days} ${plural(A.umrah.days, 'day', 'days')} for Umrah`);
+  const nf = A.fams.filter(u => u.paxAll).length;
+  if (nf) parts.push(`${nf} Cairo ${plural(nf, 'stopover', 'stopovers')}`);
   const joined = parts.length > 1 ? parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1] : parts[0];
-  const sub = `${joined.replace(/^./, c => c.toUpperCase())}, for ${A.paxAll} ${plural(A.paxAll, 'person', 'people')}.`;
+  const sub = `${joined.replace(/^./, c => c.toUpperCase())}, for ${A.whole.paxAll} ${plural(A.whole.paxAll, 'person', 'people')}.`;
   let h = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${sub}</p><table class="fares"><thead><tr><th></th>${cats.map(c => `<th>${c[2]}</th>`).join('')}</tr></thead>`;
   bases.forEach(b => {
-    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : esc(b.name) + (A.split ? `<small>${who(b.n)}</small>` : '')}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
+    const U = b.unit;
+    const label = U.fam ? `${U.nm}<small>${[`Stopover ${stopTag(U.cairo)}`.trim(), esc(b.name), who(b.n)].filter(Boolean).join(' · ')}</small>`
+      : esc(b.name) + (A.split || nf ? `<small>${who(b.n)}</small>` : '');
+    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : label}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
   });
   h += '</table>';
   if (GT) h += `<div class="gt"><span>Whole group, ${GT.people} ${plural(GT.people, 'person', 'people')}${cols.some(c => c.tk) ? ', before takhfeef' : ''}</span><b><i>₹</i>${INR.format(GT.total)}</b></div>`;
@@ -821,7 +1117,7 @@ function renderSide(A, cols) {
 function renderBreakdown(A, cols) {
   const el = $('#bd');
   if (!bdOpen || !cols.length) { el.innerHTML = ''; return; }
-  const rows = buildRows(A), groups = [];
+  const rows = buildRows(A, cols), groups = [];
   cols.forEach(c => { const g = groups[groups.length - 1]; g && g.g === c.g ? g.cols.push(c) : groups.push({ g: c.g, cols: [c] }); });
   let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="lnk" data-act="bd">Hide</button></div><div class="mx"><table><thead><tr><th rowspan="2">${esc(sheetTitle(A))}</th>`;
   h += groups.map(g => `<th class="gs" colspan="${g.cols.length * 2}">${g.cols[0].head.map(esc).join('<br>')}</th>`).join('') + '</tr><tr>';
@@ -832,8 +1128,8 @@ function renderBreakdown(A, cols) {
     h += `<tr class="${r.tot ? 'tot' : r.grand ? 'grand' : ''}"><td title="${esc(r.label)}">${esc(r.label)}</td>`;
     h += cols.map(c => {
       const v = c.v;
-      if (r.k === 'usd') return `<td class="gs u2">${fUsd(v.usd)}</td><td>${INR.format(v.usdInr)}</td>`;
-      if (r.cur === 'USD') return `<td class="gs u2">${fUsd(v[r.k] || 0)}</td><td></td>`;
+      if (r.k === 'usd' || r.k === 'sar') return `<td class="gs u2">${fUsd(v[r.k])}</td><td>${INR.format(v[r.k + 'Inr'])}</td>`;
+      if (r.cur === 'USD' || r.cur === 'SAR') return `<td class="gs u2">${fUsd(v[r.k] || 0)}</td><td></td>`;
       return `<td class="gs"></td><td>${INR.format(v[r.k] || 0)}</td>`;
     }).join('') + '</tr>';
   }
@@ -847,6 +1143,9 @@ function renderBits(A) {
   const showIq = !!A.iraq || !A.legs.length;
   $('#oIq1').hidden = $('#oIq2').hidden = !showIq;
   $('#oCa1').hidden = $('#oCa2').hidden = !A.cairoHotelDiff;
+  $('#tiers').hidden = !S.iraqAcc.hotel;
+  TIERS.forEach(t => ($('#tier' + t.id).textContent = `$${num(R.iraq[t.r][0])} bed`));
+  $('#oUm1').hidden = $('#oUm2').hidden = !A.umrah;
   $('#oSp1').hidden = $('#oSp2').hidden = !(A.iraq && S.iraqAcc.faiz && S.iraqAcc.hotel);
   const sp = A.split;
   $('#splitNote').textContent = sp
@@ -872,9 +1171,9 @@ function update(skipTrip) {
   const A = analyze(), cols = buildCols(A);
   LAST = { A, cols };
   if (!skipTrip) renderTrip(A);
-  syncOff(); renderBits(A); renderSide(A, cols);
+  syncOff(); renderBits(A); renderFamDyn(A); renderSide(A, cols);
 }
-function renderAll() { renderLegs(); renderOther(); renderMisc(); hydrate(document); update(); }
+function renderAll() { renderLegs(); renderOther(); renderMisc(); renderFams(); hydrate(document); update(); }
 
 /* ───────── rates dialog ───────── */
 function renderRates() {
@@ -886,7 +1185,7 @@ function renderRates() {
   $('#rateBody').innerHTML = `
     <p>Changes apply straight away and are saved for everyone using this app.</p>
     <h4>Iraq, per night in dollars</h4>
-    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Faiz Nizam', 'iraq.faiz')}${pair('Hotel Nizam Hubb', 'iraq.hubb')}${pair('Hotel bed', 'iraq.bed')}</table>
+    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Faiz Nizam', 'iraq.faiz')}${pair('Hotel Nizam Hubb, every tier', 'iraq.hubb')}${pair('Hotel bed, tier B', 'iraq.bed')}${pair('Hotel bed, tier A', 'iraq.bedA')}${pair('Hotel bed, tier A+', 'iraq.bedAP')}</table>
     <div class="rgrid"><label class="f">Count the leaving day if the flight is at or after<input class="u" data-r="iraq.cutoff" placeholder="19:00"></label></div>
     <h4>Iraq visa, dollars a head (infants included)</h4>
     <div class="rgrid"><label class="f">Smaller group${n('visa.small')}</label><label class="f">Larger group${n('visa.large')}</label><label class="f">Larger group starts at (people)${n('visa.thr')}</label></div>
@@ -901,13 +1200,24 @@ function renderRates() {
     <table class="rt" style="margin-top:10px"><tr><th></th><th>A adult</th><th>A child</th><th>B adult</th><th>B child</th><th>C adult</th><th>C child</th></tr>${ct}
       <tr><td>1 night C, hotel</td><td colspan="4"></td><td>${n('cairo.hotel1C.0')}</td><td>${n('cairo.hotel1C.1')}</td></tr></table>
     <p style="font-size:13px">A means leaving Faiz by 3 pm, B between 3 and 9 pm, C between 9 pm and 3 am. A day stopover has no rooms if they leave by 3 pm, and rooms if they leave by 10 pm. The MS 627 to Baghdad always counts that night, at the A rate.</p>
+    <h4>Umrah, Faiz lawazim in riyals a day</h4>
+    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Sharing room, Makkah and Madinah', 'umrah.share')}${pair('Exclusive room, Makkah', 'umrah.excl')}</table>
+    <div class="rgrid"><label class="f">VAT, % (lawazim and transport)${n('umrah.vat')}</label><label class="f">Municipal tax, % (lawazim)${n('umrah.muni')}</label></div>
+    <p style="font-size:13px" id="umNote"></p>
+    <h4>Umrah transport, riyals per adult or child, before VAT</h4>
+    <table class="rt"><tr><th></th>${[0, 1, 2, 3, 4].map(k => `<th>${n(`umrah.tiers.${k}`, 'Tier starts at people')}</th>`).join('')}</tr>
+      ${[1, 2, 3, 4, 5, 6].map(r => `<tr><td title="${ROUTES[r]}">Route ${r}</td>${[0, 1, 2, 3, 4].map(k => `<td>${n(`umrah.routes.${r}.${k}`, `Route ${r}, tier ${k + 1}`)}</td>`).join('')}</tr>`).join('')}</table>
+    <p style="font-size:13px">The top row is where each tier starts, in people. ${[1, 2, 3, 4, 5, 6].map(r => `Route ${r}: ${ROUTES[r]}.`).join(' ')}</p>
+    <h4>Saudi visa, rupees</h4>
+    <div class="rgrid"><label class="f">Adult${n('umrah.visa.0')}</label><label class="f">Child${n('umrah.visa.1')}</label><label class="f">Infant${n('umrah.visa.2')}</label></div>
     <h4>Egypt visa and takhfeef</h4>
     <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef, dollars off Faiz or Hubb${n('tkFixed')}</label></div>
     <h4>Saved flights</h4>
     <p>Typing one of these flight numbers on a quote fills in its route and times. A new flight is added here once you have typed its route and times in full. Change a time on a quote for that quote only, or here to change it for every quote from now on.</p>
     ${flightTable()}`;
-  hydrate($('#rateBody'));
+  hydrate($('#rateBody')); umNote();
 }
+const umNote = () => { const el = $('#umNote'); if (el) el.textContent = `With both taxes, a day is SR ${fUsd(umDay('share', 0))} an adult and SR ${fUsd(umDay('share', 1))} a child sharing, SR ${fUsd(umDay('excl', 0))} and SR ${fUsd(umDay('excl', 1))} exclusive. Infants pay nothing.`; };
 function flightTable() {
   const codes = [...new Set([...Object.keys(KNOWN), ...Object.keys(FL)])].filter(c => /^[A-Z0-9]{2,9}$/.test(c) && flightOf(c)).sort();
   if (!codes.length) return '<p>No saved flights yet.</p>';
@@ -1236,25 +1546,31 @@ const loadXL = () => xlP || (xlP = new Promise((res, rej) => {
 const colL = n => { let s = ''; while (n > 0) { const m = (n - 1) % 26; s = String.fromCharCode(65 + m) + s; n = Math.floor((n - 1) / 26); } return s; };
 const INR_FMT = '[>=10000000]##\\,##\\,##\\,##0;[>=100000]##\\,##\\,##0;##,##0';
 
-async function exportXlsx() {
-  const A = analyze(), cols = buildCols(A);
-  if (!cols.length) return toast('Add the group size and flights first.');
+/* The whole group's sheet has the group's columns and then each stopover family's, like the office's own sheets.
+   With a family's id it is that family's sheet alone, with their own flights, to send to them. */
+async function exportXlsx(fk) {
+  const A = analyze(), all = buildCols(A), FU = fk ? A.fams.find(u => u.key === fk) : null;
+  if (fk && !FU) return;
+  const cols = FU ? all.filter(c => c.unit === FU) : all;
+  if (!cols.length) return toast(FU ? 'Add how many are in this family, and their flights, first.' : 'Add the group size and flights first.');
   let XL; try { XL = await loadXL(); } catch (e) { return toast(e.message); }
-  const rows = buildRows(A), rate = num(S.rate);
-  const wb = new XL.Workbook(), ws = wb.addWorksheet('Quote', { views: [{ state: 'frozen', xSplit: 1, ySplit: 2 }] });
+  const rows = buildRows(A, cols), rate = num(S.rate), sarR = num(S.sar);
+  const wb = new XL.Workbook(), ws = wb.addWorksheet(FU ? 'Stopover' : 'Quote', { views: [{ state: 'frozen', xSplit: 1, ySplit: 2 }] });
   const lastC = 1 + cols.length * 2, F = { name: 'Calibri', size: 10 }, FB = { ...F, bold: true };
   const thin = { style: 'thin', color: { argb: 'FF000000' } }, dot = { style: 'dotted', color: { argb: 'FF808080' } };
+  const fill = argb => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } });
   ws.getColumn(1).width = 54;
   cols.forEach((c, j) => { ws.getColumn(2 + 2 * j).width = 8; ws.getColumn(3 + 2 * j).width = 11; });
 
   const lay = []; let r = 3;
-  rows.forEach(row => { if (row.k === 'usd' || row.gap || row.k === 'sub') r++; lay.push({ ...row, r: r++ }); });
-  const end = r - 1, rateRow = end + 3;
+  rows.forEach(row => { if (row.gap) r++; lay.push({ ...row, r: r++ }); });
+  const end = r - 1, rateRow = end + 3, hasSar = rows.some(x => x.k === 'sar');
   const at = k => lay.find(x => x.k === k);
-  const secRow = lay.find(x => x.sec).r, usdRow = at('usd').r, subRow = at('sub').r, tickRow = at('ticket').r;
-  const $rate = `$B$${rateRow}`;
+  const subRow = at('sub').r, tickRow = at('ticket').r;
+  const secAbove = row => lay.filter(x => x.sec && x.r < row.r).pop().r;
+  const $rate = `$B$${rateRow}`, $sar = `$B$${rateRow + 1}`;
 
-  ws.getCell(1, 1).value = sheetTitle(A);
+  ws.getCell(1, 1).value = FU ? `${sheetTitle(A)}\nSTOPOVER: ${FU.title.toUpperCase()}` : sheetTitle(A);
   ws.getCell(2, 1).value = 'EXPENSES HEAD';
   for (let j = 0; j < cols.length;) {
     let e = j; while (e + 1 < cols.length && cols[e + 1].g === cols[j].g) e++;
@@ -1266,16 +1582,17 @@ async function exportXlsx() {
 
   lay.forEach(row => {
     const RW = ws.getRow(row.r);
-    RW.getCell(1).value = row.k === 'usd' ? { formula: `"TOTAL USD @RS."&${$rate}`, result: row.label } : row.label;
+    RW.getCell(1).value = row.k === 'usd' ? { formula: `"TOTAL USD @RS."&${$rate}`, result: row.label }
+      : row.k === 'sar' ? { formula: `"TOTAL SAR @RS."&${$sar}`, result: row.label } : row.label;
     if (row.sec) return;
     cols.forEach((c, j) => {
       const uc = 2 + 2 * j, ic = uc + 1, U = colL(uc), I = colL(ic), v = c.v;
-      if (row.k === 'usd') {
-        RW.getCell(uc).value = { formula: `SUM(${U}${secRow + 1}:${U}${usdRow - 1})`, result: v.usd };
-        RW.getCell(ic).value = { formula: `ROUND(${U}${usdRow}*${$rate},0)`, result: v.usdInr };
+      if (row.k === 'usd' || row.k === 'sar') {
+        RW.getCell(uc).value = { formula: `SUM(${U}${secAbove(row) + 1}:${U}${row.r - 1})`, result: v[row.k] };
+        RW.getCell(ic).value = { formula: `ROUND(${U}${row.r}*${row.k === 'usd' ? $rate : $sar},0)`, result: v[row.k + 'Inr'] };
       } else if (row.k === 'sub') RW.getCell(ic).value = { formula: `SUM(${I}3:${I}${subRow - 1})`, result: v.sub };
       else if (row.k === 'grand') RW.getCell(ic).value = { formula: `${I}${subRow}+${I}${tickRow}`, result: v.grand };
-      else if (row.cur === 'USD') RW.getCell(uc).value = Math.round((v[row.k] || 0) * 100) / 100;
+      else if (row.cur === 'USD' || row.cur === 'SAR') RW.getCell(uc).value = Math.round((v[row.k] || 0) * 100) / 100;
       else RW.getCell(ic).value = v[row.k] || 0;
     });
   });
@@ -1284,44 +1601,62 @@ async function exportXlsx() {
     const row = ws.getRow(y), def = lay.find(x => x.r === y);
     const bold = y <= 2 || (def && (def.sec || def.tot || def.grand || def.bold));
     for (let x = 1; x <= lastC; x++) {
-      const c = row.getCell(x);
+      const c = row.getCell(x), col = x > 1 ? cols[Math.floor((x - 2) / 2)] : null;
       c.font = bold ? FB : F;
       c.border = { left: x === 1 || x % 2 === 0 ? thin : dot, right: x === lastC ? thin : undefined, top: y <= 3 ? thin : dot, bottom: y <= 2 || y === end ? thin : dot };
       if (x > 1) {
         c.alignment = y === 1 ? { horizontal: 'center', vertical: 'middle', wrapText: true } : { horizontal: y === 2 ? 'center' : 'right', vertical: 'middle' };
         if (y > 2) c.numFmt = x % 2 === 0 ? '#,##0' : INR_FMT;
       } else c.alignment = { vertical: 'middle', wrapText: y === 1 };
-      if (y <= 2) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF3EFE6' } };
-      if (def && def.grand) c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFF2CC' } };
+      if (y <= 2) c.fill = fill(col && col.unit.fam ? 'FFFCEBB6' : 'FFF3EFE6');     // stopover families stand out, as on the office sheet
+      if (def && def.grand) c.fill = fill('FFFFF2CC');
     }
   }
-  ws.getRow(1).height = 46;
+  ws.getRow(1).height = Math.max(46, 14 * Math.max(...cols.map(c => c.head.length)) + 6);
   ws.getCell(1, 1).font = { ...FB, size: 11 };
   lay.forEach(row => cols.forEach((c, j) => { const cell = ws.getCell(row.r, 2 + 2 * j); const val = cell.value && typeof cell.value === 'object' ? cell.value.result : cell.value; if (typeof val === 'number' && !Number.isInteger(val)) cell.numFmt = '#,##0.00'; }));
 
   let y = end + 2;
   const put = (a, b, bold) => { const c1 = ws.getCell(y, 1), c2 = ws.getCell(y, 2); c1.value = a; c1.font = bold ? FB : F; if (b !== undefined) { c2.value = b; c2.font = bold ? FB : F; } y++; };
+  const legLine = l => `${l.fn || '-'}   ${l.from} to ${l.to}   ${fmtAbs(l.dep)} to ${fmtAbs(l.arr)}`;
+  const ref = u => (String(u.fam.ref).trim() ? ` (${String(u.fam.ref).trim()})` : '');
   put('QUOTE DETAILS', undefined, true);
-  put('USD → INR RATE', rate, true); ws.getCell(rateRow, 2).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFF2CC' } };
-  put(`PAX: ${A.a} ADULT, ${A.c} CHD, ${A.i} INF`);
-  if (A.split) put(`SPLIT: HOTEL NIZAM ${A.split.a} ADULT, ${A.split.c} CHD, ${A.split.i} INF. FAIZ NIZAM ${A.a - A.split.a} ADULT, ${A.c - A.split.c} CHD, ${A.i - A.split.i} INF`);
+  put('USD → INR RATE', rate, true); ws.getCell(rateRow, 2).fill = fill('FFFFF2CC');
+  if (hasSar) { put('SAR → INR RATE', sarR, true); ws.getCell(rateRow + 1, 2).fill = fill('FFFFF2CC'); }
+  if (FU) {
+    put(`STOPOVER FAMILY: ${FU.title.toUpperCase()}${ref(FU)}`, undefined, true);
+    put(`PAX: ${FU.a} ADULT, ${FU.c} CHD, ${FU.i} INF, TRAVELLING WITH A GROUP OF ${A.whole.paxAll}`);
+  } else {
+    put(`PAX: ${A.whole.a} ADULT, ${A.whole.c} CHD, ${A.whole.i} INF`);
+    if (A.split) put(`SPLIT: HOTEL NIZAM ${A.split.a} ADULT, ${A.split.c} CHD, ${A.split.i} INF. FAIZ NIZAM ${A.a - A.split.a} ADULT, ${A.c - A.split.c} CHD, ${A.i - A.split.i} INF`);
+  }
   const GT = groupTotal(A, cols);
-  if (GT) { put(`GROUP TOTAL (${GT.people} PAX${cols.some(c => c.tk) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
-  A.legs.forEach(l => put(`${l.fn || '-'}   ${l.from} to ${l.to}   ${fmtAbs(l.dep)} to ${fmtAbs(l.arr)}`));
-  if (A.iraq) put(`IRAQ: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
-  A.cairo.forEach(s => {
+  if (GT) { put(`${FU ? 'FAMILY' : 'GROUP'} TOTAL (${GT.people} PAX${cols.some(c => c.tk) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
+  (FU ? FU.legs : A.legs).forEach(l => put(legLine(l)));
+  const withG = FU ? ' (WITH THE GROUP)' : '';
+  if (A.iraq) put(`IRAQ${withG}: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
+  if (A.umrah) { const u = A.umrah; put(`UMRAH${withG}: ${u.inAp} to ${u.outAp}, ${u.days} DAYS, TRANSPORT ROUTE ${u.route} ${ROUTE_X[u.route]} SR ${fUsd(u.trans)} (${u.tier}), SAUDI VISA ₹${INR.format(num(R.umrah.visa[0]))}`); }
+  const cairoLines = list => list.forEach(s => {
     put(`CAIRO: ${pkgName(s.pkg).toUpperCase()}, LANDS ${fmtAbs(s.arr)}, LEAVES FAIZ ${fmtAbs(s.fd)}, EGYPT VISA ${s.visaFree ? 'FREE' : '₹' + R.egypt.inr}: ${s.visaWhy}`);
     s.warn.forEach(w => put('NOTE: ' + w));
   });
-  A.warn.forEach(w => put('NOTE: ' + w.replace(/<[^>]+>/g, '')));
+  cairoLines(FU ? FU.cairo : A.cairo);
+  if (!FU) A.fams.filter(u => u.paxAll).forEach(u => {
+    y++;
+    put(`STOPOVER: ${u.title.toUpperCase()}${ref(u)}, ${u.a} ADULT, ${u.c} CHD, ${u.i} INF, CAIRO ${stopTag(u.cairo) || 'NONE'}`, undefined, true);
+    u.legs.filter(l => l.i >= S.legs.length || u.fam.own[l.i]).forEach(l => put('OWN FLIGHT: ' + legLine(l)));
+    cairoLines(u.cairo);
+  });
+  (FU ? FU.warn : A.warn).forEach(w => put('NOTE: ' + w.replace(/<[^>]+>/g, '')));
 
   const buf = await wb.xlsx.writeBuffer();
   const a = document.createElement('a');
+  const nm = (String(S.name || '').trim() || 'Ziyarat quote') + (FU ? ` - ${FU.title} stopover` : '');
   a.href = URL.createObjectURL(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
-  a.download = `${(String(S.name || '').trim() || 'Ziyarat quote').replace(/[\\/:*?"<>|]/g, '')}${A.legs.length ? ' ' + dmy(A.legs[0].dep) : ''}.xlsx`;
+  a.download = `${nm.replace(/[\\/:*?"<>|]/g, '')}${A.legs.length ? ' ' + dmy(A.legs[0].dep) : ''}.xlsx`;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-  toast('Excel downloaded.');
+  toast(FU ? `Excel for ${FU.title} downloaded.` : 'Excel downloaded.');
 }
 
 /* ───────── events ───────── */
@@ -1342,19 +1677,21 @@ function onEdit(e) {
   if (t.hasAttribute('data-time')) t.classList.toggle('bad', e.type === 'change' && !!t.value.trim() && tmin(v) == null);
   if (ps) {
     setPath(S, ps, v);
-    const lm = /^legs\.(\d+)\.(\w+)$/.exec(ps);
+    const lm = /^((?:legs|fams\.\d+\.(?:own|extra))\.\d+)\.(\w+)$/.exec(ps);
     if (lm) {
-      const i = +lm[1], f = lm[2];
-      if (FLF.includes(f)) { const au = AUTO.get(S.legs[i]); if (au) au.delete(f); }   // typed by hand, so a new flight number won't replace it
-      if (e.type === 'change') { if (f === 'fn') autofill(i); learnLeg(i); }
+      const lp = lm[1], f = lm[2];
+      if (FLF.includes(f)) { const au = AUTO.get(getPath(S, lp)); if (au) au.delete(f); }   // typed by hand, so a new flight number won't replace it
+      if (e.type === 'change') { if (f === 'fn') autofill(lp); learnLeg(lp); }
     }
     if ((ps === 'addGl' || ps === 'addCoord') && v) askAmount(ps === 'addGl' ? 'gl' : 'coord');
     if (/^ovr\.cairo\./.test(ps) && !v) delete S.ovr.cairo[ps.split('.')[2]];
+    const fo = /^fams\.(\d+)\.ovr\.(\d+)$/.exec(ps);
+    if (fo && !v) delete S.fams[+fo[1]].ovr[fo[2]];
     update(e.type === 'input' && !!t.closest('#trip'));
     touchQ();
   } else {
     setPath(R, pr, v);
-    update();
+    update(); umNote();
     touchR();
   }
 }
@@ -1373,8 +1710,8 @@ const AUTO = new WeakMap();
 /* Legs that added a new saved flight in this session. Corrections typed on that leg straight after update the saved flight too. */
 const LEARNED = new WeakMap();
 
-function autofill(i) {
-  const l = S.legs[i], code = normFn(l.fn), k = flightOf(code), au = AUTO.get(l) || new Map(), set = [];
+function autofill(lp) {
+  const l = getPath(S, lp), code = normFn(l.fn), k = flightOf(code), au = AUTO.get(l) || new Map(), set = [], mi = /^legs\.(\d+)$/.exec(lp), i = mi ? +mi[1] : -1;
   LEARNED.delete(l);
   if (k) {
     for (const f of FLF) if (k[f] && (!l[f] || au.has(f))) { if (l[f] !== k[f]) set.push(f); l[f] = k[f]; au.set(f, 'flight'); }
@@ -1385,15 +1722,15 @@ function autofill(i) {
     if (!l.from && prevTo) { l.from = prevTo; au.set('from', 'prev'); }                                          // back to the usual guess
   }
   AUTO.set(l, au);
-  set.forEach(f => { const el = document.querySelector(`[data-s="legs.${i}.${f}"]`); if (el) { el.value = l[f]; el.classList.remove('bad'); } });
+  set.forEach(f => { const el = document.querySelector(`[data-s="${lp}.${f}"]`); if (el) { el.value = l[f]; el.classList.remove('bad'); } });
   syncOff();
   if (k && set.length) toast(fullFlight(k) ? `${fmtFn(code)} filled in: ${k.from} to ${k.to}, ${k.dep} to ${k.arr}. Add the date.` : `${fmtFn(code)} filled in: ${k.from} to ${k.to}. Add the times once and they fill in next time.`);
 }
 
 /* A flight typed in full that isn't saved yet becomes a saved flight. A saved flight is left alone, so a one-off change of time
    stays on this quote; change it for good from Settings. */
-function learnLeg(i) {
-  const l = S.legs[i];
+function learnLeg(lp) {
+  const l = getPath(S, lp);
   if (!l) return;
   const code = normFn(l.fn);
   if (!/^[A-Z0-9]{3,9}$/.test(code)) return;
@@ -1418,13 +1755,37 @@ document.addEventListener('click', e => {
       const p = S.legs[S.legs.length - 1], leg = { ...blankLeg(), from: (p && p.to) || '', date: (p && p.date) || '' };
       S.legs.push(leg);
       if (leg.from) AUTO.set(leg, new Map([['from', 'prev']]));          // a guess: the flight number's own route replaces it
-      renderLegs(); const n = document.querySelectorAll('.leg .fn'); n[n.length - 1].focus(); break;
+      renderLegs(); renderFams(); const n = document.querySelectorAll('#legs .leg .fn'); n[n.length - 1].focus(); break;
     }
-    case 'delLeg': S.legs.splice(i, 1); if (!S.legs.length) S.legs.push(blankLeg()); S.ovr.cairo = {}; renderLegs(); break;
-    case 'off': { const l = S.legs[i]; l.off = String((legOff(l) + 1) % 3); const au = AUTO.get(l); if (au) au.delete('off'); learnLeg(i); break; }
-    case 'google': { const l = S.legs[i]; const q = `${normFn(l.fn) || (l.from + ' to ' + l.to)} flight schedule ${l.date || ''}`.trim(); window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener'); return; }
+    case 'delLeg':
+      S.legs.splice(i, 1); if (!S.legs.length) S.legs.push(blankLeg()); S.ovr.cairo = {};
+      S.fams.forEach(f => {                                             // a family's changed flights keep pointing at the right group flight
+        const o = {};
+        for (const k in f.own) { const n = +k; if (n < i) o[n] = f.own[k]; else if (n > i) o[n - 1] = f.own[k]; }
+        f.own = o; f.ovr = {};
+      });
+      renderLegs(); renderFams(); break;
+    case 'off': { const p = b.dataset.p, l = getPath(S, p); l.off = String((legOff(l) + 1) % 3); const au = AUTO.get(l); if (au) au.delete('off'); learnLeg(p); break; }
+    case 'google': { const l = getPath(S, b.dataset.p); const q = `${normFn(l.fn) || (l.from + ' to ' + l.to)} flight schedule ${l.date || ''}`.trim(); window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener'); return; }
     case 'ovr': { const k = b.dataset.k; OPEN.has(k) ? OPEN.delete(k) : OPEN.add(k); update(); return; }
     case 'clrIraq': S.ovr.iraqN = ''; break;
+    case 'clrUm': S.ovr.umrahD = ''; break;
+    case 'addFam': { S.fams.push(blankFam()); renderFams(); const n = document.querySelectorAll('.fam .fname'); n[n.length - 1].focus(); break; }
+    case 'delFam': {
+      const f = S.fams[i];
+      if ((String(f.name).trim() || num(f.a) || num(f.c) || num(f.i) || Object.keys(f.own).length || f.extra.length) && !confirm(`Remove ${String(f.name).trim() || 'this stopover family'}? They go back into the group.`)) return;
+      S.fams.splice(i, 1); renderFams(); break;
+    }
+    case 'famChg': {                                                    // copy the group's flight for this family to change
+      const k = +b.dataset.k, leg = clone(S.legs[k]);
+      S.fams[i].own[k] = leg; S.fams[i].ovr = {};
+      AUTO.set(leg, new Map([['from', 'prev'], ['to', 'prev'], ['dep', 'flight'], ['arr', 'flight'], ['off', 'flight']]));
+      renderFams(); const el = document.querySelector(`[data-s="fams.${i}.own.${k}.date"]`); if (el) el.focus(); break;
+    }
+    case 'famUse': delete S.fams[i].own[b.dataset.k]; S.fams[i].ovr = {}; renderFams(); break;
+    case 'famAddX': { S.fams[i].extra.push(blankLeg()); renderFams(); const n = document.querySelectorAll(`.fam[data-fam="${i}"] .leg .fn`); n[n.length - 1].focus(); break; }
+    case 'famDelX': S.fams[i].extra.splice(+b.dataset.k, 1); S.fams[i].ovr = {}; renderFams(); break;
+    case 'xlsxFam': exportXlsx(S.fams[i].id); return;
     case 'addMisc': S.misc.push({ name: '', cur: 'INR', v: ['', '', ''] }); renderMisc(); $('#misc .misc:last-child .mn').focus(); break;
     case 'delMisc': S.misc.splice(i, 1); renderMisc(); break;
     case 'tkAll': { const k = b.dataset.k, all = TK.every(t => tkOn(k, t)); TK.forEach(t => (S.tk[k][t.id] = !all)); hydrate(document); break; }
