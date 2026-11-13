@@ -45,7 +45,7 @@ Rates come from the Faiz-e-Haakimi Qahera Lawazim (effective 29/08/2026 to 02/02
 
 A family in the group that stays longer in Cairo is added under **Cairo stopovers**. Give them their head count, then press **Change** on each group flight they take on a different day (or add a flight only they take). Their Cairo package and Egypt visa are worked out from their own flights and head count; Iraq and Umrah lawazim, visa and transport stay with the group, priced on the whole group's size. They can also have their own ticket fare and their own Iraq or Cairo stay.
 
-The group's prices are for everyone else. **Download Excel** gives the whole group's sheet, with each family's columns after the group's and highlighted. **Download their Excel** on a family gives that family's sheet alone, with their own flights.
+The group's prices are for everyone else. **Download Excel** gives the whole group's sheet, with each family's columns after the group's and highlighted. **Download their Excel** on a family gives that family's sheet alone, with their own flights. With two or more families, **Download all stopovers** gives one sheet with every family side by side and no group columns.
 
 ## Saved flights
 

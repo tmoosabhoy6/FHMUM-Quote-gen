@@ -163,6 +163,8 @@ h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
 .fam .facts{margin-top:12px}
 .fam .facts li:last-child{border-bottom:0}
 .fam-f{display:flex;justify-content:flex-end;padding:4px 0 10px}
+.so-f{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin-top:10px}
+.so-f .add{margin-top:0}
 .btn.s{height:32px;padding:0 12px;font-size:13px;display:inline-flex;align-items:center;gap:7px}
 .btn.s svg{width:15px;height:15px}
 
@@ -352,7 +354,10 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       <h2>Cairo stopovers</h2>
       <p class="intro" id="soIntro"></p>
       <div id="fams"></div>
+      <div class="so-f">
       <button class="add" data-act="addFam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a stopover family</button>
+      <button class="btn s" id="soAll" hidden data-act="xlsxAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download all stopovers</button>
+      </div>
     </div>
 
     <h2>Charges per za'ir, in rupees</h2>
@@ -1027,6 +1032,7 @@ function renderFams() {
 function renderFamDyn(A) {
   const show = A.cairo.length > 0 || S.fams.length > 0;
   $('#soWrap').hidden = !show;
+  $('#soAll').hidden = A.fams.filter(u => u.paxAll).length < 2;        // one sheet with every family, once there is more than one
   if (!show) return;
   $('#soIntro').textContent = S.fams.length
     ? `${A.paxAll} ${plural(A.paxAll, 'person stays', 'people stay')} on the group's flights. Each family's Cairo package and Egypt visa come from their own flights and head count; Iraq and Umrah are priced with the group.`
@@ -1547,15 +1553,16 @@ const colL = n => { let s = ''; while (n > 0) { const m = (n - 1) % 26; s = Stri
 const INR_FMT = '[>=10000000]##\\,##\\,##\\,##0;[>=100000]##\\,##\\,##0;##,##0';
 
 /* The whole group's sheet has the group's columns and then each stopover family's, like the office's own sheets.
-   With a family's id it is that family's sheet alone, with their own flights, to send to them. */
+   With a family's id it is that family's sheet alone, with their own flights, to send to them.
+   With '*' it is every stopover family side by side, without the group's columns. */
 async function exportXlsx(fk) {
-  const A = analyze(), all = buildCols(A), FU = fk ? A.fams.find(u => u.key === fk) : null;
-  if (fk && !FU) return;
-  const cols = FU ? all.filter(c => c.unit === FU) : all;
-  if (!cols.length) return toast(FU ? 'Add how many are in this family, and their flights, first.' : 'Add the group size and flights first.');
+  const AF = fk === '*', A = analyze(), all = buildCols(A), FU = fk && !AF ? A.fams.find(u => u.key === fk) : null;
+  if (fk && !AF && !FU) return;
+  const cols = FU ? all.filter(c => c.unit === FU) : AF ? all.filter(c => c.unit.fam) : all;
+  if (!cols.length) return toast(FU || AF ? 'Add how many are in each family, and their flights, first.' : 'Add the group size and flights first.');
   let XL; try { XL = await loadXL(); } catch (e) { return toast(e.message); }
   const rows = buildRows(A, cols), rate = num(S.rate), sarR = num(S.sar);
-  const wb = new XL.Workbook(), ws = wb.addWorksheet(FU ? 'Stopover' : 'Quote', { views: [{ state: 'frozen', xSplit: 1, ySplit: 2 }] });
+  const wb = new XL.Workbook(), ws = wb.addWorksheet(FU ? 'Stopover' : AF ? 'Stopovers' : 'Quote', { views: [{ state: 'frozen', xSplit: 1, ySplit: 2 }] });
   const lastC = 1 + cols.length * 2, F = { name: 'Calibri', size: 10 }, FB = { ...F, bold: true };
   const thin = { style: 'thin', color: { argb: 'FF000000' } }, dot = { style: 'dotted', color: { argb: 'FF808080' } };
   const fill = argb => ({ type: 'pattern', pattern: 'solid', fgColor: { argb } });
@@ -1570,7 +1577,7 @@ async function exportXlsx(fk) {
   const secAbove = row => lay.filter(x => x.sec && x.r < row.r).pop().r;
   const $rate = `$B$${rateRow}`, $sar = `$B$${rateRow + 1}`;
 
-  ws.getCell(1, 1).value = FU ? `${sheetTitle(A)}\nSTOPOVER: ${FU.title.toUpperCase()}` : sheetTitle(A);
+  ws.getCell(1, 1).value = FU ? `${sheetTitle(A)}\nSTOPOVER: ${FU.title.toUpperCase()}` : AF ? `${sheetTitle(A)}\nCAIRO STOPOVERS` : sheetTitle(A);
   ws.getCell(2, 1).value = 'EXPENSES HEAD';
   for (let j = 0; j < cols.length;) {
     let e = j; while (e + 1 < cols.length && cols[e + 1].g === cols[j].g) e++;
@@ -1626,37 +1633,41 @@ async function exportXlsx(fk) {
   if (FU) {
     put(`STOPOVER FAMILY: ${FU.title.toUpperCase()}${ref(FU)}`, undefined, true);
     put(`PAX: ${FU.a} ADULT, ${FU.c} CHD, ${FU.i} INF, TRAVELLING WITH A GROUP OF ${A.whole.paxAll}`);
+  } else if (AF) {
+    const fs = A.fams.filter(u => u.paxAll), n = k => fs.reduce((t, u) => t + u[k], 0);
+    put(`CAIRO STOPOVERS: ${fs.length} FAMILIES, ${n('a')} ADULT, ${n('c')} CHD, ${n('i')} INF, TRAVELLING WITH A GROUP OF ${A.whole.paxAll}`, undefined, true);
   } else {
     put(`PAX: ${A.whole.a} ADULT, ${A.whole.c} CHD, ${A.whole.i} INF`);
     if (A.split) put(`SPLIT: HOTEL NIZAM ${A.split.a} ADULT, ${A.split.c} CHD, ${A.split.i} INF. FAIZ NIZAM ${A.a - A.split.a} ADULT, ${A.c - A.split.c} CHD, ${A.i - A.split.i} INF`);
   }
   const GT = groupTotal(A, cols);
-  if (GT) { put(`${FU ? 'FAMILY' : 'GROUP'} TOTAL (${GT.people} PAX${cols.some(c => c.tk) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
+  if (GT) { put(`${FU ? 'FAMILY' : AF ? 'STOPOVERS' : 'GROUP'} TOTAL (${GT.people} PAX${cols.some(c => c.tk) ? ', BEFORE TAKHFEEF' : ''})`, GT.total, true); ws.getCell(y - 1, 2).numFmt = INR_FMT; }
+  if (AF) put("GROUP'S FLIGHTS", undefined, true);
   (FU ? FU.legs : A.legs).forEach(l => put(legLine(l)));
-  const withG = FU ? ' (WITH THE GROUP)' : '';
+  const withG = FU || AF ? ' (WITH THE GROUP)' : '';
   if (A.iraq) put(`IRAQ${withG}: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
   if (A.umrah) { const u = A.umrah; put(`UMRAH${withG}: ${u.inAp} to ${u.outAp}, ${u.days} DAYS, TRANSPORT ROUTE ${u.route} ${ROUTE_X[u.route]} SR ${fUsd(u.trans)} (${u.tier}), SAUDI VISA ₹${INR.format(num(R.umrah.visa[0]))}`); }
   const cairoLines = list => list.forEach(s => {
     put(`CAIRO: ${pkgName(s.pkg).toUpperCase()}, LANDS ${fmtAbs(s.arr)}, LEAVES FAIZ ${fmtAbs(s.fd)}, EGYPT VISA ${s.visaFree ? 'FREE' : '₹' + R.egypt.inr}: ${s.visaWhy}`);
     s.warn.forEach(w => put('NOTE: ' + w));
   });
-  cairoLines(FU ? FU.cairo : A.cairo);
+  if (!AF) cairoLines(FU ? FU.cairo : A.cairo);
   if (!FU) A.fams.filter(u => u.paxAll).forEach(u => {
     y++;
     put(`STOPOVER: ${u.title.toUpperCase()}${ref(u)}, ${u.a} ADULT, ${u.c} CHD, ${u.i} INF, CAIRO ${stopTag(u.cairo) || 'NONE'}`, undefined, true);
     u.legs.filter(l => l.i >= S.legs.length || u.fam.own[l.i]).forEach(l => put('OWN FLIGHT: ' + legLine(l)));
     cairoLines(u.cairo);
   });
-  (FU ? FU.warn : A.warn).forEach(w => put('NOTE: ' + w.replace(/<[^>]+>/g, '')));
+  (FU ? FU.warn : AF ? A.fams.flatMap(u => u.warn) : A.warn).forEach(w => put('NOTE: ' + w.replace(/<[^>]+>/g, '')));
 
   const buf = await wb.xlsx.writeBuffer();
   const a = document.createElement('a');
-  const nm = (String(S.name || '').trim() || 'Ziyarat quote') + (FU ? ` - ${FU.title} stopover` : '');
+  const nm = (String(S.name || '').trim() || 'Ziyarat quote') + (FU ? ` - ${FU.title} stopover` : AF ? ' - Cairo stopovers' : '');
   a.href = URL.createObjectURL(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
   a.download = `${nm.replace(/[\\/:*?"<>|]/g, '')}${A.legs.length ? ' ' + dmy(A.legs[0].dep) : ''}.xlsx`;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-  toast(FU ? `Excel for ${FU.title} downloaded.` : 'Excel downloaded.');
+  toast(FU ? `Excel for ${FU.title} downloaded.` : AF ? 'Excel with every stopover family downloaded.' : 'Excel downloaded.');
 }
 
 /* ───────── events ───────── */
@@ -1786,6 +1797,7 @@ document.addEventListener('click', e => {
     case 'famAddX': { S.fams[i].extra.push(blankLeg()); renderFams(); const n = document.querySelectorAll(`.fam[data-fam="${i}"] .leg .fn`); n[n.length - 1].focus(); break; }
     case 'famDelX': S.fams[i].extra.splice(+b.dataset.k, 1); S.fams[i].ovr = {}; renderFams(); break;
     case 'xlsxFam': exportXlsx(S.fams[i].id); return;
+    case 'xlsxAll': exportXlsx('*'); return;
     case 'addMisc': S.misc.push({ name: '', cur: 'INR', v: ['', '', ''] }); renderMisc(); $('#misc .misc:last-child .mn').focus(); break;
     case 'delMisc': S.misc.splice(i, 1); renderMisc(); break;
     case 'tkAll': { const k = b.dataset.k, all = TK.every(t => tkOn(k, t)); TK.forEach(t => (S.tk[k][t.id] = !all)); hydrate(document); break; }
