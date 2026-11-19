@@ -47,6 +47,10 @@ A family in the group that stays longer in Cairo is added under **Cairo stopover
 
 The group's prices are for everyone else. **Download Excel** gives the whole group's sheet, with each family's columns after the group's and highlighted. **Download their Excel** on a family gives that family's sheet alone, with their own flights. With two or more families, **Download all stopovers** gives one sheet with every family side by side and no group columns.
 
+## Takhfeef
+
+Faiz and Hotel each have their own takhfeef choices: **100%**, **75%**, **50%** and a fixed amount, **$100 off** to start with. Type a different amount in the box on that choice to change it for that quote; typing an amount ticks it too, and leaving the box empty goes back to $100. The starting amount for every quote is **Fixed takhfeef** in **Settings**.
+
 ## Saved flights
 
 Typing a flight number fills in its route and departure and arrival times; only the date is left to type. The first time a flight number is used, type its route and times in full once and the app remembers it for every quote and every computer. Changing a time on a quote changes it for that quote only. To change or remove a saved flight for good, use **Settings**, then **Saved flights**.

@@ -131,6 +131,7 @@ h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
 .ck input:checked+span::before{border-color:var(--tile);background:var(--tile) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
 .ck input:focus-visible+span{outline:2px solid var(--tile);outline-offset:2px}
 .ck span small{font-size:12px;font-weight:500;color:var(--ink3)}
+.ck .tka{position:static;opacity:1;pointer-events:auto;width:3.4em;height:24px;margin:0 -4px 0 -2px;padding:0 2px;text-align:center;font-weight:600;color:inherit;cursor:text;user-select:text}
 .ck input:checked+span small{color:var(--tile)}
 
 /* hotel tiers, opened under Hotel Nizam */
@@ -345,9 +346,9 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
       <dt id="oCa1">Stay in Cairo</dt>
       <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
       <dt id="tkF1">Faiz takhfeef</dt>
-      <dd id="tkF2"><label class="ck"><input type="checkbox" data-s="tk.faiz.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.d100"><span class="tkFixed">$100 off</span></label><button class="lnk" data-act="tkAll" data-k="faiz">Select all</button></dd>
+      <dd id="tkF2"><label class="ck"><input type="checkbox" data-s="tk.faiz.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.faiz" placeholder="100" aria-label="Fixed Faiz takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="faiz">Select all</button></dd>
       <dt id="tkH1">Hotel takhfeef</dt>
-      <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span class="tkFixed">$100 off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
+      <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.hotel" placeholder="100" aria-label="Fixed Hotel takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
     </dl>
 
     <div id="soWrap" hidden>
@@ -458,6 +459,7 @@ const DEF_S = {
   hotelTier: { B: true, A: false, AP: false }, umrahRoom: { share: true, excl: false },
   fams: [],
   tk: { faiz: { p100: false, p75: false, p50: false, d100: false }, hotel: { p100: false, p75: false, p50: false, d100: false } },
+  tkAmt: { faiz: '', hotel: '' },          // fixed takhfeef in dollars for this quote; blank uses the amount in Settings
   addGl: false, addCoord: false, addRida: false, add80: false,
   inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 0, 0], p80: [3000, 3000, 0] },
   split: { a: '', c: '', i: '' },
@@ -530,11 +532,18 @@ const TK = [
   { id: 'p100', xl: '100% TAKHFEEF', tag: '100% takhfeef', f: x => 0 },
   { id: 'p75', xl: '75% TAKHFEEF', tag: '75% takhfeef', f: x => x * 0.25 },
   { id: 'p50', xl: '50% TAKHFEEF', tag: '50% takhfeef', f: x => x * 0.5 },
-  { id: 'd100', get xl() { return `${R.tkFixed}$ TAKHFEEF`; }, get tag() { return `$${R.tkFixed} takhfeef`; }, f: x => Math.max(0, x - num(R.tkFixed)) }
+  { id: 'd100', fixed: true }                // its amount is per quote, see tkFor
 ];
 /* Faiz and Hotel each have their own takhfeef choices. A Cairo-only quote follows the Cairo stay, Faiz if there is no choice. */
 const tkKey = (io, co) => io || co || 'faiz';
 const tkOn = (key, t) => !!(S.tk[key] && S.tk[key][t.id]);
+/* The fixed takhfeef is $100 to start with (Settings), and each quote can change it for Faiz and Hotel. */
+const tkAmt = key => { const v = S.tkAmt && S.tkAmt[key]; return Math.max(0, v === '' || v == null ? num(R.tkFixed) : num(v)); };
+const tkFor = (t, key) => {
+  if (!t.fixed) return t;
+  const a = tkAmt(key), s = fUsd(a);
+  return { id: t.id, xl: `${s}$ TAKHFEEF`, tag: `$${s} takhfeef`, f: x => Math.max(0, x - a) };
+};
 
 /* ───────── time & itinerary ───────── */
 const IQ = new Set(['BGW', 'NJF', 'BSR', 'EBL', 'ISU']), IQT = new Set(['BGW', 'NJF']), EG = new Set(['CAI']), SA = new Set(['JED', 'MED']);
@@ -782,7 +791,8 @@ function unitCols(A, U, cols) {
     const head = [I ? ioName(I).toUpperCase() : cn ? cairoH(cn) : first.toUpperCase(), I && cn ? cairoH(cn) : '', un ? `MAKKAH ${un === 'excl' ? 'EXCLUSIVE' : 'SHARING'} ROOM` : ''].filter(Boolean).join(' · ');
     const name = [I ? ioName(I) : cn ? cairoN(cn) : first, I && cn ? cairoN(cn) : '', un ? `Makkah ${un === 'excl' ? 'exclusive' : 'sharing'} room` : ''].filter(Boolean).join(', ');
     const heads = f ? [head, `STOPOVER-${stopTag(U.cairo) || 'NO CAIRO'}`, U.title.toUpperCase() + (String(f.ref).trim() ? ' · ' + String(f.ref).trim() : '')] : [head];
-    const tks = A.iraq || U.cairo.length ? TK.filter(t => tkOn(tkKey(kindOf(I), C), t)) : [];   // takhfeef is off Iraq and Cairo only
+    const tkk = tkKey(kindOf(I), C);
+    const tks = A.iraq || U.cairo.length ? TK.filter(t => tkOn(tkk, t)).map(t => tkFor(t, tkk)) : [];   // takhfeef is off Iraq and Cairo only
     for (const t of [null, ...tks]) {
       const g = `${U.key}|${I}|${C}|${Uo}|${t ? t.id : ''}`;
       for (const [k, L, nm, ix] of cats) {
@@ -1160,7 +1170,7 @@ function renderBits(A) {
   const keys = tkKeys(A);
   $('#tkF1').hidden = $('#tkF2').hidden = !keys.includes('faiz');
   $('#tkH1').hidden = $('#tkH2').hidden = !keys.includes('hotel');
-  document.querySelectorAll('.tkFixed').forEach(el => (el.textContent = `$${R.tkFixed} off`));
+  document.querySelectorAll('.tka').forEach(el => (el.placeholder = num(R.tkFixed)));
   document.querySelectorAll('[data-act=tkAll]').forEach(b => (b.textContent = TK.every(t => tkOn(b.dataset.k, t)) ? 'Clear all' : 'Select all'));
   const amt = (k, lbl) => (num(S.inr[k][0]) ? `${lbl}, ₹${INR.format(num(S.inr[k][0]))}` : lbl);
   $('#glL').textContent = amt('gl', 'Group leader');
@@ -1217,7 +1227,7 @@ function renderRates() {
     <h4>Saudi visa, rupees</h4>
     <div class="rgrid"><label class="f">Adult${n('umrah.visa.0')}</label><label class="f">Child${n('umrah.visa.1')}</label><label class="f">Infant${n('umrah.visa.2')}</label></div>
     <h4>Egypt visa and takhfeef</h4>
-    <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef, dollars off Faiz or Hubb${n('tkFixed')}</label></div>
+    <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef to start with, dollars off Faiz or Hubb (each quote can change it)${n('tkFixed')}</label></div>
     <h4>Saved flights</h4>
     <p>Typing one of these flight numbers on a quote fills in its route and times. A new flight is added here once you have typed its route and times in full. Change a time on a quote for that quote only, or here to change it for every quote from now on.</p>
     ${flightTable()}`;
@@ -1696,6 +1706,8 @@ function onEdit(e) {
     }
     if ((ps === 'addGl' || ps === 'addCoord') && v) askAmount(ps === 'addGl' ? 'gl' : 'coord');
     if (/^ovr\.cairo\./.test(ps) && !v) delete S.ovr.cairo[ps.split('.')[2]];
+    const ta = /^tkAmt\.(\w+)$/.exec(ps);
+    if (ta && v !== '' && !S.tk[ta[1]].d100) { S.tk[ta[1]].d100 = true; hydrate(document); }
     const fo = /^fams\.(\d+)\.ovr\.(\d+)$/.exec(ps);
     if (fo && !v) delete S.fams[+fo[1]].ovr[fo[2]];
     update(e.type === 'input' && !!t.closest('#trip'));
