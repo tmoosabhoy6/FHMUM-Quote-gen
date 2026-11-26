@@ -39,7 +39,11 @@ Rates come from the Faiz-e-Haakimi Qahera Lawazim (effective 29/08/2026 to 02/02
 
 - **Umrah** is found from the flights: landing in Jeddah or Madinah is a stay in Saudi Arabia. Days are counted from the arrival date to the departure date. Faiz lawazim (130 SR adult, 65 SR child a day sharing; 170 SR and 85 SR for an exclusive room in Makkah) has 15% VAT and 2.5% municipal tax on top, so a day is SR 153.24 an adult. Transport is one fee per adult or child for every transfer, from the circular's six routes and five group sizes, plus 15% VAT. The route is picked from the airports and can be changed. The Saudi visa is ₹12,000 a head, infants included.
 - **Riyals**: every quote has a riyal rate next to the dollar rate (₹25 to start). The Excel sheet has a **SAR EXPENSES** block with its own **TOTAL SAR @RS.** row, under the USD block. A line item under Other charges can be in riyals too.
-- **Hotel Nizam tiers**: ticking Hotel Nizam opens tiers **B**, **A** and **A+**. The Hubb is the same for all three; only the bed changes, $10, $22 or $40 a night for adults and children (infants nothing). Tick more than one to quote them side by side.
+- **Hotel Nizam tiers**: ticking Hotel Nizam opens tiers **B**, **A** and **A+**. The Hubb is the same for all three; only the bed changes, $10, $22 or $40 a night for adults and children (infants nothing). Tick more than one to quote them side by side. **Own** takes any bed charge typed for that quote ($35, $42 and so on), for adults and children; typing an amount ticks it.
+
+## Same-day transit in Cairo
+
+On the way home, a group that lands in Cairo from Iraq (or Saudi Arabia) and flies on home the same day goes nowhere in between, so that day is not a stay day: no Cairo lawazim is charged for it, day or night. This is worked out from the flights every time; the package can still be changed by hand under **Change**. The Egypt visa follows its usual rule.
 
 ## Cairo stopovers
 
