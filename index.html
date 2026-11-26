@@ -335,7 +335,7 @@ dialog::backdrop{background:rgba(36,50,58,.3)}
     <dl class="opts">
       <dt id="oIq1">Stay in Iraq</dt>
       <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label>
-        <div class="tiers" id="tiers" role="group" aria-label="Hotel Nizam tier"><span class="tl">Hotel tier</span><label class="ck"><input type="checkbox" data-s="hotelTier.B"><span>B <small id="tierB"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.A"><span>A <small id="tierA"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.AP"><span>A+ <small id="tierAP"></small></span></label></div></dd>
+        <div class="tiers" id="tiers" role="group" aria-label="Hotel Nizam tier"><span class="tl">Hotel tier</span><label class="ck"><input type="checkbox" data-s="hotelTier.B"><span>B <small id="tierB"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.A"><span>A <small id="tierA"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.AP"><span>A+ <small id="tierAP"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.C"><span>Own $<input class="u tka" type="number" min="0" step="any" data-s="hotelBed" placeholder="35" aria-label="Own hotel bed charge, dollars a night"> <small>bed</small></span></label></div></dd>
       <dt id="oUm1">Room in Makkah</dt>
       <dd id="oUm2"><label class="ck"><input type="checkbox" data-s="umrahRoom.share"><span>Sharing</span></label><label class="ck"><input type="checkbox" data-s="umrahRoom.excl"><span>Exclusive</span></label></dd>
       <dt id="oSp1">Split the group</dt>
@@ -456,10 +456,11 @@ const DEF_S = {
   name: '', adults: '', children: '', infants: '', rate: 96.5, sar: 25,
   legs: [blankLeg(), blankLeg()],
   iraqAcc: { faiz: true, hotel: true }, cairoAcc: { faiz: true, hotel: true },
-  hotelTier: { B: true, A: false, AP: false }, umrahRoom: { share: true, excl: false },
+  hotelTier: { B: true, A: false, AP: false, C: false }, umrahRoom: { share: true, excl: false },
   fams: [],
   tk: { faiz: { p100: false, p75: false, p50: false, d100: false }, hotel: { p100: false, p75: false, p50: false, d100: false } },
   tkAmt: { faiz: '', hotel: '' },          // fixed takhfeef in dollars for this quote; blank uses the amount in Settings
+  hotelBed: '',                            // the Own hotel tier: a bed charge typed for this quote, dollars a night
   addGl: false, addCoord: false, addRida: false, add80: false,
   inr: { gl: [0, 0, 0], coord: [2000, 2000, 0], hadiyah: [1100, 1100, 0], admin: [1600, 1600, 1600], ticket: ['', '', ''], rida: [3400, 0, 0], p80: [3000, 3000, 0] },
   split: { a: '', c: '', i: '' },
@@ -551,13 +552,17 @@ const AP = { BGW: 'Baghdad', NJF: 'Najaf', CAI: 'Cairo', BOM: 'Mumbai', BSR: 'Ba
 const apN = a => AP[a] || esc(a);
 const region = a => (IQ.has(a) ? 'IQ' : EG.has(a) ? 'EG' : SA.has(a) ? 'SA' : '');
 
-/* Hotel Nizam tiers. The Hubb is the same for every tier; only the bed charge changes. B is the standard rate. */
-const TIERS = [{ id: 'B', l: 'B', r: 'bed' }, { id: 'A', l: 'A', r: 'bedA' }, { id: 'AP', l: 'A+', r: 'bedAP' }];
+/* Hotel Nizam tiers. The Hubb is the same for every tier; only the bed charge changes. B is the standard rate.
+   The Own tier is a bed charge typed on the quote itself, for any amount the presets don't cover. */
+const TIERS = [{ id: 'B', l: 'B', r: 'bed' }, { id: 'A', l: 'A', r: 'bedA' }, { id: 'AP', l: 'A+', r: 'bedAP' }, { id: 'C', own: true }];
+const ownBedSet = () => S.hotelBed !== '' && S.hotelBed != null;
+const bedRate = (t, ix) => (ix > 1 ? 0 : t.own ? Math.max(0, num(S.hotelBed)) : num(R.iraq[t.r][ix]));     // adults and children; infants nothing
+const tierL = t => (t.own ? `$${fUsd(bedRate(t, 0))}` : t.l);
 const tierOf = io => TIERS.find(t => io === 'hotel:' + t.id) || TIERS[0];
 const kindOf = io => (io && io.startsWith('hotel') ? 'hotel' : io);
-const tiersOn = () => { const on = TIERS.filter(t => S.hotelTier[t.id]); return on.length ? on : [TIERS[0]]; };
-const tierNamed = () => S.hotelTier.A || S.hotelTier.AP || S.fams.some(f => /^hotel:A/.test(f.iraq));   // only say "B" once another tier is in play
-const ioName = io => (!io ? '' : io === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam' + (tierOf(io).id !== 'B' || tierNamed() ? ' ' + tierOf(io).l : ''));
+const tiersOn = () => { const on = TIERS.filter(t => S.hotelTier[t.id] && (!t.own || ownBedSet())); return on.length ? on : [TIERS[0]]; };
+const tierNamed = () => S.hotelTier.A || S.hotelTier.AP || S.hotelTier.C || S.fams.some(f => /^hotel:(A|C)/.test(f.iraq));   // only say "B" once another tier is in play
+const ioName = io => (!io ? '' : io === 'faiz' ? 'Faiz Nizam' : 'Hotel Nizam' + (tierOf(io).id !== 'B' || tierNamed() ? ' ' + tierL(tierOf(io)) : ''));
 
 /* Umrah transport routes, as numbered in the Faiz circular */
 const ROUTES = {
@@ -612,15 +617,19 @@ function parsedLegs(legs = S.legs) {
 }
 
 /* Cairo package, from the Faiz-e-Haakimi Lawazim rules */
-const PKG_CODES = ['N', 'R', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap(n => ['A', 'B', 'C'].map(w => n + w)), '10'];
+const PKG_CODES = ['T', 'N', 'R', ...[1, 2, 3, 4, 5, 6, 7, 8, 9].flatMap(n => ['A', 'B', 'C'].map(w => n + w)), '10'];
 const codeOf = p => (p.n === 0 ? p.w : p.n >= 10 ? '10' : p.n + p.w);
-const fromCode = c => (c === 'N' || c === 'R' ? { n: 0, w: c } : c === '10' ? { n: 10, w: 'A' } : { n: +c.slice(0, -1), w: c.slice(-1) });
-const pkgName = p => (p.n === 0 ? (p.w === 'N' ? 'Day stopover, no rooms' : 'Day stopover with rooms') : p.n >= 10 ? `${p.n} nights` : `${p.n} night${p.n > 1 ? 's' : ''} ${p.w}`);
-const pkgShort = p => (p.n === 0 ? `DAY STOPOVER${p.w === 'R' ? ' + ROOMS' : ''}` : `${p.n}N-${p.n + 1}D · ${p.n >= 10 ? p.n + ' NIGHTS' : p.n + (p.n > 1 ? ' NIGHTS ' : ' NIGHT ') + p.w}`);
-const cairoTitle = p => (p.n === 0 ? `Day stopover in Cairo, ${p.w === 'N' ? 'no rooms' : 'with rooms'}` : p.n >= 10 ? `${p.n} nights in Cairo` : `${p.n} night${p.n > 1 ? 's' : ''} in Cairo, package ${p.w}`);
+const fromCode = c => (c === 'T' || c === 'N' || c === 'R' ? { n: 0, w: c } : c === '10' ? { n: 10, w: 'A' } : { n: +c.slice(0, -1), w: c.slice(-1) });
+const pkgName = p => (p.n === 0 ? (p.w === 'T' ? 'Same-day transit, not charged' : p.w === 'N' ? 'Day stopover, no rooms' : 'Day stopover with rooms') : p.n >= 10 ? `${p.n} nights` : `${p.n} night${p.n > 1 ? 's' : ''} ${p.w}`);
+const pkgShort = p => (p.n === 0 ? (p.w === 'T' ? 'SAME-DAY TRANSIT, NOT CHARGED' : `DAY STOPOVER${p.w === 'R' ? ' + ROOMS' : ''}`) : `${p.n}N-${p.n + 1}D · ${p.n >= 10 ? p.n + ' NIGHTS' : p.n + (p.n > 1 ? ' NIGHTS ' : ' NIGHT ') + p.w}`);
+const cairoTitle = p => (p.n === 0 ? (p.w === 'T' ? 'Same-day transit in Cairo, not charged' : `Day stopover in Cairo, ${p.w === 'N' ? 'no rooms' : 'with rooms'}`) : p.n >= 10 ? `${p.n} nights in Cairo` : `${p.n} night${p.n > 1 ? 's' : ''} in Cairo, package ${p.w}`);
 
+/* On the way home (Baghdad to Cairo, then Cairo to Mumbai the same day) the group waits for the next flight and goes nowhere,
+   so that day is not a stay day: no Cairo lawazim, day or night. Always applied; the package can still be changed by hand. */
+const homeTransit = st => ['IQ', 'SA'].includes(region(st.inL.from)) && !region(st.outL.to) && st.dep > st.arr && Math.floor(st.dep / 1440) === Math.floor(st.arr / 1440);
 function cairoAuto(st) {
   const warn = [], fd = st.dep - R.cairo.lead * 60, arrDay = Math.floor(st.arr / 1440);
+  if (homeTransit(st)) return { pkg: { n: 0, w: 'T' }, fd, warn };
   let day = Math.floor(fd / 1440), t = fd % 1440, n, w;
   if (st.arr % 1440 < 300) warn.push('Lands in Cairo before 5 am, which Faiz charges extra for. Add it as an extra line item under Other charges.');
   if (t < 180) { day--; t += 1440; }                                   // 12–3 am belongs to the previous day (window C)
@@ -636,6 +645,7 @@ function cairoAuto(st) {
 }
 function cairoRate(p, ci, co, paxAC) {
   const C = R.cairo;
+  if (p.w === 'T') return 0;                                           // same-day transit on the way home
   if (p.n === 0) { const d = C.day[p.w]; return paxAC === 1 ? num(d.one) : num(d.ac[ci]); }
   if (p.n >= 10) return num(C.ten[ci]);
   if (p.n === 1 && p.w === 'C' && co === 'hotel') return num(C.hotel1C[ci]);
@@ -676,7 +686,11 @@ function cairoStays(stays, ovr) {
   });
 }
 const hotelDiff = cairo => cairo.some(s => s.pkg.n === 1 && s.pkg.w === 'C');
-const stopTag = cairo => cairo.map(s => (s.pkg.n ? s.pkg.n + 'N' : 'DAY')).join('+');
+const stopTag = cairo => cairo.map(s => (s.pkg.n ? s.pkg.n + 'N' : s.pkg.w === 'T' ? 'TRANSIT' : 'DAY')).join('+');
+/* What a Cairo stay shows under its title in the trip and stopover lists. */
+const cairoDetail = s => (s.pkg.w === 'T'
+  ? `Lands ${fmtAbs(s.arr)} from ${apN(s.inL.from)} and leaves for ${apN(s.outL.to)} on ${esc(s.outL.fn) || 'the next flight'} at ${fmtT(s.dep % 1440)}${s.auto.w === 'T' ? ' the same day' : ''}. ${s.auto.w === 'T' ? 'A same-day transit on the way home is not a stay day, so' : 'Priced as a transit, so'} no Cairo lawazim is charged for it.`
+  : `Lands ${fmtAbs(s.arr)}. Leaves Faiz ${fmtAbs(s.fd)} for ${esc(s.outL.fn) || 'the flight'} at ${fmtT(s.dep % 1440)}.${s.outL.fn === 'MS627' ? ' MS 627 always counts as a full night.' : ''}`);
 
 function analyze() {
   const L = parsedLegs(), W = { a: num(S.adults), c: num(S.children), i: num(S.infants) };
@@ -719,6 +733,8 @@ function analyze() {
       tier: ti < th.length - 1 ? `${th[ti]}-${th[ti + 1] - 1} pax` : `${th[ti]}-49 pax` };
   }
   A.cairo = cairoStays(stays, S.ovr.cairo);
+  if (A.iraq && !ownBedSet() && ((S.iraqAcc.hotel && S.hotelTier.C) || S.fams.some(f => f.iraq === 'hotel:C')))
+    A.warn.push('Own hotel bed charge is ticked but has no amount. Type it in dollars a night next to Own, under Hotel tier.');
   // Stopover families come out of the group's head count; whoever is left travels on the group's flights.
   const left = { a: W.a, c: W.c, i: W.i }, names = { a: 'adults', c: 'children', i: 'infants' };
   S.fams.forEach((f, j) => {
@@ -812,7 +828,7 @@ function calc(A, col) {
   v.sav = A.umrah ? num(R.umrah.visa[ix]) : 0;
   v.faiz = A.iraq && col.io === 'faiz' ? disc(n * pick(R.iraq.faiz)) : 0;
   v.hubb = A.iraq && hotel ? disc(n * pick(R.iraq.hubb)) : 0;
-  v.bed = A.iraq && hotel ? n * pick(R.iraq[tierOf(col.io).r]) : 0;
+  v.bed = A.iraq && hotel ? n * bedRate(tierOf(col.io), ix) : 0;
   v.cairo = ac ? U.cairo.reduce((s, st) => s + Math.max(0, cairoRate(st.pkg, ix, col.co, U.paxAC) - (t ? num(R.cairo.tkLess[ix]) : 0)), 0) : 0;
   v.visa = A.iraq ? A.iraq.visa : 0;
   v.trans = A.iraq && ac ? A.iraq.trans : 0;
@@ -850,7 +866,7 @@ function buildRows(A, cols) {
   if (A.iraq && tiers.length) {
     const named = tiers.length > 1 || tiers[0].id !== 'B' || tierNamed();
     usd.push({ k: 'hubb', cur: 'USD', label: `HOTEL NIZAM HUBB (ADT ${q.hubb[0]} & CHD ${q.hubb[1]} X ${n} NIGHTS)` },
-             { k: 'bed', cur: 'USD', label: tiers.length === 1 ? `HOTEL BED${named ? ' ' + tiers[0].l : ''} (ADT & CHD ${q[tiers[0].r][0]} X ${n} NIGHTS)` : `HOTEL BED (${tiers.map(t => `${t.l} ${q[t.r][0]}`).join(', ')} · ADT & CHD X ${n} NIGHTS)` });
+             { k: 'bed', cur: 'USD', label: tiers.length === 1 ? `HOTEL BED${named ? ' ' + tierL(tiers[0]) : ''} (ADT & CHD ${fUsd(bedRate(tiers[0], 0))} X ${n} NIGHTS)` : `HOTEL BED (${tiers.map(t => (t.own ? tierL(t) : `${t.l} ${fUsd(bedRate(t, 0))}`)).join(', ')} · ADT & CHD X ${n} NIGHTS)` });
   }
   if (cu.length) {
     const tags = [...new Set(cu.map(u => u.cairo.map(s => pkgShort(s.pkg)).join(' + ')))];
@@ -887,7 +903,7 @@ function quoteTitle(A) {
   const parts = [String(S.name || '').trim().toUpperCase()];
   if (A.legs.length) parts.push(dmy(A.legs[0].dep));
   if (A.iraq) parts.push(`${A.iraq.nights}N`);
-  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n}N-${s.pkg.n + 1}D` : 'DAY STOPOVER'));
+  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n}N-${s.pkg.n + 1}D` : s.pkg.w === 'T' ? 'CAIRO TRANSIT' : 'DAY STOPOVER'));
   if (A.umrah) parts.push(`${A.umrah.days}D UMRAH`);
   return parts.filter(Boolean).join('   ') || 'ZIYARAT QUOTE';
 }
@@ -994,8 +1010,7 @@ function renderTrip(A) {
   A.cairo.forEach(s => {
     const k = 'cairo' + s.idx, ch = codeOf(s.pkg) !== codeOf(s.auto);
     const opts = `<option value="">${pkgName(s.auto)} (worked out)</option>` + PKG_CODES.map(c => `<option value="${c}">${pkgName(fromCode(c))}</option>`).join('');
-    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`,
-      `Lands ${fmtAbs(s.arr)}. Leaves Faiz ${fmtAbs(s.fd)} for ${esc(s.outL.fn) || 'the flight'} at ${fmtT(s.dep % 1440)}.${s.outL.fn === 'MS627' ? ' MS 627 always counts as a full night.' : ''}`,
+    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`, cairoDetail(s),
       `Price it as <select class="u" data-s="ovr.cairo.${s.idx}" aria-label="Cairo package">${opts}</select>`));
     out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
     s.warn.forEach(w => out.push(warnLi(esc(w))));
@@ -1009,7 +1024,7 @@ function renderTrip(A) {
 /* ───────── Cairo stopover families ─────────
    Each family card lists the group's flights. A flight they take differently is changed in place for them only;
    a flight only they take is added at the bottom. Their Cairo package and Egypt visa come from those flights. */
-const IQ_OPTS = [['', 'As the group'], ['faiz', 'Faiz Nizam'], ['hotel:B', 'Hotel Nizam B'], ['hotel:A', 'Hotel Nizam A'], ['hotel:AP', 'Hotel Nizam A+']];
+const IQ_OPTS = [['', 'As the group'], ['faiz', 'Faiz Nizam'], ['hotel:B', 'Hotel Nizam B'], ['hotel:A', 'Hotel Nizam A'], ['hotel:AP', 'Hotel Nizam A+'], ['hotel:C', 'Hotel Nizam, own bed charge']];
 const legText = l => {
   const t = x => (tmin(x) != null ? fmtT(tmin(x)) : '–'), o = legOff(l);
   return `${l.from || '–'} to ${l.to || '–'}, ${l.date ? showDate(l.date) : 'no date yet'}, ${t(l.dep)} to ${t(l.arr)}${o ? ` (+${o})` : ''}`;
@@ -1068,8 +1083,7 @@ function famFacts(A, U) {
   U.cairo.forEach(s => {
     const k = `f${U.key}c${s.idx}`, ch = codeOf(s.pkg) !== codeOf(s.auto);
     const opts = `<option value="">${pkgName(s.auto)} (worked out)</option>` + PKG_CODES.map(c => `<option value="${c}">${pkgName(fromCode(c))}</option>`).join('');
-    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`,
-      `Lands ${fmtAbs(s.arr)}. Leaves Faiz ${fmtAbs(s.fd)} for ${esc(s.outL.fn) || 'the flight'} at ${fmtT(s.dep % 1440)}.${s.outL.fn === 'MS627' ? ' MS 627 always counts as a full night.' : ''}`,
+    out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`, cairoDetail(s),
       `Price it as <select class="u" data-s="fams.${j}.ovr.${s.idx}" aria-label="Cairo package">${opts}</select>`));
     out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
     s.warn.forEach(w => out.push(warnLi(esc(w))));
@@ -1110,7 +1124,7 @@ function renderSide(A, cols) {
   const price = v => (v == null ? '<td></td>' : `<td><i>₹</i>${INR.format(v)}</td>`);
   const parts = [];
   if (A.iraq) parts.push(`${A.iraq.nights} ${plural(A.iraq.nights, 'night', 'nights')} in Iraq`);
-  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n} ${plural(s.pkg.n, 'night', 'nights')} in Cairo` : 'a day in Cairo'));
+  A.cairo.forEach(s => parts.push(s.pkg.n ? `${s.pkg.n} ${plural(s.pkg.n, 'night', 'nights')} in Cairo` : s.pkg.w === 'T' ? 'a same-day transit in Cairo' : 'a day in Cairo'));
   if (A.umrah) parts.push(`${A.umrah.days} ${plural(A.umrah.days, 'day', 'days')} for Umrah`);
   const nf = A.fams.filter(u => u.paxAll).length;
   if (nf) parts.push(`${nf} Cairo ${plural(nf, 'stopover', 'stopovers')}`);
@@ -1160,7 +1174,7 @@ function renderBits(A) {
   $('#oIq1').hidden = $('#oIq2').hidden = !showIq;
   $('#oCa1').hidden = $('#oCa2').hidden = !A.cairoHotelDiff;
   $('#tiers').hidden = !S.iraqAcc.hotel;
-  TIERS.forEach(t => ($('#tier' + t.id).textContent = `$${num(R.iraq[t.r][0])} bed`));
+  TIERS.forEach(t => !t.own && ($('#tier' + t.id).textContent = `$${num(R.iraq[t.r][0])} bed`));
   $('#oUm1').hidden = $('#oUm2').hidden = !A.umrah;
   $('#oSp1').hidden = $('#oSp2').hidden = !(A.iraq && S.iraqAcc.faiz && S.iraqAcc.hotel);
   const sp = A.split;
@@ -1170,7 +1184,7 @@ function renderBits(A) {
   const keys = tkKeys(A);
   $('#tkF1').hidden = $('#tkF2').hidden = !keys.includes('faiz');
   $('#tkH1').hidden = $('#tkH2').hidden = !keys.includes('hotel');
-  document.querySelectorAll('.tka').forEach(el => (el.placeholder = num(R.tkFixed)));
+  document.querySelectorAll('[data-s^="tkAmt."]').forEach(el => (el.placeholder = num(R.tkFixed)));
   document.querySelectorAll('[data-act=tkAll]').forEach(b => (b.textContent = TK.every(t => tkOn(b.dataset.k, t)) ? 'Clear all' : 'Select all'));
   const amt = (k, lbl) => (num(S.inr[k][0]) ? `${lbl}, ₹${INR.format(num(S.inr[k][0]))}` : lbl);
   $('#glL').textContent = amt('gl', 'Group leader');
@@ -1658,7 +1672,7 @@ async function exportXlsx(fk) {
   if (A.iraq) put(`IRAQ${withG}: ${A.iraq.inAp} to ${A.iraq.outAp}, ${A.iraq.nights} NIGHTS, TRANSPORT $${A.iraq.trans} (${A.iraq.transTier}), VISA $${A.iraq.visa}`);
   if (A.umrah) { const u = A.umrah; put(`UMRAH${withG}: ${u.inAp} to ${u.outAp}, ${u.days} DAYS, TRANSPORT ROUTE ${u.route} ${ROUTE_X[u.route]} SR ${fUsd(u.trans)} (${u.tier}), SAUDI VISA ₹${INR.format(num(R.umrah.visa[0]))}`); }
   const cairoLines = list => list.forEach(s => {
-    put(`CAIRO: ${pkgName(s.pkg).toUpperCase()}, LANDS ${fmtAbs(s.arr)}, LEAVES FAIZ ${fmtAbs(s.fd)}, EGYPT VISA ${s.visaFree ? 'FREE' : '₹' + R.egypt.inr}: ${s.visaWhy}`);
+    put(`CAIRO: ${pkgName(s.pkg).toUpperCase()}, LANDS ${fmtAbs(s.arr)}, ${s.pkg.w === 'T' ? `LEAVES ${fmtAbs(s.dep)}, NO STAY DAY` : `LEAVES FAIZ ${fmtAbs(s.fd)}`}, EGYPT VISA ${s.visaFree ? 'FREE' : '₹' + R.egypt.inr}: ${s.visaWhy}`);
     s.warn.forEach(w => put('NOTE: ' + w));
   });
   if (!AF) cairoLines(FU ? FU.cairo : A.cairo);
@@ -1708,6 +1722,7 @@ function onEdit(e) {
     if (/^ovr\.cairo\./.test(ps) && !v) delete S.ovr.cairo[ps.split('.')[2]];
     const ta = /^tkAmt\.(\w+)$/.exec(ps);
     if (ta && v !== '' && !S.tk[ta[1]].d100) { S.tk[ta[1]].d100 = true; hydrate(document); }
+    if (ps === 'hotelBed' && v !== '' && !S.hotelTier.C) { S.hotelTier.C = true; hydrate(document); }   // typing an own bed charge ticks it
     const fo = /^fams\.(\d+)\.ovr\.(\d+)$/.exec(ps);
     if (fo && !v) delete S.fams[+fo[1]].ovr[fo[2]];
     update(e.type === 'input' && !!t.closest('#trip'));
