@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-27T00:00:00+00:00",
+  "title": "Design System: Ziyarat quotes",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "#221C26"
+      },
+      "gold-thread": {
+        "role": "primary",
+        "displayName": "Gold thread",
+        "canonical": "#B98A2C"
+      },
+      "gold-tint": {
+        "role": "primary",
+        "displayName": "Gold tint",
+        "canonical": "#FBF3DC"
+      },
+      "rose": {
+        "role": "secondary",
+        "displayName": "Rose",
+        "canonical": "#BE2459"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#FFFFFF"
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "Wash",
+        "canonical": "#F6F4F8"
+      },
+      "edge": {
+        "role": "neutral",
+        "displayName": "Edge",
+        "canonical": "#8F889A"
+      },
+      "saffron": {
+        "role": "secondary",
+        "displayName": "Saffron",
+        "canonical": "#F2B90F"
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "Mint",
+        "canonical": "#14795A"
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Lilac",
+        "canonical": "#6A4FC4"
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Title",
+        "purpose": "The quote name or app name."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Result and dialog titles."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Headings inside a sheet."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Field values and running text."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Helper lines and table cells."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels and column headings, sentence case."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 1px 2px rgba(34,28,38,.05), 0 12px 28px -16px rgba(34,28,38,.18)",
+        "purpose": "White sheets over the wash."
+      },
+      {
+        "name": "dialog",
+        "value": "0 2px 6px rgba(34,28,38,.08), 0 28px 70px -20px rgba(34,28,38,.38)",
+        "purpose": "Dialogs and the toast."
+      },
+      {
+        "name": "hem",
+        "value": "0 6px 14px -10px rgba(34,28,38,.3)",
+        "purpose": "Under the gold band, so the sticky bar sits above the page."
+      },
+      {
+        "name": "focus-glow",
+        "value": "0 0 0 3px rgba(185,138,44,.32)",
+        "purpose": "Focused inputs, with an ink border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Tiles stitching in, dialogs opening, the toast."
+      },
+      {
+        "name": "state",
+        "value": "150ms",
+        "purpose": "Hover, focus and selection changes."
+      },
+      {
+        "name": "tile-in",
+        "value": "320ms, 16ms stagger",
+        "purpose": "The band of tiles, once when it first appears or changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "640px"
+      },
+      {
+        "name": "icon-bar",
+        "value": "760px"
+      },
+      {
+        "name": "stacked",
+        "value": "1139px"
+      },
+      {
+        "name": "narrow-two-column",
+        "value": "1239px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Hem band",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "The one ornament: a gold crochet band under the top bar, once per screen.",
+      "html": "<div class=\"ds-hem\"></div>",
+      "css": ".ds-hem{height:12px;border-top:1px solid #B98A2C;border-bottom:1px solid #B98A2C;background:#fff url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 5l6-3.4L12 5l6-3.4L24 5M0 5l6 3.4L12 5l6 3.4L24 5' fill='none' stroke='%23B98A2C'/%3E%3Cg fill='%23B98A2C'%3E%3Ccircle cx='6' cy='5' r='.85'/%3E%3Ccircle cx='18' cy='5' r='.85'/%3E%3C/g%3E%3C/svg%3E\") 0 0/24px 10px repeat-x}"
+    },
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action of a region: Download Excel, Search, New quote.",
+      "html": "<button class=\"ds-btn-p\">Download Excel</button>",
+      "css": ".ds-btn-p{font-family:Figtree,system-ui,sans-serif;height:38px;padding:0 16px;border-radius:8px;border:1px solid #221C26;background:#221C26;color:#fff;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .15s,transform .1s}.ds-btn-p:hover{background:#3A3041}.ds-btn-p:active{transform:translateY(1px)}.ds-btn-p:focus-visible{outline:2px solid #84600F;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Everything that is not the main action.",
+      "html": "<button class=\"ds-btn\">See the full breakdown</button>",
+      "css": ".ds-btn{font-family:Figtree,system-ui,sans-serif;height:38px;padding:0 16px;border-radius:8px;border:1px solid #8F889A;background:#fff;color:#221C26;font-weight:600;font-size:14.5px;cursor:pointer;transition:background .15s,border-color .15s}.ds-btn:hover{background:#F6F4F8;border-color:#5A5362}.ds-btn:focus-visible{outline:2px solid #84600F;outline-offset:2px}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Label above a boxed input; focus is an ink border with a gold glow.",
+      "html": "<label class=\"ds-f\">Adults<input class=\"ds-u\" value=\"32\"></label>",
+      "css": ".ds-f{font-family:Figtree,system-ui,sans-serif;display:flex;flex-direction:column;gap:5px;width:96px;font-size:12.5px;font-weight:500;color:#5A5362}.ds-u{font:400 15px Figtree,system-ui,sans-serif;height:38px;padding:0 10px;border:1px solid #8F889A;border-radius:8px;background:#fff;color:#221C26;font-variant-numeric:tabular-nums}.ds-u:hover{border-color:#5A5362}.ds-u:focus{outline:none;border-color:#221C26;box-shadow:0 0 0 3px rgba(185,138,44,.32)}"
+    },
+    {
+      "name": "Tick chip",
+      "kind": "chip",
+      "refersTo": "tick-chip",
+      "description": "A choice that can be ticked alongside others; ticked is gold tint with an ink border.",
+      "html": "<label class=\"ds-ck\"><input type=\"checkbox\" checked><span>Faiz Nizam</span></label>",
+      "css": ".ds-ck{position:relative;display:inline-flex}.ds-ck input{position:absolute;opacity:0}.ds-ck span{font-family:Figtree,system-ui,sans-serif;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px 0 10px;border:1px solid #8F889A;border-radius:8px;background:#fff;font-size:14px;font-weight:500;color:#5A5362;cursor:pointer}.ds-ck span::before{content:'';width:16px;height:16px;border-radius:4px;border:1.5px solid #8F889A;box-sizing:border-box}.ds-ck input:checked+span{background:#FBF3DC;border-color:#221C26;color:#221C26}.ds-ck input:checked+span::before{border-color:#221C26;background:#221C26}.ds-ck input:focus-visible+span{outline:2px solid #84600F;outline-offset:2px}"
+    },
+    {
+      "name": "Journey band",
+      "kind": "custom",
+      "refersTo": "journey-tile-iraq",
+      "description": "One tile a day, coloured by where the group is at the end of that day: saffron Cairo, rose Iraq, mint Saudi Arabia, lilac flying.",
+      "html": "<div class=\"ds-strip\"><b class=\"ds-eg\">21</b><b class=\"ds-iq\">22</b><b class=\"ds-iq\">23</b><b class=\"ds-iq\">24</b><b class=\"ds-air\">25</b><b class=\"ds-home\">26</b></div>",
+      "css": ".ds-strip{font-family:Figtree,system-ui,sans-serif;display:grid;grid-template-columns:repeat(6,48px);gap:3px}.ds-strip b{display:grid;place-items:center;height:38px;border-radius:6px;font-weight:700;font-size:14.5px;font-variant-numeric:tabular-nums}.ds-eg{background:#F2B90F;color:#221C26}.ds-iq{background:#BE2459;color:#fff}.ds-air{background:#ECE7FA;color:#4C3699}.ds-home{background:#fff;box-shadow:inset 0 0 0 1px #8F889A;color:#5A5362}"
+    }
+  ],
+  "narrative": {
+    "northStar": "White and gold thread",
+    "overview": "White libas and the gold-thread topi: a bright white working surface, plum-black ink, one fine gold crochet band as the only ornament, and rida colours that each carry one meaning. A working tool for office staff at a desk, shared across the FHMUM apps.",
+    "keyCharacteristics": [
+      "White sheets on a faint violet-grey wash; never cream",
+      "One gold band, once per screen",
+      "Colour means something every time it appears",
+      "One typeface, Figtree, with tabular figures",
+      "Ink-filled primary buttons; gold tint marks what is selected"
+    ],
+    "rules": [
+      {
+        "name": "The Meaning Rule",
+        "body": "Rose is Iraq, saffron is Cairo, mint is Saudi Arabia, lilac is flying. Stay options stay uncoloured.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Band Rule",
+        "body": "The gold crochet band is drawn once per screen, under the top bar.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Any column of money, dates or counts uses tabular figures.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do keep the price or the count readable at a glance",
+      "Do reuse the tile band for any run of days or years",
+      "Do keep controls at 38px (44px on phones) with a visible label"
+    ],
+    "donts": [
+      "Don't add a second ornament, typeface or a gradient",
+      "Don't use a rida colour as decoration or for a primary button",
+      "Don't use cream, teal or the eight-point star",
+      "Don't put grey text on a tinted field"
+    ]
+  }
+}

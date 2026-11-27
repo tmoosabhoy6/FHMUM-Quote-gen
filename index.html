@@ -5,390 +5,559 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ziyarat Quotes</title>
 <meta name="description" content="Per za'ir quotes for Karbala, Najaf, Cairo and Umrah groups.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%231E5E73' stroke-width='2'%3E%3Crect x='5' y='5' width='14' height='14' rx='1'/%3E%3Crect x='5' y='5' width='14' height='14' rx='1' transform='rotate(45 12 12)'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23fff'/%3E%3Cg fill='none' stroke='%23B98A2C' stroke-width='1.7'%3E%3Ccircle cx='12' cy='7.6' r='3.6'/%3E%3Ccircle cx='16.4' cy='12' r='3.6'/%3E%3Ccircle cx='12' cy='16.4' r='3.6'/%3E%3Ccircle cx='7.6' cy='12' r='3.6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.github.com">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* White and gold thread. Tokens are shared with Kun Safar History; see DESIGN.md. */
 :root{
-  --paper:#F4F6F5; --sheet:#FBFCFC; --ink:#24323A; --ink2:#55646A; --ink3:#8A979B;
-  --line:#D4DCDD; --line2:#E4E9EA; --tile:#1E5E73; --tiled:#164B5C; --tilet:#E2EDEF; --tilet2:#D2E3E7;
-  --gold:#A57A2C; --amber:#875811; --ambert:#FAF0DC; --red:#A5432D;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --white:#FFFFFF; --wash:#F6F4F8; --wash2:#ECE9F0; --line:#E4E0E9; --edge:#8F889A;
+  --ink:#221C26; --ink2:#5A5362; --ink3:#6F6878;
+  --gold:#B98A2C; --goldd:#84600F; --goldt:#FBF3DC; --goldl:#E4CD95;
+  --rose:#BE2459; --rosed:#8C1440; --roset:#FCE5ED;
+  --saf:#F2B90F; --safd:#6E5100; --saft:#FFF2C6;
+  --mint:#14795A; --mintd:#0D5E46; --mintt:#DAF3EA;
+  --lilac:#6A4FC4; --lilacd:#4C3699; --lilact:#ECE7FA;
+  --red:#B3261E; --redt:#FCEBEA; --warn:#9A4307; --warnt:#FFEFE2; --ok:#1E7A4F;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sh:0 1px 2px rgba(34,28,38,.05),0 12px 28px -16px rgba(34,28,38,.18);
+  --shd:0 2px 6px rgba(34,28,38,.08),0 28px 70px -20px rgba(34,28,38,.38);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --top:68px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 14.5px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scrollbar-color:#C9C2D2 transparent;scroll-padding-top:calc(var(--top) + 16px)}
+body{margin:0;background:var(--wash);color:var(--ink);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased;caret-color:var(--goldd)}
+::selection{background:#F1DC9E;color:var(--ink)}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;background:none;border:0;padding:0}
-:focus-visible{outline:2px solid var(--tile);outline-offset:2px;border-radius:4px}
-svg{display:block}
+:focus-visible{outline:2px solid var(--goldd);outline-offset:2px;border-radius:6px}
+svg{display:block;stroke-width:1.9}
+h1,h2,h3,h4,p{margin:0}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-/* top bar */
-.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;padding:0 28px;background:rgba(244,246,245,.9);backdrop-filter:saturate(1.3) blur(10px);-webkit-backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid var(--line2)}
-.mark{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:500 19px/1 var(--serif);white-space:nowrap}
-.mark svg{width:22px;height:22px;color:var(--tile)}
-.bar-r{display:flex;align-items:center;gap:2px}
-.tb{height:34px;padding:0 12px;border-radius:8px;color:var(--ink2);font-weight:500;font-size:14px;white-space:nowrap}
-.tb:hover{color:var(--ink);background:var(--line2)}
-.tb.strong{color:var(--tile);font-weight:600}
-.tb.strong:hover{background:var(--tilet);color:var(--tiled)}
-.sync{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;font-size:13px;color:var(--ink2);margin-right:4px;white-space:nowrap}
-.sync:hover{background:var(--line2)}
-.sync i{width:7px;height:7px;border-radius:50%;background:var(--ink3);flex:none}
-.sync[data-st=saved] i{background:#3E8E69}
+/* top bar, hemmed by the gold band */
+.top{position:sticky;top:0;z-index:20;background:var(--white)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:56px;padding:0 24px}
+.hem{height:12px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 5l6-3.4L12 5l6-3.4L24 5M0 5l6 3.4L12 5l6 3.4L24 5' fill='none' stroke='%23B98A2C'/%3E%3Cg fill='%23B98A2C'%3E%3Ccircle cx='6' cy='5' r='.85'/%3E%3Ccircle cx='18' cy='5' r='.85'/%3E%3C/g%3E%3C/svg%3E") 0 0/24px 10px repeat-x;box-shadow:0 6px 14px -10px rgba(34,28,38,.3)}
+.mark{font:inherit}
+.mark a{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;font-size:16.5px;letter-spacing:-.01em;white-space:nowrap}
+.mark svg{width:26px;height:26px;color:var(--gold);stroke-width:1.6}
+.bar-r{display:flex;align-items:center;gap:4px}
+.tb{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:8px;color:var(--ink2);font-weight:500;font-size:14.5px;white-space:nowrap;transition:background .15s,color .15s}
+.tb svg{width:17px;height:17px}
+.tb:hover{color:var(--ink);background:var(--wash2)}
+.sync{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:8px;font-size:13.5px;color:var(--ink2);margin-right:4px;white-space:nowrap;transition:background .15s}
+.sync:hover{background:var(--wash2);color:var(--ink)}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--edge);flex:none}
+.sync[data-st=saved] i{background:var(--ok)}
 .sync[data-st=saving] i{background:var(--gold);animation:pulse .9s ease-in-out infinite alternate}
 .sync[data-st=error] i{background:var(--red)}
 .sync[data-st=error]{color:var(--red)}
 @keyframes pulse{to{opacity:.3}}
 
-/* layout */
-.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,440px);gap:24px 64px;max-width:1180px;margin:0 auto;padding:44px 28px 96px;align-items:start}
-.form{max-width:620px;min-width:0}
-.side{position:sticky;top:84px}
-#bd{grid-column:1/-1;min-width:0}
-#bd:empty{display:none}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 16px;border-radius:8px;font-weight:600;font-size:14.5px;border:1px solid var(--edge);background:var(--white);color:var(--ink);white-space:nowrap;transition:background .15s,border-color .15s,transform .1s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn:hover{background:var(--wash);border-color:var(--ink2)}
+.btn:active{transform:translateY(1px)}
+.btn.p{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.p:hover{background:#3A3041;border-color:#3A3041}
+.btn.s{height:34px;padding:0 12px;font-size:13.5px}
+.btn.big{width:100%;height:46px;font-size:15.5px;border-radius:10px}
+.btn:disabled{opacity:.55;cursor:default;transform:none}
+.add{display:inline-flex;align-items:center;gap:6px;margin-top:12px;height:36px;padding:0 12px 0 8px;border-radius:8px;color:var(--ink);font-weight:600;font-size:14px;border:1px dashed var(--edge);transition:background .15s,border-color .15s}
+.add:hover{background:var(--wash);border-color:var(--ink2)}
+.add svg{width:16px;height:16px}
+.lnk{display:inline-flex;align-items:center;min-height:36px;padding:0 4px;color:var(--ink);font-weight:600;font-size:13.5px;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.lnk:hover{text-decoration-color:var(--ink)}
+.ic{width:34px;height:38px;border-radius:8px;display:grid;place-items:center;color:var(--ink3);transition:background .15s,color .15s}
+.ic:hover{background:var(--wash2);color:var(--ink)}
+.ic svg{width:16px;height:16px}
 
-/* underline inputs */
-.u{border:0;border-bottom:1px solid var(--line);background:transparent;border-radius:0;height:34px;padding:0 2px;width:100%;min-width:0;font-variant-numeric:tabular-nums;transition:border-color .15s,box-shadow .15s}
-.u:hover{border-bottom-color:var(--ink3)}
-.u:focus{outline:none;border-bottom-color:var(--tile);box-shadow:0 1px 0 var(--tile)}
-.u::placeholder{color:#ADB7BA}
+/* layout: one form sheet, one price sheet */
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:28px;max-width:1260px;margin:0 auto;padding:28px 24px 40px;align-items:start}
+.sheet{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh)}
+.form{min-width:0}
+.sec{padding:26px 28px 28px;border-top:1px solid var(--line)}
+.sec:first-child{border-top:0}
+.sec-h{margin-bottom:16px}
+.sec h2{font:700 17px/1.3 var(--sans);letter-spacing:-.005em}
+.sec-h p,.intro{color:var(--ink2);font-size:13.5px;margin-top:3px;max-width:62ch}
+.hint{color:var(--ink2);font-size:13px}
+.side{position:sticky;top:calc(var(--top) + 20px);max-height:calc(100vh - var(--top) - 40px);overflow:auto;border-radius:14px;scrollbar-width:thin}
+
+/* fields */
+.u{border:1px solid var(--edge);background:var(--white);border-radius:8px;height:38px;padding:0 10px;width:100%;min-width:0;font-variant-numeric:tabular-nums;transition:border-color .15s,box-shadow .15s}
+.u:hover{border-color:var(--ink2)}
+.u:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(185,138,44,.32)}
+.u::placeholder{color:var(--ink3)}
 input[type=number]{-moz-appearance:textfield;appearance:textfield}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-.u.bad,.u.bad:focus{border-bottom-color:var(--red);box-shadow:0 1px 0 var(--red);color:var(--red)}
-select.u{cursor:pointer;padding-right:4px}
+.u.bad,.u.bad:focus{border-color:var(--red);background:var(--redt);color:var(--red)}
+select.u{cursor:pointer;padding-right:6px}
+.f{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:500;color:var(--ink2)}
+.f .u{color:var(--ink);font-size:15px;font-weight:400}
+.fs{border:0;margin:0;padding:0;min-width:0}
+.fs legend{padding:0;margin-bottom:8px;font-size:13.5px;font-weight:600}
+.fs-r{display:flex;gap:10px;flex-wrap:wrap}
+.pre{position:relative;display:block}
+.pre i{position:absolute;left:10px;top:0;line-height:38px;font-style:normal;color:var(--ink2);pointer-events:none}
+.pre .u{padding-left:25px}
 
-/* heading block */
-.title{display:block;width:100%;border:0;background:transparent;font:500 34px/1.2 var(--serif);letter-spacing:-.012em;padding:0;margin:0 0 8px;color:var(--ink)}
+/* quote name, group size, exchange rates */
+.title{display:block;width:calc(100% + 18px);margin:-6px -9px 18px;border:1px solid transparent;border-radius:8px;background:transparent;font:700 26px/1.2 var(--sans);letter-spacing:-.02em;padding:6px 8px;color:var(--ink);transition:border-color .15s,box-shadow .15s}
 .title::placeholder{color:var(--ink3)}
-.title:focus{outline:none}
-.who{margin:0;font-size:17px;line-height:2.1;color:var(--ink2)}
-.who .u{display:inline-block;width:2.7em;height:30px;text-align:center;font-weight:600;color:var(--tile);font-size:17px;vertical-align:baseline}
-.who .u.w{width:3.4em}
-h2{font:600 15.5px/1.3 var(--sans);margin:48px 0 12px;color:var(--ink)}
+.title:hover{border-color:var(--line)}
+.title:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(185,138,44,.32)}
+.group{display:flex;flex-wrap:wrap;gap:18px 36px}
+.group .n{width:84px}.group .x{width:128px}
 
 /* flights */
-.lg{display:grid;grid-template-columns:86px 52px 52px minmax(128px,1fr) 62px 62px 44px 30px 30px;grid-template-areas:"fn from to dt dep arr day gs rm";gap:0 8px;align-items:center}
-.lg-h{font-size:12.5px;color:var(--ink3);padding-bottom:2px}
-.leg{padding:3px 0}
-.leg .fn{grid-area:fn;text-transform:uppercase}
+.lg{display:grid;grid-template-columns:84px 56px 56px minmax(128px,1fr) 66px 66px 80px 34px 34px;grid-template-areas:"fn from to dt dep arr day gs rm";gap:0 8px;align-items:center}
+.lg-h{font-size:12.5px;font-weight:500;color:var(--ink2);padding-bottom:5px}
+.leg{padding:4px 0}
+.leg .fn{grid-area:fn;text-transform:uppercase;font-weight:600}
+.leg .fn::placeholder{font-weight:400}
 .leg .from{grid-area:from}.leg .to{grid-area:to}
 .leg .ap{text-transform:uppercase;text-align:center;letter-spacing:.02em;padding:0}
 .leg .ap::-webkit-calendar-picker-indicator{display:none!important;opacity:0}
 .leg .dt{grid-area:dt}.leg .dep{grid-area:dep}.leg .arr{grid-area:arr}
+.leg .dep,.leg .arr{text-align:center;padding:0}
 .leg .day{grid-area:day}.leg .gs{grid-area:gs}.leg .rm{grid-area:rm}
-.day{height:26px;border-radius:6px;font-size:12px;font-weight:600;color:var(--ink3)}
-.day:hover{background:var(--line2);color:var(--ink)}
-.day.on{background:var(--ambert);color:var(--amber)}
-.ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--ink3)}
-.ic:hover{background:var(--line2);color:var(--ink)}
-.ic svg{width:16px;height:16px}
-.leg .rm{opacity:0;transition:opacity .15s}
-.leg:hover .rm,.leg:focus-within .rm{opacity:1}
-@media (hover:none){.leg .rm{opacity:1}}
-.add{display:inline-flex;align-items:center;gap:6px;margin-top:10px;height:32px;padding:0 10px 0 6px;border-radius:8px;color:var(--tile);font-weight:600;font-size:14px}
-.add:hover{background:var(--tilet)}
-.add svg{width:16px;height:16px}
+.day{height:38px;border-radius:8px;border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--ink2);white-space:nowrap;transition:background .15s,border-color .15s,color .15s}
+.day:hover{border-color:var(--ink2);color:var(--ink)}
+.day.on{background:var(--lilact);border-color:var(--lilact);color:var(--lilacd)}
+.day.on:hover{border-color:var(--lilac)}
+.sec,.fam{container-type:inline-size}
+@container (max-width:675px){
+  .lg{grid-template-columns:78px 52px 52px minmax(120px,1fr) 60px 60px 76px 30px 30px;gap:0 6px}
+  .leg .ic{width:30px}
+}
+@container (max-width:631px){
+  .lg-h{display:none}
+  .lg{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-areas:"fn fn fn from from to to day day day rm rm" "dt dt dt dt dt dt dep dep arr arr gs gs";gap:6px 6px}
+  .leg{padding:10px 0;border-bottom:1px solid var(--line)}
+  .leg .u{padding:0 6px}.leg .ap,.leg .dep,.leg .arr{padding:0}.leg .ic{width:auto}
+  .leg.own{border-bottom:0;margin:6px -8px}
+}
+@container (max-width:331px){
+  .lg{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-areas:"fn fn from from to to" "dt dt dt dt day day" "dep dep arr arr gs rm"}
+}
 
-/* worked out */
-.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line2)}
-.facts li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 16px;padding:11px 0;border-bottom:1px solid var(--line2)}
+/* the journey band: one tile a day, coloured by where the group sleeps that night */
+.strip-w{overflow-x:auto;margin:0 -4px 6px;padding:2px 4px 4px;scrollbar-width:thin}
+.strip,.strip-l{display:grid;grid-template-columns:repeat(var(--n),minmax(34px,1fr));max-width:calc(var(--n) * 66px);gap:3px;list-style:none;margin:0;padding:0}
+.strip li{display:flex;flex-direction:column;gap:4px;font-size:11.5px;font-weight:500;color:var(--ink2);text-align:center;line-height:1.2}
+.strip b{position:relative;display:grid;place-items:center;height:38px;border-radius:6px;font-weight:700;font-size:14.5px;font-variant-numeric:tabular-nums;background:var(--wash2);color:var(--ink2);animation:tile .32s var(--ease) both;animation-delay:calc(var(--i) * 16ms)}
+@keyframes tile{from{opacity:0;transform:translateY(5px) scale(.9)}}
+.strip [data-r=IQ] b{background:var(--rose);color:#fff}
+.strip [data-r=EG] b{background:var(--saf);color:var(--ink)}
+.strip [data-r=SA] b{background:var(--mint);color:#fff}
+.strip [data-r=air] b{background:var(--lilact);color:var(--lilacd)}
+.strip [data-r=home] b{background:var(--white);box-shadow:inset 0 0 0 1px var(--edge);color:var(--ink2)}
+.strip b svg{position:absolute;right:3px;top:3px;width:10px;height:10px;stroke-width:0;fill:currentColor;opacity:.85}
+.strip-l{margin-top:5px}
+.strip-l span{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:5px;border-top:2px solid var(--wash2);color:var(--ink2)}
+.strip-l [data-r=IQ]{border-color:var(--rose);color:var(--rosed)}
+.strip-l [data-r=EG]{border-color:var(--saf);color:var(--safd)}
+.strip-l [data-r=SA]{border-color:var(--mint);color:var(--mintd)}
+.strip-l [data-r=air]{border-color:#C9BDF0;color:var(--lilacd)}
+.strip-l [data-r=home]{border-color:var(--edge)}
+
+/* what the flights work out to, grouped by place */
+.none{color:var(--ink2);font-size:14px;max-width:62ch}
+.place{border:1px solid var(--line);border-radius:12px;margin-top:12px;overflow:hidden}
+.place h3{display:flex;align-items:baseline;gap:8px;padding:9px 14px;font:700 13.5px/1.4 var(--sans);background:var(--wash);color:var(--ink)}
+.place h3 small{font-weight:500;font-size:12.5px;color:inherit;opacity:.9}
+.place[data-r=IQ] h3{background:var(--roset);color:var(--rosed)}
+.place[data-r=EG] h3{background:var(--saft);color:var(--safd)}
+.place[data-r=SA] h3{background:var(--mintt);color:var(--mintd)}
+.place .facts{padding:0 14px}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 16px;padding:11px 0;border-top:1px solid var(--line)}
+.facts li:first-child{border-top:0}
 .facts b{font-weight:600}
-.facts p{margin:1px 0 0;color:var(--ink2);font-size:13.5px}
-.facts .chg{align-self:start;color:var(--tile);font-size:13px;font-weight:600;padding:2px 6px;border-radius:6px}
-.facts .chg:hover{background:var(--tilet)}
-.facts .ovr{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:8px;font-size:13.5px;color:var(--ink2)}
-.facts .ovr .u{width:auto;height:30px}
-.facts .ovr input.u{width:4.5em;text-align:center}
-.facts li.warn{color:var(--amber);font-size:13.5px;grid-template-columns:14px minmax(0,1fr);gap:0 8px}
-.facts li.warn::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;margin-top:7px}
-.facts li.none p{margin:0}
-.lnk{color:var(--tile);font-weight:600;font-size:13px}
-.lnk:hover{text-decoration:underline}
+.facts p{margin:1px 0 0;color:var(--ink2);font-size:13.5px;max-width:68ch}
+.chg{align-self:start;height:30px;padding:0 10px;border:1px solid var(--edge);border-radius:8px;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s,border-color .15s}
+.chg:hover{background:var(--wash);border-color:var(--ink2)}
+.chg[aria-expanded=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.facts .ovr{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin-top:10px;padding:8px 10px;border-radius:8px;background:var(--wash);font-size:13.5px;color:var(--ink2)}
+.facts .ovr .u{width:auto;height:34px}
+.facts .ovr input.u{width:5em;text-align:center}
+.facts li.warn,.notes li{display:flex;gap:9px;align-items:flex-start;border:0;margin:8px 0;padding:9px 12px;border-radius:8px;background:var(--warnt);color:var(--warn);font-size:13.5px;font-weight:500}
+.facts li.warn::before,.notes li::before{content:"";flex:none;width:16px;height:16px;margin-top:2px;background:currentColor;-webkit-mask:var(--wi) center/contain no-repeat;mask:var(--wi) center/contain no-repeat}
+:root{--wi:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4.5l8.5 14.7h-17z'/%3E%3Cpath d='M12 10.5v4M12 17.2v.1'/%3E%3C/svg%3E")}
+.notes{list-style:none;margin:0 0 4px;padding:0}
 
-/* options */
-.opts{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px 16px;align-items:center;margin:0}
-.opts dt{color:var(--ink2);font-size:14px}
+/* stays and takhfeef */
+.opts{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px 16px;align-items:start;margin:0}
+.opts dt{font-size:14px;font-weight:600;line-height:36px}
 .opts dd{margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.opts dd.split{display:block;line-height:2.1;color:var(--ink2)}
-.split .u{display:inline-block;width:2.6em;height:28px;text-align:center;font-weight:600;color:var(--tile)}
-.split .muted{display:block;line-height:1.4;font-size:13px}
-.fares tbody th small{display:block;font-weight:400;font-size:12.5px;color:var(--ink2);margin-top:1px}
-.gt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--tilet2)}
-.gt span{font-size:13.5px;color:var(--ink2)}
-.gt b{font:500 22px/1.2 var(--serif);font-variant-numeric:lining-nums tabular-nums}
-.gt b i{font:600 12.5px var(--sans);font-style:normal;color:var(--gold);margin-right:2px;position:relative;top:-2px}
+.opts dd .hint{flex-basis:100%}
+.opts dd.split{align-items:flex-end}
+.split .f{width:84px}
 .ck{position:relative;display:inline-flex}
-.ck input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.ck span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink2);cursor:pointer;user-select:none;transition:background .12s,border-color .12s,color .12s}
-.ck span::before{content:"";width:14px;height:14px;border-radius:4px;border:1.5px solid #A9B4B7;flex:none;box-sizing:border-box}
-.ck span:hover{border-color:var(--ink3)}
-.ck input:checked+span{background:var(--tilet);border-color:var(--tilet2);color:var(--tiled)}
-.ck input:checked+span::before{border-color:var(--tile);background:var(--tile) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
-.ck input:focus-visible+span{outline:2px solid var(--tile);outline-offset:2px}
-.ck span small{font-size:12px;font-weight:500;color:var(--ink3)}
-.ck .tka{position:static;opacity:1;pointer-events:auto;width:3.4em;height:24px;margin:0 -4px 0 -2px;padding:0 2px;text-align:center;font-weight:600;color:inherit;cursor:text;user-select:text}
-.ck input:checked+span small{color:var(--tile)}
-
-/* hotel tiers, opened under Hotel Nizam */
-.tiers{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:2px 0 0 7px;padding:8px 0 4px 14px;border-left:2px solid var(--tilet2)}
-.tiers .tl{font-size:13px;color:var(--ink2);margin-right:2px}
+.ck>input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.ck>span{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px 0 10px;border:1px solid var(--edge);border-radius:8px;background:var(--white);font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;user-select:none;transition:background .15s,border-color .15s,color .15s}
+.ck>span::before{content:"";width:16px;height:16px;border-radius:4px;border:1.5px solid var(--edge);flex:none;box-sizing:border-box;background:var(--white);transition:background .15s,border-color .15s}
+.ck>span:hover{border-color:var(--ink2);color:var(--ink)}
+.ck>input:checked+span{background:var(--goldt);border-color:var(--ink);color:var(--ink)}
+.ck>input:checked+span::before{border-color:var(--ink);background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
+.ck>input:focus-visible+span{outline:2px solid var(--goldd);outline-offset:2px}
+.ck span small{font-size:12.5px;font-weight:500;color:var(--ink2)}
+.ck .tka{width:3.6em;height:26px;margin:0 -2px;padding:0 4px;border-radius:6px;text-align:center;font-weight:600;color:var(--ink)}
+.tiers{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:var(--wash)}
+.tiers .tl{font-size:13px;font-weight:600;margin-right:4px}
 
 /* Cairo stopover families */
-.intro{color:var(--ink2);font-size:13.5px;margin:-4px 0 14px;max-width:560px}
-.fam{border:1px solid var(--line2);border-radius:14px;background:var(--sheet);padding:14px 18px 6px;margin-bottom:14px}
-.fam-h{display:flex;gap:12px;align-items:center}
-.fam-h .fname{flex:1;font:500 20px/1.2 var(--serif);height:38px;border-bottom-color:transparent}
-.fam-h .fname:hover,.fam-h .fname:focus{border-bottom-color:var(--line)}
-.fam-h .fref{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink3)}
-.fam-h .fref .u{width:6.5em;font-size:14px;color:var(--ink)}
-.fam .who2{margin:2px 0 0;font-size:14.5px;line-height:2.1;color:var(--ink2)}
-.fam .who2 .u{display:inline-block;width:2.6em;height:28px;text-align:center;font-weight:600;color:var(--tile)}
-.fam .who2 .u.w{width:5.6em}
-.fam .who2 small{font-size:12.5px;color:var(--ink3)}
-.fam .sel{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:13.5px;color:var(--ink2);margin:2px 0 0}
-.fam .sel label{display:flex;align-items:center;gap:8px}
-.fam .sel select.u{width:auto;height:30px;color:var(--ink)}
-.fam .fl-h{font-size:12.5px;color:var(--ink3);margin:14px 0 2px}
-.fro{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:0 10px;align-items:center;min-height:38px;border-bottom:1px dashed var(--line2);font-size:13.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.fam{border:1px solid var(--line);border-radius:12px;background:var(--wash);padding:16px 18px 6px;margin-bottom:14px}
+.fam-h{display:flex;gap:12px;align-items:flex-end;margin-bottom:14px}
+.fam-h .f:first-child{flex:1}
+.fam-h .fname{font-size:17px;font-weight:700}
+.fam-h .fref{width:112px}
+.fam-g{display:flex;flex-wrap:wrap;gap:14px 32px;margin-bottom:14px}
+.fam-g .n{width:84px}.fam-g .x{width:104px}
+.fam .sel{display:flex;flex-wrap:wrap;gap:12px 20px}
+.fam .sel .f{min-width:200px}
+.fam .fl-h{font-size:13.5px;font-weight:600;margin:18px 0 4px}
+.fro{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:0 10px;align-items:center;min-height:46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
 .fro b{font-weight:600;color:var(--ink)}
-.fro .chg{color:var(--tile);font-size:13px;font-weight:600;padding:2px 6px;border-radius:6px}
-.fro .chg:hover{background:var(--tilet)}
-.leg.own{position:relative}
-.leg.own::before{content:"";position:absolute;left:-10px;top:7px;bottom:7px;width:2px;border-radius:2px;background:var(--gold)}
-.fam .add{margin-top:6px}
-.fam .facts{margin-top:12px}
-.fam .facts li:last-child{border-bottom:0}
-.fam-f{display:flex;justify-content:flex-end;padding:4px 0 10px}
+.leg.own{margin:4px -8px;padding:4px 8px;border-radius:10px;background:var(--goldt)}
+.fam .add{margin-top:10px}
+.fam .facts{margin-top:14px;border-top:1px solid var(--line)}
+.fam-f{display:flex;justify-content:flex-end;padding:8px 0 12px}
 .so-f{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin-top:10px}
 .so-f .add{margin-top:0}
-.btn.s{height:32px;padding:0 12px;font-size:13px;display:inline-flex;align-items:center;gap:7px}
-.btn.s svg{width:15px;height:15px}
 
 /* charges */
 .ch{width:100%;border-collapse:collapse}
-.ch th{font-weight:500;font-size:12.5px;color:var(--ink3);text-align:left;padding:0 0 0 12px}
-.ch td{padding:1px 0 1px 12px}
+.ch th{font-weight:500;font-size:12.5px;color:var(--ink2);text-align:left;padding:0 0 5px 10px}
+.ch td{padding:4px 0 4px 10px}
 .ch th:first-child,.ch td:first-child{padding-left:0}
-.ch td:first-child{white-space:nowrap;width:34%;padding-right:8px}
-.ch td.na,.rt td.na{color:var(--ink3);font-size:12.5px;padding-top:6px}
-.rt .ap{text-transform:uppercase}
-.rt .fc{font-weight:600;font-size:13.5px}
-.addons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-details.more{margin-top:22px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
-details.more summary{list-style:none;cursor:pointer;padding:13px 0;display:flex;align-items:baseline;gap:12px}
+.ch td:first-child{white-space:nowrap;width:34%;padding-right:8px;font-weight:500}
+.ch td.na,.rt td.na{color:var(--ink2);font-size:13px}
+.addons{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+details.more{margin-top:18px;border:1px solid var(--line);border-radius:12px}
+details.more summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;align-items:baseline;gap:12px;border-radius:12px;transition:background .15s}
+details.more summary:hover{background:var(--wash)}
 details.more summary::-webkit-details-marker{display:none}
-details.more summary b{font-weight:600}
-details.more summary b::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid var(--ink3);border-bottom:1.5px solid var(--ink3);transform:rotate(45deg);margin:0 0 3px 9px;transition:transform .15s}
-details.more[open] summary b::after{transform:rotate(-135deg);margin-bottom:0}
+details.more summary b{font-weight:600;white-space:nowrap}
+details.more summary b::after{content:"";display:inline-block;width:7px;height:7px;border-right:1.75px solid var(--ink2);border-bottom:1.75px solid var(--ink2);transform:rotate(45deg);margin:0 0 3px 10px;transition:transform .2s var(--ease)}
+details.more[open] summary b::after{transform:rotate(-135deg);margin-bottom:-1px}
 details.more summary span{color:var(--ink2);font-size:13.5px}
-.more-in{padding:0 0 18px}
-.misc{display:grid;grid-template-columns:minmax(0,1fr) 62px 76px 76px 76px 30px;gap:0 10px;align-items:center;padding:2px 0}
-.mini{font-size:12.5px;color:var(--ink3);margin:18px 0 2px}
+.more-in{padding:4px 14px 16px}
+.misc{display:grid;grid-template-columns:minmax(0,1fr) 68px 84px 84px 84px 34px;gap:0 8px;align-items:center;padding:4px 0}
+.mini{font-size:13.5px;font-weight:600;margin:20px 0 6px}
 
-/* fare card */
-.fare{background:var(--tilet);border-radius:18px;overflow:hidden}
-.geo{height:26px;background:var(--tilet2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%23A57A2C' stroke-width='.9' opacity='.75'%3E%3Crect x='7.5' y='7.5' width='11' height='11'/%3E%3Crect x='7.5' y='7.5' width='11' height='11' transform='rotate(45 13 13)'/%3E%3Cpath d='M0 13h2.2M23.8 13H26'/%3E%3C/g%3E%3C/svg%3E") 0 0/26px 26px repeat-x}
-.fare-in{padding:22px 24px 22px}
-.fare h1{font:500 25px/1.2 var(--serif);margin:0 0 4px;letter-spacing:-.01em}
-.fare .sub{margin:0 0 16px;color:var(--ink2);font-size:13.5px}
+/* price sheet */
+.fare-in{padding:22px 22px 22px}
+.fare h2{font:700 20px/1.2 var(--sans);letter-spacing:-.015em;margin-bottom:4px}
+.fare .sub{margin-bottom:16px;color:var(--ink2);font-size:13.5px}
 .fares{width:100%;border-collapse:collapse;font-variant-numeric:lining-nums tabular-nums}
-.fares thead th{font-weight:500;font-size:12.5px;color:var(--ink2);text-align:right;padding:0 0 4px 8px}
+.fares thead th{font-weight:600;font-size:12.5px;color:var(--ink2);text-align:right;padding:0 0 6px 8px}
 .fares thead th:first-child{text-align:left;padding-left:0}
-.fares tbody th{text-align:left;font-weight:600;font-size:14px;line-height:1.3;padding:10px 6px 3px 0;vertical-align:baseline}
-.fares td{text-align:right;font:500 20px/1.2 var(--serif);padding:10px 0 3px 8px;white-space:nowrap;vertical-align:baseline}
-.fares td i{font:600 12.5px var(--sans);font-style:normal;color:var(--gold);margin-right:2px;position:relative;top:-2px}
-.fares tr.s th{font-weight:400;color:var(--ink2);font-size:13.5px;padding:3px 6px 3px 12px}
-.fares tr.s td{font-size:16px;color:var(--ink2);padding-top:3px;padding-bottom:3px}
-.fares tr.s td i{font-size:11px;top:-1px}
-.fares tbody+tbody tr:first-child>*{border-top:1px solid var(--tilet2);padding-top:13px}
-.fares tbody tr:last-child>*{padding-bottom:12px}
-.dl{margin-top:16px;width:100%;height:46px;border-radius:12px;background:var(--tile);color:#fff;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .15s}
-.dl:hover{background:var(--tiled)}
-.dl svg{width:17px;height:17px}
-.fare .lnk{display:block;margin:12px auto 0}
-.fare .ghost{color:var(--ink3);font:400 20px var(--serif)}
+.fares tbody th{text-align:left;font-weight:700;font-size:14.5px;line-height:1.3;padding:11px 6px 4px 0;vertical-align:baseline}
+.fares tbody th small{display:block;font-weight:500;font-size:12.5px;color:var(--ink2);margin-top:2px}
+.fares td{text-align:right;font-weight:700;font-size:18px;line-height:1.2;letter-spacing:-.01em;padding:11px 0 4px 8px;white-space:nowrap;vertical-align:baseline}
+.fares td i{font-weight:500;font-size:12.5px;font-style:normal;color:var(--ink2);margin-right:1px;letter-spacing:0}
+.fares tr.s th{font-weight:500;color:var(--ink2);font-size:13.5px;padding:4px 6px 4px 12px;white-space:nowrap}
+.fares tr.s td{font-size:15px;font-weight:600;padding-top:4px;padding-bottom:4px}
+.fares tbody+tbody tr:first-child>*{border-top:1px solid var(--goldl);padding-top:14px}
+.fares tbody tr:last-child>*{padding-bottom:13px}
+.fares tr.hd th{padding-bottom:0}
+.fares tr.pr>*{padding-top:3px}
+.gt{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:4px;padding:12px 14px;border-radius:10px;background:var(--wash)}
+.gt span{font-size:13.5px;color:var(--ink2)}
+.gt b{font-weight:700;font-size:20px;letter-spacing:-.01em;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.gt b i{font-weight:500;font-size:13px;font-style:normal;color:var(--ink2);margin-right:1px}
+.fare .acts{display:grid;gap:8px;margin-top:16px}
+.todo{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:2px}
+.todo li{display:flex;align-items:center;gap:10px;padding:8px 0;font-weight:500;color:var(--ink)}
+.todo li::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--edge);box-sizing:border-box}
+.todo li.done{color:var(--ink2)}
+.todo li.done::before{border-color:var(--ok);background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.2l2.2 2.2 4.6-4.7' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
 
-/* breakdown */
-.bd-h{display:flex;justify-content:space-between;align-items:baseline;margin:24px 0 10px}
-.bd-h h2{margin:0}
-.mx{overflow:auto;border:1px solid var(--line2);border-radius:14px;background:var(--sheet)}
-.mx table{border-collapse:separate;border-spacing:0;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:100%}
-.mx th,.mx td{padding:6px 10px;border-bottom:1px solid var(--line2);text-align:right}
-.mx th:first-child,.mx td:first-child{position:sticky;left:0;background:var(--sheet);text-align:left;z-index:1;border-right:1px solid var(--line2);max-width:340px;overflow:hidden;text-overflow:ellipsis}
-.mx thead th{font-weight:600;font-size:12px;color:var(--ink2);vertical-align:bottom}
+/* full breakdown */
+.bd{max-width:1260px;margin:0 auto;padding:0 24px 72px}
+.bd:empty{display:none}
+.bd-h{display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px}
+.bd-h h2{font:700 17px/1.3 var(--sans)}
+.mx{overflow:auto;scrollbar-width:thin}
+.mx table{border-collapse:separate;border-spacing:0;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap;min-width:100%}
+.mx th,.mx td{padding:7px 12px;border-bottom:1px solid var(--line);text-align:right}
+.mx th:first-child,.mx td:first-child{position:sticky;left:0;background:var(--white);text-align:left;z-index:1;border-right:1px solid var(--line);max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.mx thead th{font-weight:600;font-size:12.5px;color:var(--ink2);vertical-align:bottom;background:var(--wash)}
+.mx thead th:first-child{background:var(--wash);font-size:13.5px;color:var(--ink)}
 .mx thead tr:first-child th{text-align:center;white-space:normal;line-height:1.35}
-.mx .gs{border-left:1px solid var(--line2)}
-.mx .u2{color:var(--ink3)}
-.mx tr.sec td{font-weight:600;color:var(--ink2)}
-.mx tr.tot td{font-weight:600}
-.mx tr.grand td{font-weight:700;background:var(--tilet);color:var(--tiled);border-bottom:0}
+.mx .gs{border-left:1px solid var(--line)}
+.mx .u2{color:var(--ink2)}
+.mx tr.sec td{font-weight:700;color:var(--ink);background:var(--white)}
+.mx tr.tot td{font-weight:700}
+.mx tr.grand td,.mx tr.grand td:first-child{font-weight:700;background:var(--goldt);color:var(--ink);border-bottom:0;border-top:1px solid var(--gold)}
 
 /* dialogs */
-dialog{border:0;border-radius:16px;padding:0;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 48px);background:var(--sheet);color:var(--ink);box-shadow:0 24px 70px rgba(28,48,56,.25)}
-dialog::backdrop{background:rgba(36,50,58,.3)}
-.dh{position:sticky;top:0;z-index:2;background:var(--sheet);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px 14px;border-bottom:1px solid var(--line2)}
-.dh h3{margin:0;font:500 22px/1.2 var(--serif)}
-.db{padding:6px 24px 26px}
-.db h4{font-size:14.5px;font-weight:600;margin:24px 0 6px}
-.db p{color:var(--ink2);margin:6px 0}
-.rt{border-collapse:collapse;width:100%}
-.rt th{font-weight:500;font-size:12.5px;color:var(--ink3);text-align:left;padding:4px 0 0 12px}
-.rt td{padding:1px 0 1px 12px}
-.rt th:first-child,.rt td:first-child{padding-left:0;white-space:nowrap;padding-right:6px}
-.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px 20px}
+dialog{border:0;border-radius:16px;padding:0;width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 48px);background:var(--white);color:var(--ink);box-shadow:var(--shd);scrollbar-width:thin}
+dialog#dlgR{width:min(880px,calc(100vw - 32px))}
+dialog[open]{animation:dlg .26s var(--ease)}
+@keyframes dlg{from{opacity:0;transform:translateY(10px) scale(.985)}}
+dialog::backdrop{background:rgba(34,28,38,.42)}
+.dh{position:sticky;top:0;z-index:3;background:var(--white);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 24px;border-bottom:1px solid var(--line)}
+.dh h3{font:700 20px/1.2 var(--sans);letter-spacing:-.015em}
+.db{padding:16px 24px 28px}
+.db h4{font-size:15px;font-weight:700;margin:26px 0 8px;scroll-margin-top:140px}
+.db p{color:var(--ink2);margin:6px 0;max-width:72ch}
+.db p.sm{font-size:13px}
+.db b{font-weight:600;color:var(--ink)}
+.snav{position:sticky;top:71px;z-index:2;display:flex;gap:6px;flex-wrap:wrap;margin:0 -24px;padding:10px 24px;background:var(--wash);border-bottom:1px solid var(--line)}
+.snav button{height:32px;padding:0 12px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--ink2);transition:background .15s,color .15s}
+.snav button:hover{background:var(--wash2);color:var(--ink)}
+.tw{overflow-x:auto;scrollbar-width:thin}
+.rt{border-collapse:collapse}
+.rt .u{width:104px}
+.rt th{font-weight:500;font-size:12.5px;color:var(--ink2);text-align:left;padding:4px 0 5px 8px;vertical-align:bottom}
+.rt td{padding:3px 0 3px 8px}
+.rt th:first-child,.rt td:first-child{padding-left:0;white-space:nowrap;padding-right:10px;font-weight:500;min-width:150px}
+.rt .ap{text-transform:uppercase}
+.rt .fc{font-weight:600;font-size:14px}
+.rt.gap{margin-top:12px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px 16px;margin-top:8px;align-items:end}
+.rgrid .u{max-width:104px}
 .cgrid{grid-template-columns:1fr 1.4fr}
+.cgrid .u{max-width:none}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .linkrow{display:flex;gap:10px;align-items:center;margin:10px 0 4px}
 .linkrow .u{flex:1;color:var(--ink2);font-size:13.5px}
-@media (max-width:640px){.cgrid{grid-template-columns:minmax(0,1fr)}.dh,.db{padding-left:18px;padding-right:18px}}
-.f{display:flex;flex-direction:column;font-size:12.5px;color:var(--ink3);padding-top:6px}
-.f .u{color:var(--ink);font-size:14.5px}
-.btn{height:38px;padding:0 16px;border-radius:10px;font-weight:600;font-size:14px;border:1px solid var(--line);color:var(--ink)}
-.btn:hover{border-color:var(--ink3)}
-.btn.p{background:var(--tile);border-color:var(--tile);color:#fff}
-.btn.p:hover{background:var(--tiled)}
-.btn:disabled{opacity:.6;cursor:default}
 .steps{margin:10px 0 18px;padding-left:20px;color:var(--ink2)}
-.steps li{margin:4px 0}
-.steps a{color:var(--tile);font-weight:600}
-.err{color:var(--red);font-size:13.5px;min-height:20px;margin:8px 0 0}
-.ql{list-style:none;margin:8px 0 0;padding:0}
-.ql li{display:grid;grid-template-columns:minmax(0,1fr) auto 30px;gap:12px;align-items:center;border-bottom:1px solid var(--line2)}
-.ql .qo{text-align:left;padding:12px 0;min-width:0}
-.ql .qo b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.steps li{margin:6px 0}
+.steps a{color:var(--ink);font-weight:600;text-decoration-color:var(--gold);text-underline-offset:3px}
+.err{color:var(--red);font-size:13.5px;font-weight:500;min-height:20px;margin:8px 0 0}
+.ql{list-style:none;margin:10px -10px 0;padding:0}
+.ql li{display:grid;grid-template-columns:minmax(0,1fr) auto 34px;gap:12px;align-items:center;padding:0 6px 0 10px;border-radius:10px;transition:background .15s}
+.ql li+li{margin-top:2px}
+.ql li:hover{background:var(--wash)}
+.ql .qo{text-align:left;padding:11px 0;min-width:0;border-radius:8px}
+.ql .qo b{display:block;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ql .qo span{display:block;color:var(--ink2);font-size:13px}
-.ql .qo:hover b{color:var(--tile)}
-.ql .qt{color:var(--ink3);font-size:12.5px;white-space:nowrap}
-.ql li.cur .qo b::after{content:"open now";font-weight:500;font-size:11.5px;color:var(--tile);background:var(--tilet);border-radius:5px;padding:1px 6px;margin-left:8px;vertical-align:1px}
-.qs{width:100%;margin-top:8px}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:13.5px;opacity:0;pointer-events:none;transition:.2s;z-index:50;max-width:calc(100vw - 32px)}
+.ql .qt{color:var(--ink2);font-size:12.5px;white-space:nowrap}
+.ql li.cur{background:var(--goldt)}
+.ql li.cur .qo b::after{content:"open now";font-weight:600;font-size:11.5px;color:var(--goldd);border:1px solid var(--goldl);background:var(--white);border-radius:6px;padding:1px 6px;margin-left:8px;vertical-align:1px}
+.qs{width:100%;height:42px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;padding:11px 16px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:var(--shd);opacity:0;pointer-events:none;transition:opacity .2s,transform .3s var(--ease);z-index:50;width:max-content;max-width:calc(100vw - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%)}
 
-@media (max-width:1040px){
-  .wrap{grid-template-columns:minmax(0,1fr);gap:40px;padding:32px 20px 72px}
-  .form{max-width:none}.side{position:static;max-width:560px}
+.bad-t{color:var(--red);font-weight:500}
+.fam .hint{margin-top:6px}
+.tag{margin-left:2px;padding:2px 8px;border:1px solid var(--goldl);border-radius:6px;background:var(--goldt);color:var(--goldd);font-size:12px;font-weight:600;letter-spacing:.01em}
+.reset{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.reset p{margin:0}
+
+/* the price, docked to the bottom of a phone or tablet while the price sheet is out of view */
+.dock{display:none}
+
+@media (min-width:1140px) and (max-width:1239px){
+  .wrap{grid-template-columns:minmax(0,1fr) 380px;gap:20px}
+  .sec{padding:24px 22px 26px}
+  .fare-in{padding:20px 18px}
+  .fares td{font-size:16px}
+}
+@media (max-width:1139px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:20px;padding:20px 20px 32px}
+  .side{position:static;max-height:none;overflow:visible}
+  .bd{padding:0 20px 72px}
+  .dock:not([hidden]){position:fixed;left:0;right:0;bottom:0;z-index:15;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px calc(10px + env(safe-area-inset-bottom));background:var(--white);border-top:1px solid var(--gold);box-shadow:0 -10px 24px -16px rgba(34,28,38,.3)}
+  .dock span{display:block;font-size:12.5px;font-weight:500;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dock b{display:block;font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .dock div{min-width:0}
+  body.docked{padding-bottom:72px}
+  body.docked .toast{bottom:88px}
+}
+@media (max-width:760px){
+  .sync{padding:0 10px;margin:0}.sync span{display:none}
+  .sync,.tb,.bar .btn{min-width:44px;height:44px;justify-content:center}
+  .tb span,.bar .btn span{display:none}
+  .tb,.bar .btn{padding:0 12px}
 }
 @media (max-width:640px){
-  .bar{padding:0 12px;gap:6px}.mark span{display:none}
-  .sync{padding:0 8px;margin:0}.sync span{display:none}
-  .tb{padding:0 8px;font-size:13.5px}
-  .title{font-size:28px}.who{font-size:16px}
-  .lg-h{display:none}
-  .lg{grid-template-columns:repeat(4,minmax(0,1fr)) 30px 30px;grid-template-areas:"fn fn from to gs rm" "dt dt dep arr day day";gap:2px 8px}
-  .leg{padding:8px 0;border-bottom:1px solid var(--line2)}
-  .leg .rm{opacity:1}
-  .opts{grid-template-columns:minmax(0,1fr);gap:6px}.opts dd{margin-bottom:10px}
-  .misc{grid-template-columns:repeat(3,minmax(0,1fr)) 30px;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line2)}
-  .misc .mn{grid-column:1/4}.misc .mc{grid-column:4/5;grid-row:1}.misc .rmv{grid-column:4;grid-row:2}
-  .fam{padding:12px 14px 4px}.fam-h{flex-wrap:wrap;gap:4px 10px}.fam-h .fname{flex-basis:100%;order:-1}
-  .fro{grid-template-columns:70px minmax(0,1fr) auto;padding:6px 0}
-  .leg.own::before{left:-8px}
-  .fare-in{padding:20px 16px}
-  .fares tbody th{font-size:13px}
+  :root{--top:64px}
+  .bar{padding:0 12px;gap:6px;height:52px}
+  .mark a span{display:none}
+  .wrap{padding:12px 12px 24px;gap:14px}
+  .sec{padding:20px 16px 22px}
+  .title{font-size:22px}
+  .u{height:44px;font-size:16px}
+  .f .u{font-size:16px}
+  .pre i{line-height:44px}
+  .group{gap:16px}
+  .group .fs{flex:1 1 100%}
+  .group .f{flex:1;width:auto}
+  .ch td:first-child{width:26%}.ch td{padding-left:6px}.ch .u{padding:0 7px}
+  .day,.ic,.chg{height:44px}
+  .ic{width:44px}
+  .add,.btn,.btn.s{height:44px}
+  .ck>span{height:44px}
+  .lnk{min-height:44px}
+  .ck .tka{height:32px;font-size:16px}
+  .opts{grid-template-columns:minmax(0,1fr);gap:4px}.opts dd{margin-bottom:14px}
+  .opts dt{line-height:1.5}
+  .split .f{flex:1;width:auto}
+  .misc{grid-template-columns:repeat(3,minmax(0,1fr)) 44px;gap:6px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .misc .mn{grid-column:1/4}.misc .mc{grid-column:4/5;grid-row:1;padding:0 4px}.misc .rmv{grid-column:4;grid-row:2}
+  .fam{padding:14px 14px 4px}.fam-h{flex-wrap:wrap;gap:10px}.fam-h .f:first-child{flex-basis:100%}
+  .fam-g .f{flex:1;width:auto}.fam-g .fs{flex:1 1 100%}
+  .fro{grid-template-columns:64px minmax(0,1fr) auto;padding:6px 0}
+  .fare-in{padding:18px 16px}
+  .fares tbody th{font-size:13.5px}
   .fares td{font-size:15.5px;padding-left:4px}
   .fares tr.s th{font-size:12.5px;padding-left:8px}
   .fares tr.s td{font-size:13.5px}
-  .fares td i{font-size:10.5px;margin-right:1px}
+  .fares td i{font-size:11.5px}
   details.more summary{flex-wrap:wrap;gap:2px 12px}
+  .more-in{padding:4px 10px 14px}
+  .bd{padding:0 12px 72px}
+  .dock:not([hidden]){padding-left:14px;padding-right:14px}
+  .cgrid{grid-template-columns:minmax(0,1fr)}.dh,.db{padding-left:16px;padding-right:16px}
+  .snav{margin:0 -16px;padding:8px 16px;top:77px;flex-wrap:nowrap;overflow-x:auto}
+  .snav button{height:44px;white-space:nowrap}
+  .rt th:first-child,.rt td:first-child{min-width:0;white-space:normal}
+  .rt .u{width:76px}
+  .rt td.fc{white-space:nowrap}
+  .dh .btn{height:44px}
+  .ql .qo{padding:13px 0}
+  dialog{width:calc(100vw - 16px);max-height:calc(100vh - 16px)}
+  dialog#dlgR{width:calc(100vw - 16px)}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:400px){
+  .fares td{font-size:14px}.fares tbody th{font-size:13px}.fares tr.s td{font-size:13px}.fares tr.s th{font-size:12.5px;padding-left:6px}
+  .ch,.ch thead,.ch tbody{display:block}
+  .ch tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 6px;padding:4px 0}
+  .ch th:first-child{display:none}
+  .ch th,.ch td{padding:0}
+  .ch td:first-child{grid-column:1/-1;width:auto;padding-top:6px}
+  .ch td.na{grid-column:span 2;align-self:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .strip b,dialog[open]{animation:none}
+  .sync[data-st=saving] i{animation:none}
+  *{transition-duration:.01ms!important}
+}
 </style>
 </head>
 <body>
-<header class="bar">
-  <a class="mark" href="./" aria-label="Ziyarat quotes home">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="14" rx="1"/><rect x="5" y="5" width="14" height="14" rx="1" transform="rotate(45 12 12)"/></svg>
-    <span>Ziyarat quotes</span>
-  </a>
-  <nav class="bar-r">
-    <button class="sync" id="sync" data-act="connect" data-st="local" title=""><i></i><span>Saved on this device</span></button>
-    <button class="tb" data-act="quotes">Saved quotes</button>
-    <button class="tb" data-act="rates">Settings</button>
-    <button class="tb strong" data-act="new">New quote</button>
-  </nav>
+<header class="top">
+  <div class="bar">
+    <h1 class="mark"><a href="./" aria-label="Ziyarat quotes home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="7.6" r="3.6"/><circle cx="16.4" cy="12" r="3.6"/><circle cx="12" cy="16.4" r="3.6"/><circle cx="7.6" cy="12" r="3.6"/></svg>
+      <span>Ziyarat quotes</span>
+    </a></h1>
+    <nav class="bar-r" aria-label="Quotes and settings">
+      <button class="sync" id="sync" data-act="connect" data-st="local" title="" aria-label="Where quotes are saved"><i></i><span>Saved on this device</span></button>
+      <button class="tb" data-act="quotes" aria-label="Saved quotes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5A1.5 1.5 0 015.5 6h4l2 2h7A1.5 1.5 0 0120 9.5v8a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 17.5z"/></svg><span>Saved quotes</span></button>
+      <button class="tb" data-act="rates" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M4 8h9M19 8h1M4 16h1M11 16h9"/><circle cx="16" cy="8" r="2.5"/><circle cx="8" cy="16" r="2.5"/></svg><span>Settings</span></button>
+      <button class="btn p" data-act="new" aria-label="New quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>New quote</span></button>
+    </nav>
+  </div>
+  <div class="hem" aria-hidden="true"></div>
 </header>
 
 <main class="wrap">
-  <section class="form" aria-label="Quote details">
-    <input class="title" data-s="name" placeholder="Name this quote" aria-label="Quote name" autocomplete="off">
-    <p class="who">
-      <input class="u" type="number" min="0" data-s="adults" placeholder="0" aria-label="Adults"> <span id="lA">adults</span>,
-      <input class="u" type="number" min="0" data-s="children" placeholder="0" aria-label="Children"> <span id="lC">children</span> and
-      <input class="u" type="number" min="0" data-s="infants" placeholder="0" aria-label="Infants"> <span id="lI">infants</span>.
-      One dollar is ₹<input class="u w" type="number" step="any" data-s="rate" aria-label="Rupees per US dollar">
-      and one riyal is ₹<input class="u w" type="number" step="any" data-s="sar" aria-label="Rupees per Saudi riyal">.
-    </p>
+  <section class="sheet form" aria-label="Quote details">
+    <div class="sec">
+      <input class="title" data-s="name" placeholder="Name this quote" aria-label="Quote name" autocomplete="off">
+      <div class="group">
+        <fieldset class="fs"><legend>Group size</legend><div class="fs-r">
+          <label class="f n">Adults<input class="u" type="number" min="0" inputmode="numeric" data-s="adults" placeholder="0"></label>
+          <label class="f n">Children<input class="u" type="number" min="0" inputmode="numeric" data-s="children" placeholder="0"></label>
+          <label class="f n">Infants<input class="u" type="number" min="0" inputmode="numeric" data-s="infants" placeholder="0"></label>
+        </div></fieldset>
+        <fieldset class="fs"><legend>Exchange rates</legend><div class="fs-r">
+          <label class="f x">One US dollar<span class="pre"><i>₹</i><input class="u" type="number" step="any" inputmode="decimal" data-s="rate" aria-label="Rupees per US dollar"></span></label>
+          <label class="f x">One Saudi riyal<span class="pre"><i>₹</i><input class="u" type="number" step="any" inputmode="decimal" data-s="sar" aria-label="Rupees per Saudi riyal"></span></label>
+        </div></fieldset>
+      </div>
+    </div>
 
-    <h2>Flights</h2>
-    <div class="lg lg-h" aria-hidden="true"><span>Flight</span><span>From</span><span>To</span><span>Date</span><span>Departs</span><span>Arrives</span><span>Lands</span><span></span><span></span></div>
-    <div id="legs"></div>
-    <button class="add" data-act="addLeg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a flight</button>
+    <div class="sec">
+      <div class="sec-h"><h2>Flights</h2><p>Type a flight number and its route and times fill in. Add every flight, out and back.</p></div>
+      <div class="lg lg-h" aria-hidden="true"><span>Flight</span><span>From</span><span>To</span><span>Date</span><span>Departs</span><span>Arrives</span><span>Lands</span><span></span><span></span></div>
+      <div id="legs"></div>
+      <button class="add" data-act="addLeg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a flight</button>
+    </div>
 
-    <h2>From these flights</h2>
-    <ul class="facts" id="trip"></ul>
+    <div class="sec">
+      <div class="sec-h"><h2>Journey</h2><p>Worked out from the flights. Change anything that should be priced differently.</p></div>
+      <div id="strip" hidden></div>
+      <div id="trip"></div>
+    </div>
 
-    <h2>Options</h2>
-    <dl class="opts">
-      <dt id="oIq1">Stay in Iraq</dt>
-      <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label>
-        <div class="tiers" id="tiers" role="group" aria-label="Hotel Nizam tier"><span class="tl">Hotel tier</span><label class="ck"><input type="checkbox" data-s="hotelTier.B"><span>B <small id="tierB"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.A"><span>A <small id="tierA"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.AP"><span>A+ <small id="tierAP"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.C"><span>Own $<input class="u tka" type="number" min="0" step="any" data-s="hotelBed" placeholder="35" aria-label="Own hotel bed charge, dollars a night"> <small>bed</small></span></label></div></dd>
-      <dt id="oUm1">Room in Makkah</dt>
-      <dd id="oUm2"><label class="ck"><input type="checkbox" data-s="umrahRoom.share"><span>Sharing</span></label><label class="ck"><input type="checkbox" data-s="umrahRoom.excl"><span>Exclusive</span></label></dd>
-      <dt id="oSp1">Split the group</dt>
-      <dd id="oSp2" class="split">
-        <span>In Hotel Nizam: <input class="u" type="number" min="0" data-s="split.a" placeholder="0" aria-label="Adults in Hotel Nizam"> adults, <input class="u" type="number" min="0" data-s="split.c" placeholder="0" aria-label="Children in Hotel Nizam"> children, <input class="u" type="number" min="0" data-s="split.i" placeholder="0" aria-label="Infants in Hotel Nizam"> infants.</span>
-        <span class="muted" id="splitNote"></span>
-      </dd>
-      <dt id="oCa1">Stay in Cairo</dt>
-      <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
-      <dt id="tkF1">Faiz takhfeef</dt>
-      <dd id="tkF2"><label class="ck"><input type="checkbox" data-s="tk.faiz.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.faiz" placeholder="100" aria-label="Fixed Faiz takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="faiz">Select all</button></dd>
-      <dt id="tkH1">Hotel takhfeef</dt>
-      <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.hotel" placeholder="100" aria-label="Fixed Hotel takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
-    </dl>
+    <div class="sec">
+      <div class="sec-h"><h2>Stays and takhfeef</h2><p>Tick more than one choice to quote them side by side.</p></div>
+      <dl class="opts">
+        <dt id="oIq1">Stay in Iraq</dt>
+        <dd id="oIq2"><label class="ck"><input type="checkbox" data-s="iraqAcc.faiz"><span>Faiz Nizam</span></label><label class="ck"><input type="checkbox" data-s="iraqAcc.hotel"><span>Hotel Nizam</span></label>
+          <div class="tiers" id="tiers" role="group" aria-label="Hotel Nizam tier"><span class="tl">Hotel tier</span><label class="ck"><input type="checkbox" data-s="hotelTier.B"><span>B <small id="tierB"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.A"><span>A <small id="tierA"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.AP"><span>A+ <small id="tierAP"></small></span></label><label class="ck"><input type="checkbox" data-s="hotelTier.C"><span>Own $<input class="u tka" type="number" min="0" step="any" data-s="hotelBed" placeholder="35" aria-label="Own hotel bed charge, dollars a night"> <small>bed</small></span></label></div></dd>
+        <dt id="oUm1">Room in Makkah</dt>
+        <dd id="oUm2"><label class="ck"><input type="checkbox" data-s="umrahRoom.share"><span>Sharing</span></label><label class="ck"><input type="checkbox" data-s="umrahRoom.excl"><span>Exclusive</span></label></dd>
+        <dt id="oSp1">Split the group</dt>
+        <dd id="oSp2" class="split" role="group" aria-label="How many stay in Hotel Nizam">
+          <label class="f">Adults in hotel<input class="u" type="number" min="0" inputmode="numeric" data-s="split.a" placeholder="0" aria-label="Adults in Hotel Nizam"></label>
+          <label class="f">Children<input class="u" type="number" min="0" inputmode="numeric" data-s="split.c" placeholder="0" aria-label="Children in Hotel Nizam"></label>
+          <label class="f">Infants<input class="u" type="number" min="0" inputmode="numeric" data-s="split.i" placeholder="0" aria-label="Infants in Hotel Nizam"></label>
+          <span class="hint" id="splitNote"></span>
+        </dd>
+        <dt id="oCa1">Stay in Cairo</dt>
+        <dd id="oCa2"><label class="ck"><input type="checkbox" data-s="cairoAcc.faiz"><span>Faiz</span></label><label class="ck"><input type="checkbox" data-s="cairoAcc.hotel"><span>Hotel</span></label></dd>
+        <dt id="tkF1">Faiz takhfeef</dt>
+        <dd id="tkF2"><label class="ck"><input type="checkbox" data-s="tk.faiz.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.faiz.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.faiz" placeholder="100" aria-label="Fixed Faiz takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="faiz">Select all</button></dd>
+        <dt id="tkH1">Hotel takhfeef</dt>
+        <dd id="tkH2"><label class="ck"><input type="checkbox" data-s="tk.hotel.p100"><span>100%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p75"><span>75%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.p50"><span>50%</span></label><label class="ck"><input type="checkbox" data-s="tk.hotel.d100"><span>$<input class="u tka" type="number" min="0" step="any" data-s="tkAmt.hotel" placeholder="100" aria-label="Fixed Hotel takhfeef, dollars off"> off</span></label><button class="lnk" data-act="tkAll" data-k="hotel">Select all</button></dd>
+      </dl>
+    </div>
 
-    <div id="soWrap" hidden>
-      <h2>Cairo stopovers</h2>
-      <p class="intro" id="soIntro"></p>
+    <div class="sec" id="soWrap" hidden>
+      <div class="sec-h"><h2>Cairo stopovers</h2><p class="intro" id="soIntro"></p></div>
       <div id="fams"></div>
       <div class="so-f">
-      <button class="add" data-act="addFam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a stopover family</button>
-      <button class="btn s" id="soAll" hidden data-act="xlsxAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download all stopovers</button>
+      <button class="add" data-act="addFam"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a stopover family</button>
+      <button class="btn s" id="soAll" hidden data-act="xlsxAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download all stopovers</button>
       </div>
     </div>
 
-    <h2>Charges per za'ir, in rupees</h2>
-    <table class="ch">
-      <thead><tr><th></th><th>Adult</th><th>Child</th><th>Infant</th></tr></thead>
-      <tbody><tr><td>Ticket fare</td><td><input class="u" type="number" step="any" data-s="inr.ticket.0" placeholder="0" aria-label="Ticket fare adult"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.1" placeholder="0" aria-label="Ticket fare child"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.2" placeholder="0" aria-label="Ticket fare infant"></td></tr></tbody>
-    </table>
-    <div class="addons">
-      <label class="ck"><input type="checkbox" data-s="addGl"><span id="glL">Group leader</span></label>
-      <label class="ck"><input type="checkbox" data-s="addCoord"><span id="coordL">Co-ordinator</span></label>
-      <label class="ck"><input type="checkbox" data-s="addRida"><span id="ridaL">+2 pcs Rida</span></label>
-      <label class="ck"><input type="checkbox" data-s="add80"><span id="p80L">+80</span></label>
-    </div>
-    <details class="more" id="more">
-      <summary><b>Other charges</b><span id="moreSum"></span></summary>
-      <div class="more-in">
-        <table class="ch" id="otherT"></table>
-        <div class="mini">Extra line items, for anything else on this quote</div>
-        <div id="misc"></div>
-        <button class="add" data-act="addMisc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a line item</button>
+    <div class="sec">
+      <div class="sec-h"><h2>Charges per za'ir</h2><p>In rupees. Tick the charges that go on this quote.</p></div>
+      <table class="ch">
+        <thead><tr><th></th><th>Adult</th><th>Child</th><th>Infant</th></tr></thead>
+        <tbody><tr><td>Ticket fare</td><td><input class="u" type="number" step="any" data-s="inr.ticket.0" placeholder="0" aria-label="Ticket fare adult"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.1" placeholder="0" aria-label="Ticket fare child"></td><td><input class="u" type="number" step="any" data-s="inr.ticket.2" placeholder="0" aria-label="Ticket fare infant"></td></tr></tbody>
+      </table>
+      <div class="addons">
+        <label class="ck"><input type="checkbox" data-s="addGl"><span id="glL">Group leader</span></label>
+        <label class="ck"><input type="checkbox" data-s="addCoord"><span id="coordL">Co-ordinator</span></label>
+        <label class="ck"><input type="checkbox" data-s="addRida"><span id="ridaL">+2 pcs Rida</span></label>
+        <label class="ck"><input type="checkbox" data-s="add80"><span id="p80L">+80</span></label>
       </div>
-    </details>
+      <details class="more" id="more">
+        <summary><b>Other charges</b><span id="moreSum"></span></summary>
+        <div class="more-in">
+          <table class="ch" id="otherT"></table>
+          <div class="mini">Extra line items, for anything else on this quote</div>
+          <div id="misc"></div>
+          <button class="add" data-act="addMisc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a line item</button>
+        </div>
+      </details>
+    </div>
   </section>
 
-  <aside class="side" aria-label="Prices"><div class="fare" id="fare"></div></aside>
-  <section id="bd" aria-label="Full breakdown"></section>
+  <aside class="side" id="side" aria-label="Prices"><div class="sheet fare" id="fare"></div></aside>
 </main>
+<section id="bd" class="bd" aria-label="Full breakdown"></section>
+<div class="dock" id="dock" hidden><div><span id="dockL"></span><b id="dockP"></b></div><button class="btn p" data-act="prices">See prices</button></div>
 
-<dialog id="dlgR" aria-labelledby="dlgRt"><div class="dh"><h3 id="dlgRt">Settings</h3><div style="display:flex;gap:8px"><button class="btn" data-act="resetRates">Reset rates to defaults</button><button class="btn p" data-act="close">Done</button></div></div><div class="db" id="rateBody"></div></dialog>
-<dialog id="dlgQ" aria-labelledby="dlgQt"><div class="dh"><h3 id="dlgQt">Saved quotes</h3><button class="btn" data-act="close">Close</button></div><div class="db"><input class="u qs" id="qSearch" placeholder="Search by name" aria-label="Search saved quotes" autocomplete="off"><p id="qState"></p><ul class="ql" id="qList"></ul></div></dialog>
+<dialog id="dlgR" aria-labelledby="dlgRt"><div class="dh"><h3 id="dlgRt">Settings</h3><button class="btn p" data-act="close">Done</button></div><div class="db" id="rateBody"></div></dialog>
+<dialog id="dlgQ" aria-labelledby="dlgQt"><div class="dh"><h3 id="dlgQt">Saved quotes</h3><button class="btn" data-act="close">Close</button></div><div class="db"><input class="u qs" id="qSearch" type="search" placeholder="Search by name" aria-label="Search saved quotes" autocomplete="off"><p id="qState"></p><ul class="ql" id="qList"></ul></div></dialog>
 <dialog id="dlgC" aria-labelledby="dlgCt"><div class="dh"><h3 id="dlgCt">Save to GitHub</h3><button class="btn" data-act="close">Close</button></div><div class="db" id="connBody"></div></dialog>
 <datalist id="aps"><option value="BOM"><option value="CAI"><option value="BGW"><option value="NJF"><option value="KWI"><option value="DXB"><option value="DOH"><option value="BAH"><option value="AMM"><option value="IST"><option value="JED"><option value="MED"></datalist>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -943,7 +1112,7 @@ function renderLegs() {
   hydrate($('#legs')); syncOff();
 }
 function syncOff() {
-  document.querySelectorAll('.day[data-p]').forEach(b => { const o = legOff(getPath(S, b.dataset.p) || {}); b.textContent = o ? '+' + o : 'same'; b.classList.toggle('on', o > 0); b.setAttribute('aria-label', o ? `Lands ${o} day${o > 1 ? 's' : ''} later` : 'Lands the same day'); });
+  document.querySelectorAll('.day[data-p]').forEach(b => { const o = legOff(getPath(S, b.dataset.p) || {}); b.textContent = o ? `+${o} day${o > 1 ? 's' : ''}` : 'Same day'; b.classList.toggle('on', o > 0); b.setAttribute('aria-label', o ? `Lands ${o} day${o > 1 ? 's' : ''} later` : 'Lands the same day'); });
 }
 
 function renderOther() {
@@ -976,24 +1145,63 @@ function legGaps(legs = S.legs) {           // what each half-filled flight stil
     return `Flight ${i + 1}${l.fn ? ` (${esc(l.fn)})` : ''} needs ${list}.`;
   }).filter(Boolean);
 }
+/* The journey band: one tile for each day of the trip, coloured by where the group is at the end of that day.
+   It is drawn from the flights alone, so it shows the calendar; the priced nights are in the facts under it. */
+const PLACE = { IQ: 'Iraq', EG: 'Cairo', SA: 'Saudi Arabia' };
+const PLANE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3.6c-.9-.9-2.4-.7-3.3.2l-3.4 3.4-9-2.4-1.6 1.6 7.2 4.2-3 3-2.6-.4-1.3 1.3 3.6 1.9 1.9 3.6 1.3-1.3-.4-2.6 3-3 4.2 7.2 1.6-1.6-2.4-9 3.4-3.4c.9-.9 1.1-2.4.2-3.3z"/></svg>';
+const dayLbl = t => fmtAbs(t).split(',')[0];
+let stripSig = '';
+function renderStrip(A) {
+  const el = $('#strip'), L = A.legs;
+  const d0 = L.length ? Math.floor(L[0].dep / 1440) : 0, d1 = L.length ? Math.floor(L[L.length - 1].arr / 1440) : -1, n = d1 - d0 + 1;
+  if (L.length < 2 || n < 1 || n > 62) { el.hidden = true; el.innerHTML = ''; stripSig = ''; return; }
+  const last = L[L.length - 1];
+  const at = D => {
+    const t = (D + 1) * 1440 - 1;
+    for (let k = 0; k < L.length; k++) {
+      if (t < L[k].dep) return { r: region(L[k - 1].to) || 'stop', ap: L[k - 1].to };
+      if (t < L[k].arr) return { r: 'air' };
+    }
+    return { r: region(last.to) || 'home', ap: last.to };
+  };
+  const cells = [], segs = [];
+  for (let D = d0; D <= d1; D++) {
+    const d = new Date(D * 864e5), s = at(D), fl = L.filter(l => Math.floor(l.dep / 1440) === D);
+    const nm = s.r === 'air' ? 'Flying' : PLACE[s.r] || apN(s.ap), key = s.r + (PLACE[s.r] || s.r === 'air' ? '' : s.ap);
+    const top = D === d0 || d.getUTCDate() === 1 ? MON[d.getUTCMonth()] : WD[d.getUTCDay()];
+    const say = `${WD[d.getUTCDay()]} ${d.getUTCDate()} ${MON[d.getUTCMonth()]}: ${s.r === 'air' ? 'in the air overnight' : s.r === 'home' ? 'lands in ' + nm : 'night in ' + nm}${fl.length ? '. Flies ' + fl.map(l => (fmtFn(l.fn) || 'a flight') + ` ${l.from} to ${l.to}`).join(', ') : ''}`;
+    cells.push(`<li data-r="${s.r}" style="--i:${D - d0}" title="${esc(say)}"><span aria-hidden="true">${top}</span><b><span class="vh">${esc(say)}</span><span aria-hidden="true">${d.getUTCDate()}</span>${fl.length ? PLANE : ''}</b></li>`);
+    const g = segs[segs.length - 1];
+    g && g.key === key ? g.n++ : segs.push({ key, r: s.r, nm, n: 1 });
+  }
+  const h = `<div class="strip-w"><ol class="strip" style="--n:${n}" aria-label="The journey, day by day">${cells.join('')}</ol>` +
+    `<div class="strip-l" style="--n:${n}" aria-hidden="true">${segs.map(g => `<span data-r="${g.r}" style="grid-column:span ${g.n}" title="${g.nm}">${g.nm}</span>`).join('')}</div></div>`;
+  el.hidden = false;
+  if (stripSig !== h) { el.innerHTML = h; stripSig = h; }
+}
+const place = (r, when, items) => `<section class="place" data-r="${r}"><h3>${PLACE[r]} <small>${when}</small></h3><ul class="facts">${items.join('')}</ul></section>`;
+const spanLbl = (a, d) => (Math.floor(a / 1440) === Math.floor(d / 1440) ? dayLbl(a) : `${dayLbl(a)} to ${dayLbl(d)}`);
 function renderTrip(A) {
-  const out = [], gaps = legGaps();
+  renderStrip(A);
+  const gaps = legGaps(), notes = [], groups = [];
   if (!A.legs.length) {
-    $('#trip').innerHTML = gaps.length ? gaps.map(warnLi).join('') : '<li class="none"><p>Add each flight with its date and times. Nights, transport, visas, the Cairo package and the Umrah days are worked out from them.</p></li>';
+    $('#trip').innerHTML = gaps.length ? `<ul class="notes">${gaps.map(warnLi).join('')}</ul>` : '<p class="none">Add each flight with its date and times. Nights, transport, visas, the Cairo package and the Umrah days are worked out from them.</p>';
     return;
   }
-  gaps.forEach(g => out.push(warnLi(g)));
+  gaps.forEach(g => notes.push(warnLi(g)));
+  A.warn.forEach(w => notes.push(warnLi(w)));
   if (A.iraq) {
-    const q = A.iraq, ch = q.nights !== q.auto;
+    const q = A.iraq, ch = q.nights !== q.auto, out = [];
     const route = q.key === 'BGW' ? 'Baghdad both ways' : q.key === 'NJF' ? 'Najaf both ways' : `${apN(q.inAp)} one way, ${apN(q.outAp)} the other`;
     out.push(fact('iraq', `${q.nights} ${plural(q.nights, 'night', 'nights')} in Iraq${ch ? ' (changed)' : ''}`,
       `Lands in ${apN(q.inAp)} ${fmtAbs(q.arr)}. Leaves ${apN(q.outAp)} ${fmtAbs(q.dep)}${q.late ? `, after ${fmtT(q.cut)}, so that day counts too` : ''}.`,
       `Price it as <input class="u" type="number" min="0" data-s="ovr.iraqN" placeholder="${q.auto}" aria-label="Nights in Iraq"> nights${ch ? ` <button class="lnk" data-act="clrIraq">Go back to ${q.auto}</button>` : ''}`));
     if (q.key && IQT.has(q.inAp) && IQT.has(q.outAp)) out.push(fact('', `Transport $${q.trans} a head`, `${route}, ${A.whole.paxAC} adults and children (${q.transTier} rate).`));
     out.push(fact('', `Iraq visa $${q.visa} a head`, `${A.whole.paxAll} ${plural(A.whole.paxAll, 'person', 'people')}, infants included.`));
+    groups.push({ t: q.arr, h: place('IQ', spanLbl(q.arr, q.dep), out) });
   }
   if (A.umrah) {
-    const u = A.umrah, ch = u.days !== u.auto, W = A.whole, vat = num(R.umrah.vat), sr = x => `SR ${fUsd(x)}`;
+    const u = A.umrah, ch = u.days !== u.auto, W = A.whole, vat = num(R.umrah.vat), sr = x => `SR ${fUsd(x)}`, out = [];
     out.push(fact('umrah', `${u.days} ${plural(u.days, 'day', 'days')} for Umrah${ch ? ' (changed)' : ''}`,
       `Lands in ${apN(u.inAp)} ${fmtAbs(u.arr)}. Leaves ${apN(u.outAp)} ${fmtAbs(u.dep)}. Faiz lawazim is ${sr(umDay('share', 0))} an adult and ${sr(umDay('share', 1))} a child a day, with ${vat}% VAT and ${num(R.umrah.muni)}% municipal tax.`,
       `Price it as <input class="u" type="number" min="0" data-s="ovr.umrahD" placeholder="${u.auto}" aria-label="Days for Umrah"> days${ch ? ` <button class="lnk" data-act="clrUm">Go back to ${u.auto}</button>` : ''}`));
@@ -1006,18 +1214,20 @@ function renderTrip(A) {
       `Price it as <select class="u" data-s="ovr.umrahRoute" aria-label="Umrah transport route"><option value="">Route ${u.autoRoute} (worked out)</option>${ropts}</select>`));
     const vi = R.umrah.visa.map(num);
     out.push(fact('', `Saudi visa ₹${INR.format(vi[0])} a head`, `${W.paxAll} ${plural(W.paxAll, 'person', 'people')}${vi[2] === vi[0] ? ', infants included' : `; ₹${INR.format(vi[2])} an infant`}.`));
+    groups.push({ t: u.arr, h: place('SA', spanLbl(u.arr, u.dep), out) });
   }
   A.cairo.forEach(s => {
-    const k = 'cairo' + s.idx, ch = codeOf(s.pkg) !== codeOf(s.auto);
+    const k = 'cairo' + s.idx, ch = codeOf(s.pkg) !== codeOf(s.auto), out = [];
     const opts = `<option value="">${pkgName(s.auto)} (worked out)</option>` + PKG_CODES.map(c => `<option value="${c}">${pkgName(fromCode(c))}</option>`).join('');
     out.push(fact(k, `${cairoTitle(s.pkg)}${ch ? ' (changed)' : ''}`, cairoDetail(s),
       `Price it as <select class="u" data-s="ovr.cairo.${s.idx}" aria-label="Cairo package">${opts}</select>`));
     out.push(fact('', s.visaFree ? 'Egypt visa free' : `Egypt visa ₹${INR.format(R.egypt.inr)} a head`, s.visaWhy));
     s.warn.forEach(w => out.push(warnLi(esc(w))));
+    groups.push({ t: s.arr, h: place('EG', spanLbl(s.arr, s.dep), out) });
   });
-  if (!A.iraq && !A.cairo.length && !A.umrah) out.push('<li class="none"><p>No stay in Iraq, Cairo or Saudi Arabia yet. Add the flight out as well, so each stay has an arrival and a departure.</p></li>');
-  A.warn.forEach(w => out.push(warnLi(w)));
-  $('#trip').innerHTML = out.join('');
+  groups.sort((x, y) => x.t - y.t);                                    // in the order the group travels, as in the band above
+  $('#trip').innerHTML = (notes.length ? `<ul class="notes">${notes.join('')}</ul>` : '') + (groups.length ? groups.map(g => g.h).join('')
+    : '<p class="none">No stay in Iraq, Cairo or Saudi Arabia yet. Add the flight out as well, so each stay has an arrival and a departure.</p>');
   hydrate($('#trip'));
 }
 
@@ -1037,14 +1247,17 @@ function renderFams() {
       ? legRow(`fams.${j}.own.${i}`, `${nm}, flight ${i + 1}`, `<button class="ic rm" data-act="famUse" data-i="${j}" data-k="${i}" title="Use the group's flight again" aria-label="Use the group's flight ${i + 1} again">${ICON.undo}</button>`, ' own')
       : `<div class="fro" data-fro="${i}"><b></b><span class="txt"></span><button class="chg" data-act="famChg" data-i="${j}" data-k="${i}" aria-label="Change flight ${i + 1} for this family">Change</button></div>`).join('')
       + f.extra.map((l, e) => legRow(`fams.${j}.extra.${e}`, `${nm}, extra flight ${e + 1}`, `<button class="ic rm" data-act="famDelX" data-i="${j}" data-k="${e}" title="Remove this flight" aria-label="Remove extra flight ${e + 1}">${ICON.x}</button>`, ' own')).join('');
-    const tk = i => `<input class="u w" type="number" step="any" data-s="fams.${j}.ticket.${i}" placeholder="${ph(i)}" aria-label="${nm} ticket fare ${['adult', 'child', 'infant'][i]}">`;
+    const tk = i => `<label class="f x">${['Adult', 'Child', 'Infant'][i]}<input class="u" type="number" step="any" data-s="fams.${j}.ticket.${i}" placeholder="${ph(i)}" aria-label="${nm} ticket fare ${['adult', 'child', 'infant'][i]}"></label>`;
+    const pax = (k, l) => `<label class="f n">${l}<input class="u" type="number" min="0" inputmode="numeric" data-s="fams.${j}.${k}" placeholder="0" aria-label="${nm} ${l.toLowerCase()}"></label>`;
     return `<div class="fam" data-fam="${j}">
-      <div class="fam-h"><input class="u fname" data-s="fams.${j}.name" placeholder="Family name" autocomplete="off" aria-label="${nm} name"><label class="fref">ID <input class="u" data-s="fams.${j}.ref" placeholder="62388" autocomplete="off" aria-label="${nm} booking ID"></label><button class="ic" data-act="delFam" data-i="${j}" title="Remove this family" aria-label="Remove ${nm}">${ICON.x}</button></div>
-      <p class="who2"><input class="u" type="number" min="0" data-s="fams.${j}.a" placeholder="0" aria-label="${nm} adults"> adults, <input class="u" type="number" min="0" data-s="fams.${j}.c" placeholder="0" aria-label="${nm} children"> children and <input class="u" type="number" min="0" data-s="fams.${j}.i" placeholder="0" aria-label="${nm} infants"> infants from the group.</p>
-      <p class="who2">Ticket ₹${tk(0)} adult, ₹${tk(1)} child, ₹${tk(2)} infant <small>Blank is the group's fare.</small></p>
-      <div class="sel"><label data-fiq>Stay in Iraq <select class="u" data-s="fams.${j}.iraq" aria-label="${nm} stay in Iraq">${IQ_OPTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select></label>
-        <label>Stay in Cairo <select class="u" data-s="fams.${j}.cairo" aria-label="${nm} stay in Cairo"><option value="">As the group</option><option value="faiz">Faiz</option><option value="hotel">Hotel</option></select></label></div>
-      <div class="fl-h">Their flights. Change the ones they take differently from the group.</div>
+      <div class="fam-h"><label class="f">Family name<input class="u fname" data-s="fams.${j}.name" placeholder="Family name" autocomplete="off" aria-label="${nm} name"></label><label class="f fref">Booking ID<input class="u" data-s="fams.${j}.ref" placeholder="62388" autocomplete="off" aria-label="${nm} booking ID"></label><button class="ic" data-act="delFam" data-i="${j}" title="Remove this family" aria-label="Remove ${nm}">${ICON.x}</button></div>
+      <div class="fam-g">
+        <fieldset class="fs"><legend>From the group</legend><div class="fs-r">${pax('a', 'Adults')}${pax('c', 'Children')}${pax('i', 'Infants')}</div></fieldset>
+        <fieldset class="fs"><legend>Their ticket fare, in rupees</legend><div class="fs-r">${tk(0)}${tk(1)}${tk(2)}</div><p class="hint">Blank is the group's fare.</p></fieldset>
+      </div>
+      <div class="sel"><label class="f" data-fiq>Stay in Iraq<select class="u" data-s="fams.${j}.iraq" aria-label="${nm} stay in Iraq">${IQ_OPTS.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select></label>
+        <label class="f">Stay in Cairo<select class="u" data-s="fams.${j}.cairo" aria-label="${nm} stay in Cairo"><option value="">As the group</option><option value="faiz">Faiz</option><option value="hotel">Hotel</option></select></label></div>
+      <div class="fl-h">Their flights <span class="hint">Change the ones they take differently from the group.</span></div>
       ${legs}
       <button class="add" data-act="famAddX" data-i="${j}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add a flight only they take</button>
       <ul class="facts" data-fsum></ul>
@@ -1106,14 +1319,21 @@ function groupTotal(A, cols) {
   }
   return { people: base.reduce((s, c) => s + c.count, 0), total: base.reduce((s, c) => s + c.count * c.v.grand, 0) };
 }
+/* On a phone or tablet the price sheet sits under the form, so the lead price is docked to the bottom until the sheet scrolls into view. */
+let dockOn = false, sideSeen = false;
+function syncDock() { const show = dockOn && !sideSeen; $('#dock').hidden = !show; document.body.classList.toggle('docked', show); }
+function setDock(d) { dockOn = !!d; if (d) { $('#dockL').textContent = d.label; $('#dockP').textContent = '₹' + INR.format(d.price); } syncDock(); }
+if ('IntersectionObserver' in window) new IntersectionObserver(es => { sideSeen = es[es.length - 1].isIntersecting; syncDock(); }, { threshold: 0.15 }).observe($('#side'));
+
 function renderSide(A, cols) {
   const fare = $('#fare');
-  const geo = '<div class="geo" aria-hidden="true"></div>';
   if (!cols.length) {
-    const why = !A.whole.paxAll && !A.legs.length ? 'Prices show up here once you add the group size and the flights.' : !A.whole.paxAll ? 'Add how many adults, children and infants are going.' : 'Add the flights so each stay has an arrival and a departure.';
-    const ghost = `<table class="fares" aria-hidden="true"><thead><tr><th></th><th>Adult</th><th>Child</th></tr></thead><tbody><tr><th>Faiz Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr><tr><th>Hotel Nizam</th><td class="ghost">₹ –</td><td class="ghost">₹ –</td></tr></tbody></table>`;
-    fare.innerHTML = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${why}</p>${ghost}${hasContent(S) ? '' : '<button class="lnk" data-act="sample">Try an example group</button>'}</div>`;
+    const pax = A.whole.paxAll > 0, stay = !!(A.iraq || A.umrah || A.cairo.length || A.fams.some(u => u.cairo.length));
+    const why = !pax && !A.legs.length ? 'Prices show up here once you add the group size and the flights.' : !pax ? 'Add how many adults, children and infants are going.' : !stay ? 'Add the flights so each stay has an arrival and a departure.' : 'Tick at least one stay under Stays and takhfeef.';
+    const step = (ok, t) => `<li${ok ? ' class="done"><span class="vh">Done: </span>' : '>'}${t}</li>`;
+    fare.innerHTML = `<div class="fare-in"><h2>Price per za'ir</h2><p class="sub">${why}</p><ol class="todo">${step(pax, 'Add the group size')}${step(stay, 'Add the flights, out and back')}${step(false, 'Choose stays and takhfeef')}</ol>${hasContent(S) ? '' : '<button class="btn big" data-act="sample">Try an example group</button>'}</div>`;
     $('#bd').innerHTML = '';
+    setDock(null);
     return;
   }
   const cats = CATS.filter(c => cols.some(x => x.k === c[0]));
@@ -1130,17 +1350,24 @@ function renderSide(A, cols) {
   if (nf) parts.push(`${nf} Cairo ${plural(nf, 'stopover', 'stopovers')}`);
   const joined = parts.length > 1 ? parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1] : parts[0];
   const sub = `${joined.replace(/^./, c => c.toUpperCase())}, for ${A.whole.paxAll} ${plural(A.whole.paxAll, 'person', 'people')}.`;
-  let h = `${geo}<div class="fare-in"><h1>Price per za'ir</h1><p class="sub">${sub}</p><table class="fares"><thead><tr><th></th>${cats.map(c => `<th>${c[2]}</th>`).join('')}</tr></thead>`;
+  let h = `<div class="fare-in"><h2>Price per za'ir</h2><p class="sub">${sub}</p><table class="fares"><thead><tr><th><span class="vh">Stay</span></th>${cats.map(c => `<th scope="col">${c[2]}</th>`).join('')}</tr></thead>`;
   bases.forEach(b => {
     const U = b.unit;
     const label = U.fam ? `${U.nm}<small>${[`Stopover ${stopTag(U.cairo)}`.trim(), esc(b.name), who(b.n)].filter(Boolean).join(' · ')}</small>`
       : esc(b.name) + (A.split || nf ? `<small>${who(b.n)}</small>` : '');
-    h += '<tbody>' + b.rows.map(r => `<tr${r.tk ? ' class="s"' : ''}><th>${r.tk ? r.tk.tag : label}</th>${cats.map(c => price(r.by[c[0]])).join('')}</tr>`).join('') + '</tbody>';
+    const long = !!U.fam || !!A.split || nf > 0 || b.name.length > 16;   // a long name gets a line of its own above its prices
+    h += '<tbody>' + b.rows.map(r => {
+      const cells = cats.map(c => price(r.by[c[0]])).join('');
+      if (r.tk) return `<tr class="s"><th scope="row">${r.tk.tag}</th>${cells}</tr>`;
+      return long ? `<tr class="hd"><th colspan="${cats.length + 1}" scope="rowgroup">${label}</th></tr><tr class="pr"><th scope="row"><span class="vh">${U.fam ? U.nm + ', ' : ''}${esc(b.name)}</span></th>${cells}</tr>` : `<tr><th scope="row">${label}</th>${cells}</tr>`;
+    }).join('') + '</tbody>';
   });
   h += '</table>';
   if (GT) h += `<div class="gt"><span>Whole group, ${GT.people} ${plural(GT.people, 'person', 'people')}${cols.some(c => c.tk) ? ', before takhfeef' : ''}</span><b><i>₹</i>${INR.format(GT.total)}</b></div>`;
-  h += `<button class="dl" data-act="xlsx">${ICON.dl}Download Excel</button><button class="lnk" data-act="bd">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div>`;
+  h += `<div class="acts"><button class="btn p big" data-act="xlsx">${ICON.dl}Download Excel</button><button class="btn big" data-act="bd" aria-expanded="${bdOpen}">${bdOpen ? 'Hide the full breakdown' : 'See the full breakdown'}</button></div></div>`;
   fare.innerHTML = h;
+  const lead = cols.find(c => !c.tk && c.k === 'a') || cols[0];
+  setDock({ label: `${lead.unit.fam ? lead.unit.title + ', ' : ''}${lead.name}, ${lead.catN.toLowerCase()}`, price: lead.v.grand });
   renderBreakdown(A, cols);
 }
 
@@ -1149,7 +1376,7 @@ function renderBreakdown(A, cols) {
   if (!bdOpen || !cols.length) { el.innerHTML = ''; return; }
   const rows = buildRows(A, cols), groups = [];
   cols.forEach(c => { const g = groups[groups.length - 1]; g && g.g === c.g ? g.cols.push(c) : groups.push({ g: c.g, cols: [c] }); });
-  let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="lnk" data-act="bd">Hide</button></div><div class="mx"><table><thead><tr><th rowspan="2">${esc(sheetTitle(A))}</th>`;
+  let h = `<div class="bd-h"><h2>Full breakdown</h2><button class="btn s" data-act="bd">Hide the breakdown</button></div><div class="mx sheet"><table><thead><tr><th rowspan="2">${esc(sheetTitle(A))}</th>`;
   h += groups.map(g => `<th class="gs" colspan="${g.cols.length * 2}">${g.cols[0].head.map(esc).join('<br>')}</th>`).join('') + '</tr><tr>';
   h += cols.map(c => `<th class="gs">${c.count ?? ''}</th><th>${c.catL}</th>`).join('') + '</tr></thead><tbody>';
   const span = cols.length * 2 + 1;
@@ -1167,9 +1394,6 @@ function renderBreakdown(A, cols) {
 }
 
 function renderBits(A) {
-  $('#lA').textContent = plural(S.adults, 'adult', 'adults');
-  $('#lC').textContent = plural(S.children, 'child', 'children');
-  $('#lI').textContent = plural(S.infants, 'infant', 'infants');
   const showIq = !!A.iraq || !A.legs.length;
   $('#oIq1').hidden = $('#oIq2').hidden = !showIq;
   $('#oCa1').hidden = $('#oCa2').hidden = !A.cairoHotelDiff;
@@ -1209,42 +1433,46 @@ function renderAll() { renderLegs(); renderOther(); renderMisc(); renderFams(); 
 function renderRates() {
   const n = (p, lbl) => `<input class="u" type="number" step="any" data-r="${p}" aria-label="${lbl || p}">`;
   const pair = (lbl, p) => `<tr><td>${lbl}</td><td>${n(p + '.0', lbl + ' adult')}</td><td>${n(p + '.1', lbl + ' child')}</td></tr>`;
+  const tbl = (rows, cls = '') => `<div class="tw"><table class="rt${cls}">${rows}</table></div>`;
   let ct = '';
-  for (let k = 1; k <= 9; k++) ct += `<tr><td>${k} ${plural(k, 'night', 'nights')}</td>${['A', 'B', 'C'].map(w => `<td>${n(`cairo.tbl.${k}.${w}.0`)}</td><td>${n(`cairo.tbl.${k}.${w}.1`)}</td>`).join('')}</tr>`;
-  ct += `<tr><td>10 or more</td><td>${n('cairo.ten.0')}</td><td>${n('cairo.ten.1')}</td><td colspan="4" style="color:var(--ink3);font-size:13px">Same for A, B and C</td></tr>`;
+  for (let k = 1; k <= 9; k++) ct += `<tr><td>${k} ${plural(k, 'night', 'nights')}</td>${['A', 'B', 'C'].map(w => `<td>${n(`cairo.tbl.${k}.${w}.0`, `${k} nights ${w} adult`)}</td><td>${n(`cairo.tbl.${k}.${w}.1`, `${k} nights ${w} child`)}</td>`).join('')}</tr>`;
+  ct += `<tr><td>10 or more</td><td>${n('cairo.ten.0', '10 or more nights adult')}</td><td>${n('cairo.ten.1', '10 or more nights child')}</td><td class="na" colspan="4">Same for A, B and C</td></tr>`;
+  const nav = [['r-iraq', 'Iraq'], ['r-cairo', 'Cairo'], ['r-umrah', 'Umrah'], ['r-visa', 'Egypt visa and takhfeef'], ['r-fl', 'Saved flights']];
   $('#rateBody').innerHTML = `
+    <nav class="snav" aria-label="Settings sections">${nav.map(([id, l]) => `<button data-act="jump" data-to="${id}">${l}</button>`).join('')}</nav>
     <p>Changes apply straight away and are saved for everyone using this app.</p>
-    <h4>Iraq, per night in dollars</h4>
-    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Faiz Nizam', 'iraq.faiz')}${pair('Hotel Nizam Hubb, every tier', 'iraq.hubb')}${pair('Hotel bed, tier B', 'iraq.bed')}${pair('Hotel bed, tier A', 'iraq.bedA')}${pair('Hotel bed, tier A+', 'iraq.bedAP')}</table>
+    <h4 id="r-iraq">Iraq, per night in dollars</h4>
+    ${tbl(`<tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Faiz Nizam', 'iraq.faiz')}${pair('Hotel Nizam Hubb, every tier', 'iraq.hubb')}${pair('Hotel bed, tier B', 'iraq.bed')}${pair('Hotel bed, tier A', 'iraq.bedA')}${pair('Hotel bed, tier A+', 'iraq.bedAP')}`)}
     <div class="rgrid"><label class="f">Count the leaving day if the flight is at or after<input class="u" data-r="iraq.cutoff" placeholder="19:00"></label></div>
     <h4>Iraq visa, dollars a head (infants included)</h4>
     <div class="rgrid"><label class="f">Smaller group${n('visa.small')}</label><label class="f">Larger group${n('visa.large')}</label><label class="f">Larger group starts at (people)${n('visa.thr')}</label></div>
     <h4>Iraq transport, dollars per adult or child</h4>
-    <table class="rt"><tr><th></th><th>Smaller group</th><th>Larger group</th><th>Larger from (people)</th></tr>
-      ${[['NJF', 'Najaf both ways'], ['BGW', 'Baghdad both ways'], ['MIX', 'Baghdad one way, Najaf the other']].map(([k, l]) => `<tr><td>${l}</td><td>${n(`trans.${k}.small`)}</td><td>${n(`trans.${k}.large`)}</td><td>${n(`trans.${k}.thr`)}</td></tr>`).join('')}</table>
-    <h4>Cairo Lawazim, Faiz-e-Haakimi, in dollars</h4>
+    ${tbl(`<tr><th></th><th>Smaller group</th><th>Larger group</th><th>Larger from (people)</th></tr>
+      ${[['NJF', 'Najaf both ways'], ['BGW', 'Baghdad both ways'], ['MIX', 'Baghdad one way, Najaf the other']].map(([k, l]) => `<tr><td>${l}</td><td>${n(`trans.${k}.small`, l + ', smaller group')}</td><td>${n(`trans.${k}.large`, l + ', larger group')}</td><td>${n(`trans.${k}.thr`, l + ', larger from')}</td></tr>`).join('')}`)}
+    <h4 id="r-cairo">Cairo Lawazim, Faiz-e-Haakimi, in dollars</h4>
     <div class="rgrid"><label class="f">Leave Faiz this many hours before the flight${n('cairo.lead')}</label><label class="f">Takhfeef quotes, less per adult${n('cairo.tkLess.0')}</label><label class="f">Takhfeef quotes, less per child${n('cairo.tkLess.1')}</label></div>
-    <table class="rt" style="margin-top:10px"><tr><th></th><th>Just 1 person</th><th>Adult (2 or more)</th><th>Child (2 or more)</th></tr>
+    ${tbl(`<tr><th></th><th>Just 1 person</th><th>Adult (2 or more)</th><th>Child (2 or more)</th></tr>
       <tr><td>Day stopover, no rooms</td><td>${n('cairo.day.N.one')}</td><td>${n('cairo.day.N.ac.0')}</td><td>${n('cairo.day.N.ac.1')}</td></tr>
-      <tr><td>Day stopover with rooms</td><td>${n('cairo.day.R.one')}</td><td>${n('cairo.day.R.ac.0')}</td><td>${n('cairo.day.R.ac.1')}</td></tr></table>
-    <table class="rt" style="margin-top:10px"><tr><th></th><th>A adult</th><th>A child</th><th>B adult</th><th>B child</th><th>C adult</th><th>C child</th></tr>${ct}
-      <tr><td>1 night C, hotel</td><td colspan="4"></td><td>${n('cairo.hotel1C.0')}</td><td>${n('cairo.hotel1C.1')}</td></tr></table>
-    <p style="font-size:13px">A means leaving Faiz by 3 pm, B between 3 and 9 pm, C between 9 pm and 3 am. A day stopover has no rooms if they leave by 3 pm, and rooms if they leave by 10 pm. The MS 627 to Baghdad always counts that night, at the A rate.</p>
-    <h4>Umrah, Faiz lawazim in riyals a day</h4>
-    <table class="rt"><tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Sharing room, Makkah and Madinah', 'umrah.share')}${pair('Exclusive room, Makkah', 'umrah.excl')}</table>
+      <tr><td>Day stopover with rooms</td><td>${n('cairo.day.R.one')}</td><td>${n('cairo.day.R.ac.0')}</td><td>${n('cairo.day.R.ac.1')}</td></tr>`, ' gap')}
+    ${tbl(`<tr><th></th><th>A adult</th><th>A child</th><th>B adult</th><th>B child</th><th>C adult</th><th>C child</th></tr>${ct}
+      <tr><td>1 night C, hotel</td><td colspan="4"></td><td>${n('cairo.hotel1C.0')}</td><td>${n('cairo.hotel1C.1')}</td></tr>`, ' gap')}
+    <p class="sm">A means leaving Faiz by 3 pm, B between 3 and 9 pm, C between 9 pm and 3 am. A day stopover has no rooms if they leave by 3 pm, and rooms if they leave by 10 pm. The MS 627 to Baghdad always counts that night, at the A rate.</p>
+    <h4 id="r-umrah">Umrah, Faiz lawazim in riyals a day</h4>
+    ${tbl(`<tr><th></th><th>Adult</th><th>Child</th></tr>${pair('Sharing room, Makkah and Madinah', 'umrah.share')}${pair('Exclusive room, Makkah', 'umrah.excl')}`)}
     <div class="rgrid"><label class="f">VAT, % (lawazim and transport)${n('umrah.vat')}</label><label class="f">Municipal tax, % (lawazim)${n('umrah.muni')}</label></div>
-    <p style="font-size:13px" id="umNote"></p>
+    <p class="sm" id="umNote"></p>
     <h4>Umrah transport, riyals per adult or child, before VAT</h4>
-    <table class="rt"><tr><th></th>${[0, 1, 2, 3, 4].map(k => `<th>${n(`umrah.tiers.${k}`, 'Tier starts at people')}</th>`).join('')}</tr>
-      ${[1, 2, 3, 4, 5, 6].map(r => `<tr><td title="${ROUTES[r]}">Route ${r}</td>${[0, 1, 2, 3, 4].map(k => `<td>${n(`umrah.routes.${r}.${k}`, `Route ${r}, tier ${k + 1}`)}</td>`).join('')}</tr>`).join('')}</table>
-    <p style="font-size:13px">The top row is where each tier starts, in people. ${[1, 2, 3, 4, 5, 6].map(r => `Route ${r}: ${ROUTES[r]}.`).join(' ')}</p>
+    ${tbl(`<tr><th>Tier starts at (people)</th>${[0, 1, 2, 3, 4].map(k => `<th>${n(`umrah.tiers.${k}`, 'Tier starts at people')}</th>`).join('')}</tr>
+      ${[1, 2, 3, 4, 5, 6].map(r => `<tr><td title="${ROUTES[r]}">Route ${r}</td>${[0, 1, 2, 3, 4].map(k => `<td>${n(`umrah.routes.${r}.${k}`, `Route ${r}, tier ${k + 1}`)}</td>`).join('')}</tr>`).join('')}`)}
+    <p class="sm">The top row is where each tier starts, in people. ${[1, 2, 3, 4, 5, 6].map(r => `Route ${r}: ${ROUTES[r]}.`).join(' ')}</p>
     <h4>Saudi visa, rupees</h4>
     <div class="rgrid"><label class="f">Adult${n('umrah.visa.0')}</label><label class="f">Child${n('umrah.visa.1')}</label><label class="f">Infant${n('umrah.visa.2')}</label></div>
-    <h4>Egypt visa and takhfeef</h4>
+    <h4 id="r-visa">Egypt visa and takhfeef</h4>
     <div class="rgrid"><label class="f">Egypt visa, rupees a head${n('egypt.inr')}</label><label class="f">Free on EgyptAir for stays under (hours)${n('egypt.freeHours')}</label><label class="f">Fixed takhfeef to start with, dollars off Faiz or Hubb (each quote can change it)${n('tkFixed')}</label></div>
-    <h4>Saved flights</h4>
+    <h4 id="r-fl">Saved flights</h4>
     <p>Typing one of these flight numbers on a quote fills in its route and times. A new flight is added here once you have typed its route and times in full. Change a time on a quote for that quote only, or here to change it for every quote from now on.</p>
-    ${flightTable()}`;
+    ${flightTable()}
+    <div class="reset"><p class="sm">Put every rate back to the original rate card. Saved flights are kept.</p><button class="btn" data-act="resetRates">Reset rates to defaults</button></div>`;
   hydrate($('#rateBody')); umNote();
 }
 const umNote = () => { const el = $('#umNote'); if (el) el.textContent = `With both taxes, a day is SR ${fUsd(umDay('share', 0))} an adult and SR ${fUsd(umDay('share', 1))} a child sharing, SR ${fUsd(umDay('excl', 0))} and SR ${fUsd(umDay('excl', 1))} exclusive. Infants pay nothing.`; };
@@ -1252,11 +1480,11 @@ function flightTable() {
   const codes = [...new Set([...Object.keys(KNOWN), ...Object.keys(FL)])].filter(c => /^[A-Z0-9]{2,9}$/.test(c) && flightOf(c)).sort();
   if (!codes.length) return '<p>No saved flights yet.</p>';
   const inp = (c, f, v, cls, ph, lbl) => `<input class="u ${cls}" data-fl="${c}.${f}" value="${esc(v || '')}" placeholder="${ph}" ${cls === 'ap' ? 'maxlength="3"' : 'inputmode="numeric"'} autocomplete="off" aria-label="${fmtFn(c)} ${lbl}">`;
-  return `<table class="rt"><tr><th>Flight</th><th>From</th><th>To</th><th>Departs</th><th>Arrives</th><th></th></tr>` + codes.map(c => {
+  return `<div class="tw"><table class="rt"><tr><th>Flight</th><th>From</th><th>To</th><th>Departs</th><th>Arrives</th><th></th></tr>` + codes.map(c => {
     const f = flightOf(c);
     return `<tr><td class="fc">${fmtFn(c)}</td><td>${inp(c, 'from', f.from, 'ap', 'BOM', 'from')}</td><td>${inp(c, 'to', f.to, 'ap', 'CAI', 'to')}</td><td>${inp(c, 'dep', f.dep, 'tm', '02:50', 'departs')}</td><td>${inp(c, 'arr', f.arr, 'tm', '05:50', 'arrives')}</td>` +
       `<td><button class="ic" data-act="delFl" data-code="${c}" title="Remove this saved flight" aria-label="Remove ${fmtFn(c)}">${ICON.x}</button></td></tr>`;
-  }).join('') + '</table>';
+  }).join('') + '</table></div>';
 }
 function editFlight(t) {
   const [code, f] = t.dataset.fl.split('.');
@@ -1463,12 +1691,12 @@ function renderConn() {
   if (ghOn()) {
     $('#connBody').innerHTML = `
       <p>Connected to <b>${esc(GH.cfg.owner)}/${esc(GH.cfg.repo)}</b>. Quotes and rates save to its <b>${esc(BR())}</b> branch a couple of seconds after you stop typing. The app itself lives on a different branch, so redeploying it never touches saved quotes.</p>
-      <p>${SYNC.st === 'error' ? `<span style="color:var(--red)">${esc(SYNC.msg)}</span>` : SYNC.st === 'saved' ? 'Everything is saved.' : SYNC.st === 'saving' ? 'Saving now.' : ''}</p>
-      <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap"><button class="btn p" data-act="saveNow">Save now</button><button class="btn" data-act="disconnect">Disconnect this computer</button></div>
+      <p>${SYNC.st === 'error' ? `<span class="bad-t">${esc(SYNC.msg)}</span>` : SYNC.st === 'saved' ? 'Everything is saved.' : SYNC.st === 'saving' ? 'Saving now.' : ''}</p>
+      <div class="row"><button class="btn p" data-act="saveNow">Save now</button><button class="btn" data-act="disconnect">Disconnect this computer</button></div>
       <h4>Set up another computer</h4>
       <p>Send this link to the other computer and open it there once. Saving turns on by itself, with no token to paste. After that the normal address works on that computer too.</p>
       <div class="linkrow"><input class="u" id="shareLink" readonly value="${esc(setupLink())}" aria-label="Setup link"><button class="btn" data-act="copyLink">Copy link</button></div>
-      <p style="font-size:13px">Anyone who has this link can change quotes and rates, so only send it to office staff.</p>`;
+      <p class="sm">Anyone who has this link can change quotes and rates, so only send it to office staff.</p>`;
     return;
   }
   $('#connBody').innerHTML = `
@@ -1486,8 +1714,8 @@ function renderConn() {
       <label class="f">Token<input class="u" id="cTok" type="password" placeholder="github_pat_…" autocomplete="off" spellcheck="false"></label>
     </div>
     <p class="err" id="cErr"></p>
-    <div style="display:flex;gap:8px;margin-top:8px"><button class="btn p" data-act="doConnect" id="cBtn">Connect</button></div>
-    <p style="font-size:13px;margin-top:16px">The token is kept in this browser only and is never saved to the repository.</p>`;
+    <div class="row"><button class="btn p" data-act="doConnect" id="cBtn">Connect</button></div>
+    <p class="sm">The token is kept in this browser only and is never saved to the repository.</p>`;
 }
 /* A link ending in #key=… sets up saving on the computer that opens it. The part after # never reaches a server. */
 const setupLink = () => `${location.origin}${location.pathname}#key=${encodeURIComponent(GH.cfg.token || '')}`;
@@ -1840,6 +2068,8 @@ document.addEventListener('click', e => {
     case 'openQ': openQuote(b.dataset.id); return;
     case 'delQ': deleteQuote(b.dataset.id); return;
     case 'close': b.closest('dialog').close(); return;
+    case 'jump': { const t = document.getElementById(b.dataset.to); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    case 'prices': $('#side').scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
     case 'resetRates': if (!confirm('Put every rate back to the original rate card?')) return; R = clone(DEF_R); renderRates(); update(); touchR(); return;
     case 'new': if (dirtyQ) flush(); S = freshS(); OPEN.clear(); bdOpen = false; store.set('zq.cur', S.id); renderAll(); $('.title').focus(); toast('New quote started. The last one is in Saved quotes.'); return;
     case 'sample': loadSample(); return;
