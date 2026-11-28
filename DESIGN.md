@@ -199,7 +199,7 @@ A white ground, a plum-black ink, a gold thread, and rida colours that each carr
 
 ## Layout
 
-Two sheets on the wash: the form sheet (flexible) and the price sheet (420px, sticky under the top bar, scrolls inside itself when it is taller than the window). The page is capped at 1260px. From 1140 to 1239px the price sheet narrows to 380px. Below 1140px the price sheet drops under the form and the lead price docks to the bottom of the screen until the sheet scrolls into view. Below 760px the top-bar buttons become icons; below 640px controls grow to 44px.
+Two sheets on the wash: the form sheet (flexible) and the price sheet (420px, sticky under the top bar, scrolls inside itself when it is taller than the window). The page is capped at 1260px. From 1140 to 1239px the price sheet narrows to 380px. Below 1140px the price sheet drops under the form and the lead price docks to the bottom of the screen until the sheet scrolls into view. Below 900px the top-bar buttons become icons; below 640px controls grow to 44px.
 
 Flight rows respond to the width of the card they sit in, not the window, through container queries: one row at 676px and up, a compact row down to 632px, then two rows (flight, route, lands, remove; date, times, look-up) sized to what each field holds, and three rows under 332px. The full breakdown is a full-width sheet under both columns.
 
@@ -215,14 +215,14 @@ Tiles 5 to 6px, controls 8px, inset blocks 10px, bordered groups 12px, sheets 14
 
 ## Components
 
-- **Top bar:** white, 56px, sticky, hemmed by the gold band. Left: the mark and the app name. Right: where quotes are saved (a dot and a line of text), Saved quotes, Settings, and New quote as the primary button. At 760px and below the buttons become 44px icons and the save status moves under the app name, still with its words.
+- **Top bar:** white, 56px, sticky, hemmed by the gold band. Left: the mark and the app name. Right: where quotes are saved (a dot and a line of text), Saved quotes, Settings, and New quote as the primary button. At 900px and below the buttons become 44px icons and the save status moves under the app name, still in words (it trims with an ellipsis only on the narrowest phones).
 - **Buttons:** primary is ink with white text; secondary is white with an edge border; both 38px tall, 8px radius, 600 weight. Hover darkens or washes; active nudges 1px; disabled is 50 to 55% opacity. Dashed-border buttons add something (a flight, a family, a line item).
 - **Inputs:** white, 1px edge border, 38px tall (44px on phones, 16px text). Hover darkens the border; focus is an ink border with a 3px gold glow; an invalid value turns red on red tint.
 - **Focus:** a 2px gold-deep outline, 2px off the control.
 - **Tick chips:** a bordered 36px chip with a square tick box. Ticked is white with a 2px ink border and an ink box. Some chips hold a small amount field.
 - **Airport codes:** a code in Iraq, Cairo or Saudi Arabia takes that country's tint and deep text, so the flights table already shows the route's colours.
 - **Place swatch:** a 9px rounded square in the place colour before a place in a sentence (the price sheet's summary) and before each place row of the full breakdown.
-- **Journey band:** one 38px tile per day, coloured by where the group is at the end of that day, with the date inside, the weekday above (the month at the start of a row and on the 1st), a plane mark on days with a flight, and the place named on a coloured rule beneath. Tiles are 26 to 66px wide; a trip that will not fit one row breaks into even rows, never a sideways scroll. When a place's name is wider than its tiles it is dropped from the rule and a key under the band names every place. It shows the calendar; the priced nights are in the facts.
+- **Journey band:** one 38px tile per day, coloured by where the group is at the end of that day, with the date inside, the weekday above (the month at the start of a row and on the 1st), a plane mark on days with a flight, and the place named on a coloured rule beneath. Tiles are 26 to 66px wide; a trip that will not fit one row breaks into even rows, never a sideways scroll. When any place's name is wider than its tiles, the rules under the band keep only their colours and a key under the band names every place, so no name appears twice. It shows the calendar; the priced nights are in the facts.
 - **Place groups:** a bordered group per stay, in travel order, with a tinted header in the place's colour and its dates. Facts inside are a bold line, a detail line and, where it can be overridden, a Change button that opens an inset row.
 - **Notes:** warn-tint boxes with a triangle icon, above the place groups.
 - **Price sheet:** stay name in bold, prices at 18px bold tabular, takhfeef rows indented and lighter, a gold hairline between stays, the whole-group total on wash. Long stay names take a line of their own above their prices. When the list is taller than the window it scrolls inside the sheet under a fade, and Download Excel (primary) and the breakdown toggle stay pinned to the sheet's bottom edge above a hairline.
