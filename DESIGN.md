@@ -143,7 +143,7 @@ This is a working tool for office staff at a desk. Controls are the standard one
 - One gold band, once per screen, as the hem of the top bar.
 - Colour means something every time it appears.
 - One typeface, Figtree, with tabular figures wherever numbers line up.
-- Ink-filled primary buttons; gold tint marks what is selected.
+- Ink-filled primary buttons; selection is drawn in ink, never in a colour.
 
 ## Colors
 
@@ -153,7 +153,7 @@ A white ground, a plum-black ink, a gold thread, and rida colours that each carr
 - **Ink** (#221C26): text, primary buttons, checked tick boxes, focused input borders.
 - **Gold thread** (#B98A2C): the hem band, the mark, progress and saving indicators. Never used for text.
 - **Gold deep** (#84600F): focus rings, the caret, gold text on white or gold tint.
-- **Gold tint** (#FBF3DC) with **gold line** (#E4CD95): the selected state (ticked chips, the open quote, a found ITS, a changed flight) and the grand-total row.
+- **Gold tint** (#FBF3DC) with **gold line** (#E4CD95): the grand-total row only. Selection is never gold: ticked, current and found states use an ink border on white, because a cream fill reads as Cairo's saffron.
 
 ### Secondary
 - **Rose** (#BE2459, deep #8C1440, tint #FCE5ED): Iraq. Journey tiles, the Iraq facts header.
@@ -173,7 +173,8 @@ A white ground, a plum-black ink, a gold thread, and rida colours that each carr
 
 ### Named Rules
 **The Meaning Rule.** A rida colour appears only where its meaning is true. Rose is Iraq, saffron is Cairo, mint is Saudi Arabia, lilac is flying. Stay options (Faiz Nizam, Hotel Nizam) are alternatives, not places, and stay uncoloured.
-**The One Band Rule.** The gold crochet band is drawn once per screen, under the top bar. Elsewhere gold is a 1px line or a tint.
+**The One Band Rule.** The gold crochet band (a chain of linked loops with a picot between each) is drawn once per screen, under the top bar. Elsewhere gold is a 1px line, a hairline between price groups, or the grand-total tint.
+**The Ink Selection Rule.** What is ticked, current or found gets an ink border on white (2px effective), never a colour fill.
 **The No Grey-on-Colour Rule.** Text on a tinted field uses that hue's deep shade, not grey.
 
 ## Typography
@@ -200,7 +201,7 @@ A white ground, a plum-black ink, a gold thread, and rida colours that each carr
 
 Two sheets on the wash: the form sheet (flexible) and the price sheet (420px, sticky under the top bar, scrolls inside itself when it is taller than the window). The page is capped at 1260px. From 1140 to 1239px the price sheet narrows to 380px. Below 1140px the price sheet drops under the form and the lead price docks to the bottom of the screen until the sheet scrolls into view. Below 760px the top-bar buttons become icons; below 640px controls grow to 44px.
 
-Flight rows respond to the width of the card they sit in, not the window, through container queries: one row at 676px and up, a compact row down to 632px, two rows below that, three rows under 332px. The full breakdown is a full-width sheet under both columns.
+Flight rows respond to the width of the card they sit in, not the window, through container queries: one row at 676px and up, a compact row down to 632px, then two rows (flight, route, lands, remove; date, times, look-up) sized to what each field holds, and three rows under 332px. The full breakdown is a full-width sheet under both columns.
 
 Spacing steps are 4, 8, 12, 20 and 28px. Sections inside a sheet are separated by a hairline and 26 to 28px of padding; a heading sits closer to its own content (16px) than to the section above.
 
@@ -210,21 +211,24 @@ Flat, with one soft lift. Sheets carry `0 1px 2px rgba(34,28,38,.05), 0 12px 28p
 
 ## Shapes
 
-Tiles 5 to 6px, controls 8px, inset blocks 10px, bordered groups 12px, sheets 14px, dialogs 16px. Borders are 1px. Icons are authored SVG at one stroke weight (1.9 on a 24 grid) with round caps; no glyphs stand in for icons. The mark is four interlocking loops in gold thread, the repeat of a crochet rosette.
+Tiles 5 to 6px, controls 8px, inset blocks 10px, bordered groups 12px, sheets 14px, dialogs 16px. Borders are 1px. Icons are authored SVG at one stroke weight (1.9 on a 24 grid) with round caps; no glyphs stand in for icons. The mark is four interlocking loops in gold thread, the repeat of a crochet rosette; the hem repeats the same loop as a chain.
 
 ## Components
 
-- **Top bar:** white, 56px, sticky, hemmed by the gold band. Left: the mark and the app name. Right: where quotes are saved (a dot and a line of text), Saved quotes, Settings, and New quote as the primary button.
+- **Top bar:** white, 56px, sticky, hemmed by the gold band. Left: the mark and the app name. Right: where quotes are saved (a dot and a line of text), Saved quotes, Settings, and New quote as the primary button. At 760px and below the buttons become 44px icons and the save status moves under the app name, still with its words.
 - **Buttons:** primary is ink with white text; secondary is white with an edge border; both 38px tall, 8px radius, 600 weight. Hover darkens or washes; active nudges 1px; disabled is 50 to 55% opacity. Dashed-border buttons add something (a flight, a family, a line item).
 - **Inputs:** white, 1px edge border, 38px tall (44px on phones, 16px text). Hover darkens the border; focus is an ink border with a 3px gold glow; an invalid value turns red on red tint.
 - **Focus:** a 2px gold-deep outline, 2px off the control.
-- **Tick chips:** a bordered 36px chip with a square tick box. Ticked is gold tint with an ink border and an ink box. Some chips hold a small amount field.
-- **Journey band:** one 38px tile per day, coloured by where the group is at the end of that day, with the date inside, the weekday above (the month on the first day and on the 1st), a plane mark on days with a flight, and the place named on a coloured rule beneath. It shows the calendar; the priced nights are in the facts.
+- **Tick chips:** a bordered 36px chip with a square tick box. Ticked is white with a 2px ink border and an ink box. Some chips hold a small amount field.
+- **Airport codes:** a code in Iraq, Cairo or Saudi Arabia takes that country's tint and deep text, so the flights table already shows the route's colours.
+- **Place swatch:** a 9px rounded square in the place colour before a place in a sentence (the price sheet's summary) and before each place row of the full breakdown.
+- **Journey band:** one 38px tile per day, coloured by where the group is at the end of that day, with the date inside, the weekday above (the month at the start of a row and on the 1st), a plane mark on days with a flight, and the place named on a coloured rule beneath. Tiles are 26 to 66px wide; a trip that will not fit one row breaks into even rows, never a sideways scroll. When a place's name is wider than its tiles it is dropped from the rule and a key under the band names every place. It shows the calendar; the priced nights are in the facts.
 - **Place groups:** a bordered group per stay, in travel order, with a tinted header in the place's colour and its dates. Facts inside are a bold line, a detail line and, where it can be overridden, a Change button that opens an inset row.
 - **Notes:** warn-tint boxes with a triangle icon, above the place groups.
-- **Price sheet:** stay name in bold, prices at 18px bold tabular, takhfeef rows indented and lighter, a gold hairline between stays, the whole-group total on wash, then Download Excel (primary) and the breakdown toggle. Long stay names take a line of their own above their prices.
+- **Price sheet:** stay name in bold, prices at 18px bold tabular, takhfeef rows indented and lighter, a gold hairline between stays, the whole-group total on wash. Long stay names take a line of their own above their prices. When the list is taller than the window it scrolls inside the sheet under a fade, and Download Excel (primary) and the breakdown toggle stay pinned to the sheet's bottom edge above a hairline.
 - **First run:** the price sheet shows a three-step checklist that ticks itself, and an example-group button.
-- **Settings:** a wide dialog with a sticky row of section buttons; rate tables use 104px inputs and scroll sideways on phones.
+- **Settings:** a wide dialog with a sticky row of section buttons that marks the section in view; rate tables use 104px inputs and scroll sideways on phones.
+- **Quote name:** a borderless field at title size that wraps onto a second line rather than cutting a long name.
 - **Dialogs:** native `<dialog>`, white, 16px radius, sticky header with the title and one closing button.
 - **Motion:** 150 to 250ms state transitions on an exponential ease-out. The one authored moment is the band of tiles stitching in. Reduced motion removes the animations and keeps every state.
 
